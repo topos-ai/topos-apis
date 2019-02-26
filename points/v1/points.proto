@@ -1,0 +1,137 @@
+syntax = "proto3";
+
+package points;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+service Points {
+
+    // Gets a point.
+    rpc GetPoint(GetPointRequest) returns (Point) {
+        option (google.api.http) = {
+            get: "/v1/{name=points/*}"
+        };
+    }
+    
+    // Creates a point.
+    rpc CreatePoint(CreatePointRequest) returns (Point) {
+        option (google.api.http) = {
+            post: "/v1/points"
+            body: "point"
+        };
+    }
+
+    // Updates the value of an existing point.
+    rpc UpdatePoint(UpdatePointRequest) returns (Point) {
+        option (google.api.http) = {
+            patch: "/v1/{point.name=points/*}"
+            body: "point"
+        };
+    }
+    
+    // Deletes a point.
+    rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/{name=points/*}"
+        };
+    }
+
+    // Gets a point source.
+    rpc GetPointSource(GetPointSourceRequest) returns (Point) {
+        option (google.api.http) = {
+            get: "/v1/{name=sources/*/point_sources/*}"
+        };
+    }
+    
+    // Creates a point source.
+    rpc CreatePointSource(CreatePointSourceRequest) returns (Point) {
+        option (google.api.http) = {
+            post: "/v1/{source=sources/*}/point_sources"
+            body: "point_source"
+        };
+    }
+
+    // Updates the value of an existing point source.
+    rpc UpdatePointSource(UpdatePointSourceRequest) returns (Point) {
+        option (google.api.http) = {
+            patch: "/v1/{point_source.name=sources/*/point_sources/*}"
+            body: "point_source"
+        };
+    }
+    
+    // Deletes a point source.
+    rpc DeletePointSource(DeletePointSourceRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/{name=sources/*/point_sources/*}"
+        };
+    }
+
+    // Links a point source with a source.
+    rpc LinkPoint(LinkPointRequest) returns (LinkPointResponse) {
+        option (google.api.http) = {
+            post: "/v1/{name=points/*}:link"
+            body: "*"
+        };
+    }
+}
+
+message LatLng {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+message Point {
+    string name = 1;
+    string point_name = 2;
+    string formatted_address = 3;
+    LatLng location = 4;
+}
+
+message PointSource {
+    string name = 1;
+    string place = 2;
+    string formatted_address = 3;
+    LatLng location = 4;
+    repeated string tags = 5;
+}
+
+message GetPointRequest {
+    string name = 1;
+}
+
+message CreatePointRequest {
+    Point point = 1;
+}
+
+message UpdatePointRequest {
+    Point point = 1;
+}
+
+message DeletePointRequest {
+    string name = 1;
+}
+
+message GetPointSourceRequest {
+    string name = 1;
+}
+
+message CreatePointSourceRequest {
+    string source = 1;
+    PointSource point_source = 2;
+}
+
+message UpdatePointSourceRequest {
+    PointSource point_source = 1;
+}
+
+message DeletePointSourceRequest {
+    string name = 1;
+}
+
+message LinkPointRequest {
+    string name = 1;
+    repeated string point_source_names =  2;
+}
+
+message LinkPointResponse {}
