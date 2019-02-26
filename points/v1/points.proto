@@ -7,6 +7,36 @@ import "google/protobuf/empty.proto";
 
 service Points {
 
+    // Gets a brand.
+    rpc GetBrand(GetBrandRequest) returns (Brand) {
+        option (google.api.http) = {
+            get: "/v1/{name=brands/*}"
+        };
+    }
+    
+    // Creates a brand.
+    rpc CreateBrand(CreateBrandRequest) returns (Brand) {
+        option (google.api.http) = {
+            post: "/v1/brands"
+            body: "brand"
+        };
+    }
+
+    // Updates the value of an existing brand.
+    rpc UpdateBrand(UpdateBrandRequest) returns (Brand) {
+        option (google.api.http) = {
+            patch: "/v1/{brand.name=brands/*}"
+            body: "brand"
+        };
+    }
+    
+    // Deletes a brand.
+    rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/{name=brands/*}"
+        };
+    }
+
     // Gets a point.
     rpc GetPoint(GetPointRequest) returns (Point) {
         option (google.api.http) = {
@@ -76,6 +106,11 @@ service Points {
     }
 }
 
+message Brand {
+    string name = 1;
+    string brand_name = 2;
+}
+
 message LatLng {
     double latitude = 1;
     double longitude = 2;
@@ -90,10 +125,26 @@ message Point {
 
 message PointSource {
     string name = 1;
-    string place = 2;
+    string point_name = 2;
     string formatted_address = 3;
     LatLng location = 4;
     repeated string tags = 5;
+}
+
+message GetBrandRequest {
+    string name = 1;
+}
+
+message CreateBrandRequest {
+    Brand brand = 1;
+}
+
+message UpdateBrandRequest {
+    Brand brand = 1;
+}
+
+message DeleteBrandRequest {
+    string name = 1;
 }
 
 message GetPointRequest {
