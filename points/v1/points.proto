@@ -4,6 +4,7 @@ package points;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
 
 service Points {
 
@@ -141,6 +142,7 @@ message CreateBrandRequest {
 
 message UpdateBrandRequest {
     Brand brand = 1;
+    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeleteBrandRequest {
@@ -157,6 +159,7 @@ message CreatePointRequest {
 
 message UpdatePointRequest {
     Point point = 1;
+    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeletePointRequest {
@@ -174,6 +177,7 @@ message CreatePointSourceRequest {
 
 message UpdatePointSourceRequest {
     PointSource point_source = 1;
+    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeletePointSourceRequest {
