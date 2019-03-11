@@ -97,19 +97,15 @@ service Points {
             delete: "/v1/{name=sources/*/point_sources/*}"
         };
     }
-
-    // Links a point source with a source.
-    rpc LinkPoint(LinkPointRequest) returns (LinkPointResponse) {
-        option (google.api.http) = {
-            post: "/v1/{name=points/*}:link"
-            body: "*"
-        };
-    }
 }
 
 message Brand {
+    // The name of the point brand. It must have the format `"brands/{brand}"`.
+    // {brand} must be the string representation of a v4 UUID.
     string name = 1;
-    string brand_name = 2;
+
+    // The display name of the brand.
+    string display_name = 2;
 }
 
 message LatLng {
@@ -118,18 +114,48 @@ message LatLng {
 }
 
 message Point {
+    // The name of the point. It must have the format `"points/{point}"`.
+    // {point} must be the string representation of a v4 UUID.
     string name = 1;
-    string point_name = 2;
-    string formatted_address = 3;
-    LatLng location = 4;
+
+    // The name of the point's brand if it has one. It must have the format
+    // `"brands/{brand}"`. {brand} must be the string representation of a v4
+    // UUID.
+    string brand = 2;
+
+    // The display name of the point.
+    string display_name = 3;
+
+    // The formatted, single-line address.
+    string formatted_address = 4;
+
+    // The geocoded point address.
+    LatLng location = 5;
 }
 
 message PointSource {
+    // The name of the point source. It must have the format
+    // `"sources/{source}/point_sources/{point_source}"`. `{source}` must match
+    // the [regular expression](https://github.com/google/re2/wiki/Syntax)
+    // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
     string name = 1;
-    string point_name = 2;
-    string formatted_address = 3;
-    LatLng location = 4;
-    repeated string tags = 5;
+
+    // The name of the point associated with this source point if there is one.
+    // It must have the format `"points/{point}"`. {point} must be the string
+    // representation of a v4 UUID.
+    string point = 2;
+
+    // The display name of the point source.
+    string display_name = 3;
+
+    // The formatted, single-line address.
+    string formatted_address = 4;
+
+    // The source-geocoded address.
+    LatLng location = 5;
+
+    // A list of potentially unnormalized, source-provided tags.
+    repeated string tags = 6;
 }
 
 message GetBrandRequest {
@@ -183,10 +209,3 @@ message UpdatePointSourceRequest {
 message DeletePointSourceRequest {
     string name = 1;
 }
-
-message LinkPointRequest {
-    string name = 1;
-    repeated string point_source_names =  2;
-}
-
-message LinkPointResponse {}
