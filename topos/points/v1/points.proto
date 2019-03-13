@@ -4,7 +4,7 @@ package topos.points.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
 
 service Points {
 
@@ -26,7 +26,7 @@ service Points {
     // Updates the value of an existing brand.
     rpc UpdateBrand(UpdateBrandRequest) returns (Brand) {
         option (google.api.http) = {
-            patch: "/v1/{brand.name=brands/*}"
+            put: "/v1/{brand.name=brands/*}"
             body: "brand"
         };
     }
@@ -45,18 +45,10 @@ service Points {
         };
     }
     
-    // Creates a point.
-    rpc CreatePoint(CreatePointRequest) returns (Point) {
-        option (google.api.http) = {
-            post: "/v1/points"
-            body: "point"
-        };
-    }
-
     // Updates the value of an existing point.
     rpc UpdatePoint(UpdatePointRequest) returns (Point) {
         option (google.api.http) = {
-            patch: "/v1/{point.name=points/*}"
+            put: "/v1/{point.name=points/*}"
             body: "point"
         };
     }
@@ -69,14 +61,14 @@ service Points {
     }
 
     // Gets a point source.
-    rpc GetPointSource(GetPointSourceRequest) returns (Point) {
+    rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
             get: "/v1/{name=sources/*/point_sources/*}"
         };
     }
     
     // Creates a point source.
-    rpc CreatePointSource(CreatePointSourceRequest) returns (Point) {
+    rpc CreatePointSource(CreatePointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
             post: "/v1/{source=sources/*}/point_sources"
             body: "point_source"
@@ -84,9 +76,9 @@ service Points {
     }
 
     // Updates the value of an existing point source.
-    rpc UpdatePointSource(UpdatePointSourceRequest) returns (Point) {
+    rpc UpdatePointSource(UpdatePointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
-            patch: "/v1/{point_source.name=sources/*/point_sources/*}"
+            put: "/v1/{point_source.name=sources/*/point_sources/*}"
             body: "point_source"
         };
     }
@@ -95,6 +87,14 @@ service Points {
     rpc DeletePointSource(DeletePointSourceRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
             delete: "/v1/{name=sources/*/point_sources/*}"
+        };
+    }
+
+    // Associates point sources with a point.
+    rpc LinkPointSource(LinkPointSourceRequest) returns (Point) {
+        option (google.api.http) = {
+            post: "/v1/{name=sources/*/point_sources/*}:link"
+            body: "*"
         };
     }
 }
@@ -106,6 +106,12 @@ message Brand {
 
     // The display name of the brand.
     string display_name = 2;
+
+    // The creation timestamp of the brand.
+    google.protobuf.Timestamp create_time = 3;
+
+    // The last update timestamp of an brand.
+    google.protobuf.Timestamp update_time = 4;
 }
 
 message LatLng {
@@ -131,6 +137,12 @@ message Point {
 
     // The geocoded point address.
     LatLng location = 5;
+
+    // The creation timestamp of the point.
+    google.protobuf.Timestamp create_time = 6;
+
+    // The last update timestamp of an point.
+    google.protobuf.Timestamp update_time = 7;
 }
 
 message PointSource {
@@ -140,7 +152,7 @@ message PointSource {
     // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
     string name = 1;
 
-    // The name of the point associated with this source point if there is one.
+    // The name of the point associated with this point source if there is one.
     // It must have the format `"points/{point}"`. {point} must be the string
     // representation of a v4 UUID.
     string point = 2;
@@ -156,6 +168,12 @@ message PointSource {
 
     // A list of potentially unnormalized, source-provided tags.
     repeated string tags = 6;
+
+    // The creation timestamp of the point source.
+    google.protobuf.Timestamp create_time = 7;
+
+    // The last update timestamp of an point source.
+    google.protobuf.Timestamp update_time = 8;
 }
 
 message GetBrandRequest {
@@ -168,7 +186,6 @@ message CreateBrandRequest {
 
 message UpdateBrandRequest {
     Brand brand = 1;
-    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeleteBrandRequest {
@@ -185,7 +202,6 @@ message CreatePointRequest {
 
 message UpdatePointRequest {
     Point point = 1;
-    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeletePointRequest {
@@ -203,9 +219,13 @@ message CreatePointSourceRequest {
 
 message UpdatePointSourceRequest {
     PointSource point_source = 1;
-    google.protobuf.FieldMask update_mask = 2;
 }
 
 message DeletePointSourceRequest {
     string name = 1;
+}
+
+message LinkPointSourceRequest {
+    string name = 1;
+    string point_source = 2;
 }
