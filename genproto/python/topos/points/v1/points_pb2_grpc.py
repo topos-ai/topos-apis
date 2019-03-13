@@ -40,11 +40,6 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
         )
-    self.CreatePoint = channel.unary_unary(
-        '/topos.points.v1.Points/CreatePoint',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
-        )
     self.UpdatePoint = channel.unary_unary(
         '/topos.points.v1.Points/UpdatePoint',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.UpdatePointRequest.SerializeToString,
@@ -58,22 +53,27 @@ class PointsStub(object):
     self.GetPointSource = channel.unary_unary(
         '/topos.points.v1.Points/GetPointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointSourceRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.FromString,
         )
     self.CreatePointSource = channel.unary_unary(
         '/topos.points.v1.Points/CreatePointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointSourceRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.FromString,
         )
     self.UpdatePointSource = channel.unary_unary(
         '/topos.points.v1.Points/UpdatePointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.UpdatePointSourceRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.FromString,
         )
     self.DeletePointSource = channel.unary_unary(
         '/topos.points.v1.Points/DeletePointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointSourceRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
+    self.LinkPointSource = channel.unary_unary(
+        '/topos.points.v1.Points/LinkPointSource',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
         )
 
 
@@ -111,13 +111,6 @@ class PointsServicer(object):
 
   def GetPoint(self, request, context):
     """Gets a point.
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def CreatePoint(self, request, context):
-    """Creates a point.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -165,6 +158,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def LinkPointSource(self, request, context):
+    """Associates point sources with a point.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -193,11 +193,6 @@ def add_PointsServicer_to_server(servicer, server):
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
       ),
-      'CreatePoint': grpc.unary_unary_rpc_method_handler(
-          servicer.CreatePoint,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
-      ),
       'UpdatePoint': grpc.unary_unary_rpc_method_handler(
           servicer.UpdatePoint,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.UpdatePointRequest.FromString,
@@ -211,22 +206,27 @@ def add_PointsServicer_to_server(servicer, server):
       'GetPointSource': grpc.unary_unary_rpc_method_handler(
           servicer.GetPointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointSourceRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.SerializeToString,
       ),
       'CreatePointSource': grpc.unary_unary_rpc_method_handler(
           servicer.CreatePointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointSourceRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.SerializeToString,
       ),
       'UpdatePointSource': grpc.unary_unary_rpc_method_handler(
           servicer.UpdatePointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.UpdatePointSourceRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.SerializeToString,
       ),
       'DeletePointSource': grpc.unary_unary_rpc_method_handler(
           servicer.DeletePointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointSourceRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+      ),
+      'LinkPointSource': grpc.unary_unary_rpc_method_handler(
+          servicer.LinkPointSource,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

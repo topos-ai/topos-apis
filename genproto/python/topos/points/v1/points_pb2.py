@@ -14,7 +14,7 @@ _sym_db = _symbol_database.Default()
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from google.protobuf import field_mask_pb2 as google_dot_protobuf_dot_field__mask__pb2
+from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -22,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.points.v1',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x1ctopos/points/v1/points.proto\x12\x0ftopos.points.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a google/protobuf/field_mask.proto\"+\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\x80\x01\n\x05Point\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x62rand\x18\x02 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x04 \x01(\t\x12)\n\x08location\x18\x05 \x01(\x0b\x32\x17.topos.points.v1.LatLng\"\x94\x01\n\x0bPointSource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05point\x18\x02 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x04 \x01(\t\x12)\n\x08location\x18\x05 \x01(\x0b\x32\x17.topos.points.v1.LatLng\x12\x0c\n\x04tags\x18\x06 \x03(\t\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reateBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\"l\n\x12UpdateBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1f\n\x0fGetPointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\"l\n\x12UpdatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\"\"\n\x12\x44\x65letePointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x15GetPointSourceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"^\n\x18\x43reatePointSourceRequest\x12\x0e\n\x06source\x18\x01 \x01(\t\x12\x32\n\x0cpoint_source\x18\x02 \x01(\x0b\x32\x1c.topos.points.v1.PointSource\"\x7f\n\x18UpdatePointSourceRequest\x12\x32\n\x0cpoint_source\x18\x01 \x01(\x0b\x32\x1c.topos.points.v1.PointSource\x12/\n\x0bupdate_mask\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.FieldMask\"(\n\x18\x44\x65letePointSourceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"<\n\x10LinkPointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x1a\n\x12point_source_names\x18\x02 \x03(\t\"\x13\n\x11LinkPointResponse2\x98\x0b\n\x06Points\x12\x61\n\x08GetBrand\x12 .topos.points.v1.GetBrandRequest\x1a\x16.topos.points.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12\x65\n\x0b\x43reateBrand\x12#.topos.points.v1.CreateBrandRequest\x1a\x16.topos.points.v1.Brand\"\x19\x82\xd3\xe4\x93\x02\x13\"\n/v1/brands:\x05\x62rand\x12t\n\x0bUpdateBrand\x12#.topos.points.v1.UpdateBrandRequest\x1a\x16.topos.points.v1.Brand\"(\x82\xd3\xe4\x93\x02\"2\x19/v1/{brand.name=brands/*}:\x05\x62rand\x12g\n\x0b\x44\x65leteBrand\x12#.topos.points.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12\x61\n\x08GetPoint\x12 .topos.points.v1.GetPointRequest\x1a\x16.topos.points.v1.Point\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=points/*}\x12\x65\n\x0b\x43reatePoint\x12#.topos.points.v1.CreatePointRequest\x1a\x16.topos.points.v1.Point\"\x19\x82\xd3\xe4\x93\x02\x13\"\n/v1/points:\x05point\x12t\n\x0bUpdatePoint\x12#.topos.points.v1.UpdatePointRequest\x1a\x16.topos.points.v1.Point\"(\x82\xd3\xe4\x93\x02\"2\x19/v1/{point.name=points/*}:\x05point\x12g\n\x0b\x44\x65letePoint\x12#.topos.points.v1.DeletePointRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=points/*}\x12~\n\x0eGetPointSource\x12&.topos.points.v1.GetPointSourceRequest\x1a\x16.topos.points.v1.Point\",\x82\xd3\xe4\x93\x02&\x12$/v1/{name=sources/*/point_sources/*}\x12\x92\x01\n\x11\x43reatePointSource\x12).topos.points.v1.CreatePointSourceRequest\x1a\x16.topos.points.v1.Point\":\x82\xd3\xe4\x93\x02\x34\"$/v1/{source=sources/*}/point_sources:\x0cpoint_source\x12\x9f\x01\n\x11UpdatePointSource\x12).topos.points.v1.UpdatePointSourceRequest\x1a\x16.topos.points.v1.Point\"G\x82\xd3\xe4\x93\x02\x41\x32\x31/v1/{point_source.name=sources/*/point_sources/*}:\x0cpoint_source\x12\x84\x01\n\x11\x44\x65letePointSource\x12).topos.points.v1.DeletePointSourceRequest\x1a\x16.google.protobuf.Empty\",\x82\xd3\xe4\x93\x02&*$/v1/{name=sources/*/point_sources/*}b\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/points/v1/points.proto\x12\x0ftopos.points.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8d\x01\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12/\n\x0b\x63reate_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\xe2\x01\n\x05Point\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05\x62rand\x18\x02 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x04 \x01(\t\x12)\n\x08location\x18\x05 \x01(\x0b\x32\x17.topos.points.v1.LatLng\x12/\n\x0b\x63reate_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xf6\x01\n\x0bPointSource\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\r\n\x05point\x18\x02 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x03 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x04 \x01(\t\x12)\n\x08location\x18\x05 \x01(\x0b\x32\x17.topos.points.v1.LatLng\x12\x0c\n\x04tags\x18\x06 \x03(\t\x12/\n\x0b\x63reate_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reateBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\";\n\x12UpdateBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1f\n\x0fGetPointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\";\n\x12UpdatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\"\"\n\x12\x44\x65letePointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x15GetPointSourceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"^\n\x18\x43reatePointSourceRequest\x12\x0e\n\x06source\x18\x01 \x01(\t\x12\x32\n\x0cpoint_source\x18\x02 \x01(\x0b\x32\x1c.topos.points.v1.PointSource\"N\n\x18UpdatePointSourceRequest\x12\x32\n\x0cpoint_source\x18\x01 \x01(\x0b\x32\x1c.topos.points.v1.PointSource\"(\n\x18\x44\x65letePointSourceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"<\n\x16LinkPointSourceRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cpoint_source\x18\x02 \x01(\t2\xcf\x0b\n\x06Points\x12\x61\n\x08GetBrand\x12 .topos.points.v1.GetBrandRequest\x1a\x16.topos.points.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12\x65\n\x0b\x43reateBrand\x12#.topos.points.v1.CreateBrandRequest\x1a\x16.topos.points.v1.Brand\"\x19\x82\xd3\xe4\x93\x02\x13\"\n/v1/brands:\x05\x62rand\x12t\n\x0bUpdateBrand\x12#.topos.points.v1.UpdateBrandRequest\x1a\x16.topos.points.v1.Brand\"(\x82\xd3\xe4\x93\x02\"\x1a\x19/v1/{brand.name=brands/*}:\x05\x62rand\x12g\n\x0b\x44\x65leteBrand\x12#.topos.points.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12\x61\n\x08GetPoint\x12 .topos.points.v1.GetPointRequest\x1a\x16.topos.points.v1.Point\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=points/*}\x12t\n\x0bUpdatePoint\x12#.topos.points.v1.UpdatePointRequest\x1a\x16.topos.points.v1.Point\"(\x82\xd3\xe4\x93\x02\"\x1a\x19/v1/{point.name=points/*}:\x05point\x12g\n\x0b\x44\x65letePoint\x12#.topos.points.v1.DeletePointRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=points/*}\x12\x84\x01\n\x0eGetPointSource\x12&.topos.points.v1.GetPointSourceRequest\x1a\x1c.topos.points.v1.PointSource\",\x82\xd3\xe4\x93\x02&\x12$/v1/{name=sources/*/point_sources/*}\x12\x98\x01\n\x11\x43reatePointSource\x12).topos.points.v1.CreatePointSourceRequest\x1a\x1c.topos.points.v1.PointSource\":\x82\xd3\xe4\x93\x02\x34\"$/v1/{source=sources/*}/point_sources:\x0cpoint_source\x12\xa5\x01\n\x11UpdatePointSource\x12).topos.points.v1.UpdatePointSourceRequest\x1a\x1c.topos.points.v1.PointSource\"G\x82\xd3\xe4\x93\x02\x41\x1a\x31/v1/{point_source.name=sources/*/point_sources/*}:\x0cpoint_source\x12\x84\x01\n\x11\x44\x65letePointSource\x12).topos.points.v1.DeletePointSourceRequest\x1a\x16.google.protobuf.Empty\",\x82\xd3\xe4\x93\x02&*$/v1/{name=sources/*/point_sources/*}\x12\x88\x01\n\x0fLinkPointSource\x12\'.topos.points.v1.LinkPointSourceRequest\x1a\x16.topos.points.v1.Point\"4\x82\xd3\xe4\x93\x02.\")/v1/{name=sources/*/point_sources/*}:link:\x01*b\x06proto3')
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_field__mask__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
 
 
@@ -50,6 +50,20 @@ _BRAND = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='create_time', full_name='topos.points.v1.Brand.create_time', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='update_time', full_name='topos.points.v1.Brand.update_time', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -63,7 +77,7 @@ _BRAND = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=142,
-  serialized_end=185,
+  serialized_end=283,
 )
 
 
@@ -100,8 +114,8 @@ _LATLNG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=187,
-  serialized_end=232,
+  serialized_start=285,
+  serialized_end=330,
 )
 
 
@@ -147,6 +161,20 @@ _POINT = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='create_time', full_name='topos.points.v1.Point.create_time', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='update_time', full_name='topos.points.v1.Point.update_time', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -159,8 +187,8 @@ _POINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=235,
-  serialized_end=363,
+  serialized_start=333,
+  serialized_end=559,
 )
 
 
@@ -213,6 +241,20 @@ _POINTSOURCE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='create_time', full_name='topos.points.v1.PointSource.create_time', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='update_time', full_name='topos.points.v1.PointSource.update_time', index=7,
+      number=8, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -225,8 +267,8 @@ _POINTSOURCE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=366,
-  serialized_end=514,
+  serialized_start=562,
+  serialized_end=808,
 )
 
 
@@ -256,8 +298,8 @@ _GETBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=516,
-  serialized_end=547,
+  serialized_start=810,
+  serialized_end=841,
 )
 
 
@@ -287,8 +329,8 @@ _CREATEBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=549,
-  serialized_end=608,
+  serialized_start=843,
+  serialized_end=902,
 )
 
 
@@ -306,13 +348,6 @@ _UPDATEBRANDREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='update_mask', full_name='topos.points.v1.UpdateBrandRequest.update_mask', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -325,8 +360,8 @@ _UPDATEBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=610,
-  serialized_end=718,
+  serialized_start=904,
+  serialized_end=963,
 )
 
 
@@ -356,8 +391,8 @@ _DELETEBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=720,
-  serialized_end=754,
+  serialized_start=965,
+  serialized_end=999,
 )
 
 
@@ -387,8 +422,8 @@ _GETPOINTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=756,
-  serialized_end=787,
+  serialized_start=1001,
+  serialized_end=1032,
 )
 
 
@@ -418,8 +453,8 @@ _CREATEPOINTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=789,
-  serialized_end=848,
+  serialized_start=1034,
+  serialized_end=1093,
 )
 
 
@@ -437,13 +472,6 @@ _UPDATEPOINTREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='update_mask', full_name='topos.points.v1.UpdatePointRequest.update_mask', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -456,8 +484,8 @@ _UPDATEPOINTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=850,
-  serialized_end=958,
+  serialized_start=1095,
+  serialized_end=1154,
 )
 
 
@@ -487,8 +515,8 @@ _DELETEPOINTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=960,
-  serialized_end=994,
+  serialized_start=1156,
+  serialized_end=1190,
 )
 
 
@@ -518,8 +546,8 @@ _GETPOINTSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=996,
-  serialized_end=1033,
+  serialized_start=1192,
+  serialized_end=1229,
 )
 
 
@@ -556,8 +584,8 @@ _CREATEPOINTSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1035,
-  serialized_end=1129,
+  serialized_start=1231,
+  serialized_end=1325,
 )
 
 
@@ -575,13 +603,6 @@ _UPDATEPOINTSOURCEREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='update_mask', full_name='topos.points.v1.UpdatePointSourceRequest.update_mask', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -594,8 +615,8 @@ _UPDATEPOINTSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1258,
+  serialized_start=1327,
+  serialized_end=1405,
 )
 
 
@@ -625,29 +646,29 @@ _DELETEPOINTSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1260,
-  serialized_end=1300,
+  serialized_start=1407,
+  serialized_end=1447,
 )
 
 
-_LINKPOINTREQUEST = _descriptor.Descriptor(
-  name='LinkPointRequest',
-  full_name='topos.points.v1.LinkPointRequest',
+_LINKPOINTSOURCEREQUEST = _descriptor.Descriptor(
+  name='LinkPointSourceRequest',
+  full_name='topos.points.v1.LinkPointSourceRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='topos.points.v1.LinkPointRequest.name', index=0,
+      name='name', full_name='topos.points.v1.LinkPointSourceRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='point_source_names', full_name='topos.points.v1.LinkPointRequest.point_source_names', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
+      name='point_source', full_name='topos.points.v1.LinkPointSourceRequest.point_source', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -663,45 +684,24 @@ _LINKPOINTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1302,
-  serialized_end=1362,
+  serialized_start=1449,
+  serialized_end=1509,
 )
 
-
-_LINKPOINTRESPONSE = _descriptor.Descriptor(
-  name='LinkPointResponse',
-  full_name='topos.points.v1.LinkPointResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1364,
-  serialized_end=1383,
-)
-
+_BRAND.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_BRAND.fields_by_name['update_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _POINT.fields_by_name['location'].message_type = _LATLNG
+_POINT.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_POINT.fields_by_name['update_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _POINTSOURCE.fields_by_name['location'].message_type = _LATLNG
+_POINTSOURCE.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
+_POINTSOURCE.fields_by_name['update_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _CREATEBRANDREQUEST.fields_by_name['brand'].message_type = _BRAND
 _UPDATEBRANDREQUEST.fields_by_name['brand'].message_type = _BRAND
-_UPDATEBRANDREQUEST.fields_by_name['update_mask'].message_type = google_dot_protobuf_dot_field__mask__pb2._FIELDMASK
 _CREATEPOINTREQUEST.fields_by_name['point'].message_type = _POINT
 _UPDATEPOINTREQUEST.fields_by_name['point'].message_type = _POINT
-_UPDATEPOINTREQUEST.fields_by_name['update_mask'].message_type = google_dot_protobuf_dot_field__mask__pb2._FIELDMASK
 _CREATEPOINTSOURCEREQUEST.fields_by_name['point_source'].message_type = _POINTSOURCE
 _UPDATEPOINTSOURCEREQUEST.fields_by_name['point_source'].message_type = _POINTSOURCE
-_UPDATEPOINTSOURCEREQUEST.fields_by_name['update_mask'].message_type = google_dot_protobuf_dot_field__mask__pb2._FIELDMASK
 DESCRIPTOR.message_types_by_name['Brand'] = _BRAND
 DESCRIPTOR.message_types_by_name['LatLng'] = _LATLNG
 DESCRIPTOR.message_types_by_name['Point'] = _POINT
@@ -718,8 +718,7 @@ DESCRIPTOR.message_types_by_name['GetPointSourceRequest'] = _GETPOINTSOURCEREQUE
 DESCRIPTOR.message_types_by_name['CreatePointSourceRequest'] = _CREATEPOINTSOURCEREQUEST
 DESCRIPTOR.message_types_by_name['UpdatePointSourceRequest'] = _UPDATEPOINTSOURCEREQUEST
 DESCRIPTOR.message_types_by_name['DeletePointSourceRequest'] = _DELETEPOINTSOURCEREQUEST
-DESCRIPTOR.message_types_by_name['LinkPointRequest'] = _LINKPOINTREQUEST
-DESCRIPTOR.message_types_by_name['LinkPointResponse'] = _LINKPOINTRESPONSE
+DESCRIPTOR.message_types_by_name['LinkPointSourceRequest'] = _LINKPOINTSOURCEREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), dict(
@@ -834,19 +833,12 @@ DeletePointSourceRequest = _reflection.GeneratedProtocolMessageType('DeletePoint
   ))
 _sym_db.RegisterMessage(DeletePointSourceRequest)
 
-LinkPointRequest = _reflection.GeneratedProtocolMessageType('LinkPointRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LINKPOINTREQUEST,
+LinkPointSourceRequest = _reflection.GeneratedProtocolMessageType('LinkPointSourceRequest', (_message.Message,), dict(
+  DESCRIPTOR = _LINKPOINTSOURCEREQUEST,
   __module__ = 'topos.points.v1.points_pb2'
-  # @@protoc_insertion_point(class_scope:topos.points.v1.LinkPointRequest)
+  # @@protoc_insertion_point(class_scope:topos.points.v1.LinkPointSourceRequest)
   ))
-_sym_db.RegisterMessage(LinkPointRequest)
-
-LinkPointResponse = _reflection.GeneratedProtocolMessageType('LinkPointResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LINKPOINTRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
-  # @@protoc_insertion_point(class_scope:topos.points.v1.LinkPointResponse)
-  ))
-_sym_db.RegisterMessage(LinkPointResponse)
+_sym_db.RegisterMessage(LinkPointSourceRequest)
 
 
 
@@ -856,8 +848,8 @@ _POINTS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1386,
-  serialized_end=2818,
+  serialized_start=1512,
+  serialized_end=2999,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBrand',
@@ -884,7 +876,7 @@ _POINTS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_UPDATEBRANDREQUEST,
     output_type=_BRAND,
-    serialized_options=_b('\202\323\344\223\002\"2\031/v1/{brand.name=brands/*}:\005brand'),
+    serialized_options=_b('\202\323\344\223\002\"\032\031/v1/{brand.name=brands/*}:\005brand'),
   ),
   _descriptor.MethodDescriptor(
     name='DeleteBrand',
@@ -905,27 +897,18 @@ _POINTS = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\025\022\023/v1/{name=points/*}'),
   ),
   _descriptor.MethodDescriptor(
-    name='CreatePoint',
-    full_name='topos.points.v1.Points.CreatePoint',
-    index=5,
-    containing_service=None,
-    input_type=_CREATEPOINTREQUEST,
-    output_type=_POINT,
-    serialized_options=_b('\202\323\344\223\002\023\"\n/v1/points:\005point'),
-  ),
-  _descriptor.MethodDescriptor(
     name='UpdatePoint',
     full_name='topos.points.v1.Points.UpdatePoint',
-    index=6,
+    index=5,
     containing_service=None,
     input_type=_UPDATEPOINTREQUEST,
     output_type=_POINT,
-    serialized_options=_b('\202\323\344\223\002\"2\031/v1/{point.name=points/*}:\005point'),
+    serialized_options=_b('\202\323\344\223\002\"\032\031/v1/{point.name=points/*}:\005point'),
   ),
   _descriptor.MethodDescriptor(
     name='DeletePoint',
     full_name='topos.points.v1.Points.DeletePoint',
-    index=7,
+    index=6,
     containing_service=None,
     input_type=_DELETEPOINTREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -934,38 +917,47 @@ _POINTS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetPointSource',
     full_name='topos.points.v1.Points.GetPointSource',
-    index=8,
+    index=7,
     containing_service=None,
     input_type=_GETPOINTSOURCEREQUEST,
-    output_type=_POINT,
+    output_type=_POINTSOURCE,
     serialized_options=_b('\202\323\344\223\002&\022$/v1/{name=sources/*/point_sources/*}'),
   ),
   _descriptor.MethodDescriptor(
     name='CreatePointSource',
     full_name='topos.points.v1.Points.CreatePointSource',
-    index=9,
+    index=8,
     containing_service=None,
     input_type=_CREATEPOINTSOURCEREQUEST,
-    output_type=_POINT,
+    output_type=_POINTSOURCE,
     serialized_options=_b('\202\323\344\223\0024\"$/v1/{source=sources/*}/point_sources:\014point_source'),
   ),
   _descriptor.MethodDescriptor(
     name='UpdatePointSource',
     full_name='topos.points.v1.Points.UpdatePointSource',
-    index=10,
+    index=9,
     containing_service=None,
     input_type=_UPDATEPOINTSOURCEREQUEST,
-    output_type=_POINT,
-    serialized_options=_b('\202\323\344\223\002A21/v1/{point_source.name=sources/*/point_sources/*}:\014point_source'),
+    output_type=_POINTSOURCE,
+    serialized_options=_b('\202\323\344\223\002A\0321/v1/{point_source.name=sources/*/point_sources/*}:\014point_source'),
   ),
   _descriptor.MethodDescriptor(
     name='DeletePointSource',
     full_name='topos.points.v1.Points.DeletePointSource',
-    index=11,
+    index=10,
     containing_service=None,
     input_type=_DELETEPOINTSOURCEREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     serialized_options=_b('\202\323\344\223\002&*$/v1/{name=sources/*/point_sources/*}'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='LinkPointSource',
+    full_name='topos.points.v1.Points.LinkPointSource',
+    index=11,
+    containing_service=None,
+    input_type=_LINKPOINTSOURCEREQUEST,
+    output_type=_POINT,
+    serialized_options=_b('\202\323\344\223\002.\")/v1/{name=sources/*/point_sources/*}:link:\001*'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_POINTS)
