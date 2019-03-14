@@ -10,7 +10,10 @@ pkg-go: includes/googleapis genproto/go
 		&& find /protos/topos -name '*.proto' | xargs protoc \
 			-I/includes/googleapis \
 			-I/protos \
-			--go_out=plugins=grpc:/genproto/go'
+			--go_out=plugins=grpc:/genproto/go \
+		&& cd /genproto/go \
+		&& go mod init github.com/topos-ai/topos-apis/genproto/go \
+		&& go mod tidy'
 
 pkg-python: includes/googleapis genproto/python
 	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/python:/genproto/python python:3.7.2 sh -c \
