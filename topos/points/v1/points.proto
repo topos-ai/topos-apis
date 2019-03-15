@@ -93,7 +93,7 @@ service Points {
     }
 
     // Associates point sources with a point.
-    rpc LinkPointSource(LinkPointSourceRequest) returns (Point) {
+    rpc LinkPointSource(LinkPointSourceRequest) returns (LinkPointSourceResponse) {
         option (google.api.http) = {
             post: "/v1/{name=sources/*/point_sources/*}:link"
             body: "*"
@@ -103,7 +103,9 @@ service Points {
 
 message Brand {
     // The name of the point brand. It must have the format `"brands/{brand}"`.
-    // {brand} must be the string representation of a v4 UUID.
+    // `{brand}` must match the [regular
+    // expression](https://github.com/google/re2/wiki/Syntax)
+    // `^[a-z\d]+(-[a-z\d]+)*$`
     string name = 1;
 
     // The display name of the brand.
@@ -123,12 +125,12 @@ message LatLng {
 
 message Point {
     // The name of the point. It must have the format `"points/{point}"`.
-    // {point} must be the string representation of a v4 UUID.
     string name = 1;
 
     // The name of the point's brand if it has one. It must have the format
-    // `"brands/{brand}"`. {brand} must be the string representation of a v4
-    // UUID.
+    // `"brands/{brand}"`. `{brand}` must match the [regular
+    // expression](https://github.com/google/re2/wiki/Syntax)
+    // `^[a-z\d]+(-[a-z\d]+)*$`
     string brand = 2;
 
     // The display name of the point.
@@ -155,8 +157,7 @@ message PointSource {
     string name = 1;
 
     // The name of the point associated with this point source if there is one.
-    // It must have the format `"points/{point}"`. {point} must be the string
-    // representation of a v4 UUID.
+    // It must have the format `"points/{point}"`.
     string point = 2;
 
     // The display name of the point source.
@@ -231,3 +232,5 @@ message LinkPointSourceRequest {
     string name = 1;
     string point_source = 2;
 }
+
+message LinkPointSourceResponse {}

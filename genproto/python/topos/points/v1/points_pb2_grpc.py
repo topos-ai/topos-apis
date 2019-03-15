@@ -73,7 +73,7 @@ class PointsStub(object):
     self.LinkPointSource = channel.unary_unary(
         '/topos.points.v1.Points/LinkPointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceResponse.FromString,
         )
 
 
@@ -226,7 +226,7 @@ def add_PointsServicer_to_server(servicer, server):
       'LinkPointSource': grpc.unary_unary_rpc_method_handler(
           servicer.LinkPointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
