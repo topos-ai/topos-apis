@@ -65,14 +65,14 @@ service Points {
     // Gets a point source.
     rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
-            get: "/v1/{name=sources/*/point_sources/*}"
+            get: "/v1/{name=sources/*/pointSources/*}"
         };
     }
     
     // Creates a point source.
     rpc CreatePointSource(CreatePointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
-            post: "/v1/{source=sources/*}/point_sources"
+            post: "/v1/{source=sources/*}/pointSources"
             body: "point_source"
         };
     }
@@ -80,7 +80,7 @@ service Points {
     // Updates the value of an existing point source.
     rpc UpdatePointSource(UpdatePointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
-            put: "/v1/{point_source.name=sources/*/point_sources/*}"
+            put: "/v1/{point_source.name=sources/*/pointSources/*}"
             body: "point_source"
         };
     }
@@ -88,14 +88,14 @@ service Points {
     // Deletes a point source.
     rpc DeletePointSource(DeletePointSourceRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            delete: "/v1/{name=sources/*/point_sources/*}"
+            delete: "/v1/{name=sources/*/pointSources/*}"
         };
     }
 
     // Associates point sources with a point.
     rpc LinkPointSource(LinkPointSourceRequest) returns (LinkPointSourceResponse) {
         option (google.api.http) = {
-            post: "/v1/{name=sources/*/point_sources/*}:link"
+            post: "/v1/{name=sources/*/pointSources/*}:link"
             body: "*"
         };
     }
@@ -151,7 +151,7 @@ message Point {
 
 message PointSource {
     // The name of the point source. It must have the format
-    // `"sources/{source}/point_sources/{point_source}"`. `{source}` must match
+    // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
     // the [regular expression](https://github.com/google/re2/wiki/Syntax)
     // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
     string name = 1;
