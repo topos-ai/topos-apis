@@ -17,18 +17,10 @@ service Points {
         };
     }
     
-    // Creates a brand.
-    rpc CreateBrand(CreateBrandRequest) returns (Brand) {
+    // Sets a brand.
+    rpc SetBrand(SetBrandRequest) returns (Brand) {
         option (google.api.http) = {
-            post: "/v1/brands"
-            body: "brand"
-        };
-    }
-
-    // Updates the value of an existing brand.
-    rpc UpdateBrand(UpdateBrandRequest) returns (Brand) {
-        option (google.api.http) = {
-            put: "/v1/{brand.name=brands/*}"
+            post: "/v1/{brand.name=brands/*}:set"
             body: "brand"
         };
     }
@@ -47,7 +39,7 @@ service Points {
         };
     }
     
-    // Updates the value of an existing point.
+    // Updates an existing point.
     rpc UpdatePoint(UpdatePointRequest) returns (Point) {
         option (google.api.http) = {
             put: "/v1/{point.name=points/*}"
@@ -69,18 +61,10 @@ service Points {
         };
     }
     
-    // Creates a point source.
-    rpc CreatePointSource(CreatePointSourceRequest) returns (PointSource) {
+    // Sets a point source.
+    rpc SetPointSource(SetPointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
-            post: "/v1/{source=sources/*}/pointSources"
-            body: "point_source"
-        };
-    }
-
-    // Updates the value of an existing point source.
-    rpc UpdatePointSource(UpdatePointSourceRequest) returns (PointSource) {
-        option (google.api.http) = {
-            put: "/v1/{point_source.name=sources/*/pointSources/*}"
+            post: "/v1/{point_source.name=sources/*/pointSources/*}:set"
             body: "point_source"
         };
     }
@@ -183,11 +167,7 @@ message GetBrandRequest {
     string name = 1;
 }
 
-message CreateBrandRequest {
-    Brand brand = 1;
-}
-
-message UpdateBrandRequest {
+message SetBrandRequest {
     Brand brand = 1;
 }
 
@@ -215,12 +195,7 @@ message GetPointSourceRequest {
     string name = 1;
 }
 
-message CreatePointSourceRequest {
-    string source = 1;
-    PointSource point_source = 2;
-}
-
-message UpdatePointSourceRequest {
+message SetPointSourceRequest {
     PointSource point_source = 1;
 }
 

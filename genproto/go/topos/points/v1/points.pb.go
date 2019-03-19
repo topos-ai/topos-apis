@@ -11,6 +11,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -385,78 +387,39 @@ func (m *GetBrandRequest) GetName() string {
 	return ""
 }
 
-type CreateBrandRequest struct {
+type SetBrandRequest struct {
 	Brand                *Brand   `protobuf:"bytes,1,opt,name=brand,proto3" json:"brand,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CreateBrandRequest) Reset()         { *m = CreateBrandRequest{} }
-func (m *CreateBrandRequest) String() string { return proto.CompactTextString(m) }
-func (*CreateBrandRequest) ProtoMessage()    {}
-func (*CreateBrandRequest) Descriptor() ([]byte, []int) {
+func (m *SetBrandRequest) Reset()         { *m = SetBrandRequest{} }
+func (m *SetBrandRequest) String() string { return proto.CompactTextString(m) }
+func (*SetBrandRequest) ProtoMessage()    {}
+func (*SetBrandRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_58bd33bd76af5b35, []int{5}
 }
 
-func (m *CreateBrandRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateBrandRequest.Unmarshal(m, b)
+func (m *SetBrandRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetBrandRequest.Unmarshal(m, b)
 }
-func (m *CreateBrandRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateBrandRequest.Marshal(b, m, deterministic)
+func (m *SetBrandRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetBrandRequest.Marshal(b, m, deterministic)
 }
-func (m *CreateBrandRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateBrandRequest.Merge(m, src)
+func (m *SetBrandRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetBrandRequest.Merge(m, src)
 }
-func (m *CreateBrandRequest) XXX_Size() int {
-	return xxx_messageInfo_CreateBrandRequest.Size(m)
+func (m *SetBrandRequest) XXX_Size() int {
+	return xxx_messageInfo_SetBrandRequest.Size(m)
 }
-func (m *CreateBrandRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateBrandRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateBrandRequest proto.InternalMessageInfo
-
-func (m *CreateBrandRequest) GetBrand() *Brand {
-	if m != nil {
-		return m.Brand
-	}
-	return nil
+func (m *SetBrandRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetBrandRequest.DiscardUnknown(m)
 }
 
-type UpdateBrandRequest struct {
-	Brand                *Brand   `protobuf:"bytes,1,opt,name=brand,proto3" json:"brand,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
+var xxx_messageInfo_SetBrandRequest proto.InternalMessageInfo
 
-func (m *UpdateBrandRequest) Reset()         { *m = UpdateBrandRequest{} }
-func (m *UpdateBrandRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdateBrandRequest) ProtoMessage()    {}
-func (*UpdateBrandRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{6}
-}
-
-func (m *UpdateBrandRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateBrandRequest.Unmarshal(m, b)
-}
-func (m *UpdateBrandRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateBrandRequest.Marshal(b, m, deterministic)
-}
-func (m *UpdateBrandRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateBrandRequest.Merge(m, src)
-}
-func (m *UpdateBrandRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdateBrandRequest.Size(m)
-}
-func (m *UpdateBrandRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateBrandRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateBrandRequest proto.InternalMessageInfo
-
-func (m *UpdateBrandRequest) GetBrand() *Brand {
+func (m *SetBrandRequest) GetBrand() *Brand {
 	if m != nil {
 		return m.Brand
 	}
@@ -474,7 +437,7 @@ func (m *DeleteBrandRequest) Reset()         { *m = DeleteBrandRequest{} }
 func (m *DeleteBrandRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteBrandRequest) ProtoMessage()    {}
 func (*DeleteBrandRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{7}
+	return fileDescriptor_58bd33bd76af5b35, []int{6}
 }
 
 func (m *DeleteBrandRequest) XXX_Unmarshal(b []byte) error {
@@ -513,7 +476,7 @@ func (m *GetPointRequest) Reset()         { *m = GetPointRequest{} }
 func (m *GetPointRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPointRequest) ProtoMessage()    {}
 func (*GetPointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{8}
+	return fileDescriptor_58bd33bd76af5b35, []int{7}
 }
 
 func (m *GetPointRequest) XXX_Unmarshal(b []byte) error {
@@ -552,7 +515,7 @@ func (m *CreatePointRequest) Reset()         { *m = CreatePointRequest{} }
 func (m *CreatePointRequest) String() string { return proto.CompactTextString(m) }
 func (*CreatePointRequest) ProtoMessage()    {}
 func (*CreatePointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{9}
+	return fileDescriptor_58bd33bd76af5b35, []int{8}
 }
 
 func (m *CreatePointRequest) XXX_Unmarshal(b []byte) error {
@@ -591,7 +554,7 @@ func (m *UpdatePointRequest) Reset()         { *m = UpdatePointRequest{} }
 func (m *UpdatePointRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdatePointRequest) ProtoMessage()    {}
 func (*UpdatePointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{10}
+	return fileDescriptor_58bd33bd76af5b35, []int{9}
 }
 
 func (m *UpdatePointRequest) XXX_Unmarshal(b []byte) error {
@@ -630,7 +593,7 @@ func (m *DeletePointRequest) Reset()         { *m = DeletePointRequest{} }
 func (m *DeletePointRequest) String() string { return proto.CompactTextString(m) }
 func (*DeletePointRequest) ProtoMessage()    {}
 func (*DeletePointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{11}
+	return fileDescriptor_58bd33bd76af5b35, []int{10}
 }
 
 func (m *DeletePointRequest) XXX_Unmarshal(b []byte) error {
@@ -669,7 +632,7 @@ func (m *GetPointSourceRequest) Reset()         { *m = GetPointSourceRequest{} }
 func (m *GetPointSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetPointSourceRequest) ProtoMessage()    {}
 func (*GetPointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{12}
+	return fileDescriptor_58bd33bd76af5b35, []int{11}
 }
 
 func (m *GetPointSourceRequest) XXX_Unmarshal(b []byte) error {
@@ -697,86 +660,39 @@ func (m *GetPointSourceRequest) GetName() string {
 	return ""
 }
 
-type CreatePointSourceRequest struct {
-	Source               string       `protobuf:"bytes,1,opt,name=source,proto3" json:"source,omitempty"`
-	PointSource          *PointSource `protobuf:"bytes,2,opt,name=point_source,json=pointSource,proto3" json:"point_source,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
-}
-
-func (m *CreatePointSourceRequest) Reset()         { *m = CreatePointSourceRequest{} }
-func (m *CreatePointSourceRequest) String() string { return proto.CompactTextString(m) }
-func (*CreatePointSourceRequest) ProtoMessage()    {}
-func (*CreatePointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{13}
-}
-
-func (m *CreatePointSourceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreatePointSourceRequest.Unmarshal(m, b)
-}
-func (m *CreatePointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreatePointSourceRequest.Marshal(b, m, deterministic)
-}
-func (m *CreatePointSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreatePointSourceRequest.Merge(m, src)
-}
-func (m *CreatePointSourceRequest) XXX_Size() int {
-	return xxx_messageInfo_CreatePointSourceRequest.Size(m)
-}
-func (m *CreatePointSourceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreatePointSourceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreatePointSourceRequest proto.InternalMessageInfo
-
-func (m *CreatePointSourceRequest) GetSource() string {
-	if m != nil {
-		return m.Source
-	}
-	return ""
-}
-
-func (m *CreatePointSourceRequest) GetPointSource() *PointSource {
-	if m != nil {
-		return m.PointSource
-	}
-	return nil
-}
-
-type UpdatePointSourceRequest struct {
+type SetPointSourceRequest struct {
 	PointSource          *PointSource `protobuf:"bytes,1,opt,name=point_source,json=pointSource,proto3" json:"point_source,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
 	XXX_unrecognized     []byte       `json:"-"`
 	XXX_sizecache        int32        `json:"-"`
 }
 
-func (m *UpdatePointSourceRequest) Reset()         { *m = UpdatePointSourceRequest{} }
-func (m *UpdatePointSourceRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdatePointSourceRequest) ProtoMessage()    {}
-func (*UpdatePointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{14}
+func (m *SetPointSourceRequest) Reset()         { *m = SetPointSourceRequest{} }
+func (m *SetPointSourceRequest) String() string { return proto.CompactTextString(m) }
+func (*SetPointSourceRequest) ProtoMessage()    {}
+func (*SetPointSourceRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{12}
 }
 
-func (m *UpdatePointSourceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdatePointSourceRequest.Unmarshal(m, b)
+func (m *SetPointSourceRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetPointSourceRequest.Unmarshal(m, b)
 }
-func (m *UpdatePointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdatePointSourceRequest.Marshal(b, m, deterministic)
+func (m *SetPointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetPointSourceRequest.Marshal(b, m, deterministic)
 }
-func (m *UpdatePointSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdatePointSourceRequest.Merge(m, src)
+func (m *SetPointSourceRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetPointSourceRequest.Merge(m, src)
 }
-func (m *UpdatePointSourceRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdatePointSourceRequest.Size(m)
+func (m *SetPointSourceRequest) XXX_Size() int {
+	return xxx_messageInfo_SetPointSourceRequest.Size(m)
 }
-func (m *UpdatePointSourceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdatePointSourceRequest.DiscardUnknown(m)
+func (m *SetPointSourceRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetPointSourceRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdatePointSourceRequest proto.InternalMessageInfo
+var xxx_messageInfo_SetPointSourceRequest proto.InternalMessageInfo
 
-func (m *UpdatePointSourceRequest) GetPointSource() *PointSource {
+func (m *SetPointSourceRequest) GetPointSource() *PointSource {
 	if m != nil {
 		return m.PointSource
 	}
@@ -794,7 +710,7 @@ func (m *DeletePointSourceRequest) Reset()         { *m = DeletePointSourceReque
 func (m *DeletePointSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeletePointSourceRequest) ProtoMessage()    {}
 func (*DeletePointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{15}
+	return fileDescriptor_58bd33bd76af5b35, []int{13}
 }
 
 func (m *DeletePointSourceRequest) XXX_Unmarshal(b []byte) error {
@@ -834,7 +750,7 @@ func (m *LinkPointSourceRequest) Reset()         { *m = LinkPointSourceRequest{}
 func (m *LinkPointSourceRequest) String() string { return proto.CompactTextString(m) }
 func (*LinkPointSourceRequest) ProtoMessage()    {}
 func (*LinkPointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{16}
+	return fileDescriptor_58bd33bd76af5b35, []int{14}
 }
 
 func (m *LinkPointSourceRequest) XXX_Unmarshal(b []byte) error {
@@ -879,7 +795,7 @@ func (m *LinkPointSourceResponse) Reset()         { *m = LinkPointSourceResponse
 func (m *LinkPointSourceResponse) String() string { return proto.CompactTextString(m) }
 func (*LinkPointSourceResponse) ProtoMessage()    {}
 func (*LinkPointSourceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{17}
+	return fileDescriptor_58bd33bd76af5b35, []int{15}
 }
 
 func (m *LinkPointSourceResponse) XXX_Unmarshal(b []byte) error {
@@ -906,16 +822,14 @@ func init() {
 	proto.RegisterType((*Point)(nil), "topos.points.v1.Point")
 	proto.RegisterType((*PointSource)(nil), "topos.points.v1.PointSource")
 	proto.RegisterType((*GetBrandRequest)(nil), "topos.points.v1.GetBrandRequest")
-	proto.RegisterType((*CreateBrandRequest)(nil), "topos.points.v1.CreateBrandRequest")
-	proto.RegisterType((*UpdateBrandRequest)(nil), "topos.points.v1.UpdateBrandRequest")
+	proto.RegisterType((*SetBrandRequest)(nil), "topos.points.v1.SetBrandRequest")
 	proto.RegisterType((*DeleteBrandRequest)(nil), "topos.points.v1.DeleteBrandRequest")
 	proto.RegisterType((*GetPointRequest)(nil), "topos.points.v1.GetPointRequest")
 	proto.RegisterType((*CreatePointRequest)(nil), "topos.points.v1.CreatePointRequest")
 	proto.RegisterType((*UpdatePointRequest)(nil), "topos.points.v1.UpdatePointRequest")
 	proto.RegisterType((*DeletePointRequest)(nil), "topos.points.v1.DeletePointRequest")
 	proto.RegisterType((*GetPointSourceRequest)(nil), "topos.points.v1.GetPointSourceRequest")
-	proto.RegisterType((*CreatePointSourceRequest)(nil), "topos.points.v1.CreatePointSourceRequest")
-	proto.RegisterType((*UpdatePointSourceRequest)(nil), "topos.points.v1.UpdatePointSourceRequest")
+	proto.RegisterType((*SetPointSourceRequest)(nil), "topos.points.v1.SetPointSourceRequest")
 	proto.RegisterType((*DeletePointSourceRequest)(nil), "topos.points.v1.DeletePointSourceRequest")
 	proto.RegisterType((*LinkPointSourceRequest)(nil), "topos.points.v1.LinkPointSourceRequest")
 	proto.RegisterType((*LinkPointSourceResponse)(nil), "topos.points.v1.LinkPointSourceResponse")
@@ -924,63 +838,59 @@ func init() {
 func init() { proto.RegisterFile("topos/points/v1/points.proto", fileDescriptor_58bd33bd76af5b35) }
 
 var fileDescriptor_58bd33bd76af5b35 = []byte{
-	// 893 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x57, 0xcf, 0x6e, 0xfb, 0x44,
-	0x10, 0x96, 0xd3, 0x26, 0x4d, 0xc6, 0x15, 0x25, 0x5b, 0x9a, 0xba, 0x6e, 0x24, 0x82, 0xab, 0x42,
-	0x48, 0x8b, 0x4d, 0x9b, 0x13, 0xa9, 0x10, 0x10, 0xfe, 0x5d, 0x2a, 0x40, 0x01, 0x2e, 0x70, 0x88,
-	0xdc, 0x66, 0x1b, 0x59, 0x4d, 0x6c, 0x13, 0x6f, 0x2a, 0x55, 0xa8, 0x17, 0xfa, 0x08, 0x1c, 0x10,
-	0x77, 0x1e, 0x80, 0x23, 0xcf, 0xc0, 0x95, 0x2b, 0x47, 0x1e, 0x04, 0x79, 0x76, 0x1d, 0xff, 0x59,
-	0xbb, 0x49, 0x94, 0xcb, 0xef, 0xe6, 0xdd, 0x19, 0xcf, 0xf7, 0xcd, 0xb7, 0xfb, 0x8d, 0x13, 0x68,
-	0x32, 0xcf, 0xf7, 0x02, 0xcb, 0xf7, 0x1c, 0x97, 0x05, 0xd6, 0xc3, 0x85, 0x78, 0x32, 0xfd, 0x99,
-	0xc7, 0x3c, 0xb2, 0x87, 0x51, 0x53, 0xec, 0x3d, 0x5c, 0xe8, 0xcd, 0xb1, 0xe7, 0x8d, 0x27, 0xd4,
-	0xb2, 0x7d, 0xc7, 0xb2, 0x5d, 0xd7, 0x63, 0x36, 0x73, 0x3c, 0x57, 0xa4, 0xeb, 0xc7, 0x22, 0x8a,
-	0xab, 0x9b, 0xf9, 0x9d, 0x45, 0xa7, 0x3e, 0x7b, 0x14, 0xc1, 0x37, 0xb3, 0x41, 0xe6, 0x4c, 0x69,
-	0xc0, 0xec, 0xa9, 0xcf, 0x13, 0x8c, 0xbf, 0x14, 0x28, 0xf7, 0x67, 0xb6, 0x3b, 0x22, 0x04, 0xb6,
-	0x5d, 0x7b, 0x4a, 0x35, 0xa5, 0xa5, 0xb4, 0x6b, 0x03, 0x7c, 0x26, 0x6f, 0xc1, 0xee, 0xc8, 0x09,
-	0xfc, 0x89, 0xfd, 0x38, 0xc4, 0x58, 0x09, 0x63, 0xaa, 0xd8, 0xfb, 0x2a, 0x4c, 0xb9, 0x02, 0xf5,
-	0x76, 0x46, 0x6d, 0x46, 0x87, 0x61, 0x69, 0x6d, 0xab, 0xa5, 0xb4, 0xd5, 0x4b, 0xdd, 0xe4, 0xb8,
-	0x66, 0x84, 0x6b, 0x7e, 0x17, 0xe1, 0x0e, 0x80, 0xa7, 0x87, 0x1b, 0xe1, 0xcb, 0x73, 0x7f, 0xb4,
-	0x78, 0x79, 0x7b, 0xf9, 0xcb, 0x3c, 0x3d, 0xdc, 0x30, 0xfa, 0x50, 0xb9, 0xb6, 0xd9, 0xb5, 0x3b,
-	0x26, 0x3a, 0x54, 0x27, 0x36, 0x73, 0xd8, 0x7c, 0xc4, 0xe9, 0x2b, 0x83, 0xc5, 0x9a, 0x34, 0xa1,
-	0x36, 0xf1, 0xdc, 0x31, 0x0f, 0x96, 0x30, 0x18, 0x6f, 0x18, 0x7f, 0x96, 0xa0, 0xfc, 0x4d, 0x28,
-	0x74, 0x6e, 0xfb, 0x6f, 0x40, 0xf9, 0x26, 0xd4, 0x46, 0xf4, 0xcd, 0x17, 0x92, 0x28, 0x5b, 0xb2,
-	0x28, 0x67, 0x50, 0xbf, 0xf3, 0x66, 0x53, 0x9b, 0x31, 0x3a, 0x1a, 0xda, 0xa3, 0xd1, 0x8c, 0x06,
-	0x01, 0x76, 0x57, 0x1b, 0xbc, 0xbe, 0x08, 0x7c, 0xc2, 0xf7, 0x49, 0x17, 0xaa, 0x13, 0xef, 0x16,
-	0xcf, 0x54, 0x2b, 0xa3, 0x02, 0x87, 0x66, 0xe6, 0x0a, 0x98, 0xbc, 0xd1, 0xc1, 0x22, 0x31, 0x2b,
-	0x7b, 0x65, 0x13, 0xd9, 0x77, 0xd6, 0x92, 0xfd, 0xef, 0x12, 0xa8, 0x28, 0xd9, 0xb7, 0xde, 0x7c,
-	0x76, 0x4b, 0x8b, 0x84, 0x43, 0xee, 0x91, 0x70, 0xb8, 0x78, 0x35, 0x84, 0x23, 0xb0, 0xcd, 0xec,
-	0x71, 0xa0, 0x55, 0x5a, 0x5b, 0x21, 0xdd, 0xf0, 0x39, 0x2b, 0xe6, 0xce, 0x26, 0x62, 0x56, 0xd7,
-	0x12, 0xf3, 0x14, 0xf6, 0xbe, 0xa4, 0x0c, 0x0d, 0x38, 0xa0, 0x3f, 0xcd, 0x69, 0x90, 0x7b, 0x11,
-	0x8d, 0x3e, 0x90, 0x4f, 0x11, 0x31, 0x95, 0x79, 0x1e, 0x5d, 0x4f, 0x05, 0x31, 0x1b, 0x52, 0xf3,
-	0x3c, 0x9b, 0x27, 0x85, 0x35, 0xbe, 0x47, 0xe0, 0x0d, 0x6a, 0xb4, 0x81, 0x7c, 0x46, 0x27, 0x34,
-	0x53, 0x23, 0x8f, 0x31, 0x6f, 0x0c, 0xef, 0xc9, 0x4a, 0x8d, 0xa5, 0x32, 0xcf, 0xa3, 0xeb, 0x53,
-	0x44, 0x8a, 0x67, 0xf3, 0xa4, 0xb8, 0xb1, 0x0d, 0x6a, 0x2c, 0x1a, 0x5b, 0xca, 0xf8, 0x0c, 0x0e,
-	0xa2, 0xc6, 0xb8, 0x01, 0x5e, 0x4a, 0x0e, 0x40, 0x4b, 0xb4, 0x97, 0xce, 0x6f, 0x40, 0x25, 0xc0,
-	0x0d, 0xf1, 0x86, 0x58, 0x91, 0x8f, 0x60, 0x17, 0x39, 0x0d, 0x45, 0xb4, 0x84, 0xfc, 0x9b, 0xf9,
-	0xfc, 0x45, 0x49, 0xd5, 0x8f, 0x17, 0xc6, 0x8f, 0xa0, 0x25, 0xf4, 0x48, 0x83, 0x66, 0x8b, 0x2b,
-	0xeb, 0x16, 0x37, 0x41, 0x4b, 0x08, 0xb5, 0x5c, 0x81, 0xaf, 0xa1, 0x71, 0xed, 0xb8, 0xf7, 0xab,
-	0x65, 0x87, 0x13, 0x42, 0xea, 0xbd, 0x96, 0x26, 0x70, 0x04, 0x87, 0x52, 0xc1, 0xc0, 0xf7, 0xdc,
-	0x80, 0x5e, 0xfe, 0xab, 0x42, 0x05, 0xf7, 0x03, 0x62, 0x43, 0x35, 0xf2, 0x15, 0x69, 0x49, 0xdd,
-	0x65, 0x2c, 0xa7, 0x17, 0xdc, 0x7a, 0xe3, 0xf8, 0x97, 0x7f, 0xfe, 0xfb, 0xb5, 0x74, 0x40, 0xf6,
-	0xc3, 0x6f, 0xf4, 0xcf, 0x21, 0xc3, 0x0f, 0xd1, 0x07, 0x81, 0xd5, 0x79, 0x22, 0x14, 0xd4, 0x84,
-	0x27, 0xc9, 0x89, 0x54, 0x43, 0x76, 0x6c, 0x21, 0xd0, 0x11, 0x02, 0xed, 0x1b, 0x10, 0x02, 0x71,
-	0x88, 0x9e, 0xf8, 0xda, 0x30, 0x50, 0x13, 0xb6, 0xcd, 0x81, 0x91, 0x4d, 0x5d, 0x08, 0xd3, 0x46,
-	0x18, 0x43, 0x3f, 0xc2, 0x7e, 0xb0, 0xbe, 0x99, 0xee, 0x2a, 0x42, 0x1d, 0x83, 0x9a, 0x30, 0x7a,
-	0x0e, 0xaa, 0x3c, 0x06, 0xf4, 0x86, 0x34, 0xf3, 0x3e, 0x0f, 0x7f, 0x89, 0x44, 0x2a, 0x76, 0x72,
-	0x55, 0xe4, 0x07, 0xc5, 0x3f, 0xc1, 0xb9, 0x07, 0x95, 0x34, 0xa4, 0x5e, 0xe0, 0xe2, 0xbc, 0x83,
-	0x12, 0x3f, 0xae, 0x3a, 0x4f, 0xb1, 0x82, 0x1c, 0xa5, 0x48, 0xc1, 0x95, 0x80, 0xd2, 0x0a, 0x62,
-	0xd4, 0x4c, 0xc3, 0xf5, 0xc4, 0xc7, 0x6e, 0xa1, 0x60, 0x11, 0xaa, 0x3c, 0x6f, 0xd6, 0x51, 0x30,
-	0x6e, 0xef, 0x59, 0x81, 0xd7, 0xd2, 0x13, 0x89, 0xbc, 0x5d, 0x28, 0x64, 0xca, 0x82, 0xfa, 0x8b,
-	0xbe, 0x37, 0xce, 0x10, 0xf5, 0x94, 0x9c, 0xc4, 0xa8, 0xdc, 0x96, 0x81, 0xd5, 0xb1, 0x12, 0x96,
-	0x44, 0x16, 0xbf, 0x29, 0x50, 0x97, 0x46, 0x1d, 0x79, 0xb7, 0xc0, 0x14, 0x6b, 0x73, 0xf9, 0x00,
-	0xb9, 0x74, 0x0d, 0xce, 0x85, 0xd3, 0x88, 0xd9, 0x3c, 0xa5, 0xe8, 0xf4, 0x52, 0x33, 0x84, 0xfc,
-	0xa1, 0x40, 0x5d, 0x9a, 0x87, 0x39, 0xcc, 0x8a, 0x66, 0xe6, 0x12, 0x66, 0x5f, 0x20, 0xb3, 0x8f,
-	0xf5, 0xf7, 0xe3, 0x1b, 0x21, 0x90, 0xcd, 0x97, 0x25, 0xcb, 0xd0, 0x7c, 0x56, 0xa0, 0x2e, 0x4d,
-	0xd6, 0x1c, 0x9a, 0x45, 0xd3, 0xb7, 0xf0, 0xf2, 0x88, 0x63, 0xec, 0xac, 0x74, 0x8c, 0xbf, 0x2b,
-	0xb0, 0x97, 0x19, 0xaf, 0xe4, 0x1d, 0xf9, 0x47, 0x55, 0xee, 0x44, 0xd7, 0xdb, 0xcb, 0x13, 0xf9,
-	0xa4, 0x36, 0xba, 0xc8, 0xe9, 0x3d, 0xa3, 0xbd, 0x02, 0xa7, 0xde, 0xc4, 0x71, 0xef, 0x7b, 0x4a,
-	0xa7, 0xaf, 0xfd, 0xd0, 0xc8, 0xfc, 0x6f, 0xba, 0xe2, 0x4f, 0x37, 0x15, 0x6c, 0xb9, 0xfb, 0x7f,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0x34, 0x2a, 0x59, 0xbd, 0x58, 0x0d, 0x00, 0x00,
+	// 831 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x4f, 0x4f, 0xdb, 0x48,
+	0x14, 0x97, 0x03, 0x09, 0xc9, 0x0b, 0x22, 0xcb, 0xec, 0x12, 0x82, 0xc9, 0x6a, 0xb3, 0x46, 0xb0,
+	0xd9, 0xc0, 0xda, 0x02, 0xf6, 0x14, 0x54, 0xa1, 0xa6, 0x54, 0x95, 0x2a, 0xd4, 0x56, 0x49, 0x2b,
+	0x55, 0xbd, 0x44, 0x86, 0x0c, 0x91, 0x45, 0x62, 0xbb, 0xf1, 0x04, 0x09, 0x55, 0x5c, 0xda, 0x8f,
+	0xd0, 0x53, 0xaf, 0xfd, 0x04, 0x3d, 0xf6, 0x33, 0xf4, 0xda, 0x43, 0xbf, 0x40, 0x3f, 0x48, 0x35,
+	0x6f, 0xc6, 0x49, 0xfc, 0x2f, 0x09, 0xe5, 0xd2, 0x9b, 0xe7, 0xbd, 0x9f, 0xe7, 0xf7, 0x7b, 0xbf,
+	0x79, 0x6f, 0x6c, 0x28, 0x33, 0xc7, 0x75, 0x3c, 0xc3, 0x75, 0x2c, 0x9b, 0x79, 0xc6, 0xd5, 0xbe,
+	0x7c, 0xd2, 0xdd, 0x81, 0xc3, 0x1c, 0x52, 0xc0, 0xac, 0x2e, 0x63, 0x57, 0xfb, 0x6a, 0xb9, 0xeb,
+	0x38, 0xdd, 0x1e, 0x35, 0x4c, 0xd7, 0x32, 0x4c, 0xdb, 0x76, 0x98, 0xc9, 0x2c, 0xc7, 0x96, 0x70,
+	0x75, 0x53, 0x66, 0x71, 0x75, 0x36, 0xbc, 0x30, 0x68, 0xdf, 0x65, 0xd7, 0x32, 0xf9, 0x57, 0x38,
+	0xc9, 0xac, 0x3e, 0xf5, 0x98, 0xd9, 0x77, 0x05, 0x40, 0xfb, 0xac, 0x40, 0xba, 0x31, 0x30, 0xed,
+	0x0e, 0x21, 0xb0, 0x68, 0x9b, 0x7d, 0x5a, 0x52, 0x2a, 0x4a, 0x35, 0xd7, 0xc4, 0x67, 0xf2, 0x37,
+	0x2c, 0x77, 0x2c, 0xcf, 0xed, 0x99, 0xd7, 0x6d, 0xcc, 0xa5, 0x30, 0x97, 0x97, 0xb1, 0x27, 0x1c,
+	0x72, 0x04, 0xf9, 0xf3, 0x01, 0x35, 0x19, 0x6d, 0xf3, 0xad, 0x4b, 0x0b, 0x15, 0xa5, 0x9a, 0x3f,
+	0x50, 0x75, 0xc1, 0xab, 0xfb, 0xbc, 0xfa, 0x73, 0x9f, 0xb7, 0x09, 0x02, 0xce, 0x03, 0xfc, 0xe5,
+	0xa1, 0xdb, 0x19, 0xbd, 0xbc, 0x38, 0xfb, 0x65, 0x01, 0xe7, 0x01, 0xad, 0x01, 0x99, 0x53, 0x93,
+	0x9d, 0xda, 0x5d, 0xa2, 0x42, 0xb6, 0x67, 0x32, 0x8b, 0x0d, 0x3b, 0x42, 0xbe, 0xd2, 0x1c, 0xad,
+	0x49, 0x19, 0x72, 0x3d, 0xc7, 0xee, 0x8a, 0x64, 0x0a, 0x93, 0xe3, 0x80, 0xf6, 0x29, 0x05, 0xe9,
+	0x67, 0xdc, 0xe8, 0xd8, 0xf2, 0xff, 0x80, 0xf4, 0x19, 0xf7, 0x46, 0xd6, 0x2d, 0x16, 0x11, 0x53,
+	0x16, 0xa2, 0xa6, 0xec, 0xc2, 0xea, 0x85, 0x33, 0xe8, 0x9b, 0x8c, 0xd1, 0x4e, 0xdb, 0xec, 0x74,
+	0x06, 0xd4, 0xf3, 0xb0, 0xba, 0x5c, 0xf3, 0xb7, 0x51, 0xe2, 0xbe, 0x88, 0x93, 0x43, 0xc8, 0xf6,
+	0x9c, 0x73, 0x3c, 0xd3, 0x52, 0x1a, 0x1d, 0x58, 0xd7, 0x43, 0x2d, 0xa0, 0x8b, 0x42, 0x9b, 0x23,
+	0x60, 0xd8, 0xf6, 0xcc, 0x5d, 0x6c, 0x5f, 0xba, 0x95, 0xed, 0x5f, 0x52, 0x90, 0x47, 0xcb, 0x5a,
+	0xce, 0x70, 0x70, 0x4e, 0x93, 0x8c, 0x43, 0xed, 0xbe, 0x71, 0xb8, 0xf8, 0x35, 0x8c, 0x23, 0xb0,
+	0xc8, 0xcc, 0xae, 0x57, 0xca, 0x54, 0x16, 0xb8, 0x5c, 0xfe, 0x1c, 0x36, 0x73, 0xe9, 0x2e, 0x66,
+	0x66, 0x6f, 0x65, 0xe6, 0x36, 0x14, 0x1e, 0x51, 0x86, 0x03, 0xd8, 0xa4, 0xaf, 0x87, 0xd4, 0x8b,
+	0x6d, 0x44, 0xed, 0x18, 0x0a, 0xad, 0x10, 0x6c, 0xcf, 0xef, 0x4d, 0x05, 0x09, 0x8b, 0x91, 0xca,
+	0x05, 0x5a, 0x80, 0xb4, 0x2a, 0x90, 0x13, 0xda, 0xa3, 0x8c, 0xce, 0xa4, 0x12, 0x8a, 0xf0, 0x80,
+	0xa7, 0xc1, 0x1a, 0x40, 0x1e, 0xa0, 0x07, 0x01, 0xe4, 0x9e, 0x7f, 0xee, 0x49, 0xa2, 0x04, 0x5a,
+	0x80, 0xf8, 0x1e, 0x2f, 0xd0, 0x8a, 0x3b, 0xec, 0x31, 0x2a, 0x6c, 0xa6, 0xe2, 0x5d, 0x58, 0xf3,
+	0x0b, 0x13, 0x9d, 0x3b, 0x0d, 0xfc, 0x12, 0xd6, 0x5a, 0xb1, 0xe0, 0x63, 0x58, 0x46, 0xe2, 0xb6,
+	0x87, 0x61, 0x29, 0xb2, 0x1c, 0x2f, 0x52, 0xbe, 0x9a, 0x77, 0xc7, 0x0b, 0x4d, 0x87, 0xd2, 0x84,
+	0xe0, 0xd9, 0x4a, 0x9e, 0x42, 0xf1, 0xd4, 0xb2, 0x2f, 0xe7, 0x43, 0xf3, 0x11, 0x0b, 0xc8, 0x93,
+	0x17, 0xf6, 0xa4, 0x80, 0x0d, 0x58, 0x8f, 0x6c, 0xe8, 0xb9, 0x8e, 0xed, 0xd1, 0x83, 0x6f, 0x39,
+	0xc8, 0x60, 0xdc, 0x23, 0x26, 0x64, 0xfd, 0xc6, 0x24, 0x95, 0x48, 0x75, 0xa1, 0x9e, 0x55, 0x13,
+	0xba, 0x4f, 0xdb, 0x7c, 0xfb, 0xf5, 0xfb, 0xfb, 0xd4, 0x1a, 0xf9, 0x9d, 0x7f, 0xe4, 0xde, 0x70,
+	0x85, 0xf7, 0xb0, 0x1f, 0x3d, 0xa3, 0x76, 0x43, 0x06, 0x90, 0x6d, 0x25, 0x53, 0xb4, 0xe6, 0xa4,
+	0xd8, 0x43, 0x8a, 0x1d, 0xed, 0x4f, 0xa4, 0xc0, 0xdd, 0xf5, 0x20, 0x51, 0xdd, 0xa3, 0xac, 0x2e,
+	0xef, 0xee, 0x2e, 0xe4, 0x27, 0xe6, 0x80, 0x6c, 0x45, 0x36, 0x8d, 0x4e, 0x89, 0x5a, 0x8c, 0xcc,
+	0xf2, 0x43, 0xfe, 0x85, 0xf5, 0x8b, 0xab, 0xc5, 0x16, 0x27, 0xfc, 0x13, 0x9f, 0x96, 0x58, 0xff,
+	0x26, 0xfb, 0x55, 0x4d, 0x68, 0xf2, 0x38, 0xff, 0xe4, 0x4f, 0x43, 0xed, 0x86, 0x30, 0xc8, 0x4f,
+	0x8c, 0x4f, 0x4c, 0x2d, 0xd1, 0xe1, 0x4a, 0x24, 0xaa, 0x22, 0x91, 0xa6, 0x6e, 0x20, 0x11, 0x66,
+	0xf5, 0x20, 0x5d, 0x5d, 0x5e, 0xe2, 0x23, 0x07, 0x93, 0x58, 0xa3, 0xe3, 0x78, 0x1b, 0x07, 0xc7,
+	0xe5, 0xbd, 0x53, 0x60, 0x25, 0x38, 0xb0, 0x64, 0x27, 0xd1, 0xc8, 0xc0, 0x64, 0xa8, 0x53, 0xc7,
+	0x51, 0xdb, 0x45, 0xd6, 0x6d, 0xb2, 0x35, 0x66, 0x15, 0xd3, 0xe2, 0x19, 0x35, 0x63, 0x62, 0x52,
+	0x50, 0xc5, 0x47, 0x05, 0x56, 0x5a, 0xb3, 0x54, 0xb4, 0x7e, 0x42, 0xc5, 0x63, 0x54, 0x71, 0xa2,
+	0xfd, 0x3f, 0x76, 0x5c, 0x0e, 0xad, 0x3e, 0x5d, 0x12, 0xb6, 0x73, 0x60, 0xca, 0xb9, 0x55, 0xab,
+	0x91, 0x4b, 0x85, 0xfc, 0x3b, 0xed, 0x68, 0x82, 0x52, 0x93, 0x0e, 0x48, 0x5a, 0x55, 0x9b, 0xcb,
+	0xaa, 0x0f, 0x0a, 0x14, 0x42, 0x37, 0x0b, 0xf9, 0x27, 0xfa, 0x41, 0x8e, 0xbd, 0xcc, 0xd4, 0xea,
+	0x6c, 0xa0, 0xb8, 0xa4, 0xb4, 0x43, 0xd4, 0xf4, 0x9f, 0x56, 0x9d, 0x43, 0x53, 0xbd, 0x67, 0xd9,
+	0x97, 0x75, 0xa5, 0xd6, 0x28, 0xbd, 0x2a, 0x86, 0xfe, 0xb9, 0x8f, 0xc4, 0xd3, 0x59, 0x06, 0x4b,
+	0x3e, 0xfc, 0x11, 0x00, 0x00, 0xff, 0xff, 0x1f, 0x32, 0xc2, 0xe2, 0x94, 0x0b, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -997,24 +907,20 @@ const _ = grpc.SupportPackageIsVersion4
 type PointsClient interface {
 	// Gets a brand.
 	GetBrand(ctx context.Context, in *GetBrandRequest, opts ...grpc.CallOption) (*Brand, error)
-	// Creates a brand.
-	CreateBrand(ctx context.Context, in *CreateBrandRequest, opts ...grpc.CallOption) (*Brand, error)
-	// Updates the value of an existing brand.
-	UpdateBrand(ctx context.Context, in *UpdateBrandRequest, opts ...grpc.CallOption) (*Brand, error)
+	// Sets a brand.
+	SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error)
 	// Deletes a brand.
 	DeleteBrand(ctx context.Context, in *DeleteBrandRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Gets a point.
 	GetPoint(ctx context.Context, in *GetPointRequest, opts ...grpc.CallOption) (*Point, error)
-	// Updates the value of an existing point.
+	// Updates an existing point.
 	UpdatePoint(ctx context.Context, in *UpdatePointRequest, opts ...grpc.CallOption) (*Point, error)
 	// Deletes a point.
 	DeletePoint(ctx context.Context, in *DeletePointRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Gets a point source.
 	GetPointSource(ctx context.Context, in *GetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
-	// Creates a point source.
-	CreatePointSource(ctx context.Context, in *CreatePointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
-	// Updates the value of an existing point source.
-	UpdatePointSource(ctx context.Context, in *UpdatePointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
+	// Sets a point source.
+	SetPointSource(ctx context.Context, in *SetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
 	// Deletes a point source.
 	DeletePointSource(ctx context.Context, in *DeletePointSourceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Associates point sources with a point.
@@ -1038,18 +944,9 @@ func (c *pointsClient) GetBrand(ctx context.Context, in *GetBrandRequest, opts .
 	return out, nil
 }
 
-func (c *pointsClient) CreateBrand(ctx context.Context, in *CreateBrandRequest, opts ...grpc.CallOption) (*Brand, error) {
+func (c *pointsClient) SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error) {
 	out := new(Brand)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/CreateBrand", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) UpdateBrand(ctx context.Context, in *UpdateBrandRequest, opts ...grpc.CallOption) (*Brand, error) {
-	out := new(Brand)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/UpdateBrand", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetBrand", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1101,18 +998,9 @@ func (c *pointsClient) GetPointSource(ctx context.Context, in *GetPointSourceReq
 	return out, nil
 }
 
-func (c *pointsClient) CreatePointSource(ctx context.Context, in *CreatePointSourceRequest, opts ...grpc.CallOption) (*PointSource, error) {
+func (c *pointsClient) SetPointSource(ctx context.Context, in *SetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error) {
 	out := new(PointSource)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/CreatePointSource", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) UpdatePointSource(ctx context.Context, in *UpdatePointSourceRequest, opts ...grpc.CallOption) (*PointSource, error) {
-	out := new(PointSource)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/UpdatePointSource", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetPointSource", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1141,28 +1029,59 @@ func (c *pointsClient) LinkPointSource(ctx context.Context, in *LinkPointSourceR
 type PointsServer interface {
 	// Gets a brand.
 	GetBrand(context.Context, *GetBrandRequest) (*Brand, error)
-	// Creates a brand.
-	CreateBrand(context.Context, *CreateBrandRequest) (*Brand, error)
-	// Updates the value of an existing brand.
-	UpdateBrand(context.Context, *UpdateBrandRequest) (*Brand, error)
+	// Sets a brand.
+	SetBrand(context.Context, *SetBrandRequest) (*Brand, error)
 	// Deletes a brand.
 	DeleteBrand(context.Context, *DeleteBrandRequest) (*empty.Empty, error)
 	// Gets a point.
 	GetPoint(context.Context, *GetPointRequest) (*Point, error)
-	// Updates the value of an existing point.
+	// Updates an existing point.
 	UpdatePoint(context.Context, *UpdatePointRequest) (*Point, error)
 	// Deletes a point.
 	DeletePoint(context.Context, *DeletePointRequest) (*empty.Empty, error)
 	// Gets a point source.
 	GetPointSource(context.Context, *GetPointSourceRequest) (*PointSource, error)
-	// Creates a point source.
-	CreatePointSource(context.Context, *CreatePointSourceRequest) (*PointSource, error)
-	// Updates the value of an existing point source.
-	UpdatePointSource(context.Context, *UpdatePointSourceRequest) (*PointSource, error)
+	// Sets a point source.
+	SetPointSource(context.Context, *SetPointSourceRequest) (*PointSource, error)
 	// Deletes a point source.
 	DeletePointSource(context.Context, *DeletePointSourceRequest) (*empty.Empty, error)
 	// Associates point sources with a point.
 	LinkPointSource(context.Context, *LinkPointSourceRequest) (*LinkPointSourceResponse, error)
+}
+
+// UnimplementedPointsServer can be embedded to have forward compatible implementations.
+type UnimplementedPointsServer struct {
+}
+
+func (*UnimplementedPointsServer) GetBrand(ctx context.Context, req *GetBrandRequest) (*Brand, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBrand not implemented")
+}
+func (*UnimplementedPointsServer) SetBrand(ctx context.Context, req *SetBrandRequest) (*Brand, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBrand not implemented")
+}
+func (*UnimplementedPointsServer) DeleteBrand(ctx context.Context, req *DeleteBrandRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBrand not implemented")
+}
+func (*UnimplementedPointsServer) GetPoint(ctx context.Context, req *GetPointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPoint not implemented")
+}
+func (*UnimplementedPointsServer) UpdatePoint(ctx context.Context, req *UpdatePointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePoint not implemented")
+}
+func (*UnimplementedPointsServer) DeletePoint(ctx context.Context, req *DeletePointRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePoint not implemented")
+}
+func (*UnimplementedPointsServer) GetPointSource(ctx context.Context, req *GetPointSourceRequest) (*PointSource, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPointSource not implemented")
+}
+func (*UnimplementedPointsServer) SetPointSource(ctx context.Context, req *SetPointSourceRequest) (*PointSource, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPointSource not implemented")
+}
+func (*UnimplementedPointsServer) DeletePointSource(ctx context.Context, req *DeletePointSourceRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePointSource not implemented")
+}
+func (*UnimplementedPointsServer) LinkPointSource(ctx context.Context, req *LinkPointSourceRequest) (*LinkPointSourceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LinkPointSource not implemented")
 }
 
 func RegisterPointsServer(s *grpc.Server, srv PointsServer) {
@@ -1187,38 +1106,20 @@ func _Points_GetBrand_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Points_CreateBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBrandRequest)
+func _Points_SetBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetBrandRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PointsServer).CreateBrand(ctx, in)
+		return srv.(PointsServer).SetBrand(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/CreateBrand",
+		FullMethod: "/topos.points.v1.Points/SetBrand",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).CreateBrand(ctx, req.(*CreateBrandRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_UpdateBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateBrandRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).UpdateBrand(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/UpdateBrand",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).UpdateBrand(ctx, req.(*UpdateBrandRequest))
+		return srv.(PointsServer).SetBrand(ctx, req.(*SetBrandRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1313,38 +1214,20 @@ func _Points_GetPointSource_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Points_CreatePointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePointSourceRequest)
+func _Points_SetPointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetPointSourceRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PointsServer).CreatePointSource(ctx, in)
+		return srv.(PointsServer).SetPointSource(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/CreatePointSource",
+		FullMethod: "/topos.points.v1.Points/SetPointSource",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).CreatePointSource(ctx, req.(*CreatePointSourceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_UpdatePointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdatePointSourceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).UpdatePointSource(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/UpdatePointSource",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).UpdatePointSource(ctx, req.(*UpdatePointSourceRequest))
+		return srv.(PointsServer).SetPointSource(ctx, req.(*SetPointSourceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1394,12 +1277,8 @@ var _Points_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Points_GetBrand_Handler,
 		},
 		{
-			MethodName: "CreateBrand",
-			Handler:    _Points_CreateBrand_Handler,
-		},
-		{
-			MethodName: "UpdateBrand",
-			Handler:    _Points_UpdateBrand_Handler,
+			MethodName: "SetBrand",
+			Handler:    _Points_SetBrand_Handler,
 		},
 		{
 			MethodName: "DeleteBrand",
@@ -1422,12 +1301,8 @@ var _Points_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Points_GetPointSource_Handler,
 		},
 		{
-			MethodName: "CreatePointSource",
-			Handler:    _Points_CreatePointSource_Handler,
-		},
-		{
-			MethodName: "UpdatePointSource",
-			Handler:    _Points_UpdatePointSource_Handler,
+			MethodName: "SetPointSource",
+			Handler:    _Points_SetPointSource_Handler,
 		},
 		{
 			MethodName: "DeletePointSource",

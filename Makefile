@@ -3,7 +3,7 @@ PWD=`pwd`
 all: pkg-go pkg-python
 
 pkg-go: includes/googleapis genproto/go
-	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.12.0-alpine sh -c \
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.12.1-alpine sh -c \
 	'set -ex \
 		&& apk add git protobuf-dev \
 		&& go get github.com/golang/protobuf/protoc-gen-go \
