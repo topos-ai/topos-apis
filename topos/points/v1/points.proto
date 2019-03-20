@@ -95,11 +95,29 @@ message Brand {
     // The display name of the brand.
     string display_name = 2;
 
+    message Contact {
+
+        // The full name of the contact.
+        string full_name = 1;
+
+        // The title of the contact.
+        string title = 3;
+
+        // The email of the contact.
+        string email = 4;
+
+        // The phone number of the contact.
+        string phone_number = 5;
+    }
+
+    // The contacts for the brand.
+    repeated Contact contacts = 3;
+
     // The creation timestamp of the brand.
-    google.protobuf.Timestamp create_time = 3;
+    google.protobuf.Timestamp create_time = 4;
 
     // The last update timestamp of an brand.
-    google.protobuf.Timestamp update_time = 4;
+    google.protobuf.Timestamp update_time = 5;
 }
 
 message LatLng {
