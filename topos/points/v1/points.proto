@@ -186,11 +186,14 @@ message Tag {
     // The display name of the tag.
     string display_name = 2;
 
+    // Exclude tag from results.
+    bool exclude = 3;
+
     // The creation timestamp of the tag.
-    google.protobuf.Timestamp create_time = 3;
+    google.protobuf.Timestamp create_time = 4;
 
     // The last update timestamp of the tag.
-    google.protobuf.Timestamp update_time = 4;
+    google.protobuf.Timestamp update_time = 5;
 }
 
 message PointSource {
