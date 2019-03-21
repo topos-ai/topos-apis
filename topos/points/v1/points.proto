@@ -117,6 +117,18 @@ message Brand {
     // The display name of the brand.
     string display_name = 2;
 
+    // The formatted, single-line address of the brand's headquarters.
+    string address = 3;
+
+    // The email of the brand.
+    string email = 4;
+
+    // The realestate email of the brand.
+    string realestate_email = 5;
+
+    // The phone number of the brand.
+    string phone_number = 6;
+
     message Contact {
 
         // The full name of the contact.
@@ -124,22 +136,21 @@ message Brand {
 
         // The title of the contact.
         string title = 3;
-
-        // The email of the contact.
-        string email = 4;
-
-        // The phone number of the contact.
-        string phone_number = 5;
     }
 
     // The contacts for the brand.
-    repeated Contact contacts = 3;
+    repeated Contact contacts = 7;
+
+    // The [2017 NAICS
+    // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of
+    // the brand.
+    string naics = 8;
 
     // The creation timestamp of the brand.
-    google.protobuf.Timestamp create_time = 4;
+    google.protobuf.Timestamp create_time = 14;
 
     // The last update timestamp of an brand.
-    google.protobuf.Timestamp update_time = 5;
+    google.protobuf.Timestamp update_time = 15;
 }
 
 message LatLng {
@@ -170,10 +181,10 @@ message Point {
     repeated string tags = 6;
 
     // The creation timestamp of the point.
-    google.protobuf.Timestamp create_time = 7;
+    google.protobuf.Timestamp create_time = 14;
 
     // The last update timestamp of an point.
-    google.protobuf.Timestamp update_time = 8;
+    google.protobuf.Timestamp update_time = 15;
 }
 
 message Tag {
@@ -190,10 +201,10 @@ message Tag {
     bool exclude = 3;
 
     // The creation timestamp of the tag.
-    google.protobuf.Timestamp create_time = 4;
+    google.protobuf.Timestamp create_time = 14;
 
     // The last update timestamp of the tag.
-    google.protobuf.Timestamp update_time = 5;
+    google.protobuf.Timestamp update_time = 15;
 }
 
 message PointSource {
@@ -220,10 +231,10 @@ message PointSource {
     repeated string tags = 6;
 
     // The creation timestamp of the point source.
-    google.protobuf.Timestamp create_time = 7;
+    google.protobuf.Timestamp create_time = 14;
 
     // The last update timestamp of an point source.
-    google.protobuf.Timestamp update_time = 8;
+    google.protobuf.Timestamp update_time = 15;
 }
 
 message GetBrandRequest {
