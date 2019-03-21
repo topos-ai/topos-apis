@@ -135,7 +135,7 @@ message Brand {
         string full_name = 1;
 
         // The title of the contact.
-        string title = 3;
+        string title = 2;
     }
 
     // The contacts for the brand.
@@ -145,6 +145,12 @@ message Brand {
     // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of
     // the brand.
     string naics = 8;
+
+    // The prefered square footage of the brand.
+    string preferred_gla = 9;
+
+    // The zipcode sof the brand's headquarters.
+    string zipcode = 10;
 
     // The creation timestamp of the brand.
     google.protobuf.Timestamp create_time = 14;
