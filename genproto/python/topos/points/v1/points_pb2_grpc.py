@@ -45,6 +45,21 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
+    self.GetTag = channel.unary_unary(
+        '/topos.points.v1.Points/GetTag',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetTagRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.FromString,
+        )
+    self.SetTag = channel.unary_unary(
+        '/topos.points.v1.Points/SetTag',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.FromString,
+        )
+    self.DeleteTag = channel.unary_unary(
+        '/topos.points.v1.Points/DeleteTag',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeleteTagRequest.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
     self.GetPointSource = channel.unary_unary(
         '/topos.points.v1.Points/GetPointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointSourceRequest.SerializeToString,
@@ -113,6 +128,27 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetTag(self, request, context):
+    """Gets a tag.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SetTag(self, request, context):
+    """Sets a tag.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def DeleteTag(self, request, context):
+    """Deletes a tag.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def GetPointSource(self, request, context):
     """Gets a point source.
     """
@@ -172,6 +208,21 @@ def add_PointsServicer_to_server(servicer, server):
       'DeletePoint': grpc.unary_unary_rpc_method_handler(
           servicer.DeletePoint,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointRequest.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+      ),
+      'GetTag': grpc.unary_unary_rpc_method_handler(
+          servicer.GetTag,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.GetTagRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.SerializeToString,
+      ),
+      'SetTag': grpc.unary_unary_rpc_method_handler(
+          servicer.SetTag,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.SerializeToString,
+      ),
+      'DeleteTag': grpc.unary_unary_rpc_method_handler(
+          servicer.DeleteTag,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.DeleteTagRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'GetPointSource': grpc.unary_unary_rpc_method_handler(

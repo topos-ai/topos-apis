@@ -54,6 +54,28 @@ service Points {
         };
     }
 
+    // Gets a tag.
+    rpc GetTag(GetTagRequest) returns (Tag) {
+        option (google.api.http) = {
+            get: "/v1/{name=tags/*}"
+        };
+    }
+    
+    // Sets a tag.
+    rpc SetTag(SetTagRequest) returns (Tag) {
+        option (google.api.http) = {
+            post: "/v1/{tag.name=tags/*}:set"
+            body: "tag"
+        };
+    }
+    
+    // Deletes a tag.
+    rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/v1/{name=tags/*}"
+        };
+    }
+
     // Gets a point source.
     rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
         option (google.api.http) = {
@@ -144,11 +166,31 @@ message Point {
     // The geocoded point address.
     LatLng location = 5;
 
+    // A list of point tags.
+    repeated string tags = 6;
+
     // The creation timestamp of the point.
-    google.protobuf.Timestamp create_time = 6;
+    google.protobuf.Timestamp create_time = 7;
 
     // The last update timestamp of an point.
-    google.protobuf.Timestamp update_time = 7;
+    google.protobuf.Timestamp update_time = 8;
+}
+
+message Tag {
+    // The name of the tag. It must have the format `"tags/{tag}"`. `{tag}`
+    // must match the [regular
+    // expression](https://github.com/google/re2/wiki/Syntax)
+    // `^[a-z\d]+(-[a-z\d]+)*$`
+    string name = 1;
+
+    // The display name of the tag.
+    string display_name = 2;
+
+    // The creation timestamp of the tag.
+    google.protobuf.Timestamp create_time = 3;
+
+    // The last update timestamp of the tag.
+    google.protobuf.Timestamp update_time = 4;
 }
 
 message PointSource {
@@ -197,15 +239,23 @@ message GetPointRequest {
     string name = 1;
 }
 
-message CreatePointRequest {
-    Point point = 1;
-}
-
 message UpdatePointRequest {
     Point point = 1;
 }
 
 message DeletePointRequest {
+    string name = 1;
+}
+
+message GetTagRequest {
+    string name = 1;
+}
+
+message SetTagRequest {
+    Tag tag = 1;
+}
+
+message DeleteTagRequest {
     string name = 1;
 }
 
