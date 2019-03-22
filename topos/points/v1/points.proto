@@ -118,7 +118,7 @@ message Brand {
     string display_name = 2;
 
     // The formatted, single-line address of the brand's headquarters.
-    string address = 3;
+    string formatted_address = 3;
 
     // The email of the brand.
     string email = 4;
@@ -149,8 +149,8 @@ message Brand {
     // The prefered square footage of the brand.
     string preferred_gla = 9;
 
-    // The zipcode sof the brand's headquarters.
-    string zipcode = 10;
+    // The postal code of the brand's headquarters.
+    string postal_code = 10;
 
     // The creation timestamp of the brand.
     google.protobuf.Timestamp create_time = 14;
