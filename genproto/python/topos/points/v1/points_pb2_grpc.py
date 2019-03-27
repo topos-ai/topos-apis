@@ -55,6 +55,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.FromString,
         )
+    self.ListTags = channel.unary_unary(
+        '/topos.points.v1.Points/ListTags',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.ListTagsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.ListTagsResponse.FromString,
+        )
     self.DeleteTag = channel.unary_unary(
         '/topos.points.v1.Points/DeleteTag',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeleteTagRequest.SerializeToString,
@@ -142,6 +147,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ListTags(self, request, context):
+    """Lists tags.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def DeleteTag(self, request, context):
     """Deletes a tag.
     """
@@ -219,6 +231,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SetTag,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Tag.SerializeToString,
+      ),
+      'ListTags': grpc.unary_unary_rpc_method_handler(
+          servicer.ListTags,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.ListTagsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.ListTagsResponse.SerializeToString,
       ),
       'DeleteTag': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteTag,

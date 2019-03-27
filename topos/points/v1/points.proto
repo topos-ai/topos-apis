@@ -69,6 +69,13 @@ service Points {
         };
     }
     
+    // Lists tags.
+    rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+        option (google.api.http) = {
+            get: "/v1/tags"
+        };
+    }
+
     // Deletes a tag.
     rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
@@ -273,6 +280,23 @@ message GetTagRequest {
 
 message SetTagRequest {
     Tag tag = 1;
+}
+
+message ListTagsRequest {
+
+    // The maximum number of items to return.
+    int32 page_size = 1;
+
+    // The next_page_token value returned from a previous List request, if any.
+    string page_token = 2;
+}
+
+message ListTagsResponse {
+    repeated Tag tags = 1;
+
+    // Token to retrieve the next page of results, or empty if there are no more
+    // results in the list.
+    string next_page_token = 2;
 }
 
 message DeleteTagRequest {
