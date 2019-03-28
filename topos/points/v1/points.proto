@@ -9,315 +9,314 @@ import "google/protobuf/timestamp.proto";
 option go_package = "topos/points/v1;points";
 
 service Points {
+  // Gets a brand.
+  rpc GetBrand(GetBrandRequest) returns (Brand) {
+    option (google.api.http) = {
+      get : "/v1/{name=brands/*}"
+    };
+  }
 
-    // Gets a brand.
-    rpc GetBrand(GetBrandRequest) returns (Brand) {
-        option (google.api.http) = {
-            get: "/v1/{name=brands/*}"
-        };
-    }
-    
-    // Sets a brand.
-    rpc SetBrand(SetBrandRequest) returns (Brand) {
-        option (google.api.http) = {
-            post: "/v1/{brand.name=brands/*}:set"
-            body: "brand"
-        };
-    }
-    
-    // Deletes a brand.
-    rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/v1/{name=brands/*}"
-        };
-    }
+  // Sets a brand.
+  rpc SetBrand(SetBrandRequest) returns (Brand) {
+    option (google.api.http) = {
+      post : "/v1/{brand.name=brands/*}:set"
+      body : "brand"
+    };
+  }
 
-    // Gets a point.
-    rpc GetPoint(GetPointRequest) returns (Point) {
-        option (google.api.http) = {
-            get: "/v1/{name=points/*}"
-        };
-    }
-    
-    // Updates an existing point.
-    rpc UpdatePoint(UpdatePointRequest) returns (Point) {
-        option (google.api.http) = {
-            put: "/v1/{point.name=points/*}"
-            body: "point"
-        };
-    }
-    
-    // Deletes a point.
-    rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/v1/{name=points/*}"
-        };
-    }
+  // Lists brands.
+  rpc ListBrands(ListBrandsRequest) returns (ListBrandsResponse) {
+    option (google.api.http) = {
+      get : "/v1/brands"
+    };
+  }
 
-    // Gets a tag.
-    rpc GetTag(GetTagRequest) returns (Tag) {
-        option (google.api.http) = {
-            get: "/v1/{name=tags/*}"
-        };
-    }
-    
-    // Sets a tag.
-    rpc SetTag(SetTagRequest) returns (Tag) {
-        option (google.api.http) = {
-            post: "/v1/{tag.name=tags/*}:set"
-            body: "tag"
-        };
-    }
-    
-    // Lists tags.
-    rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
-        option (google.api.http) = {
-            get: "/v1/tags"
-        };
-    }
+  // Deletes a brand.
+  rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=brands/*}"
+    };
+  }
 
-    // Deletes a tag.
-    rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/v1/{name=tags/*}"
-        };
-    }
+  // Gets a point.
+  rpc GetPoint(GetPointRequest) returns (Point) {
+    option (google.api.http) = {
+      get : "/v1/{name=points/*}"
+    };
+  }
 
-    // Gets a point source.
-    rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
-        option (google.api.http) = {
-            get: "/v1/{name=sources/*/pointSources/*}"
-        };
-    }
-    
-    // Sets a point source.
-    rpc SetPointSource(SetPointSourceRequest) returns (PointSource) {
-        option (google.api.http) = {
-            post: "/v1/{point_source.name=sources/*/pointSources/*}:set"
-            body: "point_source"
-        };
-    }
-    
-    // Deletes a point source.
-    rpc DeletePointSource(DeletePointSourceRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            delete: "/v1/{name=sources/*/pointSources/*}"
-        };
-    }
+  // Updates an existing point.
+  rpc UpdatePoint(UpdatePointRequest) returns (Point) {
+    option (google.api.http) = {
+      put : "/v1/{point.name=points/*}"
+      body : "point"
+    };
+  }
 
-    // Associates point sources with a point.
-    rpc LinkPointSource(LinkPointSourceRequest) returns (LinkPointSourceResponse) {
-        option (google.api.http) = {
-            post: "/v1/{name=sources/*/pointSources/*}:link"
-            body: "*"
-        };
-    }
+  // Deletes a point.
+  rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=points/*}"
+    };
+  }
+
+  // Gets a tag.
+  rpc GetTag(GetTagRequest) returns (Tag) {
+    option (google.api.http) = {
+      get : "/v1/{name=tags/*}"
+    };
+  }
+
+  // Sets a tag.
+  rpc SetTag(SetTagRequest) returns (Tag) {
+    option (google.api.http) = {
+      post : "/v1/{tag.name=tags/*}:set"
+      body : "tag"
+    };
+  }
+
+  // Lists tags.
+  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+    option (google.api.http) = {
+      get : "/v1/tags"
+    };
+  }
+
+  // Deletes a tag.
+  rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=tags/*}"
+    };
+  }
+
+  // Gets a point source.
+  rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
+    option (google.api.http) = {
+      get : "/v1/{name=sources/*/pointSources/*}"
+    };
+  }
+
+  // Sets a point source.
+  rpc SetPointSource(SetPointSourceRequest) returns (PointSource) {
+    option (google.api.http) = {
+      post : "/v1/{point_source.name=sources/*/pointSources/*}:set"
+      body : "point_source"
+    };
+  }
+
+  // Deletes a point source.
+  rpc DeletePointSource(DeletePointSourceRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=sources/*/pointSources/*}"
+    };
+  }
+
+  // Associates point sources with a point.
+  rpc LinkPointSource(LinkPointSourceRequest)
+      returns (LinkPointSourceResponse) {
+    option (google.api.http) = {
+      post : "/v1/{name=sources/*/pointSources/*}:link"
+      body : "*"
+    };
+  }
 }
 
 message Brand {
-    // The name of the point brand. It must have the format `"brands/{brand}"`.
-    // `{brand}` must match the [regular
-    // expression](https://github.com/google/re2/wiki/Syntax)
-    // `^[a-z\d]+(-[a-z\d]+)*$`
-    string name = 1;
+  // The name of the point brand. It must have the format `"brands/{brand}"`.
+  // `{brand}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
 
-    // The display name of the brand.
-    string display_name = 2;
+  // The display name of the brand.
+  string display_name = 2;
 
-    // The formatted, single-line address of the brand's headquarters.
-    string formatted_address = 3;
+  // The formatted, single-line address of the brand's headquarters.
+  string formatted_address = 3;
 
-    // The email of the brand.
-    string email = 4;
+  // The email of the brand.
+  string email = 4;
 
-    // The realestate email of the brand.
-    string realestate_email = 5;
+  // The realestate email of the brand.
+  string realestate_email = 5;
 
-    // The phone number of the brand.
-    string phone_number = 6;
+  // The phone number of the brand.
+  string phone_number = 6;
 
-    message Contact {
+  message Contact {
 
-        // The full name of the contact.
-        string full_name = 1;
+    // The full name of the contact.
+    string full_name = 1;
 
-        // The title of the contact.
-        string title = 2;
-    }
+    // The title of the contact.
+    string title = 2;
+  }
 
-    // The contacts for the brand.
-    repeated Contact contacts = 7;
+  // The contacts for the brand.
+  repeated Contact contacts = 7;
 
-    // The [2017 NAICS
-    // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of
-    // the brand.
-    string naics = 8;
+  // The [2017 NAICS
+  // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of the
+  // brand.
+  string naics = 8;
 
-    // The prefered square footage of the brand.
-    string preferred_gla = 9;
+  // The prefered square footage of the brand.
+  string preferred_gla = 9;
 
-    // The postal code of the brand's headquarters.
-    string postal_code = 10;
+  // The postal code of the brand's headquarters.
+  string postal_code = 10;
 
-    // The creation timestamp of the brand.
-    google.protobuf.Timestamp create_time = 14;
+  // The creation timestamp of the brand.
+  google.protobuf.Timestamp create_time = 14;
 
-    // The last update timestamp of an brand.
-    google.protobuf.Timestamp update_time = 15;
+  // The last update timestamp of an brand.
+  google.protobuf.Timestamp update_time = 15;
 }
 
 message LatLng {
-    double latitude = 1;
-    double longitude = 2;
+  double latitude = 1;
+  double longitude = 2;
 }
 
 message Point {
-    // The name of the point. It must have the format `"points/{point}"`.
-    string name = 1;
+  // The name of the point. It must have the format `"points/{point}"`.
+  string name = 1;
 
-    // The name of the point's brand if it has one. It must have the format
-    // `"brands/{brand}"`. `{brand}` must match the [regular
-    // expression](https://github.com/google/re2/wiki/Syntax)
-    // `^[a-z\d]+(-[a-z\d]+)*$`
-    string brand = 2;
+  // The name of the point's brand if it has one. It must have the format
+  // `"brands/{brand}"`. `{brand}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string brand = 2;
 
-    // The display name of the point.
-    string display_name = 3;
+  // The display name of the point.
+  string display_name = 3;
 
-    // The formatted, single-line address.
-    string formatted_address = 4;
+  // The formatted, single-line address.
+  string formatted_address = 4;
 
-    // The geocoded point address.
-    LatLng location = 5;
+  // The geocoded point address.
+  LatLng location = 5;
 
-    // A list of point tags.
-    repeated string tags = 6;
+  // A list of point tags.
+  repeated string tags = 6;
 
-    // The creation timestamp of the point.
-    google.protobuf.Timestamp create_time = 14;
+  // The creation timestamp of the point.
+  google.protobuf.Timestamp create_time = 14;
 
-    // The last update timestamp of an point.
-    google.protobuf.Timestamp update_time = 15;
+  // The last update timestamp of an point.
+  google.protobuf.Timestamp update_time = 15;
 }
 
 message Tag {
-    // The name of the tag. It must have the format `"tags/{tag}"`. `{tag}`
-    // must match the [regular
-    // expression](https://github.com/google/re2/wiki/Syntax)
-    // `^[a-z\d]+(-[a-z\d]+)*$`
-    string name = 1;
+  // The name of the tag. It must have the format `"tags/{tag}"`. `{tag}`
+  // must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
 
-    // The display name of the tag.
-    string display_name = 2;
+  // The display name of the tag.
+  string display_name = 2;
 
-    // Exclude tag from results.
-    bool exclude = 3;
+  // Exclude tag from results.
+  bool exclude = 3;
 
-    // The creation timestamp of the tag.
-    google.protobuf.Timestamp create_time = 14;
+  // The creation timestamp of the tag.
+  google.protobuf.Timestamp create_time = 14;
 
-    // The last update timestamp of the tag.
-    google.protobuf.Timestamp update_time = 15;
+  // The last update timestamp of the tag.
+  google.protobuf.Timestamp update_time = 15;
 }
 
 message PointSource {
-    // The name of the point source. It must have the format
-    // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
-    // the [regular expression](https://github.com/google/re2/wiki/Syntax)
-    // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
-    string name = 1;
+  // The name of the point source. It must have the format
+  // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
+  // the [regular expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
+  string name = 1;
 
-    // The name of the point associated with this point source if there is one.
-    // It must have the format `"points/{point}"`.
-    string point = 2;
+  // The name of the point associated with this point source if there is one.
+  // It must have the format `"points/{point}"`.
+  string point = 2;
 
-    // The display name of the point source.
-    string display_name = 3;
+  // The display name of the point source.
+  string display_name = 3;
 
-    // The formatted, single-line address.
-    string formatted_address = 4;
+  // The formatted, single-line address.
+  string formatted_address = 4;
 
-    // The source-geocoded address.
-    LatLng location = 5;
+  // The source-geocoded address.
+  LatLng location = 5;
 
-    // A list of potentially unnormalized, source-provided tags.
-    repeated string tags = 6;
+  // A list of potentially unnormalized, source-provided tags.
+  repeated string tags = 6;
 
-    // The creation timestamp of the point source.
-    google.protobuf.Timestamp create_time = 14;
+  // The creation timestamp of the point source.
+  google.protobuf.Timestamp create_time = 14;
 
-    // The last update timestamp of an point source.
-    google.protobuf.Timestamp update_time = 15;
+  // The last update timestamp of an point source.
+  google.protobuf.Timestamp update_time = 15;
 }
 
-message GetBrandRequest {
-    string name = 1;
+message GetBrandRequest { string name = 1; }
+
+message SetBrandRequest { Brand brand = 1; }
+
+message ListBrandsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 2;
 }
 
-message SetBrandRequest {
-    Brand brand = 1;
+message ListBrandsResponse {
+  repeated Brand brands = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
 }
 
-message DeleteBrandRequest {
-    string name = 1;
-}
+message DeleteBrandRequest { string name = 1; }
 
-message GetPointRequest {
-    string name = 1;
-}
+message GetPointRequest { string name = 1; }
 
-message UpdatePointRequest {
-    Point point = 1;
-}
+message UpdatePointRequest { Point point = 1; }
 
-message DeletePointRequest {
-    string name = 1;
-}
+message DeletePointRequest { string name = 1; }
 
-message GetTagRequest {
-    string name = 1;
-}
+message GetTagRequest { string name = 1; }
 
-message SetTagRequest {
-    Tag tag = 1;
-}
+message SetTagRequest { Tag tag = 1; }
 
 message ListTagsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
 
-    // The maximum number of items to return.
-    int32 page_size = 1;
-
-    // The next_page_token value returned from a previous List request, if any.
-    string page_token = 2;
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 2;
 }
 
 message ListTagsResponse {
-    repeated Tag tags = 1;
+  repeated Tag tags = 1;
 
-    // Token to retrieve the next page of results, or empty if there are no more
-    // results in the list.
-    string next_page_token = 2;
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
 }
 
-message DeleteTagRequest {
-    string name = 1;
-}
+message DeleteTagRequest { string name = 1; }
 
-message GetPointSourceRequest {
-    string name = 1;
-}
+message GetPointSourceRequest { string name = 1; }
 
-message SetPointSourceRequest {
-    PointSource point_source = 1;
-}
+message SetPointSourceRequest { PointSource point_source = 1; }
 
-message DeletePointSourceRequest {
-    string name = 1;
-}
+message DeletePointSourceRequest { string name = 1; }
 
 message LinkPointSourceRequest {
-    string name = 1;
-    string point_source = 2;
+  string name = 1;
+  string point_source = 2;
 }
 
 message LinkPointSourceResponse {}
