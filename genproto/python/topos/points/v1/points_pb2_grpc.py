@@ -40,6 +40,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
         )
+    self.CreatePoint = channel.unary_unary(
+        '/topos.points.v1.Points/CreatePoint',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+        )
     self.UpdatePoint = channel.unary_unary(
         '/topos.points.v1.Points/UpdatePoint',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.UpdatePointRequest.SerializeToString,
@@ -85,11 +90,6 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointSourceRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
-    self.LinkPointSource = channel.unary_unary(
-        '/topos.points.v1.Points/LinkPointSource',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceResponse.FromString,
-        )
 
 
 class PointsServicer(object):
@@ -126,6 +126,13 @@ class PointsServicer(object):
 
   def GetPoint(self, request, context):
     """Gets a point.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def CreatePoint(self, request, context):
+    """Creates a point.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -194,13 +201,6 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def LinkPointSource(self, request, context):
-    """Associates point sources with a point.
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -227,6 +227,11 @@ def add_PointsServicer_to_server(servicer, server):
       'GetPoint': grpc.unary_unary_rpc_method_handler(
           servicer.GetPoint,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+      ),
+      'CreatePoint': grpc.unary_unary_rpc_method_handler(
+          servicer.CreatePoint,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
       ),
       'UpdatePoint': grpc.unary_unary_rpc_method_handler(
@@ -273,11 +278,6 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.DeletePointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointSourceRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-      ),
-      'LinkPointSource': grpc.unary_unary_rpc_method_handler(
-          servicer.LinkPointSource,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.LinkPointSourceResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -4,6 +4,7 @@ package topos.points.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "topos/points/v1;points";
@@ -42,6 +43,14 @@ service Points {
   rpc GetPoint(GetPointRequest) returns (Point) {
     option (google.api.http) = {
       get : "/v1/{name=points/*}"
+    };
+  }
+
+  // Creates a point.
+  rpc CreatePoint(CreatePointRequest) returns (Point) {
+    option (google.api.http) = {
+      post : "/v1/points}"
+      body : "point"
     };
   }
 
@@ -111,15 +120,6 @@ service Points {
       delete : "/v1/{name=sources/*/pointSources/*}"
     };
   }
-
-  // Associates point sources with a point.
-  rpc LinkPointSource(LinkPointSourceRequest)
-      returns (LinkPointSourceResponse) {
-    option (google.api.http) = {
-      post : "/v1/{name=sources/*/pointSources/*}:link"
-      body : "*"
-    };
-  }
 }
 
 message Brand {
@@ -183,10 +183,7 @@ message Point {
   // The name of the point. It must have the format `"points/{point}"`.
   string name = 1;
 
-  // The name of the point's brand if it has one. It must have the format
-  // `"brands/{brand}"`. `{brand}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
+  // The name of the point's brand if it has one.
   string brand = 2;
 
   // The display name of the point.
@@ -236,7 +233,6 @@ message PointSource {
   string name = 1;
 
   // The name of the point associated with this point source if there is one.
-  // It must have the format `"points/{point}"`.
   string point = 2;
 
   // The display name of the point source.
@@ -282,6 +278,8 @@ message DeleteBrandRequest { string name = 1; }
 
 message GetPointRequest { string name = 1; }
 
+message CreatePointRequest { Point point = 1; }
+
 message UpdatePointRequest { Point point = 1; }
 
 message DeletePointRequest { string name = 1; }
@@ -310,13 +308,9 @@ message DeleteTagRequest { string name = 1; }
 
 message GetPointSourceRequest { string name = 1; }
 
-message SetPointSourceRequest { PointSource point_source = 1; }
-
-message DeletePointSourceRequest { string name = 1; }
-
-message LinkPointSourceRequest {
-  string name = 1;
-  string point_source = 2;
+message SetPointSourceRequest {
+  PointSource point_source = 1;
+  google.protobuf.FieldMask update_mask = 2;
 }
 
-message LinkPointSourceResponse {}
+message DeletePointSourceRequest { string name = 1; }
