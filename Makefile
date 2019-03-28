@@ -17,7 +17,7 @@ pkg-go: includes/googleapis genproto/go
 		&& go mod tidy'
 
 pkg-python: includes/googleapis genproto/python
-	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/python:/genproto/python python:3.7.2 sh -c \
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/python:/genproto/python python:3.7.3 sh -c \
 	'set -ex \
 		&& pip install grpcio-tools \
 		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "python \
