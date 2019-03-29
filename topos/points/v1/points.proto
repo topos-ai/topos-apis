@@ -4,7 +4,6 @@ package topos.points.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/field_mask.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "topos/points/v1;points";
@@ -49,7 +48,7 @@ service Points {
   // Creates a point.
   rpc CreatePoint(CreatePointRequest) returns (Point) {
     option (google.api.http) = {
-      post : "/v1/points}"
+      post : "/v1/points"
       body : "point"
     };
   }
@@ -110,6 +109,15 @@ service Points {
     option (google.api.http) = {
       post : "/v1/{point_source.name=sources/*/pointSources/*}:set"
       body : "point_source"
+    };
+  }
+
+  // Sets point sources.
+  rpc BatchSetPointSources(BatchSetPointSourcesRequest)
+      returns (BatchSetPointSourcesResponse) {
+    option (google.api.http) = {
+      post : "/v1/pointSources:batchSet"
+      body : "point_sources"
     };
   }
 
@@ -308,9 +316,10 @@ message DeleteTagRequest { string name = 1; }
 
 message GetPointSourceRequest { string name = 1; }
 
-message SetPointSourceRequest {
-  PointSource point_source = 1;
-  google.protobuf.FieldMask update_mask = 2;
-}
+message SetPointSourceRequest { PointSource point_source = 1; }
+
+message BatchSetPointSourcesRequest { repeated PointSource point_sources = 1; }
+
+message BatchSetPointSourcesResponse { repeated PointSource point_sources = 1; }
 
 message DeletePointSourceRequest { string name = 1; }

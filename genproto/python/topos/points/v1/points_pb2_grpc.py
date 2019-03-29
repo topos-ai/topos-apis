@@ -85,6 +85,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetPointSourceRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.FromString,
         )
+    self.BatchSetPointSources = channel.unary_unary(
+        '/topos.points.v1.Points/BatchSetPointSources',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesResponse.FromString,
+        )
     self.DeletePointSource = channel.unary_unary(
         '/topos.points.v1.Points/DeletePointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeletePointSourceRequest.SerializeToString,
@@ -194,6 +199,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def BatchSetPointSources(self, request, context):
+    """Sets point sources.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def DeletePointSource(self, request, context):
     """Deletes a point source.
     """
@@ -273,6 +285,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SetPointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetPointSourceRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.SerializeToString,
+      ),
+      'BatchSetPointSources': grpc.unary_unary_rpc_method_handler(
+          servicer.BatchSetPointSources,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesResponse.SerializeToString,
       ),
       'DeletePointSource': grpc.unary_unary_rpc_method_handler(
           servicer.DeletePointSource,
