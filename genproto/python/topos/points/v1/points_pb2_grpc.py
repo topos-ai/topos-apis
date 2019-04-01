@@ -40,10 +40,10 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
         )
-    self.CreatePoint = channel.unary_unary(
-        '/topos.points.v1.Points/CreatePoint',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Point.FromString,
+    self.CreatePointWithPointSources = channel.unary_unary(
+        '/topos.points.v1.Points/CreatePointWithPointSources',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointWithPointSourcesRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointWithPointSourcesResponse.FromString,
         )
     self.UpdatePoint = channel.unary_unary(
         '/topos.points.v1.Points/UpdatePoint',
@@ -84,11 +84,6 @@ class PointsStub(object):
         '/topos.points.v1.Points/SetPointSource',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetPointSourceRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.FromString,
-        )
-    self.BatchSetPointSources = channel.unary_unary(
-        '/topos.points.v1.Points/BatchSetPointSources',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesResponse.FromString,
         )
     self.DeletePointSource = channel.unary_unary(
         '/topos.points.v1.Points/DeletePointSource',
@@ -136,8 +131,8 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def CreatePoint(self, request, context):
-    """Creates a point.
+  def CreatePointWithPointSources(self, request, context):
+    """Creates a point with the given point sources.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -199,13 +194,6 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def BatchSetPointSources(self, request, context):
-    """Sets point sources.
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
   def DeletePointSource(self, request, context):
     """Deletes a point source.
     """
@@ -241,10 +229,10 @@ def add_PointsServicer_to_server(servicer, server):
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
       ),
-      'CreatePoint': grpc.unary_unary_rpc_method_handler(
-          servicer.CreatePoint,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Point.SerializeToString,
+      'CreatePointWithPointSources': grpc.unary_unary_rpc_method_handler(
+          servicer.CreatePointWithPointSources,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointWithPointSourcesRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreatePointWithPointSourcesResponse.SerializeToString,
       ),
       'UpdatePoint': grpc.unary_unary_rpc_method_handler(
           servicer.UpdatePoint,
@@ -285,11 +273,6 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SetPointSource,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetPointSourceRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PointSource.SerializeToString,
-      ),
-      'BatchSetPointSources': grpc.unary_unary_rpc_method_handler(
-          servicer.BatchSetPointSources,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.BatchSetPointSourcesResponse.SerializeToString,
       ),
       'DeletePointSource': grpc.unary_unary_rpc_method_handler(
           servicer.DeletePointSource,
