@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package topos.locations.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "topos/locations/v1;locations";
+
+service Locations {
+  rpc GetRegion(GetRegionRequest) returns (Region) {
+    option (google.api.http) = {
+      get : "/v1/{name=regionTypes/*/regions/*}"
+    };
+  }
+}
+
+message RegionType {
+  // The name of the region type. It must have the format
+  // `"regionTypes/{region_type}"`. `{region_type}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
+}
+
+message Region {
+  // The name of the region. It must have the format
+  // `"regionTypes/{region_type}/regions/{region}"`.
+  // `{region}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
+
+  // The WKB-encoded region geometry.
+  bytes geometry = 2;
+}
+
+message GetRegionRequest { string name = 1; }
