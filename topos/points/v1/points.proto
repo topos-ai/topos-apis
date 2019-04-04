@@ -38,6 +38,14 @@ service Points {
     };
   }
 
+  // Search points.
+  rpc SearchPoints(SearchPointsRequest) returns (SearchPointsResponse) {
+    option (google.api.http) = {
+      post : "/v1/points:search"
+      body : "*"
+    };
+  }
+
   // Gets a point.
   rpc GetPoint(GetPointRequest) returns (Point) {
     option (google.api.http) = {
@@ -275,6 +283,31 @@ message ListBrandsResponse {
 }
 
 message DeleteBrandRequest { string name = 1; }
+
+message SearchPointsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return points with a given brand.
+  string brand = 3;
+
+  // Return points within a region.
+  string region = 4;
+
+  // Return points with a tag.
+  string tag = 5;
+}
+
+message SearchPointsResponse {
+  repeated Point points = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
 
 message GetPointRequest { string name = 1; }
 

@@ -35,6 +35,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.DeleteBrandRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
+    self.SearchPoints = channel.unary_unary(
+        '/topos.points.v1.Points/SearchPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsResponse.FromString,
+        )
     self.GetPoint = channel.unary_unary(
         '/topos.points.v1.Points/GetPoint',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.SerializeToString,
@@ -119,6 +124,13 @@ class PointsServicer(object):
 
   def DeleteBrand(self, request, context):
     """Deletes a brand.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SearchPoints(self, request, context):
+    """Search points.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -223,6 +235,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.DeleteBrand,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.DeleteBrandRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+      ),
+      'SearchPoints': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsResponse.SerializeToString,
       ),
       'GetPoint': grpc.unary_unary_rpc_method_handler(
           servicer.GetPoint,
