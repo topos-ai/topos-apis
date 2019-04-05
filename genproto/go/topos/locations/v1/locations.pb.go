@@ -327,7 +327,9 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type LocationsClient interface {
+	// Gets a region.
 	GetRegion(ctx context.Context, in *GetRegionRequest, opts ...grpc.CallOption) (*Region, error)
+	// Search regions.
 	SearchRegions(ctx context.Context, in *SearchRegionsRequest, opts ...grpc.CallOption) (*SearchRegionsResponse, error)
 }
 
@@ -359,7 +361,9 @@ func (c *locationsClient) SearchRegions(ctx context.Context, in *SearchRegionsRe
 
 // LocationsServer is the server API for Locations service.
 type LocationsServer interface {
+	// Gets a region.
 	GetRegion(context.Context, *GetRegionRequest) (*Region, error)
+	// Search regions.
 	SearchRegions(context.Context, *SearchRegionsRequest) (*SearchRegionsResponse, error)
 }
 

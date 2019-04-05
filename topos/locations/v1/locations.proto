@@ -7,12 +7,14 @@ import "google/api/annotations.proto";
 option go_package = "topos/locations/v1;locations";
 
 service Locations {
+  // Gets a region.
   rpc GetRegion(GetRegionRequest) returns (Region) {
     option (google.api.http) = {
       get : "/v1/{name=regionTypes/*/regions/*}"
     };
   }
 
+  // Search regions.
   rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
     option (google.api.http) = {
       get : "/v1/{region_type=regionTypes/*}/regions:search"
