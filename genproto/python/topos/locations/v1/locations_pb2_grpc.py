@@ -19,6 +19,11 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.FromString,
         )
+    self.SearchRegions = channel.unary_unary(
+        '/topos.locations.v1.Locations/SearchRegions',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionsRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionsResponse.FromString,
+        )
 
 
 class LocationsServicer(object):
@@ -32,6 +37,13 @@ class LocationsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SearchRegions(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_LocationsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -39,6 +51,11 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.GetRegion,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.SerializeToString,
+      ),
+      'SearchRegions': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchRegions,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionsRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionsResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -12,6 +12,12 @@ service Locations {
       get : "/v1/{name=regionTypes/*/regions/*}"
     };
   }
+
+  rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
+    option (google.api.http) = {
+      get : "/v1/{region_type=regionTypes/*}/regions:search"
+    };
+  }
 }
 
 message RegionType {
@@ -35,3 +41,25 @@ message Region {
 }
 
 message GetRegionRequest { string name = 1; }
+
+message SearchRegionsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return regions of the given type.
+  string region_type = 3;
+
+  // Return regions that intersect the given WKB-encoded geometry.
+  bytes intersecting_geometry = 4;
+}
+
+message SearchRegionsResponse {
+  repeated Region regions = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
