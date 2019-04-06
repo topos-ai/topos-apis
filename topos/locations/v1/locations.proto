@@ -14,10 +14,19 @@ service Locations {
     };
   }
 
+  // Region feature values by feature.
+  rpc GetRegionFeatureSetValues(GetRegionFeatureSetValuesRequest)
+      returns (GetRegionFeatureSetValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/"
+            "values"
+    };
+  }
+
   // Search regions.
   rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
     option (google.api.http) = {
-      get : "/v1/{region_type=regionTypes/*}/regions:search"
+      post : "/v1/{region_type=regionTypes/*}/regions:search"
     };
   }
 }
@@ -56,6 +65,15 @@ message SearchRegionsRequest {
 
   // Return regions that intersect the given WKB-encoded geometry.
   bytes intersecting_geometry = 4;
+}
+
+message GetRegionFeatureSetValuesRequest {
+  string region = 1;
+  string feature_set = 2;
+}
+
+message GetRegionFeatureSetValuesResponse {
+  map<string, double> feature_values = 1;
 }
 
 message SearchRegionsResponse {

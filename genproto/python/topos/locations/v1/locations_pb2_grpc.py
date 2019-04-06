@@ -19,6 +19,11 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.FromString,
         )
+    self.GetRegionFeatureSetValues = channel.unary_unary(
+        '/topos.locations.v1.Locations/GetRegionFeatureSetValues',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesResponse.FromString,
+        )
     self.SearchRegions = channel.unary_unary(
         '/topos.locations.v1.Locations/SearchRegions',
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionsRequest.SerializeToString,
@@ -32,6 +37,13 @@ class LocationsServicer(object):
 
   def GetRegion(self, request, context):
     """Gets a region.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetRegionFeatureSetValues(self, request, context):
+    """Region feature values by feature.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -51,6 +63,11 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.GetRegion,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.SerializeToString,
+      ),
+      'GetRegionFeatureSetValues': grpc.unary_unary_rpc_method_handler(
+          servicer.GetRegionFeatureSetValues,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesResponse.SerializeToString,
       ),
       'SearchRegions': grpc.unary_unary_rpc_method_handler(
           servicer.SearchRegions,
