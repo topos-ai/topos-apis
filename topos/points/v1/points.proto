@@ -129,8 +129,8 @@ service Points {
     };
   }
 
-  // Sets a brand region score.
-  rpc SetBrandRegionScore(SetBrandRegionScoreSetScoreRequest)
+  // Sets a brand region score set score.
+  rpc SetBrandRegionScoreSetScore(SetBrandRegionScoreSetScoreRequest)
       returns (BrandRegionScoreSetScore) {
     option (google.api.http) = {
       post : "/v1/"
@@ -140,7 +140,7 @@ service Points {
     };
   }
 
-  // Searches brand region scores.
+  // Searches brand region score set scores.
   rpc SearchBrandRegionScoreSetScores(SearchBrandRegionScoreSetScoresRequest)
       returns (SearchBrandRegionScoreSetScoresResponse) {
     option (google.api.http) = {
@@ -149,8 +149,8 @@ service Points {
     };
   }
 
-  // Sets a tag region score.
-  rpc SetTagRegionScore(SetTagRegionScoreSetScoreRequest)
+  // Sets a tag region score set score.
+  rpc SetTagRegionScoreSetScore(SetTagRegionScoreSetScoreRequest)
       returns (TagRegionScoreSetScore) {
     option (google.api.http) = {
       post : "/v1/"
@@ -160,7 +160,7 @@ service Points {
     };
   }
 
-  // Searches tag region scores.
+  // Searches tag region score set scores.
   rpc SearchTagRegionScoreSetScores(SearchTagRegionScoreSetScoresRequest)
       returns (SearchTagRegionScoreSetScoresResponse) {
     option (google.api.http) = {
