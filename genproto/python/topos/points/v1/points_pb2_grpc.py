@@ -97,13 +97,23 @@ class PointsStub(object):
         )
     self.SetBrandRegionScore = channel.unary_unary(
         '/topos.points.v1.Points/SetBrandRegionScore',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScore.FromString,
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreSetScoreRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScoreSetScore.FromString,
+        )
+    self.SearchBrandRegionScoreSetScores = channel.unary_unary(
+        '/topos.points.v1.Points/SearchBrandRegionScoreSetScores',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresResponse.FromString,
         )
     self.SetTagRegionScore = channel.unary_unary(
         '/topos.points.v1.Points/SetTagRegionScore',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScore.FromString,
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreSetScoreRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScoreSetScore.FromString,
+        )
+    self.SearchTagRegionScoreSetScores = channel.unary_unary(
+        '/topos.points.v1.Points/SearchTagRegionScoreSetScores',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresResponse.FromString,
         )
 
 
@@ -224,15 +234,29 @@ class PointsServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def SetBrandRegionScore(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Sets a brand region score.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SearchBrandRegionScoreSetScores(self, request, context):
+    """Searches brand region scores.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def SetTagRegionScore(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
+    """Sets a tag region score.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SearchTagRegionScoreSetScores(self, request, context):
+    """Searches tag region scores.
+    """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -322,13 +346,23 @@ def add_PointsServicer_to_server(servicer, server):
       ),
       'SetBrandRegionScore': grpc.unary_unary_rpc_method_handler(
           servicer.SetBrandRegionScore,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScore.SerializeToString,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreSetScoreRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScoreSetScore.SerializeToString,
+      ),
+      'SearchBrandRegionScoreSetScores': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchBrandRegionScoreSetScores,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresResponse.SerializeToString,
       ),
       'SetTagRegionScore': grpc.unary_unary_rpc_method_handler(
           servicer.SetTagRegionScore,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScore.SerializeToString,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreSetScoreRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScoreSetScore.SerializeToString,
+      ),
+      'SearchTagRegionScoreSetScores': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchTagRegionScoreSetScores,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

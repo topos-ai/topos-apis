@@ -129,21 +129,43 @@ service Points {
     };
   }
 
-  rpc SetBrandRegionScore(SetBrandRegionScoreRequest)
-      returns (BrandRegionScore) {
+  // Sets a brand region score.
+  rpc SetBrandRegionScore(SetBrandRegionScoreSetScoreRequest)
+      returns (BrandRegionScoreSetScore) {
     option (google.api.http) = {
-      post : "/v1/{brand_region_score.name=brands/*/regionScores/*/regionTypes/"
-             "*/"
-             "regions/*}:set"
-      body : "brand_region_score"
+      post : "/v1/"
+             "{brand_region_score_set_score.brand_region_score_set="
+             "brandRegionScoreSets/*}/scores:set"
+      body : "brand_region_score_set_score"
     };
   }
 
-  rpc SetTagRegionScore(SetTagRegionScoreRequest) returns (TagRegionScore) {
+  // Searches brand region scores.
+  rpc SearchBrandRegionScoreSetScores(SearchBrandRegionScoresRequest)
+      returns (SearchBrandRegionScoresResponse) {
     option (google.api.http) = {
-      post : "/v1/{tag_region_score.name=tags/*/regionScores/*/regionTypes/*/"
-             "regions/*}:set"
-      body : "tag_region_score"
+      post : "/v1/{brand_region_score_set=brandRegionScoreSets/*}/scores:search"
+      body : "*"
+    };
+  }
+
+  // Sets a tag region score.
+  rpc SetTagRegionScore(SetTagRegionScoreSetScoreRequest)
+      returns (TagRegionScoreSetScore) {
+    option (google.api.http) = {
+      post : "/v1/"
+             "{tag_region_score_set_score.tag_region_score_set="
+             "tagRegionScoreSets/*}/scores:set"
+      body : "tag_region_score_set_score"
+    };
+  }
+
+  // Searches tag region scores.
+  rpc SearchTagRegionScoreSetScores(SearchTagRegionScoresRequest)
+      returns (SearchTagRegionScoresResponse) {
+    option (google.api.http) = {
+      post : "/v1/{tag_region_score_set=tagRegionScoreSets/*}/scores:search"
+      body : "*"
     };
   }
 }
@@ -280,16 +302,22 @@ message PointSource {
   google.protobuf.Timestamp update_time = 15;
 }
 
-message BrandRegionScore {
-  // The name of the brand region score. It must have the format
-  // `"{brand}/regionScores/{region_score}/{region}"`. {brand} is a brand ID.
-  // `{region_score}` must match the [regular
+message BrandRegionScoreSetScore {
+  // The name of the brand region score set. It must have the format
+  // `"brandRegionScoreSets/{brand_region_score_set}"`.
+  // `{brand_region_score_set}` must match the [regular
   // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`. {region} is a region ID.
-  string name = 1;
+  // `^[a-z\d]+(-[a-z\d]+)*$`.
+  string brand_region_score_set = 1;
 
-  // The score associated with the brand and region.
-  double score = 2;
+  // The score's brand.
+  string brand = 2;
+
+  // The score's region.
+  string region = 3;
+
+  // The score value associated with the brand and region.
+  double score = 4;
 
   // The creation timestamp of the brand region score.
   google.protobuf.Timestamp create_time = 14;
@@ -298,16 +326,22 @@ message BrandRegionScore {
   google.protobuf.Timestamp update_time = 15;
 }
 
-message  TagRegionScore {
-  // The name of the tag region score. It must have the format
-  // `"{tag}/regionScores/{region_score}/{region}"`. {tag} is a tag ID.
-  // `{region_score}` must match the [regular
+message TagRegionScoreSetScore {
+  // The name of the tag region score set. It must have the format
+  // `"tagRegionScoreSets/{brand_region_score_set}"`.
+  // `{brand_region_score_set}` must match the [regular
   // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`. {region} is a region ID.
-  string name = 1;
+  // `^[a-z\d]+(-[a-z\d]+)*$`.
+  string tag_region_score_set = 1;
 
-  // The score associated with the brand and region.
-  double score = 2;
+  // The score's tag.
+  string tag = 2;
+
+  // The score's region.
+  string region = 3;
+
+  // The score value associated with the tag and region.
+  double score = 4;
 
   // The creation timestamp of the brand region score.
   google.protobuf.Timestamp create_time = 14;
@@ -407,6 +441,48 @@ message CreatePointWithPointSourcesResponse {
 
 message DeletePointSourceRequest { string name = 1; }
 
-message SetBrandRegionScoreRequest { BrandRegionScore brand_region_score = 1; }
+message SetBrandRegionScoreSetScoreRequest {
+  BrandRegionScoreSetScore brand_region_score_set_score = 1;
+}
 
-message SetTagRegionScoreRequest { TagRegionScore tag_region_score = 1; }
+message SearchBrandRegionScoresRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return scores from a given score set.
+  string brand_region_score_set = 3;
+}
+
+message SearchBrandRegionScoresResponse {
+  repeated BrandRegionScoreSetScore brand_region_score_set_scores = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message SetTagRegionScoreSetScoreRequest {
+  TagRegionScoreSetScore tag_region_score_set_score = 1;
+}
+
+message SearchTagRegionScoresRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return scores from a given score set.
+  string tag_region_score_set = 3;
+}
+
+message SearchTagRegionScoresResponse {
+  repeated TagRegionScoreSetScore tag_region_score_set_scores = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
