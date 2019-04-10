@@ -129,11 +129,21 @@ service Points {
     };
   }
 
-  rpc SetBrandRegionScore(SetBrandRegionScoreRequest) returns (BrandRegionScore) {
+  rpc SetBrandRegionScore(SetBrandRegionScoreRequest)
+      returns (BrandRegionScore) {
     option (google.api.http) = {
-      post : "/v1/{region_score.name=brands/*/regionScores/*/regionTypes/*/"
+      post : "/v1/{brand_region_score.name=brands/*/regionScores/*/regionTypes/"
+             "*/"
              "regions/*}:set"
       body : "brand_region_score"
+    };
+  }
+
+  rpc SetTagRegionScore(SetTagRegionScoreRequest) returns (TagRegionScore) {
+    option (google.api.http) = {
+      post : "/v1/{tag_region_score.name=tags/*/regionScores/*/regionTypes/*/"
+             "regions/*}:set"
+      body : "tag_region_score"
     };
   }
 }
@@ -288,6 +298,24 @@ message BrandRegionScore {
   google.protobuf.Timestamp update_time = 15;
 }
 
+message  TagRegionScore {
+  // The name of the tag region score. It must have the format
+  // `"{tag}/regionScores/{region_score}/{region}"`. {tag} is a tag ID.
+  // `{region_score}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`. {region} is a region ID.
+  string name = 1;
+
+  // The score associated with the brand and region.
+  double score = 2;
+
+  // The creation timestamp of the brand region score.
+  google.protobuf.Timestamp create_time = 14;
+
+  // The last update timestamp of an brand region score.
+  google.protobuf.Timestamp update_time = 15;
+}
+
 message GetBrandRequest { string name = 1; }
 
 message SetBrandRequest { Brand brand = 1; }
@@ -380,3 +408,5 @@ message CreatePointWithPointSourcesResponse {
 message DeletePointSourceRequest { string name = 1; }
 
 message SetBrandRegionScoreRequest { BrandRegionScore brand_region_score = 1; }
+
+message SetTagRegionScoreRequest { TagRegionScore tag_region_score = 1; }

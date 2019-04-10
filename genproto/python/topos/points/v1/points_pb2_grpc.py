@@ -100,6 +100,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScore.FromString,
         )
+    self.SetTagRegionScore = channel.unary_unary(
+        '/topos.points.v1.Points/SetTagRegionScore',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScore.FromString,
+        )
 
 
 class PointsServicer(object):
@@ -225,6 +230,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SetTagRegionScore(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -312,6 +324,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SetBrandRegionScore,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.BrandRegionScore.SerializeToString,
+      ),
+      'SetTagRegionScore': grpc.unary_unary_rpc_method_handler(
+          servicer.SetTagRegionScore,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetTagRegionScoreRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.TagRegionScore.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
