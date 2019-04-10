@@ -141,8 +141,8 @@ service Points {
   }
 
   // Searches brand region scores.
-  rpc SearchBrandRegionScoreSetScores(SearchBrandRegionScoresRequest)
-      returns (SearchBrandRegionScoresResponse) {
+  rpc SearchBrandRegionScoreSetScores(SearchBrandRegionScoreSetScoresRequest)
+      returns (SearchBrandRegionScoreSetScoresResponse) {
     option (google.api.http) = {
       post : "/v1/{brand_region_score_set=brandRegionScoreSets/*}/scores:search"
       body : "*"
@@ -161,8 +161,8 @@ service Points {
   }
 
   // Searches tag region scores.
-  rpc SearchTagRegionScoreSetScores(SearchTagRegionScoresRequest)
-      returns (SearchTagRegionScoresResponse) {
+  rpc SearchTagRegionScoreSetScores(SearchTagRegionScoreSetScoresRequest)
+      returns (SearchTagRegionScoreSetScoresResponse) {
     option (google.api.http) = {
       post : "/v1/{tag_region_score_set=tagRegionScoreSets/*}/scores:search"
       body : "*"
@@ -445,7 +445,7 @@ message SetBrandRegionScoreSetScoreRequest {
   BrandRegionScoreSetScore brand_region_score_set_score = 1;
 }
 
-message SearchBrandRegionScoresRequest {
+message SearchBrandRegionScoreSetScoresRequest {
   // The maximum number of items to return.
   int32 page_size = 1;
 
@@ -456,7 +456,7 @@ message SearchBrandRegionScoresRequest {
   string brand_region_score_set = 3;
 }
 
-message SearchBrandRegionScoresResponse {
+message SearchBrandRegionScoreSetScoresResponse {
   repeated BrandRegionScoreSetScore brand_region_score_set_scores = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
@@ -468,7 +468,7 @@ message SetTagRegionScoreSetScoreRequest {
   TagRegionScoreSetScore tag_region_score_set_score = 1;
 }
 
-message SearchTagRegionScoresRequest {
+message SearchTagRegionScoreSetScoresRequest {
   // The maximum number of items to return.
   int32 page_size = 1;
 
@@ -479,7 +479,7 @@ message SearchTagRegionScoresRequest {
   string tag_region_score_set = 3;
 }
 
-message SearchTagRegionScoresResponse {
+message SearchTagRegionScoreSetScoresResponse {
   repeated TagRegionScoreSetScore tag_region_score_set_scores = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more

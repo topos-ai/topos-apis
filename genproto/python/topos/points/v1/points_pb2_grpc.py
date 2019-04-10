@@ -102,8 +102,8 @@ class PointsStub(object):
         )
     self.SearchBrandRegionScoreSetScores = channel.unary_unary(
         '/topos.points.v1.Points/SearchBrandRegionScoreSetScores',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresResponse.FromString,
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoreSetScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoreSetScoresResponse.FromString,
         )
     self.SetTagRegionScore = channel.unary_unary(
         '/topos.points.v1.Points/SetTagRegionScore',
@@ -112,8 +112,8 @@ class PointsStub(object):
         )
     self.SearchTagRegionScoreSetScores = channel.unary_unary(
         '/topos.points.v1.Points/SearchTagRegionScoreSetScores',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresResponse.FromString,
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresResponse.FromString,
         )
 
 
@@ -351,8 +351,8 @@ def add_PointsServicer_to_server(servicer, server):
       ),
       'SearchBrandRegionScoreSetScores': grpc.unary_unary_rpc_method_handler(
           servicer.SearchBrandRegionScoreSetScores,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoresResponse.SerializeToString,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoreSetScoresRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchBrandRegionScoreSetScoresResponse.SerializeToString,
       ),
       'SetTagRegionScore': grpc.unary_unary_rpc_method_handler(
           servicer.SetTagRegionScore,
@@ -361,8 +361,8 @@ def add_PointsServicer_to_server(servicer, server):
       ),
       'SearchTagRegionScoreSetScores': grpc.unary_unary_rpc_method_handler(
           servicer.SearchTagRegionScoreSetScores,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoresResponse.SerializeToString,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
