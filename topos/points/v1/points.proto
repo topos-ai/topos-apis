@@ -454,6 +454,12 @@ message SearchBrandRegionScoreSetScoresRequest {
 
   // Return scores from a given score set.
   string brand_region_score_set = 3;
+
+  // Return scores with a given brand.
+  string brand = 4;
+
+  // Return scores with a given region.
+  string region = 5;
 }
 
 message SearchBrandRegionScoreSetScoresResponse {
@@ -477,6 +483,12 @@ message SearchTagRegionScoreSetScoresRequest {
 
   // Return scores from a given score set.
   string tag_region_score_set = 3;
+
+  // Return scores with a given tag.
+  string tag = 4;
+
+  // Return scores with a given region.
+  string region = 5;
 }
 
 message SearchTagRegionScoreSetScoresResponse {
