@@ -129,7 +129,7 @@ service Points {
     };
   }
 
-  rpc SetRegionScore(SetBrandRegionScoreRequest) returns (BrandRegionScore) {
+  rpc SetBrandRegionScore(SetBrandRegionScoreRequest) returns (BrandRegionScore) {
     option (google.api.http) = {
       post : "/v1/{region_score.name=brands/*/regionScores/*/regionTypes/*/"
              "regions/*}:set"
