@@ -313,11 +313,14 @@ message BrandRegionScoreSetScore {
   // The score's brand.
   string brand = 2;
 
+  // The brand's display name.
+  string brand_display_name = 3;
+
   // The score's region.
-  string region = 3;
+  string region = 4;
 
   // The score value associated with the brand and region.
-  double score = 4;
+  double score = 5;
 
   // The creation timestamp of the brand region score.
   google.protobuf.Timestamp create_time = 14;
@@ -337,11 +340,14 @@ message TagRegionScoreSetScore {
   // The score's tag.
   string tag = 2;
 
+  // The tag's display name.
+  string tag_display_name = 3;
+
   // The score's region.
-  string region = 3;
+  string region = 4;
 
   // The score value associated with the tag and region.
-  double score = 4;
+  double score = 5;
 
   // The creation timestamp of the brand region score.
   google.protobuf.Timestamp create_time = 14;
