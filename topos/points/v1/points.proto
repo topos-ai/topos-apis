@@ -174,6 +174,7 @@ message FeatureStats {
   double min = 1;
   double max = 2;
   double average = 3;
+  double median = 4;
 }
 
 message Brand {
