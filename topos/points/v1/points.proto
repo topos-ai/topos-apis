@@ -170,6 +170,12 @@ service Points {
   }
 }
 
+message FeatureStats {
+  double min = 1;
+  double max = 2;
+  double average = 3;
+}
+
 message Brand {
   // The name of the point brand. It must have the format `"brands/{brand}"`.
   // `{brand}` must match the [regular
@@ -214,6 +220,12 @@ message Brand {
 
   // The postal code of the brand's headquarters.
   string postal_code = 10;
+
+  // The feature set statistics for this brand's locations.
+  map<string, FeatureStats> feature_set_feature_stats = 11;
+
+  // A list of brand tags.
+  repeated string tags = 12;
 
   // The creation timestamp of the brand.
   google.protobuf.Timestamp create_time = 14;
