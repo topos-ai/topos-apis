@@ -115,6 +115,16 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresResponse.FromString,
         )
+    self.SetRegionGraphEdge = channel.unary_unary(
+        '/topos.points.v1.Points/SetRegionGraphEdge',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeResponse.FromString,
+        )
+    self.SearchRegionGraphEdges = channel.unary_unary(
+        '/topos.points.v1.Points/SearchRegionGraphEdges',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesResponse.FromString,
+        )
 
 
 class PointsServicer(object):
@@ -261,6 +271,20 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SetRegionGraphEdge(self, request, context):
+    """Sets a region graph edge.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SearchRegionGraphEdges(self, request, context):
+    """Searches region graph edges.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -363,6 +387,16 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SearchTagRegionScoreSetScores,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchTagRegionScoreSetScoresResponse.SerializeToString,
+      ),
+      'SetRegionGraphEdge': grpc.unary_unary_rpc_method_handler(
+          servicer.SetRegionGraphEdge,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeResponse.SerializeToString,
+      ),
+      'SearchRegionGraphEdges': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchRegionGraphEdges,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

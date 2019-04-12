@@ -168,6 +168,24 @@ service Points {
       body : "*"
     };
   }
+
+  // Sets a region graph edge.
+  rpc SetRegionGraphEdge(SetRegionGraphEdgeRequest)
+      returns (SetRegionGraphEdgeResponse) {
+    option (google.api.http) = {
+      post : "/v1/{region_graph=regionGraphs/*}/edges:set"
+      body : "*"
+    };
+  }
+
+  // Searches region graph edges.
+  rpc SearchRegionGraphEdges(SearchRegionGraphEdgesRequest)
+      returns (SearchRegionGraphEdgesResponse) {
+    option (google.api.http) = {
+      post : "/v1/{region_graph=regionGraphs/*}/edges:search"
+      body : "*"
+    };
+  }
 }
 
 message FeatureStats {
@@ -369,6 +387,29 @@ message TagRegionScoreSetScore {
   google.protobuf.Timestamp update_time = 15;
 }
 
+message RegionGraphEdge {
+  // The name of the region graph. It must have the format
+  // `"regionGraphs/{region_graph}"`. `{region_graph}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`.
+  string region_graph = 1;
+
+  // A region ID representing the origin edge vertices.
+  string from_region = 2;
+
+  // A region ID representint the other edge vertices.
+  string to_region = 3;
+
+  // The weight of the edge.
+  double weight = 4;
+
+  // The creation timestamp of the region graph edge.
+  google.protobuf.Timestamp create_time = 14;
+
+  // The last update timestamp of an region graph edge.
+  google.protobuf.Timestamp update_time = 15;
+}
+
 message GetBrandRequest { string name = 1; }
 
 message SetBrandRequest { Brand brand = 1; }
@@ -512,6 +553,35 @@ message SearchTagRegionScoreSetScoresRequest {
 
 message SearchTagRegionScoreSetScoresResponse {
   repeated TagRegionScoreSetScore tag_region_score_set_scores = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message SetRegionGraphEdgeRequest { RegionGraphEdge region_graph_edge = 1; }
+
+message SetRegionGraphEdgeResponse { RegionGraphEdge region_graph_edge = 1; }
+
+message SearchRegionGraphEdgesRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return edges of the given graph.
+  string name = 3;
+
+  // Return edges from a given region.
+  string from_region = 4;
+
+  // Return edges to a given region.
+  string to_region = 5;
+}
+
+message SearchRegionGraphEdgesResponse {
+  repeated RegionGraphEdge region_graph_edges = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
   // results in the list.
