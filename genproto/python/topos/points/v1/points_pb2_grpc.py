@@ -118,7 +118,7 @@ class PointsStub(object):
     self.SetRegionGraphEdge = channel.unary_unary(
         '/topos.points.v1.Points/SetRegionGraphEdge',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeResponse.FromString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.RegionGraphEdge.FromString,
         )
     self.SearchRegionGraphEdges = channel.unary_unary(
         '/topos.points.v1.Points/SearchRegionGraphEdges',
@@ -391,7 +391,7 @@ def add_PointsServicer_to_server(servicer, server):
       'SetRegionGraphEdge': grpc.unary_unary_rpc_method_handler(
           servicer.SetRegionGraphEdge,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetRegionGraphEdgeResponse.SerializeToString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.RegionGraphEdge.SerializeToString,
       ),
       'SearchRegionGraphEdges': grpc.unary_unary_rpc_method_handler(
           servicer.SearchRegionGraphEdges,

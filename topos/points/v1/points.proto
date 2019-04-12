@@ -170,8 +170,7 @@ service Points {
   }
 
   // Sets a region graph edge.
-  rpc SetRegionGraphEdge(SetRegionGraphEdgeRequest)
-      returns (SetRegionGraphEdgeResponse) {
+  rpc SetRegionGraphEdge(SetRegionGraphEdgeRequest) returns (RegionGraphEdge) {
     option (google.api.http) = {
       post : "/v1/{region_graph=regionGraphs/*}/edges:set"
       body : "*"
@@ -560,8 +559,6 @@ message SearchTagRegionScoreSetScoresResponse {
 }
 
 message SetRegionGraphEdgeRequest { RegionGraphEdge region_graph_edge = 1; }
-
-message SetRegionGraphEdgeResponse { RegionGraphEdge region_graph_edge = 1; }
 
 message SearchRegionGraphEdgesRequest {
   // The maximum number of items to return.
