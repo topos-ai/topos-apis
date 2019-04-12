@@ -571,7 +571,7 @@ message SearchRegionGraphEdgesRequest {
   string page_token = 2;
 
   // Return edges of the given graph.
-  string name = 3;
+  string region_graph = 3;
 
   // Return edges from a given region.
   string from_region = 4;
