@@ -129,6 +129,13 @@ service Points {
     };
   }
 
+  rpc CountBrandPoints(CountBrandPointsRequest)
+      returns (CountBrandPointsResponse) {
+    option (google.api.http) = {
+      delete : "/v1/brands:count"
+    };
+  }
+
   // Sets a brand region score set score.
   rpc SetBrandRegionScoreSetScore(SetBrandRegionScoreSetScoreRequest)
       returns (BrandRegionScoreSetScore) {
@@ -502,6 +509,16 @@ message CreatePointWithPointSourcesResponse {
 }
 
 message DeletePointSourceRequest { string name = 1; }
+
+message CountBrandPointsRequest {
+  // Count brand points within this region.
+  string region = 1;
+}
+
+message CountBrandPointsResponse {
+  // Map of brand IDs to point counts.
+  map<string, int64> brand_points = 1;
+}
 
 message SetBrandRegionScoreSetScoreRequest {
   BrandRegionScoreSetScore brand_region_score_set_score = 1;
