@@ -522,6 +522,9 @@ message SearchBrandRegionScoreSetScoresRequest {
 
   // Return scores with a given region.
   string region = 5;
+
+  // Return scores with for brands with a given tag.
+  string tag = 6;
 }
 
 message SearchBrandRegionScoreSetScoresResponse {
