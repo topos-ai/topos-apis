@@ -245,6 +245,9 @@ message Brand {
   // A list of brand tags.
   repeated string tags = 12;
 
+  // Exclude the brand from results.
+  bool exclude = 13;
+
   // The creation timestamp of the brand.
   google.protobuf.Timestamp create_time = 14;
 
