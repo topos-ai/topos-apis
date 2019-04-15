@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.locations.v1',
   syntax='proto3',
   serialized_options=_b('Z\034topos/locations/v1;locations'),
-  serialized_pb=_b('\n\"topos/locations/v1/locations.proto\x12\x12topos.locations.v1\x1a\x1cgoogle/api/annotations.proto\"\x1a\n\nRegionType\x12\x0c\n\x04name\x18\x01 \x01(\t\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\" \n\x10GetRegionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"q\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\x1d\n\x15intersecting_geometry\x18\x04 \x01(\x0c\"G\n GetRegionFeatureSetValuesRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_set\x18\x02 \x01(\t\"\xbb\x01\n!GetRegionFeatureSetValuesResponse\x12`\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32H.topos.locations.v1.GetRegionFeatureSetValuesResponse.FeatureValuesEntry\x1a\x34\n\x12\x46\x65\x61tureValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"]\n\x15SearchRegionsResponse\x12+\n\x07regions\x18\x01 \x03(\x0b\x32\x1a.topos.locations.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\x80\x04\n\tLocations\x12y\n\tGetRegion\x12$.topos.locations.v1.GetRegionRequest\x1a\x1a.topos.locations.v1.Region\"*\x82\xd3\xe4\x93\x02$\x12\"/v1/{name=regionTypes/*/regions/*}\x12\xd8\x01\n\x19GetRegionFeatureSetValues\x12\x34.topos.locations.v1.GetRegionFeatureSetValuesRequest\x1a\x35.topos.locations.v1.GetRegionFeatureSetValuesResponse\"N\x82\xd3\xe4\x93\x02H\x12\x46/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/values\x12\x9c\x01\n\rSearchRegions\x12(.topos.locations.v1.SearchRegionsRequest\x1a).topos.locations.v1.SearchRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:searchB\x1eZ\x1ctopos/locations/v1;locationsb\x06proto3')
+  serialized_pb=_b('\n\"topos/locations/v1/locations.proto\x12\x12topos.locations.v1\x1a\x1cgoogle/api/annotations.proto\"\x1a\n\nRegionType\x12\x0c\n\x04name\x18\x01 \x01(\t\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\" \n\x10GetRegionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"q\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\x1d\n\x15intersecting_geometry\x18\x04 \x01(\x0c\"]\n\x15SearchRegionsResponse\x12+\n\x07regions\x18\x01 \x03(\x0b\x32\x1a.topos.locations.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"G\n GetRegionFeatureSetValuesRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_set\x18\x02 \x01(\t\"\xbb\x01\n!GetRegionFeatureSetValuesResponse\x12`\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32H.topos.locations.v1.GetRegionFeatureSetValuesResponse.FeatureValuesEntry\x1a\x34\n\x12\x46\x65\x61tureValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\x32\x80\x04\n\tLocations\x12y\n\tGetRegion\x12$.topos.locations.v1.GetRegionRequest\x1a\x1a.topos.locations.v1.Region\"*\x82\xd3\xe4\x93\x02$\x12\"/v1/{name=regionTypes/*/regions/*}\x12\xd8\x01\n\x19GetRegionFeatureSetValues\x12\x34.topos.locations.v1.GetRegionFeatureSetValuesRequest\x1a\x35.topos.locations.v1.GetRegionFeatureSetValuesResponse\"N\x82\xd3\xe4\x93\x02H\x12\x46/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/values\x12\x9c\x01\n\rSearchRegions\x12(.topos.locations.v1.SearchRegionsRequest\x1a).topos.locations.v1.SearchRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:searchB\x1eZ\x1ctopos/locations/v1;locationsb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -179,6 +179,44 @@ _SEARCHREGIONSREQUEST = _descriptor.Descriptor(
 )
 
 
+_SEARCHREGIONSRESPONSE = _descriptor.Descriptor(
+  name='SearchRegionsResponse',
+  full_name='topos.locations.v1.SearchRegionsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='regions', full_name='topos.locations.v1.SearchRegionsResponse.regions', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='next_page_token', full_name='topos.locations.v1.SearchRegionsResponse.next_page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=307,
+  serialized_end=400,
+)
+
+
 _GETREGIONFEATURESETVALUESREQUEST = _descriptor.Descriptor(
   name='GetRegionFeatureSetValuesRequest',
   full_name='topos.locations.v1.GetRegionFeatureSetValuesRequest',
@@ -212,8 +250,8 @@ _GETREGIONFEATURESETVALUESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=307,
-  serialized_end=378,
+  serialized_start=402,
+  serialized_end=473,
 )
 
 
@@ -250,8 +288,8 @@ _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=516,
-  serialized_end=568,
+  serialized_start=611,
+  serialized_end=663,
 )
 
 _GETREGIONFEATURESETVALUESRESPONSE = _descriptor.Descriptor(
@@ -280,58 +318,20 @@ _GETREGIONFEATURESETVALUESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=381,
-  serialized_end=568,
-)
-
-
-_SEARCHREGIONSRESPONSE = _descriptor.Descriptor(
-  name='SearchRegionsResponse',
-  full_name='topos.locations.v1.SearchRegionsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='regions', full_name='topos.locations.v1.SearchRegionsResponse.regions', index=0,
-      number=1, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='next_page_token', full_name='topos.locations.v1.SearchRegionsResponse.next_page_token', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=570,
+  serialized_start=476,
   serialized_end=663,
 )
 
+_SEARCHREGIONSRESPONSE.fields_by_name['regions'].message_type = _REGION
 _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY.containing_type = _GETREGIONFEATURESETVALUESRESPONSE
 _GETREGIONFEATURESETVALUESRESPONSE.fields_by_name['feature_values'].message_type = _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY
-_SEARCHREGIONSRESPONSE.fields_by_name['regions'].message_type = _REGION
 DESCRIPTOR.message_types_by_name['RegionType'] = _REGIONTYPE
 DESCRIPTOR.message_types_by_name['Region'] = _REGION
 DESCRIPTOR.message_types_by_name['GetRegionRequest'] = _GETREGIONREQUEST
 DESCRIPTOR.message_types_by_name['SearchRegionsRequest'] = _SEARCHREGIONSREQUEST
+DESCRIPTOR.message_types_by_name['SearchRegionsResponse'] = _SEARCHREGIONSRESPONSE
 DESCRIPTOR.message_types_by_name['GetRegionFeatureSetValuesRequest'] = _GETREGIONFEATURESETVALUESREQUEST
 DESCRIPTOR.message_types_by_name['GetRegionFeatureSetValuesResponse'] = _GETREGIONFEATURESETVALUESRESPONSE
-DESCRIPTOR.message_types_by_name['SearchRegionsResponse'] = _SEARCHREGIONSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 RegionType = _reflection.GeneratedProtocolMessageType('RegionType', (_message.Message,), dict(
@@ -362,6 +362,13 @@ SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRe
   ))
 _sym_db.RegisterMessage(SearchRegionsRequest)
 
+SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), dict(
+  DESCRIPTOR = _SEARCHREGIONSRESPONSE,
+  __module__ = 'topos.locations.v1.locations_pb2'
+  # @@protoc_insertion_point(class_scope:topos.locations.v1.SearchRegionsResponse)
+  ))
+_sym_db.RegisterMessage(SearchRegionsResponse)
+
 GetRegionFeatureSetValuesRequest = _reflection.GeneratedProtocolMessageType('GetRegionFeatureSetValuesRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETREGIONFEATURESETVALUESREQUEST,
   __module__ = 'topos.locations.v1.locations_pb2'
@@ -383,13 +390,6 @@ GetRegionFeatureSetValuesResponse = _reflection.GeneratedProtocolMessageType('Ge
   ))
 _sym_db.RegisterMessage(GetRegionFeatureSetValuesResponse)
 _sym_db.RegisterMessage(GetRegionFeatureSetValuesResponse.FeatureValuesEntry)
-
-SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONSRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
-  # @@protoc_insertion_point(class_scope:topos.locations.v1.SearchRegionsResponse)
-  ))
-_sym_db.RegisterMessage(SearchRegionsResponse)
 
 
 DESCRIPTOR._options = None

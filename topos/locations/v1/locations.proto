@@ -67,6 +67,14 @@ message SearchRegionsRequest {
   bytes intersecting_geometry = 4;
 }
 
+message SearchRegionsResponse {
+  repeated Region regions = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
+
 message GetRegionFeatureSetValuesRequest {
   string region = 1;
   string feature_set = 2;
@@ -76,10 +84,3 @@ message GetRegionFeatureSetValuesResponse {
   map<string, double> feature_values = 1;
 }
 
-message SearchRegionsResponse {
-  repeated Region regions = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the search.
-  string next_page_token = 2;
-}

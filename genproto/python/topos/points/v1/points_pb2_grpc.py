@@ -100,6 +100,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.FromString,
         )
+    self.SearchRegions = channel.unary_unary(
+        '/topos.points.v1.Points/SearchRegions',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsResponse.FromString,
+        )
     self.SetBrandRegionScoreSetScore = channel.unary_unary(
         '/topos.points.v1.Points/SetBrandRegionScoreSetScore',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetBrandRegionScoreSetScoreRequest.SerializeToString,
@@ -255,6 +260,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SearchRegions(self, request, context):
+    """
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SetBrandRegionScoreSetScore(self, request, context):
     """Sets a brand region score set score.
     """
@@ -384,6 +396,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.CountBrandPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.SerializeToString,
+      ),
+      'SearchRegions': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchRegions,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsResponse.SerializeToString,
       ),
       'SetBrandRegionScoreSetScore': grpc.unary_unary_rpc_method_handler(
           servicer.SetBrandRegionScoreSetScore,

@@ -132,7 +132,16 @@ service Points {
   rpc CountBrandPoints(CountBrandPointsRequest)
       returns (CountBrandPointsResponse) {
     option (google.api.http) = {
-      delete : "/v1/brands:count"
+      post : "/v1/brands:count"
+      body : "*"
+    };
+  }
+
+  //
+  rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
+    option (google.api.http) = {
+      post : "/v1/regions:search"
+      body : "*"
     };
   }
 
@@ -342,6 +351,18 @@ message PointSource {
   google.protobuf.Timestamp update_time = 15;
 }
 
+message Region {
+  // The name of the region. It must have the format
+  // `"regionTypes/{region_type}/regions/{region}"`.
+  // `{region}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
+
+  // The WKB-encoded region geometry.
+  bytes geometry = 2;
+}
+
 message BrandRegionScoreSetScore {
   // The name of the brand region score set. It must have the format
   // `"brandRegionScoreSets/{brand_region_score_set}"`.
@@ -518,6 +539,28 @@ message CountBrandPointsRequest {
 message CountBrandPointsResponse {
   // Map of brand IDs to point counts.
   map<string, int64> brand_points = 1;
+}
+
+message SearchRegionsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  // Return regions of the given type.
+  string region_type = 3;
+
+  // Return regions that intersect with locations of the given brand.
+  bytes brand = 4;
+}
+
+message SearchRegionsResponse {
+  repeated Region regions = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
 }
 
 message SetBrandRegionScoreSetScoreRequest {
