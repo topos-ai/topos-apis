@@ -552,7 +552,7 @@ message SearchRegionsRequest {
   string region_type = 3;
 
   // Return regions that intersect with locations of the given brand.
-  bytes brand = 4;
+  string brand = 4;
 }
 
 message SearchRegionsResponse {
