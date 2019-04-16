@@ -383,6 +383,9 @@ message BrandRegionScoreSetScore {
   // The score value associated with the brand and region.
   double score = 5;
 
+  // The prefered square footage of the brand.
+  string preferred_gla = 6;
+
   // The creation timestamp of the brand region score.
   google.protobuf.Timestamp create_time = 14;
 
