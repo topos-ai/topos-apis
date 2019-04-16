@@ -534,6 +534,9 @@ message DeletePointSourceRequest { string name = 1; }
 message CountBrandPointsRequest {
   // Count brand points within this region.
   string region = 1;
+
+  // Count points for the given brand.
+  string brand = 2;
 }
 
 message CountBrandPointsResponse {
