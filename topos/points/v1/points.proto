@@ -137,6 +137,13 @@ service Points {
     };
   }
 
+  rpc CountTagPoints(CountTagPointsRequest) returns (CountTagPointsResponse) {
+    option (google.api.http) = {
+      post : "/v1/brands:count"
+      body : "*"
+    };
+  }
+
   //
   rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
     option (google.api.http) = {
@@ -545,6 +552,19 @@ message CountBrandPointsRequest {
 message CountBrandPointsResponse {
   // Map of brand IDs to point counts.
   map<string, int64> brand_points = 1;
+}
+
+message CountTagPointsRequest {
+  // Count brand points within this region.
+  string region = 1;
+
+  // Count points for the given tag.
+  string tag = 2;
+}
+
+message CountTagPointsResponse {
+  // Map of tag IDs to point counts.
+  map<string, int64> tag_points = 1;
 }
 
 message SearchRegionsRequest {

@@ -100,6 +100,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.FromString,
         )
+    self.CountTagPoints = channel.unary_unary(
+        '/topos.points.v1.Points/CountTagPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsResponse.FromString,
+        )
     self.SearchRegions = channel.unary_unary(
         '/topos.points.v1.Points/SearchRegions',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsRequest.SerializeToString,
@@ -260,6 +265,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def CountTagPoints(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SearchRegions(self, request, context):
     """
     """
@@ -396,6 +408,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.CountBrandPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.SerializeToString,
+      ),
+      'CountTagPoints': grpc.unary_unary_rpc_method_handler(
+          servicer.CountTagPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsResponse.SerializeToString,
       ),
       'SearchRegions': grpc.unary_unary_rpc_method_handler(
           servicer.SearchRegions,
