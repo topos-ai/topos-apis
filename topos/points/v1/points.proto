@@ -139,7 +139,7 @@ service Points {
 
   rpc CountTagPoints(CountTagPointsRequest) returns (CountTagPointsResponse) {
     option (google.api.http) = {
-      post : "/v1/brands:count"
+      post : "/v1/tags:count"
       body : "*"
     };
   }
