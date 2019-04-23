@@ -256,14 +256,27 @@ message Brand {
   // brand.
   string naics = 8;
 
-  // The prefered square footage of the brand.
-  string preferred_gla = 9;
-
   // The postal code of the brand's headquarters.
-  string postal_code = 10;
+  string postal_code = 9;
 
   // The feature set statistics for this brand's locations.
-  map<string, FeatureStats> feature_set_feature_stats = 11;
+  map<string, FeatureStats> feature_set_feature_stats = 10;
+
+  message Preferences {
+
+    // The prefered square footage of the brand.
+    string preferred_gla = 1;
+
+    // The percentage of locations where this brand shares a building.
+    double inline = 2;
+
+    // The percentage of locations where this brand occupies a stand-alone
+    // building.
+    double stand_alone = 3;
+  }
+
+  // The brand's location preferences by region.
+  map<string, Preferences> region_preferences = 11;
 
   // A list of brand tags.
   repeated string tags = 12;
