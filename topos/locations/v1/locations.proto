@@ -65,6 +65,9 @@ message SearchRegionsRequest {
 
   // Return regions that intersect the given WKB-encoded geometry.
   bytes intersecting_geometry = 4;
+
+  // Do not include region geometries in the response.
+  bool exclude_geometry = 5;
 }
 
 message SearchRegionsResponse {
@@ -83,4 +86,3 @@ message GetRegionFeatureSetValuesRequest {
 message GetRegionFeatureSetValuesResponse {
   map<string, double> feature_values = 1;
 }
-
