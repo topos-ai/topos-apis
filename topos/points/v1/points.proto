@@ -475,8 +475,13 @@ message ListBrandsRequest {
   string page_token = 2;
 }
 
+message ListBrand {
+  string name = 1;
+  string display_name = 2;
+}
+
 message ListBrandsResponse {
-  repeated Brand brands = 1;
+  repeated ListBrand brands = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
   // results in the list.
