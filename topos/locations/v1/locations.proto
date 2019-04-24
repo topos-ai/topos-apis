@@ -29,6 +29,13 @@ service Locations {
       post : "/v1/{region_type=regionTypes/*}/regions:search"
     };
   }
+
+  // Locate regions.
+  rpc LocateRegions(LocateRegionsRequest) returns (LocateRegionsResponse) {
+    option (google.api.http) = {
+      post : "/v1/{region_type=regionTypes/*}/regions:locate"
+    };
+  }
 }
 
 message RegionType {
@@ -85,4 +92,22 @@ message GetRegionFeatureSetValuesRequest {
 
 message GetRegionFeatureSetValuesResponse {
   map<string, double> feature_values = 1;
+}
+
+message LatLng {
+  double latitude = 1;
+  double longitude = 2;
+}
+
+message LocateRegionsRequest {
+  // Return regions of the given type.
+  string region_type = 1;
+
+  // Return region names that include the given location.
+  LatLng location = 2;
+}
+
+message LocateRegionsResponse {
+  // The located region names.
+  repeated string regions = 1;
 }
