@@ -75,6 +75,9 @@ message SearchRegionsRequest {
 
   // Do not include region geometries in the response.
   bool exclude_geometry = 5;
+
+  // Return regions included by the given region.
+  string included_by_region = 6;
 }
 
 message SearchRegionsResponse {
