@@ -470,14 +470,7 @@ message RegionGraphEdge {
   google.protobuf.Timestamp update_time = 15;
 }
 
-message Feedback {
-  string group_type = 1;
-  string resource_name = 2;
-  string additional_feedback = 3;
-  bool is_bad_address = 4;
-  bool is_bad_fit = 5;
-  bool is_missing_amenities = 6;
-}
+message Feedback { map<string, string> feedback = 1; }
 
 message GetBrandRequest { string name = 1; }
 
