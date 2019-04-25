@@ -208,6 +208,13 @@ service Points {
       body : "*"
     };
   }
+
+  rpc CreateFeedback(CreateFeedbackRequest) returns (Feedback) {
+    option (google.api.http) = {
+      post : "/v1/feedback"
+      body : "feedback"
+    };
+  }
 }
 
 message FeatureStats {
@@ -463,6 +470,15 @@ message RegionGraphEdge {
   google.protobuf.Timestamp update_time = 15;
 }
 
+message Feedback {
+  string group_type = 1;
+  string resource_name = 2;
+  string additional_feedback = 3;
+  bool is_bad_address = 4;
+  bool is_bad_fit = 5;
+  bool is_missing_amenities = 6;
+}
+
 message GetBrandRequest { string name = 1; }
 
 message SetBrandRequest { Brand brand = 1; }
@@ -700,3 +716,5 @@ message SearchRegionGraphEdgesResponse {
   // results in the list.
   string next_page_token = 2;
 }
+
+message CreateFeedbackRequest { Feedback feedback = 1; }
