@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.locations.v1',
   syntax='proto3',
   serialized_options=_b('Z\034topos/locations/v1;locations'),
-  serialized_pb=_b('\n\"topos/locations/v1/locations.proto\x12\x12topos.locations.v1\x1a\x1cgoogle/api/annotations.proto\"\x1a\n\nRegionType\x12\x0c\n\x04name\x18\x01 \x01(\t\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\" \n\x10GetRegionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xa7\x01\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\x1d\n\x15intersecting_geometry\x18\x04 \x01(\x0c\x12\x18\n\x10\x65xclude_geometry\x18\x05 \x01(\x08\x12\x1a\n\x12included_by_region\x18\x06 \x01(\t\"]\n\x15SearchRegionsResponse\x12+\n\x07regions\x18\x01 \x03(\x0b\x32\x1a.topos.locations.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"G\n GetRegionFeatureSetValuesRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_set\x18\x02 \x01(\t\"\xbb\x01\n!GetRegionFeatureSetValuesResponse\x12`\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32H.topos.locations.v1.GetRegionFeatureSetValuesResponse.FeatureValuesEntry\x1a\x34\n\x12\x46\x65\x61tureValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"Y\n\x14LocateRegionsRequest\x12\x13\n\x0bregion_type\x18\x01 \x01(\t\x12,\n\x08location\x18\x02 \x01(\x0b\x32\x1a.topos.locations.v1.LatLng\"(\n\x15LocateRegionsResponse\x12\x0f\n\x07regions\x18\x01 \x03(\t2\x9f\x05\n\tLocations\x12y\n\tGetRegion\x12$.topos.locations.v1.GetRegionRequest\x1a\x1a.topos.locations.v1.Region\"*\x82\xd3\xe4\x93\x02$\x12\"/v1/{name=regionTypes/*/regions/*}\x12\xd8\x01\n\x19GetRegionFeatureSetValues\x12\x34.topos.locations.v1.GetRegionFeatureSetValuesRequest\x1a\x35.topos.locations.v1.GetRegionFeatureSetValuesResponse\"N\x82\xd3\xe4\x93\x02H\x12\x46/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/values\x12\x9c\x01\n\rSearchRegions\x12(.topos.locations.v1.SearchRegionsRequest\x1a).topos.locations.v1.SearchRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:search\x12\x9c\x01\n\rLocateRegions\x12(.topos.locations.v1.LocateRegionsRequest\x1a).topos.locations.v1.LocateRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:locateB\x1eZ\x1ctopos/locations/v1;locationsb\x06proto3')
+  serialized_pb=_b('\n\"topos/locations/v1/locations.proto\x12\x12topos.locations.v1\x1a\x1cgoogle/api/annotations.proto\"\x1a\n\nRegionType\x12\x0c\n\x04name\x18\x01 \x01(\t\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\" \n\x10GetRegionRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"(\n\x18GetRegionGeometryRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"2\n\x19GetRegionGeometryResponse\x12\x15\n\rpolygon_chunk\x18\x01 \x01(\x0c\"\xa7\x01\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\x1d\n\x15intersecting_geometry\x18\x04 \x01(\x0c\x12\x18\n\x10\x65xclude_geometry\x18\x05 \x01(\x08\x12\x1a\n\x12included_by_region\x18\x06 \x01(\t\"]\n\x15SearchRegionsResponse\x12+\n\x07regions\x18\x01 \x03(\x0b\x32\x1a.topos.locations.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"G\n GetRegionFeatureSetValuesRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_set\x18\x02 \x01(\t\"\xbb\x01\n!GetRegionFeatureSetValuesResponse\x12`\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32H.topos.locations.v1.GetRegionFeatureSetValuesResponse.FeatureValuesEntry\x1a\x34\n\x12\x46\x65\x61tureValuesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x01:\x02\x38\x01\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"Y\n\x14LocateRegionsRequest\x12\x13\n\x0bregion_type\x18\x01 \x01(\t\x12,\n\x08location\x18\x02 \x01(\x0b\x32\x1a.topos.locations.v1.LatLng\"(\n\x15LocateRegionsResponse\x12\x0f\n\x07regions\x18\x01 \x03(\t2\xc9\x06\n\tLocations\x12y\n\tGetRegion\x12$.topos.locations.v1.GetRegionRequest\x1a\x1a.topos.locations.v1.Region\"*\x82\xd3\xe4\x93\x02$\x12\"/v1/{name=regionTypes/*/regions/*}\x12\xa7\x01\n\x11GetRegionGeometry\x12,.topos.locations.v1.GetRegionGeometryRequest\x1a-.topos.locations.v1.GetRegionGeometryResponse\"3\x82\xd3\xe4\x93\x02-\x12+/v1/{name=regionTypes/*/regions/*}/geometry0\x01\x12\xd8\x01\n\x19GetRegionFeatureSetValues\x12\x34.topos.locations.v1.GetRegionFeatureSetValuesRequest\x1a\x35.topos.locations.v1.GetRegionFeatureSetValuesResponse\"N\x82\xd3\xe4\x93\x02H\x12\x46/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/values\x12\x9c\x01\n\rSearchRegions\x12(.topos.locations.v1.SearchRegionsRequest\x1a).topos.locations.v1.SearchRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:search\x12\x9c\x01\n\rLocateRegions\x12(.topos.locations.v1.LocateRegionsRequest\x1a).topos.locations.v1.LocateRegionsResponse\"6\x82\xd3\xe4\x93\x02\x30\"./v1/{region_type=regionTypes/*}/regions:locateB\x1eZ\x1ctopos/locations/v1;locationsb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 
@@ -128,6 +128,68 @@ _GETREGIONREQUEST = _descriptor.Descriptor(
 )
 
 
+_GETREGIONGEOMETRYREQUEST = _descriptor.Descriptor(
+  name='GetRegionGeometryRequest',
+  full_name='topos.locations.v1.GetRegionGeometryRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='topos.locations.v1.GetRegionGeometryRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=192,
+  serialized_end=232,
+)
+
+
+_GETREGIONGEOMETRYRESPONSE = _descriptor.Descriptor(
+  name='GetRegionGeometryResponse',
+  full_name='topos.locations.v1.GetRegionGeometryResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='polygon_chunk', full_name='topos.locations.v1.GetRegionGeometryResponse.polygon_chunk', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=234,
+  serialized_end=284,
+)
+
+
 _SEARCHREGIONSREQUEST = _descriptor.Descriptor(
   name='SearchRegionsRequest',
   full_name='topos.locations.v1.SearchRegionsRequest',
@@ -189,8 +251,8 @@ _SEARCHREGIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=360,
+  serialized_start=287,
+  serialized_end=454,
 )
 
 
@@ -227,8 +289,8 @@ _SEARCHREGIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=362,
-  serialized_end=455,
+  serialized_start=456,
+  serialized_end=549,
 )
 
 
@@ -265,8 +327,8 @@ _GETREGIONFEATURESETVALUESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=457,
-  serialized_end=528,
+  serialized_start=551,
+  serialized_end=622,
 )
 
 
@@ -303,8 +365,8 @@ _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=666,
-  serialized_end=718,
+  serialized_start=760,
+  serialized_end=812,
 )
 
 _GETREGIONFEATURESETVALUESRESPONSE = _descriptor.Descriptor(
@@ -333,8 +395,8 @@ _GETREGIONFEATURESETVALUESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=531,
-  serialized_end=718,
+  serialized_start=625,
+  serialized_end=812,
 )
 
 
@@ -371,8 +433,8 @@ _LATLNG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=720,
-  serialized_end=765,
+  serialized_start=814,
+  serialized_end=859,
 )
 
 
@@ -409,8 +471,8 @@ _LOCATEREGIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=767,
-  serialized_end=856,
+  serialized_start=861,
+  serialized_end=950,
 )
 
 
@@ -440,8 +502,8 @@ _LOCATEREGIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=858,
-  serialized_end=898,
+  serialized_start=952,
+  serialized_end=992,
 )
 
 _SEARCHREGIONSRESPONSE.fields_by_name['regions'].message_type = _REGION
@@ -451,6 +513,8 @@ _LOCATEREGIONSREQUEST.fields_by_name['location'].message_type = _LATLNG
 DESCRIPTOR.message_types_by_name['RegionType'] = _REGIONTYPE
 DESCRIPTOR.message_types_by_name['Region'] = _REGION
 DESCRIPTOR.message_types_by_name['GetRegionRequest'] = _GETREGIONREQUEST
+DESCRIPTOR.message_types_by_name['GetRegionGeometryRequest'] = _GETREGIONGEOMETRYREQUEST
+DESCRIPTOR.message_types_by_name['GetRegionGeometryResponse'] = _GETREGIONGEOMETRYRESPONSE
 DESCRIPTOR.message_types_by_name['SearchRegionsRequest'] = _SEARCHREGIONSREQUEST
 DESCRIPTOR.message_types_by_name['SearchRegionsResponse'] = _SEARCHREGIONSRESPONSE
 DESCRIPTOR.message_types_by_name['GetRegionFeatureSetValuesRequest'] = _GETREGIONFEATURESETVALUESREQUEST
@@ -480,6 +544,20 @@ GetRegionRequest = _reflection.GeneratedProtocolMessageType('GetRegionRequest', 
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionRequest)
   ))
 _sym_db.RegisterMessage(GetRegionRequest)
+
+GetRegionGeometryRequest = _reflection.GeneratedProtocolMessageType('GetRegionGeometryRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETREGIONGEOMETRYREQUEST,
+  __module__ = 'topos.locations.v1.locations_pb2'
+  # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionGeometryRequest)
+  ))
+_sym_db.RegisterMessage(GetRegionGeometryRequest)
+
+GetRegionGeometryResponse = _reflection.GeneratedProtocolMessageType('GetRegionGeometryResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETREGIONGEOMETRYRESPONSE,
+  __module__ = 'topos.locations.v1.locations_pb2'
+  # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionGeometryResponse)
+  ))
+_sym_db.RegisterMessage(GetRegionGeometryResponse)
 
 SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRequest', (_message.Message,), dict(
   DESCRIPTOR = _SEARCHREGIONSREQUEST,
@@ -548,8 +626,8 @@ _LOCATIONS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=901,
-  serialized_end=1572,
+  serialized_start=995,
+  serialized_end=1836,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRegion',
@@ -561,9 +639,18 @@ _LOCATIONS = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002$\022\"/v1/{name=regionTypes/*/regions/*}'),
   ),
   _descriptor.MethodDescriptor(
+    name='GetRegionGeometry',
+    full_name='topos.locations.v1.Locations.GetRegionGeometry',
+    index=1,
+    containing_service=None,
+    input_type=_GETREGIONGEOMETRYREQUEST,
+    output_type=_GETREGIONGEOMETRYRESPONSE,
+    serialized_options=_b('\202\323\344\223\002-\022+/v1/{name=regionTypes/*/regions/*}/geometry'),
+  ),
+  _descriptor.MethodDescriptor(
     name='GetRegionFeatureSetValues',
     full_name='topos.locations.v1.Locations.GetRegionFeatureSetValues',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_GETREGIONFEATURESETVALUESREQUEST,
     output_type=_GETREGIONFEATURESETVALUESRESPONSE,
@@ -572,7 +659,7 @@ _LOCATIONS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SearchRegions',
     full_name='topos.locations.v1.Locations.SearchRegions',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_SEARCHREGIONSREQUEST,
     output_type=_SEARCHREGIONSRESPONSE,
@@ -581,7 +668,7 @@ _LOCATIONS = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='LocateRegions',
     full_name='topos.locations.v1.Locations.LocateRegions',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_LOCATEREGIONSREQUEST,
     output_type=_LOCATEREGIONSRESPONSE,

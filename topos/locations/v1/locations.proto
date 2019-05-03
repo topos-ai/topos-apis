@@ -14,6 +14,14 @@ service Locations {
     };
   }
 
+  // Gets a region geometry.
+  rpc GetRegionGeometry(GetRegionGeometryRequest)
+      returns (stream GetRegionGeometryResponse) {
+    option (google.api.http) = {
+      get : "/v1/{name=regionTypes/*/regions/*}/geometry"
+    };
+  }
+
   // Region feature values by feature.
   rpc GetRegionFeatureSetValues(GetRegionFeatureSetValuesRequest)
       returns (GetRegionFeatureSetValuesResponse) {
@@ -59,6 +67,10 @@ message Region {
 }
 
 message GetRegionRequest { string name = 1; }
+
+message GetRegionGeometryRequest { string name = 1; }
+
+message GetRegionGeometryResponse { bytes polygon_chunk = 1; }
 
 message SearchRegionsRequest {
   // The maximum number of items to return.
