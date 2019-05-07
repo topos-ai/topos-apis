@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+option go_package = "topos/topiary/v1;topiary";
+
+service Topiary {
+  // Set a position key balue.
+  rpc SetIDPosition(SetIDPositionRequest) returns (SetIDPositionResponse);
+
+  // Set a position.
+  rpc SetIDKeyValue(SetIDKeyValueRequest) returns (SetIDKeyValueResponse);
+
+  // Searches IDs.
+  rpc SearchIDs(stream SearchIDsRequest) returns (SearchIDsResponse);
+
+    // Counts IDs.
+  rpc CountIDs(stream CountIDsRequest) returns (CountIDsResponse);
+}
+
+message SetIDPositionRequest {
+  bytes id = 1;
+
+  // An S2 leaf cell ID.
+  fixed64 position = 2;
+}
+
+message SetIDPositionResponse {}
+
+message SetIDKeyValueRequest {
+  bytes id = 1;
+  string key = 2;
+  repeated string values = 3;
+
+  // Remove all other values for the given ID and key.
+  bool clear = 4;
+}
+
+message SetIDKeyValueResponse {}
+
+message KeyValuePair {
+  string key = 1;
+  string value = 2;
+}
+
+message SearchIDsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous search request, if any.
+  string page_token = 2;
+
+  // The key/value pairs to search by.
+  repeated KeyValuePair key_value_pairs = 3;
+
+  int64 polygon_length = 4;
+  bytes polygon_chunk = 5;
+}
+
+message SearchIDsResponse {
+  repeated bytes ids = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
+
+message CountIDsRequest {
+
+  // The key to count value IDs for.
+  string key = 1;
+
+  int64 polygon_length = 2;
+  bytes polygon_chunk = 3;
+}
+
+message CountIDsResponse {
+  map<string, int64> value_counts = 1;
+}
