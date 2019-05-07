@@ -19,6 +19,7 @@ pkg-go: includes/googleapis genproto/go
 pkg-python: includes/googleapis genproto/python
 	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/python:/genproto/python python:3.7.3 sh -c \
 	'set -ex \
+		&& pip install --upgrade pip \
 		&& pip install grpcio-tools \
 		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "python \
 			-m grpc_tools.protoc \
