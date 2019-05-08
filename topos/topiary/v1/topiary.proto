@@ -12,7 +12,7 @@ service Topiary {
   // Searches IDs.
   rpc SearchIDs(stream SearchIDsRequest) returns (SearchIDsResponse);
 
-    // Counts IDs.
+  // Counts IDs.
   rpc CountIDs(stream CountIDsRequest) returns (CountIDsResponse);
 }
 
@@ -68,10 +68,12 @@ message CountIDsRequest {
   // The key to count value IDs for.
   string key = 1;
 
-  int64 polygon_length = 2;
-  bytes polygon_chunk = 3;
+  // Key values to count IDs for. If none are specified, all values for the
+  // given key will be counted.
+  repeated string values = 2;
+
+  int64 polygon_length = 3;
+  bytes polygon_chunk = 4;
 }
 
-message CountIDsResponse {
-  map<string, int64> value_counts = 1;
-}
+message CountIDsResponse { map<string, int64> value_counts = 1; }

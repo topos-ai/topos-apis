@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=_b('Z\030topos/topiary/v1;topiary'),
-  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x90\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12&\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\r.KeyValuePair\x12\x16\n\x0epolygon_length\x18\x04 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x05 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"M\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x16\n\x0epolygon_length\x18\x02 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x03 \x01(\x0c\"\x80\x01\n\x10\x43ountIDsResponse\x12\x38\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\".CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\xf2\x01\n\x07Topiary\x12>\n\rSetIDPosition\x12\x15.SetIDPositionRequest\x1a\x16.SetIDPositionResponse\x12>\n\rSetIDKeyValue\x12\x15.SetIDKeyValueRequest\x1a\x16.SetIDKeyValueResponse\x12\x34\n\tSearchIDs\x12\x11.SearchIDsRequest\x1a\x12.SearchIDsResponse(\x01\x12\x31\n\x08\x43ountIDs\x12\x10.CountIDsRequest\x1a\x11.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
+  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x90\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12&\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\r.KeyValuePair\x12\x16\n\x0epolygon_length\x18\x04 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x05 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"]\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x16\n\x0epolygon_length\x18\x03 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"\x80\x01\n\x10\x43ountIDsResponse\x12\x38\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\".CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\xf2\x01\n\x07Topiary\x12>\n\rSetIDPosition\x12\x15.SetIDPositionRequest\x1a\x16.SetIDPositionResponse\x12>\n\rSetIDKeyValue\x12\x15.SetIDKeyValueRequest\x1a\x16.SetIDKeyValueResponse\x12\x34\n\tSearchIDs\x12\x11.SearchIDsRequest\x1a\x12.SearchIDsResponse(\x01\x12\x31\n\x08\x43ountIDs\x12\x10.CountIDsRequest\x1a\x11.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
 )
 
 
@@ -314,15 +314,22 @@ _COUNTIDSREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='polygon_length', full_name='CountIDsRequest.polygon_length', index=1,
-      number=2, type=3, cpp_type=2, label=1,
+      name='values', full_name='CountIDsRequest.values', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='polygon_length', full_name='CountIDsRequest.polygon_length', index=2,
+      number=3, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='polygon_chunk', full_name='CountIDsRequest.polygon_chunk', index=2,
-      number=3, type=12, cpp_type=9, label=1,
+      name='polygon_chunk', full_name='CountIDsRequest.polygon_chunk', index=3,
+      number=4, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -340,7 +347,7 @@ _COUNTIDSREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=468,
-  serialized_end=545,
+  serialized_end=561,
 )
 
 
@@ -377,8 +384,8 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=626,
-  serialized_end=676,
+  serialized_start=642,
+  serialized_end=692,
 )
 
 _COUNTIDSRESPONSE = _descriptor.Descriptor(
@@ -407,8 +414,8 @@ _COUNTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=548,
-  serialized_end=676,
+  serialized_start=564,
+  serialized_end=692,
 )
 
 _SEARCHIDSREQUEST.fields_by_name['key_value_pairs'].message_type = _KEYVALUEPAIR
@@ -506,8 +513,8 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=679,
-  serialized_end=921,
+  serialized_start=695,
+  serialized_end=937,
   methods=[
   _descriptor.MethodDescriptor(
     name='SetIDPosition',
