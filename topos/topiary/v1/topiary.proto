@@ -3,6 +3,10 @@ syntax = "proto3";
 option go_package = "topos/topiary/v1;topiary";
 
 service Topiary {
+
+  // Lists IDs.
+  rpc ListIDs(ListIDsRequest) returns (ListIDsResponse) {}
+
   // Set a position key balue.
   rpc SetIDPosition(SetIDPositionRequest) returns (SetIDPositionResponse);
 
@@ -20,6 +24,22 @@ service Topiary {
 
   // Counts IDs.
   rpc CountIDs(stream CountIDsRequest) returns (CountIDsResponse);
+}
+
+message ListIDsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous search request, if any.
+  string page_token = 2;
+}
+
+message ListIDsResponse {
+  repeated bytes ids = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
 }
 
 message SetIDPositionRequest {

@@ -14,6 +14,11 @@ class TopiaryStub(object):
     Args:
       channel: A grpc.Channel.
     """
+    self.ListIDs = channel.unary_unary(
+        '/Topiary/ListIDs',
+        request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsRequest.SerializeToString,
+        response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsResponse.FromString,
+        )
     self.SetIDPosition = channel.unary_unary(
         '/Topiary/SetIDPosition',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.SerializeToString,
@@ -49,6 +54,13 @@ class TopiaryStub(object):
 class TopiaryServicer(object):
   # missing associated documentation comment in .proto file
   pass
+
+  def ListIDs(self, request, context):
+    """Lists IDs.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
 
   def SetIDPosition(self, request, context):
     """Set a position key balue.
@@ -95,6 +107,11 @@ class TopiaryServicer(object):
 
 def add_TopiaryServicer_to_server(servicer, server):
   rpc_method_handlers = {
+      'ListIDs': grpc.unary_unary_rpc_method_handler(
+          servicer.ListIDs,
+          request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsRequest.FromString,
+          response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsResponse.SerializeToString,
+      ),
       'SetIDPosition': grpc.unary_unary_rpc_method_handler(
           servicer.SetIDPosition,
           request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.FromString,
