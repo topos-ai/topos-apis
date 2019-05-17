@@ -6,6 +6,12 @@ service Topiary {
   // Set a position key balue.
   rpc SetIDPosition(SetIDPositionRequest) returns (SetIDPositionResponse);
 
+  // Delete an ID.
+  rpc DeleteID(DeleteIDRequest) returns (DeleteIDResponse) {}
+
+  // Set a position.
+  rpc GetIDKeyValues(GetIDKeyValuesRequest) returns (GetIDKeyValuesResponse);
+
   // Set a position.
   rpc SetIDKeyValue(SetIDKeyValueRequest) returns (SetIDKeyValueResponse);
 
@@ -24,6 +30,17 @@ message SetIDPositionRequest {
 }
 
 message SetIDPositionResponse {}
+
+message DeleteIDRequest { bytes id = 1; }
+
+message DeleteIDResponse {}
+
+message GetIDKeyValuesRequest {
+  bytes id = 1;
+  string key = 2;
+}
+
+message GetIDKeyValuesResponse { repeated string values = 1; }
 
 message SetIDKeyValueRequest {
   bytes id = 1;

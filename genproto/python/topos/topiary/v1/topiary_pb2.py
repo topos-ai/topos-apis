@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=_b('Z\030topos/topiary/v1;topiary'),
-  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x90\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12&\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\r.KeyValuePair\x12\x16\n\x0epolygon_length\x18\x04 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x05 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"]\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x16\n\x0epolygon_length\x18\x03 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"\x80\x01\n\x10\x43ountIDsResponse\x12\x38\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\".CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\xf2\x01\n\x07Topiary\x12>\n\rSetIDPosition\x12\x15.SetIDPositionRequest\x1a\x16.SetIDPositionResponse\x12>\n\rSetIDKeyValue\x12\x15.SetIDKeyValueRequest\x1a\x16.SetIDKeyValueResponse\x12\x34\n\tSearchIDs\x12\x11.SearchIDsRequest\x1a\x12.SearchIDsResponse(\x01\x12\x31\n\x08\x43ountIDs\x12\x10.CountIDsRequest\x1a\x11.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
+  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"\x1d\n\x0f\x44\x65leteIDRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x12\n\x10\x44\x65leteIDResponse\"0\n\x15GetIDKeyValuesRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\"(\n\x16GetIDKeyValuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\t\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x90\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12&\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\r.KeyValuePair\x12\x16\n\x0epolygon_length\x18\x04 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x05 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"]\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x16\n\x0epolygon_length\x18\x03 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"\x80\x01\n\x10\x43ountIDsResponse\x12\x38\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\".CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\xe8\x02\n\x07Topiary\x12>\n\rSetIDPosition\x12\x15.SetIDPositionRequest\x1a\x16.SetIDPositionResponse\x12\x31\n\x08\x44\x65leteID\x12\x10.DeleteIDRequest\x1a\x11.DeleteIDResponse\"\x00\x12\x41\n\x0eGetIDKeyValues\x12\x16.GetIDKeyValuesRequest\x1a\x17.GetIDKeyValuesResponse\x12>\n\rSetIDKeyValue\x12\x15.SetIDKeyValueRequest\x1a\x16.SetIDKeyValueResponse\x12\x34\n\tSearchIDs\x12\x11.SearchIDsRequest\x1a\x12.SearchIDsResponse(\x01\x12\x31\n\x08\x43ountIDs\x12\x10.CountIDsRequest\x1a\x11.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
 )
 
 
@@ -88,6 +88,130 @@ _SETIDPOSITIONRESPONSE = _descriptor.Descriptor(
 )
 
 
+_DELETEIDREQUEST = _descriptor.Descriptor(
+  name='DeleteIDRequest',
+  full_name='DeleteIDRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='DeleteIDRequest.id', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=113,
+  serialized_end=142,
+)
+
+
+_DELETEIDRESPONSE = _descriptor.Descriptor(
+  name='DeleteIDResponse',
+  full_name='DeleteIDResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=144,
+  serialized_end=162,
+)
+
+
+_GETIDKEYVALUESREQUEST = _descriptor.Descriptor(
+  name='GetIDKeyValuesRequest',
+  full_name='GetIDKeyValuesRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='GetIDKeyValuesRequest.id', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='key', full_name='GetIDKeyValuesRequest.key', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=164,
+  serialized_end=212,
+)
+
+
+_GETIDKEYVALUESRESPONSE = _descriptor.Descriptor(
+  name='GetIDKeyValuesResponse',
+  full_name='GetIDKeyValuesResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='GetIDKeyValuesResponse.values', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=214,
+  serialized_end=254,
+)
+
+
 _SETIDKEYVALUEREQUEST = _descriptor.Descriptor(
   name='SetIDKeyValueRequest',
   full_name='SetIDKeyValueRequest',
@@ -135,8 +259,8 @@ _SETIDKEYVALUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=113,
-  serialized_end=191,
+  serialized_start=256,
+  serialized_end=334,
 )
 
 
@@ -159,8 +283,8 @@ _SETIDKEYVALUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=193,
-  serialized_end=216,
+  serialized_start=336,
+  serialized_end=359,
 )
 
 
@@ -197,8 +321,8 @@ _KEYVALUEPAIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=218,
-  serialized_end=260,
+  serialized_start=361,
+  serialized_end=403,
 )
 
 
@@ -256,8 +380,8 @@ _SEARCHIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=407,
+  serialized_start=406,
+  serialized_end=550,
 )
 
 
@@ -294,8 +418,8 @@ _SEARCHIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=409,
-  serialized_end=466,
+  serialized_start=552,
+  serialized_end=609,
 )
 
 
@@ -346,8 +470,8 @@ _COUNTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=468,
-  serialized_end=561,
+  serialized_start=611,
+  serialized_end=704,
 )
 
 
@@ -384,8 +508,8 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=642,
-  serialized_end=692,
+  serialized_start=785,
+  serialized_end=835,
 )
 
 _COUNTIDSRESPONSE = _descriptor.Descriptor(
@@ -414,8 +538,8 @@ _COUNTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=564,
-  serialized_end=692,
+  serialized_start=707,
+  serialized_end=835,
 )
 
 _SEARCHIDSREQUEST.fields_by_name['key_value_pairs'].message_type = _KEYVALUEPAIR
@@ -423,6 +547,10 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY.containing_type = _COUNTIDSRESPONSE
 _COUNTIDSRESPONSE.fields_by_name['value_counts'].message_type = _COUNTIDSRESPONSE_VALUECOUNTSENTRY
 DESCRIPTOR.message_types_by_name['SetIDPositionRequest'] = _SETIDPOSITIONREQUEST
 DESCRIPTOR.message_types_by_name['SetIDPositionResponse'] = _SETIDPOSITIONRESPONSE
+DESCRIPTOR.message_types_by_name['DeleteIDRequest'] = _DELETEIDREQUEST
+DESCRIPTOR.message_types_by_name['DeleteIDResponse'] = _DELETEIDRESPONSE
+DESCRIPTOR.message_types_by_name['GetIDKeyValuesRequest'] = _GETIDKEYVALUESREQUEST
+DESCRIPTOR.message_types_by_name['GetIDKeyValuesResponse'] = _GETIDKEYVALUESRESPONSE
 DESCRIPTOR.message_types_by_name['SetIDKeyValueRequest'] = _SETIDKEYVALUEREQUEST
 DESCRIPTOR.message_types_by_name['SetIDKeyValueResponse'] = _SETIDKEYVALUERESPONSE
 DESCRIPTOR.message_types_by_name['KeyValuePair'] = _KEYVALUEPAIR
@@ -445,6 +573,34 @@ SetIDPositionResponse = _reflection.GeneratedProtocolMessageType('SetIDPositionR
   # @@protoc_insertion_point(class_scope:SetIDPositionResponse)
   ))
 _sym_db.RegisterMessage(SetIDPositionResponse)
+
+DeleteIDRequest = _reflection.GeneratedProtocolMessageType('DeleteIDRequest', (_message.Message,), dict(
+  DESCRIPTOR = _DELETEIDREQUEST,
+  __module__ = 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:DeleteIDRequest)
+  ))
+_sym_db.RegisterMessage(DeleteIDRequest)
+
+DeleteIDResponse = _reflection.GeneratedProtocolMessageType('DeleteIDResponse', (_message.Message,), dict(
+  DESCRIPTOR = _DELETEIDRESPONSE,
+  __module__ = 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:DeleteIDResponse)
+  ))
+_sym_db.RegisterMessage(DeleteIDResponse)
+
+GetIDKeyValuesRequest = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesRequest', (_message.Message,), dict(
+  DESCRIPTOR = _GETIDKEYVALUESREQUEST,
+  __module__ = 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:GetIDKeyValuesRequest)
+  ))
+_sym_db.RegisterMessage(GetIDKeyValuesRequest)
+
+GetIDKeyValuesResponse = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesResponse', (_message.Message,), dict(
+  DESCRIPTOR = _GETIDKEYVALUESRESPONSE,
+  __module__ = 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:GetIDKeyValuesResponse)
+  ))
+_sym_db.RegisterMessage(GetIDKeyValuesResponse)
 
 SetIDKeyValueRequest = _reflection.GeneratedProtocolMessageType('SetIDKeyValueRequest', (_message.Message,), dict(
   DESCRIPTOR = _SETIDKEYVALUEREQUEST,
@@ -513,8 +669,8 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=695,
-  serialized_end=937,
+  serialized_start=838,
+  serialized_end=1198,
   methods=[
   _descriptor.MethodDescriptor(
     name='SetIDPosition',
@@ -526,9 +682,27 @@ _TOPIARY = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='DeleteID',
+    full_name='Topiary.DeleteID',
+    index=1,
+    containing_service=None,
+    input_type=_DELETEIDREQUEST,
+    output_type=_DELETEIDRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetIDKeyValues',
+    full_name='Topiary.GetIDKeyValues',
+    index=2,
+    containing_service=None,
+    input_type=_GETIDKEYVALUESREQUEST,
+    output_type=_GETIDKEYVALUESRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='SetIDKeyValue',
     full_name='Topiary.SetIDKeyValue',
-    index=1,
+    index=3,
     containing_service=None,
     input_type=_SETIDKEYVALUEREQUEST,
     output_type=_SETIDKEYVALUERESPONSE,
@@ -537,7 +711,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SearchIDs',
     full_name='Topiary.SearchIDs',
-    index=2,
+    index=4,
     containing_service=None,
     input_type=_SEARCHIDSREQUEST,
     output_type=_SEARCHIDSRESPONSE,
@@ -546,7 +720,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='CountIDs',
     full_name='Topiary.CountIDs',
-    index=3,
+    index=5,
     containing_service=None,
     input_type=_COUNTIDSREQUEST,
     output_type=_COUNTIDSRESPONSE,

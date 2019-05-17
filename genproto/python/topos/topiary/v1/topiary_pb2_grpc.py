@@ -19,6 +19,16 @@ class TopiaryStub(object):
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionResponse.FromString,
         )
+    self.DeleteID = channel.unary_unary(
+        '/Topiary/DeleteID',
+        request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDRequest.SerializeToString,
+        response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDResponse.FromString,
+        )
+    self.GetIDKeyValues = channel.unary_unary(
+        '/Topiary/GetIDKeyValues',
+        request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesRequest.SerializeToString,
+        response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesResponse.FromString,
+        )
     self.SetIDKeyValue = channel.unary_unary(
         '/Topiary/SetIDKeyValue',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDKeyValueRequest.SerializeToString,
@@ -42,6 +52,20 @@ class TopiaryServicer(object):
 
   def SetIDPosition(self, request, context):
     """Set a position key balue.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def DeleteID(self, request, context):
+    """Delete an ID.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetIDKeyValues(self, request, context):
+    """Set a position.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -75,6 +99,16 @@ def add_TopiaryServicer_to_server(servicer, server):
           servicer.SetIDPosition,
           request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.FromString,
           response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionResponse.SerializeToString,
+      ),
+      'DeleteID': grpc.unary_unary_rpc_method_handler(
+          servicer.DeleteID,
+          request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDRequest.FromString,
+          response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDResponse.SerializeToString,
+      ),
+      'GetIDKeyValues': grpc.unary_unary_rpc_method_handler(
+          servicer.GetIDKeyValues,
+          request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesRequest.FromString,
+          response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesResponse.SerializeToString,
       ),
       'SetIDKeyValue': grpc.unary_unary_rpc_method_handler(
           servicer.SetIDKeyValue,
