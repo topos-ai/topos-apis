@@ -296,6 +296,10 @@ message Brand {
 
   // The last update timestamp of an brand.
   google.protobuf.Timestamp update_time = 15;
+
+  int64 total_locations = 16;
+  repeated string states_of_expansion = 17;
+  repeated string states_of_operation = 18;
 }
 
 message LatLng {
