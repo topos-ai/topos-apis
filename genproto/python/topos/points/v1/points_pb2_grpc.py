@@ -40,6 +40,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsResponse.FromString,
         )
+    self.PolygonSearchPoints = channel.stream_unary(
+        '/topos.points.v1.Points/PolygonSearchPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsResponse.FromString,
+        )
     self.GetPoint = channel.unary_unary(
         '/topos.points.v1.Points/GetPoint',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.GetPointRequest.SerializeToString,
@@ -180,6 +185,13 @@ class PointsServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def SearchPoints(self, request, context):
+    """Search points.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def PolygonSearchPoints(self, request_iterator, context):
     """Search points.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -360,6 +372,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SearchPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchPointsResponse.SerializeToString,
+      ),
+      'PolygonSearchPoints': grpc.stream_unary_rpc_method_handler(
+          servicer.PolygonSearchPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsResponse.SerializeToString,
       ),
       'GetPoint': grpc.unary_unary_rpc_method_handler(
           servicer.GetPoint,
