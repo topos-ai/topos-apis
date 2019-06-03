@@ -204,7 +204,7 @@ service Points {
   // Sets a region graph edge.
   rpc SetRegionGraphEdge(SetRegionGraphEdgeRequest) returns (RegionGraphEdge) {
     option (google.api.http) = {
-      post : "/v1/{region_graph=regionGraphs/*}/edges:set"
+      post : "/v1/{region_graph_edge.region_graph=regionGraphs/*}/edges:set"
       body : "*"
     };
   }
@@ -549,6 +549,13 @@ message PolygonSearchPointsRequest {
 
   // Return points with the given tags.
   repeated string tags = 4;
+
+  enum PolygonEncoding {
+    S2 = 0;
+    GEOJSON = 1;
+  }
+
+  PolygonEncoding polygon_encoding = 5; 
 
   // The total number of bytes of the encoded S2 polygon.
   int64 polygon_length = 14;
