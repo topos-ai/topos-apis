@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package topos.scores.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "topos/scores/v1;scores";
+
+service Scores {
+  // Gets a score.
+  rpc GetScore(GetScoreRequest) returns (Score) {
+    option (google.api.http) = {
+      get : "/v1/{name=scores/*}"
+    };
+  }
+
+  // Sets a score.
+  rpc SetScore(SetScoreRequest) returns (Score) {
+    option (google.api.http) = {
+      post : "/v1/{score.name=scores/*}:set"
+      body : "score"
+    };
+  }
+
+  // Deletes a score.
+  rpc DeleteScore(DeleteScoreRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{score.name=scores/*}"
+    };
+  }
+
+  // Search scores.
+  rpc SearchScores(SearchScoresRequest) returns (SearchScoresResponse) {
+    option (google.api.http) = {
+      post : "/v1/{name=scores/*}:search"
+      body : "*"
+    };
+  }
+}
+
+message Score {
+  // The name of the score. It must have the format `"scores/{score}"`.
+  // `{score}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`.
+  string name = 1;
+
+  // The resource name of the origin vertex. It must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[\w-]+(/[\w-]+)*$`.
+  string vertex_a = 2;
+
+  // The resource name of the destination vertex. It must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[\w-]+(/[\w-]+)*$`.
+  string vertex_b = 3;
+
+  // The score value.
+  double score = 4;
+
+  // The creation timestamp of the score. Only set as a return value when
+  // getting or setting an individual score.
+  google.protobuf.Timestamp create_time = 14;
+
+  // The last update timestamp of the score. Only set as a return value when
+  // getting or setting an individual score.
+  google.protobuf.Timestamp update_time = 15;
+}
+
+message GetScoreRequest {
+  string name = 1;
+  string vertex_a = 2;
+  string vertex_b = 3;
+}
+
+message SetScoreRequest { Score score = 1; }
+
+message DeleteScoreRequest {
+  string name = 1;
+  string vertex_a = 2;
+  string vertex_b = 3;
+}
+
+message SearchScoresRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  string name = 3;
+  string vertex_a = 4;
+}
+
+message SearchScoresResponse {
+  repeated Score scores = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
