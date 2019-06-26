@@ -146,9 +146,25 @@ service Points {
     };
   }
 
+  rpc PolygonCountBrandPoints(stream PolygonCountBrandPointsRequest)
+      returns (PolygonCountBrandPointsResponse) {
+    option (google.api.http) = {
+      post : "/v1/brands:polygon_count"
+      body : "*"
+    };
+  }
+
   rpc CountTagPoints(CountTagPointsRequest) returns (CountTagPointsResponse) {
     option (google.api.http) = {
       post : "/v1/tags:count"
+      body : "*"
+    };
+  }
+
+  rpc PolygonCountTagPoints(stream PolygonCountTagPointsRequest)
+      returns (PolygonCountTagPointsResponse) {
+    option (google.api.http) = {
+      post : "/v1/tags:polygon_count"
       body : "*"
     };
   }
@@ -555,7 +571,7 @@ message PolygonSearchPointsRequest {
     GEOJSON = 1;
   }
 
-  PolygonEncoding polygon_encoding = 5; 
+  PolygonEncoding polygon_encoding = 5;
 
   // The total number of bytes of the encoded S2 polygon.
   int64 polygon_length = 14;
@@ -629,6 +645,32 @@ message CountBrandPointsResponse {
   map<string, int64> brand_points = 1;
 }
 
+message PolygonCountBrandPointsRequest {
+  // Count brand points within this region.
+  string region = 1;
+
+  // Count points for the given brands.
+  repeated string brands = 2;
+
+  enum PolygonEncoding {
+    S2 = 0;
+    GEOJSON = 1;
+  }
+
+  PolygonEncoding polygon_encoding = 3;
+
+  // The total number of bytes of the encoded S2 polygon.
+  int64 polygon_length = 14;
+
+  // A chunk of bytes of the encoded S2 polygon.
+  bytes polygon_chunk = 15;
+}
+
+message PolygonCountBrandPointsResponse {
+  // Map of brand IDs to point counts.
+  map<string, int64> brand_points = 1;
+}
+
 message CountTagPointsRequest {
   // Count brand points within this region.
   string region = 1;
@@ -638,6 +680,32 @@ message CountTagPointsRequest {
 }
 
 message CountTagPointsResponse {
+  // Map of tag IDs to point counts.
+  map<string, int64> tag_points = 1;
+}
+
+message PolygonCountTagPointsRequest {
+  // Count brand points within this region.
+  string region = 1;
+
+  // Count points for the given tag.
+  string tag = 2;
+
+  enum PolygonEncoding {
+    S2 = 0;
+    GEOJSON = 1;
+  }
+
+  PolygonEncoding polygon_encoding = 3;
+
+  // The total number of bytes of the encoded S2 polygon.
+  int64 polygon_length = 14;
+
+  // A chunk of bytes of the encoded S2 polygon.
+  bytes polygon_chunk = 15;
+}
+
+message PolygonCountTagPointsResponse {
   // Map of tag IDs to point counts.
   map<string, int64> tag_points = 1;
 }

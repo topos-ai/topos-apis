@@ -105,10 +105,20 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.FromString,
         )
+    self.PolygonCountBrandPoints = channel.stream_unary(
+        '/topos.points.v1.Points/PolygonCountBrandPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountBrandPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountBrandPointsResponse.FromString,
+        )
     self.CountTagPoints = channel.unary_unary(
         '/topos.points.v1.Points/CountTagPoints',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsResponse.FromString,
+        )
+    self.PolygonCountTagPoints = channel.stream_unary(
+        '/topos.points.v1.Points/PolygonCountTagPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsResponse.FromString,
         )
     self.SearchRegions = channel.unary_unary(
         '/topos.points.v1.Points/SearchRegions',
@@ -282,7 +292,21 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def PolygonCountBrandPoints(self, request_iterator, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def CountTagPoints(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def PolygonCountTagPoints(self, request_iterator, context):
     # missing associated documentation comment in .proto file
     pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -438,10 +462,20 @@ def add_PointsServicer_to_server(servicer, server):
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountBrandPointsResponse.SerializeToString,
       ),
+      'PolygonCountBrandPoints': grpc.stream_unary_rpc_method_handler(
+          servicer.PolygonCountBrandPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountBrandPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountBrandPointsResponse.SerializeToString,
+      ),
       'CountTagPoints': grpc.unary_unary_rpc_method_handler(
           servicer.CountTagPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.CountTagPointsResponse.SerializeToString,
+      ),
+      'PolygonCountTagPoints': grpc.stream_unary_rpc_method_handler(
+          servicer.PolygonCountTagPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsResponse.SerializeToString,
       ),
       'SearchRegions': grpc.unary_unary_rpc_method_handler(
           servicer.SearchRegions,
