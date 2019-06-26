@@ -2,6 +2,17 @@ PWD=`pwd`
 
 all: pkg-go pkg-python
 
+endpoints: pkg-descriptors
+	gcloud components update \
+		&& find topos -name api_config.yaml -execdir gcloud --project topos-ai endpoints services deploy api_config.yaml api_descriptor.pb \;
+
+endpoints-dev: api-config-dev pkg-descriptors
+	gcloud components update \
+		&& find topos -name api_config_dev.yaml -execdir gcloud --project topos-ai-dev endpoints services deploy api_config_dev.yaml api_descriptor.pb \;
+
+api-config-dev:
+	find topos -name api_config.yaml -execdir sh -c "sed -E 's/\.([a-z]+)\.endpoints/-dev.\1.endpoints/' api_config.yaml > api_config_dev.yaml" \;
+
 pkg-go: includes/googleapis genproto/go
 	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.12.5-alpine sh -c \
 	'set -ex \
@@ -29,6 +40,19 @@ pkg-python: includes/googleapis genproto/python
 			--grpc_python_out=/genproto/python \
 			'{}'/*.proto" \;'
 
+pkg-descriptors: includes/googleapis
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.9.4 sh -c \
+	'set -ex \
+		&& apk add protobuf-dev \
+		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "protoc \
+			-I/includes/googleapis \
+			-I/protos \
+			--proto_path=. \
+			--include_imports \
+			--include_source_info \
+			--descriptor_set_out='{}'/api_descriptor.pb \
+			'{}'/*.proto" \;'
+
 includes/googleapis: includes
 	git clone --depth 1 https://github.com/googleapis/googleapis.git includes/googleapis
 
@@ -45,6 +69,8 @@ genproto:
 	mkdir genproto
 
 clean:
-	rm -rf genproto includes
+	rm -rf genproto includes \
+		&& find topos -name api_descriptor.pb -exec rm '{}' \; \
+		&& find topos -name api_config_dev.yaml -exec rm '{}' \;
 
-.PHONY:	all clean pkg-go pkg-python
+.PHONY:	all clean api-config-dev endpoints endpoints-dev pkg-go pkg-python pkg-descriptors
