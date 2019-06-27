@@ -44,6 +44,15 @@ service Locations {
       post : "/v1/{region_type=regionTypes/*}/regions:locate"
     };
   }
+
+  // Intersect regions.
+  rpc IntersectRegions(stream IntersectRegionsRequest)
+      returns (IntersectRegionsResponse) {
+    option (google.api.http) = {
+      post : "/v1/{region_type=regionTypes/*}/regions:intersect"
+      body : "*"
+    };
+  }
 }
 
 message RegionType {
@@ -125,4 +134,26 @@ message LocateRegionsRequest {
 message LocateRegionsResponse {
   // The located region names.
   repeated string regions = 1;
+}
+
+enum GeometryEncoding { GEOJSON = 0; }
+
+message IntersectRegionsRequest {
+  // Return regions of the given type.
+  string region_type = 1;
+
+  // The geometry encoding.
+  GeometryEncoding geometry_encoding = 14;
+
+  // A chunk of the intersecting geometry.
+  bytes geometry_chunk = 15;
+}
+
+message IntersectRegionsResponse {
+  message IntersectingRegions {
+    string name = 1;
+    double area = 2;
+  }
+
+  repeated IntersectingRegions intersecting_regions = 1;
 }

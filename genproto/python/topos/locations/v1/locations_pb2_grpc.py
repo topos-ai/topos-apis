@@ -39,6 +39,11 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.LocateRegionsRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.LocateRegionsResponse.FromString,
         )
+    self.IntersectRegions = channel.stream_unary(
+        '/topos.locations.v1.Locations/IntersectRegions',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsResponse.FromString,
+        )
 
 
 class LocationsServicer(object):
@@ -80,6 +85,13 @@ class LocationsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def IntersectRegions(self, request_iterator, context):
+    """Intersect regions.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_LocationsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -107,6 +119,11 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.LocateRegions,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.LocateRegionsRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.LocateRegionsResponse.SerializeToString,
+      ),
+      'IntersectRegions': grpc.stream_unary_rpc_method_handler(
+          servicer.IntersectRegions,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
