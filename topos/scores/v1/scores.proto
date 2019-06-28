@@ -24,6 +24,14 @@ service Scores {
     };
   }
 
+  // Sets a batch of scores.
+  rpc BatchSetScore(BatchSetScoreRequest) returns (BatchSetScoreResponse) {
+    option (google.api.http) = {
+      post : "/v1/scores:batchSet"
+      body : "*"
+    };
+  }
+
   // Deletes a score.
   rpc DeleteScore(DeleteScoreRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
@@ -70,16 +78,33 @@ message Score {
 }
 
 message GetScoreRequest {
+  // The name of the score.
   string name = 1;
+
+  // The resource name of the origin vertex.
   string vertex_a = 2;
+
+  // The resource name of the destination vertex.
   string vertex_b = 3;
 }
 
 message SetScoreRequest { Score score = 1; }
 
+message BatchSetScoreRequest {
+  // Scores to set.
+  repeated Score scores = 2;
+}
+
+message BatchSetScoreResponse {}
+
 message DeleteScoreRequest {
+  // The name of the score.
   string name = 1;
+
+  // The resource name of the origin vertex.
   string vertex_a = 2;
+
+  // The resource name of the destination vertex.
   string vertex_b = 3;
 }
 
@@ -87,17 +112,14 @@ message SearchScoresRequest {
   // The maximum number of items to return.
   int32 page_size = 1;
 
-  // The next_page_token value returned from a previous Search request, if any.
-  string page_token = 2;
+  // The name of the score.
+  string name = 2;
 
-  string name = 3;
-  string vertex_a = 4;
+  // The resource name of the origin vertex.
+  string vertex_a = 3;
 }
 
 message SearchScoresResponse {
+  // Scores in decending order by score value.
   repeated Score scores = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
 }

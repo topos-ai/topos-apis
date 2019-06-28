@@ -25,6 +25,11 @@ class ScoresStub(object):
         request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetScoreRequest.SerializeToString,
         response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.FromString,
         )
+    self.BatchSetScore = channel.unary_unary(
+        '/topos.scores.v1.Scores/BatchSetScore',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreResponse.FromString,
+        )
     self.DeleteScore = channel.unary_unary(
         '/topos.scores.v1.Scores/DeleteScore',
         request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteScoreRequest.SerializeToString,
@@ -50,6 +55,13 @@ class ScoresServicer(object):
 
   def SetScore(self, request, context):
     """Sets a score.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def BatchSetScore(self, request, context):
+    """Sets a batch of scores.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -81,6 +93,11 @@ def add_ScoresServicer_to_server(servicer, server):
           servicer.SetScore,
           request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetScoreRequest.FromString,
           response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.SerializeToString,
+      ),
+      'BatchSetScore': grpc.unary_unary_rpc_method_handler(
+          servicer.BatchSetScore,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreResponse.SerializeToString,
       ),
       'DeleteScore': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteScore,
