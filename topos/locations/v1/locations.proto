@@ -151,8 +151,14 @@ message IntersectRegionsRequest {
 
 message IntersectRegionsResponse {
   message IntersectingRegions {
+    // The intersecting region name.
     string name = 1;
-    double area = 2;
+
+    // The percentage of the region's area included in the intersection.
+    double region_area = 2;
+
+    // The percentage of the intersection's area included in the region.
+    double intersection_area = 3;
   }
 
   repeated IntersectingRegions intersecting_regions = 1;
