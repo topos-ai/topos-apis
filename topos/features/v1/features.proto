@@ -24,7 +24,7 @@ service Features {
     };
   }
 
-  // Deletes a feature set, cascade deletes feature set and feature relation
+  // Deletes a feature set
   rpc DeleteFeatureSet(DeleteFeatureSetRequest)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
