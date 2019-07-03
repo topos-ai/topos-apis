@@ -362,60 +362,60 @@ DESCRIPTOR.message_types_by_name['TopScoresRequest'] = _TOPSCORESREQUEST
 DESCRIPTOR.message_types_by_name['TopScoresResponse'] = _TOPSCORESRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), dict(
-  DESCRIPTOR = _SCORE,
-  __module__ = 'topos.scores.v1.scores_pb2'
+Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), {
+  'DESCRIPTOR' : _SCORE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.Score)
-  ))
+  })
 _sym_db.RegisterMessage(Score)
 
-GetScoreRequest = _reflection.GeneratedProtocolMessageType('GetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
+GetScoreRequest = _reflection.GeneratedProtocolMessageType('GetScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.GetScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetScoreRequest)
 
-SetScoreRequest = _reflection.GeneratedProtocolMessageType('SetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
+SetScoreRequest = _reflection.GeneratedProtocolMessageType('SetScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.SetScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetScoreRequest)
 
-BatchSetScoreRequest = _reflection.GeneratedProtocolMessageType('BatchSetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _BATCHSETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
+BatchSetScoreRequest = _reflection.GeneratedProtocolMessageType('BatchSetScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(BatchSetScoreRequest)
 
-BatchSetScoreResponse = _reflection.GeneratedProtocolMessageType('BatchSetScoreResponse', (_message.Message,), dict(
-  DESCRIPTOR = _BATCHSETSCORERESPONSE,
-  __module__ = 'topos.scores.v1.scores_pb2'
+BatchSetScoreResponse = _reflection.GeneratedProtocolMessageType('BatchSetScoreResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETSCORERESPONSE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetScoreResponse)
-  ))
+  })
 _sym_db.RegisterMessage(BatchSetScoreResponse)
 
-DeleteScoreRequest = _reflection.GeneratedProtocolMessageType('DeleteScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETESCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
+DeleteScoreRequest = _reflection.GeneratedProtocolMessageType('DeleteScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETESCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.DeleteScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeleteScoreRequest)
 
-TopScoresRequest = _reflection.GeneratedProtocolMessageType('TopScoresRequest', (_message.Message,), dict(
-  DESCRIPTOR = _TOPSCORESREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
+TopScoresRequest = _reflection.GeneratedProtocolMessageType('TopScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TOPSCORESREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresRequest)
-  ))
+  })
 _sym_db.RegisterMessage(TopScoresRequest)
 
-TopScoresResponse = _reflection.GeneratedProtocolMessageType('TopScoresResponse', (_message.Message,), dict(
-  DESCRIPTOR = _TOPSCORESRESPONSE,
-  __module__ = 'topos.scores.v1.scores_pb2'
+TopScoresResponse = _reflection.GeneratedProtocolMessageType('TopScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TOPSCORESRESPONSE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresResponse)
-  ))
+  })
 _sym_db.RegisterMessage(TopScoresResponse)
 
 

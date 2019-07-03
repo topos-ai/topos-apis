@@ -68,7 +68,7 @@ class FeaturesStub(object):
     self.BatchSetFeatureValue = channel.unary_unary(
         '/topos.features.v1.Features/BatchSetFeatureValue',
         request_serializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueResponse.FromString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.DeleteFeatureValue = channel.unary_unary(
         '/topos.features.v1.Features/DeleteFeatureValue',
@@ -79,11 +79,6 @@ class FeaturesStub(object):
         '/topos.features.v1.Features/SearchFeatureValues',
         request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesRequest.SerializeToString,
         response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesResponse.FromString,
-        )
-    self.TimeSeriesFeatureValues = channel.unary_unary(
-        '/topos.features.v1.Features/TimeSeriesFeatureValues',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.TimeSeriesFeatureValuesRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.TimeSeriesFeatureValuesResponse.FromString,
         )
 
 
@@ -106,7 +101,7 @@ class FeaturesServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def DeleteFeatureSet(self, request, context):
-    """Deletes a feature set, cascade deletes feature set and feature relation
+    """Deletes a feature set
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -182,13 +177,6 @@ class FeaturesServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def TimeSeriesFeatureValues(self, request, context):
-    """Gets Time series of feature values
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_FeaturesServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -245,7 +233,7 @@ def add_FeaturesServicer_to_server(servicer, server):
       'BatchSetFeatureValue': grpc.unary_unary_rpc_method_handler(
           servicer.BatchSetFeatureValue,
           request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueResponse.SerializeToString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'DeleteFeatureValue': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteFeatureValue,
@@ -256,11 +244,6 @@ def add_FeaturesServicer_to_server(servicer, server):
           servicer.SearchFeatureValues,
           request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesRequest.FromString,
           response_serializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesResponse.SerializeToString,
-      ),
-      'TimeSeriesFeatureValues': grpc.unary_unary_rpc_method_handler(
-          servicer.TimeSeriesFeatureValues,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.TimeSeriesFeatureValuesRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.TimeSeriesFeatureValuesResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

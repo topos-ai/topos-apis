@@ -671,117 +671,117 @@ DESCRIPTOR.message_types_by_name['IntersectRegionsResponse'] = _INTERSECTREGIONS
 DESCRIPTOR.enum_types_by_name['GeometryEncoding'] = _GEOMETRYENCODING
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-RegionType = _reflection.GeneratedProtocolMessageType('RegionType', (_message.Message,), dict(
-  DESCRIPTOR = _REGIONTYPE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+RegionType = _reflection.GeneratedProtocolMessageType('RegionType', (_message.Message,), {
+  'DESCRIPTOR' : _REGIONTYPE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.RegionType)
-  ))
+  })
 _sym_db.RegisterMessage(RegionType)
 
-Region = _reflection.GeneratedProtocolMessageType('Region', (_message.Message,), dict(
-  DESCRIPTOR = _REGION,
-  __module__ = 'topos.locations.v1.locations_pb2'
+Region = _reflection.GeneratedProtocolMessageType('Region', (_message.Message,), {
+  'DESCRIPTOR' : _REGION,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.Region)
-  ))
+  })
 _sym_db.RegisterMessage(Region)
 
-GetRegionRequest = _reflection.GeneratedProtocolMessageType('GetRegionRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETREGIONREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+GetRegionRequest = _reflection.GeneratedProtocolMessageType('GetRegionRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETREGIONREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetRegionRequest)
 
-GetRegionGeometryRequest = _reflection.GeneratedProtocolMessageType('GetRegionGeometryRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETREGIONGEOMETRYREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+GetRegionGeometryRequest = _reflection.GeneratedProtocolMessageType('GetRegionGeometryRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETREGIONGEOMETRYREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionGeometryRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetRegionGeometryRequest)
 
-GetRegionGeometryResponse = _reflection.GeneratedProtocolMessageType('GetRegionGeometryResponse', (_message.Message,), dict(
-  DESCRIPTOR = _GETREGIONGEOMETRYRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+GetRegionGeometryResponse = _reflection.GeneratedProtocolMessageType('GetRegionGeometryResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETREGIONGEOMETRYRESPONSE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionGeometryResponse)
-  ))
+  })
 _sym_db.RegisterMessage(GetRegionGeometryResponse)
 
-SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONSREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONSREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.SearchRegionsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionsRequest)
 
-SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONSRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONSRESPONSE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.SearchRegionsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionsResponse)
 
-GetRegionFeatureSetValuesRequest = _reflection.GeneratedProtocolMessageType('GetRegionFeatureSetValuesRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETREGIONFEATURESETVALUESREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+GetRegionFeatureSetValuesRequest = _reflection.GeneratedProtocolMessageType('GetRegionFeatureSetValuesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETREGIONFEATURESETVALUESREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionFeatureSetValuesRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetRegionFeatureSetValuesRequest)
 
-GetRegionFeatureSetValuesResponse = _reflection.GeneratedProtocolMessageType('GetRegionFeatureSetValuesResponse', (_message.Message,), dict(
+GetRegionFeatureSetValuesResponse = _reflection.GeneratedProtocolMessageType('GetRegionFeatureSetValuesResponse', (_message.Message,), {
 
-  FeatureValuesEntry = _reflection.GeneratedProtocolMessageType('FeatureValuesEntry', (_message.Message,), dict(
-    DESCRIPTOR = _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY,
-    __module__ = 'topos.locations.v1.locations_pb2'
+  'FeatureValuesEntry' : _reflection.GeneratedProtocolMessageType('FeatureValuesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _GETREGIONFEATURESETVALUESRESPONSE_FEATUREVALUESENTRY,
+    '__module__' : 'topos.locations.v1.locations_pb2'
     # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionFeatureSetValuesResponse.FeatureValuesEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _GETREGIONFEATURESETVALUESRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+  'DESCRIPTOR' : _GETREGIONFEATURESETVALUESRESPONSE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.GetRegionFeatureSetValuesResponse)
-  ))
+  })
 _sym_db.RegisterMessage(GetRegionFeatureSetValuesResponse)
 _sym_db.RegisterMessage(GetRegionFeatureSetValuesResponse.FeatureValuesEntry)
 
-LatLng = _reflection.GeneratedProtocolMessageType('LatLng', (_message.Message,), dict(
-  DESCRIPTOR = _LATLNG,
-  __module__ = 'topos.locations.v1.locations_pb2'
+LatLng = _reflection.GeneratedProtocolMessageType('LatLng', (_message.Message,), {
+  'DESCRIPTOR' : _LATLNG,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.LatLng)
-  ))
+  })
 _sym_db.RegisterMessage(LatLng)
 
-LocateRegionsRequest = _reflection.GeneratedProtocolMessageType('LocateRegionsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LOCATEREGIONSREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+LocateRegionsRequest = _reflection.GeneratedProtocolMessageType('LocateRegionsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LOCATEREGIONSREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.LocateRegionsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(LocateRegionsRequest)
 
-LocateRegionsResponse = _reflection.GeneratedProtocolMessageType('LocateRegionsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LOCATEREGIONSRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+LocateRegionsResponse = _reflection.GeneratedProtocolMessageType('LocateRegionsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LOCATEREGIONSRESPONSE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.LocateRegionsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(LocateRegionsResponse)
 
-IntersectRegionsRequest = _reflection.GeneratedProtocolMessageType('IntersectRegionsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _INTERSECTREGIONSREQUEST,
-  __module__ = 'topos.locations.v1.locations_pb2'
+IntersectRegionsRequest = _reflection.GeneratedProtocolMessageType('IntersectRegionsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _INTERSECTREGIONSREQUEST,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.IntersectRegionsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(IntersectRegionsRequest)
 
-IntersectRegionsResponse = _reflection.GeneratedProtocolMessageType('IntersectRegionsResponse', (_message.Message,), dict(
+IntersectRegionsResponse = _reflection.GeneratedProtocolMessageType('IntersectRegionsResponse', (_message.Message,), {
 
-  IntersectingRegions = _reflection.GeneratedProtocolMessageType('IntersectingRegions', (_message.Message,), dict(
-    DESCRIPTOR = _INTERSECTREGIONSRESPONSE_INTERSECTINGREGIONS,
-    __module__ = 'topos.locations.v1.locations_pb2'
+  'IntersectingRegions' : _reflection.GeneratedProtocolMessageType('IntersectingRegions', (_message.Message,), {
+    'DESCRIPTOR' : _INTERSECTREGIONSRESPONSE_INTERSECTINGREGIONS,
+    '__module__' : 'topos.locations.v1.locations_pb2'
     # @@protoc_insertion_point(class_scope:topos.locations.v1.IntersectRegionsResponse.IntersectingRegions)
-    ))
+    })
   ,
-  DESCRIPTOR = _INTERSECTREGIONSRESPONSE,
-  __module__ = 'topos.locations.v1.locations_pb2'
+  'DESCRIPTOR' : _INTERSECTREGIONSRESPONSE,
+  '__module__' : 'topos.locations.v1.locations_pb2'
   # @@protoc_insertion_point(class_scope:topos.locations.v1.IntersectRegionsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(IntersectRegionsResponse)
 _sym_db.RegisterMessage(IntersectRegionsResponse.IntersectingRegions)
 

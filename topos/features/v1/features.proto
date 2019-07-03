@@ -4,7 +4,6 @@ package topos.features.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "google/rpc/status.proto";
 
 option go_package = "topos/features/v1;features";
 
@@ -12,14 +11,14 @@ service Features {
   // Gets a feature set.
   rpc GetFeatureSet(GetFeatureSetRequest) returns (FeatureSet) {
     option (google.api.http) = {
-      get : "/v1/{name=feature_sets/*}"
+      get : "/v1/{name=featureSets/*}"
     };
   }
 
   // Sets a feature set.
   rpc SetFeatureSet(SetFeatureSetRequest) returns (FeatureSet) {
     option (google.api.http) = {
-      post : "/v1/{feature_set.name=feature_sets/*}:set"
+      post : "/v1/{feature_set.feature_set_name=featureSets/*}:set"
       body : "feature_set"
     };
   }
@@ -28,14 +27,14 @@ service Features {
   rpc DeleteFeatureSet(DeleteFeatureSetRequest)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{name=feature_sets/*}"
+      delete : "/v1/{feature_set_name=featureSets/*}"
     };
   }
 
   // Sets a feature set and a feature relation.
   rpc SetFeatureSetFeature(FeatureSetFeature) returns (FeatureSetFeature) {
     option (google.api.http) = {
-      post : "/v1/{feature_set_feature.feature_set_name=feature_sets/*}/"
+      post : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
              "{feature_set_feature.feature_name=features/*}:set"
       body : "feature_set_feature"
     };
@@ -45,7 +44,7 @@ service Features {
   rpc DeleteFeatureSetFeature(FeatureSetFeature)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{feature_set_feature.feature_set_name=feature_sets/*}/"
+      delete : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
                "{feature_set_feature.feature_name=features/*}"
     };
   }
@@ -54,7 +53,7 @@ service Features {
   rpc ListFeatureSets(ListFeatureSetsRequest)
       returns (ListFeatureSetsResponse) {
     option (google.api.http) = {
-      get : "/v1/feature_sets"
+      get : "/v1/featureSets"
     };
   }
 
@@ -68,7 +67,7 @@ service Features {
   // Sets a feature meta.
   rpc SetFeature(SetFeatureRequest) returns (Feature) {
     option (google.api.http) = {
-      post : "/v1/{feature.name=features/*}:set"
+      post : "/v1/{feature.feature_name=features/*}:set"
       body : "feature"
     };
   }
@@ -76,23 +75,23 @@ service Features {
   // Deletes a feature meta
   rpc DeleteFeature(DeleteFeatureRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{name=features/*}"
+      delete : "/v1/{feature_name=features/*}"
     };
   }
 
   // Sets a feature value.
   rpc SetFeatureValue(SetFeatureValueRequest) returns (FeatureValue) {
     option (google.api.http) = {
-      post : "/v1/{feature_value.name=feature_values/*}:set"
+      post : "/v1/{feature_value.feature_name=featureValues/*}:set"
       body : "feature_value"
     };
   }
 
   // Sets a batch of feature values.
   rpc BatchSetFeatureValue(BatchSetFeatureValueRequest)
-      returns (BatchSetFeatureValueResponse) {
+      returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      post : "/v1/feature_values:batch_set"
+      post : "/v1/featureValues:batchSet"
       body : "*"
     };
   }
@@ -101,7 +100,7 @@ service Features {
   rpc DeleteFeatureValue(DeleteFeatureValueRequest)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{name=feature_values/*}"
+      delete : "/v1/{feature_name=featureValues/*}"
     };
   }
 
@@ -109,23 +108,14 @@ service Features {
   rpc SearchFeatureValues(SearchFeatureValuesRequest)
       returns (SearchFeatureValuesResponse) {
     option (google.api.http) = {
-      post : "/v1/feature_values:search"
-      body : "*"
-    };
-  }
-
-  // Gets Time series of feature values
-  rpc TimeSeriesFeatureValues(TimeSeriesFeatureValuesRequest)
-      returns (TimeSeriesFeatureValuesResponse) {
-    option (google.api.http) = {
-      post : "/v1/feature_values:time_series"
+      post : "/v1/featureValues:search"
       body : "*"
     };
   }
 }
 
 message FeatureSet {
-  string name = 1;
+  string feature_set_name = 1;
   string display_name = 2;
   string description = 3;
   bool include_features = 4;
@@ -133,7 +123,7 @@ message FeatureSet {
 }
 
 message GetFeatureSetRequest {
-  string name = 1;
+  string feature_set_name = 1;
 
   // If set true, response includes features of each feature set
   bool include_features = 2;
@@ -141,7 +131,7 @@ message GetFeatureSetRequest {
 
 message SetFeatureSetRequest { FeatureSet feature_set = 1; }
 
-message DeleteFeatureSetRequest { string name = 1; }
+message DeleteFeatureSetRequest { string feature_set_name = 1; }
 
 message FeatureSetFeature {
   string feature_set_name = 1;
@@ -162,7 +152,7 @@ message ListFeatureSetsResponse {
 }
 
 message Feature {
-  string name = 1;
+  string feature_name = 1;
   string display_name = 2;
   string description = 3;
   string source = 4;
@@ -170,7 +160,7 @@ message Feature {
 
 message SetFeatureRequest { Feature feature = 1; }
 
-message DeleteFeatureRequest { string name = 1; }
+message DeleteFeatureRequest { string feature_name = 1; }
 
 message ListFeaturesRequest {
   // The maximum number of items to return.
@@ -201,7 +191,7 @@ enum TimeType {
 }
 
 message FeatureValue {
-  string name = 1;
+  string feature_name = 1;
   RegionType region_type = 2;
   string region = 3;
   TimeType time_type = 4;
@@ -215,16 +205,7 @@ message BatchSetFeatureValueRequest {
   repeated FeatureValue feature_values = 1;
 }
 
-message BatchSetFeatureValueResponse {
-  repeated google.rpc.Status status = 1;
-}
-
-message DeleteFeatureValueRequest { string name = 1; }
-
-message FeatureData {
-  string name = 1;
-  double value = 2;
-}
+message DeleteFeatureValueRequest { string feature_name = 1; }
 
 message SearchFeatureValuesRequest {
   // The maximum number of items to return.
@@ -233,11 +214,12 @@ message SearchFeatureValuesRequest {
   // The next_page_token value returned from a previous Search request, if any.
   string page_token = 2;
 
-  string name = 3;
+  string feature_name = 3;
   RegionType region_type = 4;
   string region = 5;
   TimeType time_type = 6;
-  string time = 7;
+  string time_from = 7;
+  string time_to = 8;
 }
 
 message SearchFeatureValuesResponse {
@@ -246,38 +228,6 @@ message SearchFeatureValuesResponse {
   // results in the list.
   string next_page_token = 1;
 
-  string name = 2;
-  RegionType region_type = 3;
-  string region = 4;
-  TimeType time_type = 5;
-  string time = 6;
-
   // The feature value.
-  repeated FeatureData data = 7;
-}
-
-message TimeSeriesFeatureValuesRequest {
-  int32 page_size = 1;
-  string page_token = 2;
-
-  string name = 3;
-  RegionType region_type = 4;
-  string region = 5;
-  TimeType time_type = 6;
-  string time_from = 7;
-  string time_to = 8;
-}
-
-message TimeSeriesFeatureValuesResponse {
-  string next_page_token = 1;
-
-  string name = 2;
-  RegionType region_type = 3;
-  string region = 4;
-  TimeType time_type = 5;
-  string time_from = 6;
-  string time_to = 7;
-
-  // The feature value.
-  repeated FeatureData data = 8;
+  repeated FeatureValue values = 2;
 }
