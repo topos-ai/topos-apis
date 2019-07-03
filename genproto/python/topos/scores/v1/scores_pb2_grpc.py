@@ -35,10 +35,10 @@ class ScoresStub(object):
         request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteScoreRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
-    self.SearchScores = channel.unary_unary(
-        '/topos.scores.v1.Scores/SearchScores',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.SearchScoresRequest.SerializeToString,
-        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.SearchScoresResponse.FromString,
+    self.TopScores = channel.unary_unary(
+        '/topos.scores.v1.Scores/TopScores',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresResponse.FromString,
         )
 
 
@@ -74,8 +74,8 @@ class ScoresServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SearchScores(self, request, context):
-    """Search scores.
+  def TopScores(self, request, context):
+    """Gets scores in descending order by score value.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -104,10 +104,10 @@ def add_ScoresServicer_to_server(servicer, server):
           request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteScoreRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
-      'SearchScores': grpc.unary_unary_rpc_method_handler(
-          servicer.SearchScores,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.SearchScoresRequest.FromString,
-          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.SearchScoresResponse.SerializeToString,
+      'TopScores': grpc.unary_unary_rpc_method_handler(
+          servicer.TopScores,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

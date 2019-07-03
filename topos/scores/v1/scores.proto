@@ -39,11 +39,10 @@ service Scores {
     };
   }
 
-  // Search scores.
-  rpc SearchScores(SearchScoresRequest) returns (SearchScoresResponse) {
+  // Gets scores in descending order by score value.
+  rpc TopScores(TopScoresRequest) returns (TopScoresResponse) {
     option (google.api.http) = {
-      post : "/v1/{name=scores/*}:search"
-      body : "*"
+      get : "/v1/{name=scores/*}:top"
     };
   }
 }
@@ -108,7 +107,7 @@ message DeleteScoreRequest {
   string vertex_b = 3;
 }
 
-message SearchScoresRequest {
+message TopScoresRequest {
   // The maximum number of items to return.
   int32 page_size = 1;
 
@@ -119,7 +118,7 @@ message SearchScoresRequest {
   string vertex_a = 3;
 }
 
-message SearchScoresResponse {
+message TopScoresResponse {
   // Scores in decending order by score value.
   repeated Score scores = 1;
 }

@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.scores.v1',
   syntax='proto3',
   serialized_options=_b('Z\026topos/scores/v1;scores'),
-  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\x05Score\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\x12\r\n\x05score\x18\x04 \x01(\x01\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"C\n\x0fGetScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"8\n\x0fSetScoreRequest\x12%\n\x05score\x18\x01 \x01(\x0b\x32\x16.topos.scores.v1.Score\">\n\x14\x42\x61tchSetScoreRequest\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x17\n\x15\x42\x61tchSetScoreResponse\"F\n\x12\x44\x65leteScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"H\n\x13SearchScoresRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\">\n\x14SearchScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\xd3\x04\n\x06Scores\x12\x61\n\x08GetScore\x12 .topos.scores.v1.GetScoreRequest\x1a\x16.topos.scores.v1.Score\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=scores/*}\x12r\n\x08SetScore\x12 .topos.scores.v1.SetScoreRequest\x1a\x16.topos.scores.v1.Score\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{score.name=scores/*}:set:\x05score\x12~\n\rBatchSetScore\x12%.topos.scores.v1.BatchSetScoreRequest\x1a&.topos.scores.v1.BatchSetScoreResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/scores:batchSet:\x01*\x12m\n\x0b\x44\x65leteScore\x12#.topos.scores.v1.DeleteScoreRequest\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b*\x19/v1/{score.name=scores/*}\x12\x82\x01\n\x0cSearchScores\x12$.topos.scores.v1.SearchScoresRequest\x1a%.topos.scores.v1.SearchScoresResponse\"%\x82\xd3\xe4\x93\x02\x1f\"\x1a/v1/{name=scores/*}:search:\x01*B\x18Z\x16topos/scores/v1;scoresb\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\x05Score\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\x12\r\n\x05score\x18\x04 \x01(\x01\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"C\n\x0fGetScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"8\n\x0fSetScoreRequest\x12%\n\x05score\x18\x01 \x01(\x0b\x32\x16.topos.scores.v1.Score\">\n\x14\x42\x61tchSetScoreRequest\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x17\n\x15\x42\x61tchSetScoreResponse\"F\n\x12\x44\x65leteScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"E\n\x10TopScoresRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\";\n\x11TopScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\xc3\x04\n\x06Scores\x12\x61\n\x08GetScore\x12 .topos.scores.v1.GetScoreRequest\x1a\x16.topos.scores.v1.Score\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=scores/*}\x12r\n\x08SetScore\x12 .topos.scores.v1.SetScoreRequest\x1a\x16.topos.scores.v1.Score\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{score.name=scores/*}:set:\x05score\x12~\n\rBatchSetScore\x12%.topos.scores.v1.BatchSetScoreRequest\x1a&.topos.scores.v1.BatchSetScoreResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/scores:batchSet:\x01*\x12m\n\x0b\x44\x65leteScore\x12#.topos.scores.v1.DeleteScoreRequest\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b*\x19/v1/{score.name=scores/*}\x12s\n\tTopScores\x12!.topos.scores.v1.TopScoresRequest\x1a\".topos.scores.v1.TopScoresResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/v1/{name=scores/*}:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -272,29 +272,29 @@ _DELETESCOREREQUEST = _descriptor.Descriptor(
 )
 
 
-_SEARCHSCORESREQUEST = _descriptor.Descriptor(
-  name='SearchScoresRequest',
-  full_name='topos.scores.v1.SearchScoresRequest',
+_TOPSCORESREQUEST = _descriptor.Descriptor(
+  name='TopScoresRequest',
+  full_name='topos.scores.v1.TopScoresRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='page_size', full_name='topos.scores.v1.SearchScoresRequest.page_size', index=0,
+      name='page_size', full_name='topos.scores.v1.TopScoresRequest.page_size', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.SearchScoresRequest.name', index=1,
+      name='name', full_name='topos.scores.v1.TopScoresRequest.name', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='vertex_a', full_name='topos.scores.v1.SearchScoresRequest.vertex_a', index=2,
+      name='vertex_a', full_name='topos.scores.v1.TopScoresRequest.vertex_a', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -313,19 +313,19 @@ _SEARCHSCORESREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=602,
-  serialized_end=674,
+  serialized_end=671,
 )
 
 
-_SEARCHSCORESRESPONSE = _descriptor.Descriptor(
-  name='SearchScoresResponse',
-  full_name='topos.scores.v1.SearchScoresResponse',
+_TOPSCORESRESPONSE = _descriptor.Descriptor(
+  name='TopScoresResponse',
+  full_name='topos.scores.v1.TopScoresResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='scores', full_name='topos.scores.v1.SearchScoresResponse.scores', index=0,
+      name='scores', full_name='topos.scores.v1.TopScoresResponse.scores', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -343,23 +343,23 @@ _SEARCHSCORESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=676,
-  serialized_end=738,
+  serialized_start=673,
+  serialized_end=732,
 )
 
 _SCORE.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _SCORE.fields_by_name['update_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _SETSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
 _BATCHSETSCOREREQUEST.fields_by_name['scores'].message_type = _SCORE
-_SEARCHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
+_TOPSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
 DESCRIPTOR.message_types_by_name['Score'] = _SCORE
 DESCRIPTOR.message_types_by_name['GetScoreRequest'] = _GETSCOREREQUEST
 DESCRIPTOR.message_types_by_name['SetScoreRequest'] = _SETSCOREREQUEST
 DESCRIPTOR.message_types_by_name['BatchSetScoreRequest'] = _BATCHSETSCOREREQUEST
 DESCRIPTOR.message_types_by_name['BatchSetScoreResponse'] = _BATCHSETSCORERESPONSE
 DESCRIPTOR.message_types_by_name['DeleteScoreRequest'] = _DELETESCOREREQUEST
-DESCRIPTOR.message_types_by_name['SearchScoresRequest'] = _SEARCHSCORESREQUEST
-DESCRIPTOR.message_types_by_name['SearchScoresResponse'] = _SEARCHSCORESRESPONSE
+DESCRIPTOR.message_types_by_name['TopScoresRequest'] = _TOPSCORESREQUEST
+DESCRIPTOR.message_types_by_name['TopScoresResponse'] = _TOPSCORESRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), dict(
@@ -404,19 +404,19 @@ DeleteScoreRequest = _reflection.GeneratedProtocolMessageType('DeleteScoreReques
   ))
 _sym_db.RegisterMessage(DeleteScoreRequest)
 
-SearchScoresRequest = _reflection.GeneratedProtocolMessageType('SearchScoresRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHSCORESREQUEST,
+TopScoresRequest = _reflection.GeneratedProtocolMessageType('TopScoresRequest', (_message.Message,), dict(
+  DESCRIPTOR = _TOPSCORESREQUEST,
   __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.SearchScoresRequest)
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresRequest)
   ))
-_sym_db.RegisterMessage(SearchScoresRequest)
+_sym_db.RegisterMessage(TopScoresRequest)
 
-SearchScoresResponse = _reflection.GeneratedProtocolMessageType('SearchScoresResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHSCORESRESPONSE,
+TopScoresResponse = _reflection.GeneratedProtocolMessageType('TopScoresResponse', (_message.Message,), dict(
+  DESCRIPTOR = _TOPSCORESRESPONSE,
   __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.SearchScoresResponse)
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresResponse)
   ))
-_sym_db.RegisterMessage(SearchScoresResponse)
+_sym_db.RegisterMessage(TopScoresResponse)
 
 
 DESCRIPTOR._options = None
@@ -427,8 +427,8 @@ _SCORES = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=741,
-  serialized_end=1336,
+  serialized_start=735,
+  serialized_end=1314,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetScore',
@@ -467,13 +467,13 @@ _SCORES = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\033*\031/v1/{score.name=scores/*}'),
   ),
   _descriptor.MethodDescriptor(
-    name='SearchScores',
-    full_name='topos.scores.v1.Scores.SearchScores',
+    name='TopScores',
+    full_name='topos.scores.v1.Scores.TopScores',
     index=4,
     containing_service=None,
-    input_type=_SEARCHSCORESREQUEST,
-    output_type=_SEARCHSCORESRESPONSE,
-    serialized_options=_b('\202\323\344\223\002\037\"\032/v1/{name=scores/*}:search:\001*'),
+    input_type=_TOPSCORESREQUEST,
+    output_type=_TOPSCORESRESPONSE,
+    serialized_options=_b('\202\323\344\223\002\031\022\027/v1/{name=scores/*}:top'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_SCORES)
