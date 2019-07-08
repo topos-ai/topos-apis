@@ -32,8 +32,8 @@ class ScoresStub(object):
         )
     self.BatchSetGraphScores = channel.unary_unary(
         '/topos.scores.v1.Scores/BatchSetGraphScores',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreRequest.SerializeToString,
-        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreResponse.FromString,
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoresResponse.FromString,
         )
     self.DeleteGraph = channel.unary_unary(
         '/topos.scores.v1.Scores/DeleteGraph',
@@ -125,8 +125,8 @@ def add_ScoresServicer_to_server(servicer, server):
       ),
       'BatchSetGraphScores': grpc.unary_unary_rpc_method_handler(
           servicer.BatchSetGraphScores,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreRequest.FromString,
-          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreResponse.SerializeToString,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoresRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoresResponse.SerializeToString,
       ),
       'DeleteGraph': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteGraph,

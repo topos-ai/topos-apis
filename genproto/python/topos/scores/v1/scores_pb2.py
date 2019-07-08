@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.scores.v1',
   syntax='proto3',
   serialized_options=_b('Z\026topos/scores/v1;scores'),
-  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n\x05Score\x12\x10\n\x08vertex_a\x18\x01 \x01(\t\x12\x10\n\x08vertex_b\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x01\"M\n\x16ListGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"Z\n\x17ListGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"H\n\x14GetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"K\n\x14SetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x01(\x0b\x32\x16.topos.scores.v1.Score\"P\n\x19\x42\x61tchSetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x1c\n\x1a\x42\x61tchSetGraphScoreResponse\"\"\n\x12\x44\x65leteGraphRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"K\n\x17\x44\x65leteGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"J\n\x15TopGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\"@\n\x16TopGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\x96\x07\n\x06Scores\x12\x88\x01\n\x0fListGraphScores\x12\'.topos.scores.v1.ListGraphScoresRequest\x1a(.topos.scores.v1.ListGraphScoresResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12r\n\rGetGraphScore\x12%.topos.scores.v1.GetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12}\n\rSetGraphScore\x12%.topos.scores.v1.SetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"-\x82\xd3\xe4\x93\x02\'\"\x1e/v1/{name=graphs/*}/scores:set:\x05score\x12\x9e\x01\n\x13\x42\x61tchSetGraphScores\x12*.topos.scores.v1.BatchSetGraphScoreRequest\x1a+.topos.scores.v1.BatchSetGraphScoreResponse\".\x82\xd3\xe4\x93\x02(\"#/v1/{name=graphs/*}/scores:batchSet:\x01*\x12g\n\x0b\x44\x65leteGraph\x12#.topos.scores.v1.DeleteGraphRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=graphs/*}\x12x\n\x10\x44\x65leteGraphScore\x12(.topos.scores.v1.DeleteGraphScoreRequest\x1a\x16.google.protobuf.Empty\"\"\x82\xd3\xe4\x93\x02\x1c*\x1a/v1/{name=graphs/*}/scores\x12\x89\x01\n\x0eTopGraphScores\x12&.topos.scores.v1.TopGraphScoresRequest\x1a\'.topos.scores.v1.TopGraphScoresResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/{name=graphs/*}/scores:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n\x05Score\x12\x10\n\x08vertex_a\x18\x01 \x01(\t\x12\x10\n\x08vertex_b\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x01\"M\n\x16ListGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"Z\n\x17ListGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"H\n\x14GetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"K\n\x14SetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x01(\x0b\x32\x16.topos.scores.v1.Score\"R\n\x1a\x42\x61tchSetGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x1d\n\x1b\x42\x61tchSetGraphScoresResponse\"\"\n\x12\x44\x65leteGraphRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"K\n\x17\x44\x65leteGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"J\n\x15TopGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\"@\n\x16TopGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\x98\x07\n\x06Scores\x12\x88\x01\n\x0fListGraphScores\x12\'.topos.scores.v1.ListGraphScoresRequest\x1a(.topos.scores.v1.ListGraphScoresResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12r\n\rGetGraphScore\x12%.topos.scores.v1.GetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12}\n\rSetGraphScore\x12%.topos.scores.v1.SetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"-\x82\xd3\xe4\x93\x02\'\"\x1e/v1/{name=graphs/*}/scores:set:\x05score\x12\xa0\x01\n\x13\x42\x61tchSetGraphScores\x12+.topos.scores.v1.BatchSetGraphScoresRequest\x1a,.topos.scores.v1.BatchSetGraphScoresResponse\".\x82\xd3\xe4\x93\x02(\"#/v1/{name=graphs/*}/scores:batchSet:\x01*\x12g\n\x0b\x44\x65leteGraph\x12#.topos.scores.v1.DeleteGraphRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=graphs/*}\x12x\n\x10\x44\x65leteGraphScore\x12(.topos.scores.v1.DeleteGraphScoreRequest\x1a\x16.google.protobuf.Empty\"\"\x82\xd3\xe4\x93\x02\x1c*\x1a/v1/{name=graphs/*}/scores\x12\x89\x01\n\x0eTopGraphScores\x12&.topos.scores.v1.TopGraphScoresRequest\x1a\'.topos.scores.v1.TopGraphScoresResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/{name=graphs/*}/scores:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -240,22 +240,22 @@ _SETGRAPHSCOREREQUEST = _descriptor.Descriptor(
 )
 
 
-_BATCHSETGRAPHSCOREREQUEST = _descriptor.Descriptor(
-  name='BatchSetGraphScoreRequest',
-  full_name='topos.scores.v1.BatchSetGraphScoreRequest',
+_BATCHSETGRAPHSCORESREQUEST = _descriptor.Descriptor(
+  name='BatchSetGraphScoresRequest',
+  full_name='topos.scores.v1.BatchSetGraphScoresRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.BatchSetGraphScoreRequest.name', index=0,
+      name='name', full_name='topos.scores.v1.BatchSetGraphScoresRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='score', full_name='topos.scores.v1.BatchSetGraphScoreRequest.score', index=1,
+      name='scores', full_name='topos.scores.v1.BatchSetGraphScoresRequest.scores', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -274,13 +274,13 @@ _BATCHSETGRAPHSCOREREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=490,
-  serialized_end=570,
+  serialized_end=572,
 )
 
 
-_BATCHSETGRAPHSCORERESPONSE = _descriptor.Descriptor(
-  name='BatchSetGraphScoreResponse',
-  full_name='topos.scores.v1.BatchSetGraphScoreResponse',
+_BATCHSETGRAPHSCORESRESPONSE = _descriptor.Descriptor(
+  name='BatchSetGraphScoresResponse',
+  full_name='topos.scores.v1.BatchSetGraphScoresResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -297,8 +297,8 @@ _BATCHSETGRAPHSCORERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=572,
-  serialized_end=600,
+  serialized_start=574,
+  serialized_end=603,
 )
 
 
@@ -328,8 +328,8 @@ _DELETEGRAPHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=602,
-  serialized_end=636,
+  serialized_start=605,
+  serialized_end=639,
 )
 
 
@@ -373,8 +373,8 @@ _DELETEGRAPHSCOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=638,
-  serialized_end=713,
+  serialized_start=641,
+  serialized_end=716,
 )
 
 
@@ -418,8 +418,8 @@ _TOPGRAPHSCORESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=715,
-  serialized_end=789,
+  serialized_start=718,
+  serialized_end=792,
 )
 
 
@@ -449,21 +449,21 @@ _TOPGRAPHSCORESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=791,
-  serialized_end=855,
+  serialized_start=794,
+  serialized_end=858,
 )
 
 _LISTGRAPHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
 _SETGRAPHSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
-_BATCHSETGRAPHSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
+_BATCHSETGRAPHSCORESREQUEST.fields_by_name['scores'].message_type = _SCORE
 _TOPGRAPHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
 DESCRIPTOR.message_types_by_name['Score'] = _SCORE
 DESCRIPTOR.message_types_by_name['ListGraphScoresRequest'] = _LISTGRAPHSCORESREQUEST
 DESCRIPTOR.message_types_by_name['ListGraphScoresResponse'] = _LISTGRAPHSCORESRESPONSE
 DESCRIPTOR.message_types_by_name['GetGraphScoreRequest'] = _GETGRAPHSCOREREQUEST
 DESCRIPTOR.message_types_by_name['SetGraphScoreRequest'] = _SETGRAPHSCOREREQUEST
-DESCRIPTOR.message_types_by_name['BatchSetGraphScoreRequest'] = _BATCHSETGRAPHSCOREREQUEST
-DESCRIPTOR.message_types_by_name['BatchSetGraphScoreResponse'] = _BATCHSETGRAPHSCORERESPONSE
+DESCRIPTOR.message_types_by_name['BatchSetGraphScoresRequest'] = _BATCHSETGRAPHSCORESREQUEST
+DESCRIPTOR.message_types_by_name['BatchSetGraphScoresResponse'] = _BATCHSETGRAPHSCORESRESPONSE
 DESCRIPTOR.message_types_by_name['DeleteGraphRequest'] = _DELETEGRAPHREQUEST
 DESCRIPTOR.message_types_by_name['DeleteGraphScoreRequest'] = _DELETEGRAPHSCOREREQUEST
 DESCRIPTOR.message_types_by_name['TopGraphScoresRequest'] = _TOPGRAPHSCORESREQUEST
@@ -505,19 +505,19 @@ SetGraphScoreRequest = _reflection.GeneratedProtocolMessageType('SetGraphScoreRe
   })
 _sym_db.RegisterMessage(SetGraphScoreRequest)
 
-BatchSetGraphScoreRequest = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoreRequest', (_message.Message,), {
-  'DESCRIPTOR' : _BATCHSETGRAPHSCOREREQUEST,
+BatchSetGraphScoresRequest = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETGRAPHSCORESREQUEST,
   '__module__' : 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoreRequest)
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoresRequest)
   })
-_sym_db.RegisterMessage(BatchSetGraphScoreRequest)
+_sym_db.RegisterMessage(BatchSetGraphScoresRequest)
 
-BatchSetGraphScoreResponse = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoreResponse', (_message.Message,), {
-  'DESCRIPTOR' : _BATCHSETGRAPHSCORERESPONSE,
+BatchSetGraphScoresResponse = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETGRAPHSCORESRESPONSE,
   '__module__' : 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoreResponse)
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoresResponse)
   })
-_sym_db.RegisterMessage(BatchSetGraphScoreResponse)
+_sym_db.RegisterMessage(BatchSetGraphScoresResponse)
 
 DeleteGraphRequest = _reflection.GeneratedProtocolMessageType('DeleteGraphRequest', (_message.Message,), {
   'DESCRIPTOR' : _DELETEGRAPHREQUEST,
@@ -556,8 +556,8 @@ _SCORES = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=858,
-  serialized_end=1776,
+  serialized_start=861,
+  serialized_end=1781,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListGraphScores',
@@ -591,8 +591,8 @@ _SCORES = _descriptor.ServiceDescriptor(
     full_name='topos.scores.v1.Scores.BatchSetGraphScores',
     index=3,
     containing_service=None,
-    input_type=_BATCHSETGRAPHSCOREREQUEST,
-    output_type=_BATCHSETGRAPHSCORERESPONSE,
+    input_type=_BATCHSETGRAPHSCORESREQUEST,
+    output_type=_BATCHSETGRAPHSCORESRESPONSE,
     serialized_options=_b('\202\323\344\223\002(\"#/v1/{name=graphs/*}/scores:batchSet:\001*'),
   ),
   _descriptor.MethodDescriptor(

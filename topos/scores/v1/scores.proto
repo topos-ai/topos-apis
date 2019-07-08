@@ -32,8 +32,8 @@ service Scores {
   }
 
   // Sets a batch of graph scores.
-  rpc BatchSetGraphScores(BatchSetGraphScoreRequest)
-      returns (BatchSetGraphScoreResponse) {
+  rpc BatchSetGraphScores(BatchSetGraphScoresRequest)
+      returns (BatchSetGraphScoresResponse) {
     option (google.api.http) = {
       post : "/v1/{name=graphs/*}/scores:batchSet"
       body : "*"
@@ -122,7 +122,7 @@ message SetGraphScoreRequest {
   Score score = 2;
 }
 
-message BatchSetGraphScoreRequest {
+message BatchSetGraphScoresRequest {
   // The name of the graph. It must have the format `"graphs/{graph}"`.
   // `{graphs}` must match the [regular
   // expression](https://github.com/google/re2/wiki/Syntax)
@@ -130,10 +130,10 @@ message BatchSetGraphScoreRequest {
   string name = 1;
 
   // The scores to set.
-  repeated Score score = 2;
+  repeated Score scores = 2;
 }
 
-message BatchSetGraphScoreResponse {}
+message BatchSetGraphScoresResponse {}
 
 message DeleteGraphRequest {
   // The name of the graph.
