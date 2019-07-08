@@ -1,0 +1,233 @@
+syntax = "proto3";
+
+package topos.features.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "topos/features/v1;features";
+
+service Features {
+  // Gets a feature set.
+  rpc GetFeatureSet(GetFeatureSetRequest) returns (FeatureSet) {
+    option (google.api.http) = {
+      get : "/v1/{name=featureSets/*}"
+    };
+  }
+
+  // Sets a feature set.
+  rpc SetFeatureSet(SetFeatureSetRequest) returns (FeatureSet) {
+    option (google.api.http) = {
+      post : "/v1/{feature_set.feature_set_name=featureSets/*}:set"
+      body : "feature_set"
+    };
+  }
+
+  // Deletes a feature set
+  rpc DeleteFeatureSet(DeleteFeatureSetRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{feature_set_name=featureSets/*}"
+    };
+  }
+
+  // Sets a feature set and a feature relation.
+  rpc SetFeatureSetFeature(FeatureSetFeature) returns (FeatureSetFeature) {
+    option (google.api.http) = {
+      post : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
+             "{feature_set_feature.feature_name=features/*}:set"
+      body : "feature_set_feature"
+    };
+  }
+
+  // Deletes a feature set and a feature relation.
+  rpc DeleteFeatureSetFeature(FeatureSetFeature)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
+               "{feature_set_feature.feature_name=features/*}"
+    };
+  }
+
+  // Lists feature sets.
+  rpc ListFeatureSets(ListFeatureSetsRequest)
+      returns (ListFeatureSetsResponse) {
+    option (google.api.http) = {
+      get : "/v1/featureSets"
+    };
+  }
+
+  // Lists feature meta.
+  rpc ListFeatures(ListFeaturesRequest) returns (ListFeaturesResponse) {
+    option (google.api.http) = {
+      get : "/v1/features"
+    };
+  }
+
+  // Sets a feature meta.
+  rpc SetFeature(SetFeatureRequest) returns (Feature) {
+    option (google.api.http) = {
+      post : "/v1/{feature.feature_name=features/*}:set"
+      body : "feature"
+    };
+  }
+
+  // Deletes a feature meta
+  rpc DeleteFeature(DeleteFeatureRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{feature_name=features/*}"
+    };
+  }
+
+  // Sets a feature value.
+  rpc SetFeatureValue(SetFeatureValueRequest) returns (FeatureValue) {
+    option (google.api.http) = {
+      post : "/v1/{feature_value.feature_name=featureValues/*}:set"
+      body : "feature_value"
+    };
+  }
+
+  // Sets a batch of feature values.
+  rpc BatchSetFeatureValue(BatchSetFeatureValueRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post : "/v1/featureValues:batchSet"
+      body : "*"
+    };
+  }
+
+  // Deletes a feature value.
+  rpc DeleteFeatureValue(DeleteFeatureValueRequest)
+      returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{feature_name=featureValues/*}"
+    };
+  }
+
+  // Search feature values.
+  rpc SearchFeatureValues(SearchFeatureValuesRequest)
+      returns (SearchFeatureValuesResponse) {
+    option (google.api.http) = {
+      post : "/v1/featureValues:search"
+      body : "*"
+    };
+  }
+}
+
+message FeatureSet {
+  string feature_set_name = 1;
+  string display_name = 2;
+  string description = 3;
+  bool include_features = 4;
+  repeated Feature features = 5; // features in feature set
+}
+
+message GetFeatureSetRequest {
+  string feature_set_name = 1;
+
+  // If set true, response includes features of each feature set
+  bool include_features = 2;
+}
+
+message SetFeatureSetRequest { FeatureSet feature_set = 1; }
+
+message DeleteFeatureSetRequest { string feature_set_name = 1; }
+
+message FeatureSetFeature {
+  string feature_set_name = 1;
+  string feature_name = 2;
+}
+
+message ListFeatureSetsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+}
+
+message ListFeatureSetsResponse {
+  string next_page_token = 1;
+  repeated FeatureSet feature_sets = 2;
+}
+
+message Feature {
+  string feature_name = 1;
+  string display_name = 2;
+  string description = 3;
+  string source = 4;
+}
+
+message SetFeatureRequest { Feature feature = 1; }
+
+message DeleteFeatureRequest { string feature_name = 1; }
+
+message ListFeaturesRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+}
+
+message ListFeaturesResponse {
+  repeated Feature feature = 1;
+  string next_page_token = 2;
+}
+
+enum RegionType {
+  REGION_TYPE_UNSPECIFIED = 0;
+  US_ZIPCODE = 1;
+}
+
+enum TimeType {
+  TIME_TYPE_UNSPECIFIED = 0;
+  EPOCH = 1;
+  YEAR = 2;
+  MONTH = 3;
+  DAY = 4;
+  HOUR = 5;
+  MINUTE = 6;
+}
+
+message FeatureValue {
+  string feature_name = 1;
+  RegionType region_type = 2;
+  string region = 3;
+  TimeType time_type = 4;
+  string time = 5;
+  double value = 6;
+}
+
+message SetFeatureValueRequest { FeatureValue feature_value = 1; }
+
+message BatchSetFeatureValueRequest {
+  repeated FeatureValue feature_values = 1;
+}
+
+message DeleteFeatureValueRequest { string feature_name = 1; }
+
+message SearchFeatureValuesRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous Search request, if any.
+  string page_token = 2;
+
+  string feature_name = 3;
+  RegionType region_type = 4;
+  string region = 5;
+  TimeType time_type = 6;
+  string time_from = 7;
+  string time_to = 8;
+}
+
+message SearchFeatureValuesResponse {
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 1;
+
+  // The feature value.
+  repeated FeatureValue values = 2;
+}
