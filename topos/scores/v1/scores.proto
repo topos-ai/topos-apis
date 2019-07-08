@@ -4,80 +4,144 @@ package topos.scores.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
 
 option go_package = "topos/scores/v1;scores";
 
 service Scores {
-  // Gets a score.
-  rpc GetScore(GetScoreRequest) returns (Score) {
+  // Lists a graph's scores.
+  rpc ListGraphScores(ListGraphScoresRequest)
+      returns (ListGraphScoresResponse) {
     option (google.api.http) = {
-      get : "/v1/{name=scores/*}"
+      get : "/v1/{name=graphs/*}/scores"
     };
   }
 
-  // Sets a score.
-  rpc SetScore(SetScoreRequest) returns (Score) {
+  // Gets a graph score.
+  rpc GetGraphScore(GetGraphScoreRequest) returns (Score) {
     option (google.api.http) = {
-      post : "/v1/{score.name=scores/*}:set"
+      get : "/v1/{name=graphs/*}/scores"
+    };
+  }
+
+  // Sets a graph score.
+  rpc SetGraphScore(SetGraphScoreRequest) returns (Score) {
+    option (google.api.http) = {
+      post : "/v1/{name=graphs/*}/scores:set"
       body : "score"
     };
   }
 
-  // Sets a batch of scores.
-  rpc BatchSetScore(BatchSetScoreRequest) returns (BatchSetScoreResponse) {
+  // Sets a batch of graph scores.
+  rpc BatchSetGraphScores(BatchSetGraphScoreRequest)
+      returns (BatchSetGraphScoreResponse) {
     option (google.api.http) = {
-      post : "/v1/scores:batchSet"
+      post : "/v1/{name=graphs/*}/scores:batchSet"
       body : "*"
     };
   }
 
-  // Deletes a score.
-  rpc DeleteScore(DeleteScoreRequest) returns (google.protobuf.Empty) {
+  // Deletes a graph.
+  rpc DeleteGraph(DeleteGraphRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{score.name=scores/*}"
+      delete : "/v1/{name=graphs/*}"
     };
   }
 
-  // Gets scores in descending order by score value.
-  rpc TopScores(TopScoresRequest) returns (TopScoresResponse) {
+  // Deletes a score.
+  rpc DeleteGraphScore(DeleteGraphScoreRequest)
+      returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      get : "/v1/{name=scores/*}:top"
+      delete : "/v1/{name=graphs/*}/scores"
+    };
+  }
+
+  // Gets graph scores in descending order by score value.
+  rpc TopGraphScores(TopGraphScoresRequest) returns (TopGraphScoresResponse) {
+    option (google.api.http) = {
+      get : "/v1/{name=graphs/*}/scores:top"
     };
   }
 }
 
 message Score {
-  // The name of the score. It must have the format `"scores/{score}"`.
-  // `{score}` must match the [regular
+  // The [resource name](https://cloud.google.com/apis/design/resource_names) of
+  // the origin vertex. It must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[\w-]+(/[\w-]+)*$`.
+  string vertex_a = 1;
+
+  // The [resource name](https://cloud.google.com/apis/design/resource_names) of
+  // the destination vertex. It must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[\w-]+(/[\w-]+)*$`.
+  string vertex_b = 2;
+
+  // The score value.
+  double score = 3;
+}
+
+message ListGraphScoresRequest {
+  // The name of the graph.
+  string name = 1;
+
+  // The maximum number of items to return.
+  int32 page_size = 2;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 3;
+}
+
+message ListGraphScoresResponse {
+  // The name of the score.
+  repeated Score scores = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message GetGraphScoreRequest {
+  // The name of the graph.
+  string name = 1;
+
+  // The resource name of the origin vertex.
+  string vertex_a = 2;
+
+  // The resource name of the destination vertex.
+  string vertex_b = 3;
+}
+
+message SetGraphScoreRequest {
+  // The name of the graph. It must have the format `"graphs/{graph}"`.
+  // `{graphs}` must match the [regular
   // expression](https://github.com/google/re2/wiki/Syntax)
   // `^[a-z\d]+(-[a-z\d]+)*$`.
   string name = 1;
 
-  // The resource name of the origin vertex. It must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[\w-]+(/[\w-]+)*$`.
-  string vertex_a = 2;
-
-  // The resource name of the destination vertex. It must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[\w-]+(/[\w-]+)*$`.
-  string vertex_b = 3;
-
-  // The score value.
-  double score = 4;
-
-  // The creation timestamp of the score. Only set as a return value when
-  // getting or setting an individual score.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of the score. Only set as a return value when
-  // getting or setting an individual score.
-  google.protobuf.Timestamp update_time = 15;
+  // The score to set
+  Score score = 2;
 }
 
-message GetScoreRequest {
-  // The name of the score.
+message BatchSetGraphScoreRequest {
+  // The name of the graph. It must have the format `"graphs/{graph}"`.
+  // `{graphs}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`.
+  string name = 1;
+
+  // The scores to set.
+  repeated Score score = 2;
+}
+
+message BatchSetGraphScoreResponse {}
+
+message DeleteGraphRequest {
+  // The name of the graph.
+  string name = 1;
+}
+
+message DeleteGraphScoreRequest {
+  // The name of the graph.
   string name = 1;
 
   // The resource name of the origin vertex.
@@ -87,38 +151,18 @@ message GetScoreRequest {
   string vertex_b = 3;
 }
 
-message SetScoreRequest { Score score = 1; }
-
-message BatchSetScoreRequest {
-  // Scores to set.
-  repeated Score scores = 2;
-}
-
-message BatchSetScoreResponse {}
-
-message DeleteScoreRequest {
-  // The name of the score.
+message TopGraphScoresRequest {
+  // The name of the graph.
   string name = 1;
 
-  // The resource name of the origin vertex.
-  string vertex_a = 2;
-
-  // The resource name of the destination vertex.
-  string vertex_b = 3;
-}
-
-message TopScoresRequest {
   // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The name of the score.
-  string name = 2;
+  int32 page_size = 2;
 
   // The resource name of the origin vertex.
   string vertex_a = 3;
 }
 
-message TopScoresResponse {
+message TopGraphScoresResponse {
   // Scores in decending order by score value.
   repeated Score scores = 1;
 }

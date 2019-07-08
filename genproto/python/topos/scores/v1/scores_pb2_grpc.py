@@ -15,30 +15,40 @@ class ScoresStub(object):
     Args:
       channel: A grpc.Channel.
     """
-    self.GetScore = channel.unary_unary(
-        '/topos.scores.v1.Scores/GetScore',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.GetScoreRequest.SerializeToString,
+    self.ListGraphScores = channel.unary_unary(
+        '/topos.scores.v1.Scores/ListGraphScores',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.ListGraphScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.ListGraphScoresResponse.FromString,
+        )
+    self.GetGraphScore = channel.unary_unary(
+        '/topos.scores.v1.Scores/GetGraphScore',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.GetGraphScoreRequest.SerializeToString,
         response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.FromString,
         )
-    self.SetScore = channel.unary_unary(
-        '/topos.scores.v1.Scores/SetScore',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetScoreRequest.SerializeToString,
+    self.SetGraphScore = channel.unary_unary(
+        '/topos.scores.v1.Scores/SetGraphScore',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetGraphScoreRequest.SerializeToString,
         response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.FromString,
         )
-    self.BatchSetScore = channel.unary_unary(
-        '/topos.scores.v1.Scores/BatchSetScore',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreRequest.SerializeToString,
-        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreResponse.FromString,
+    self.BatchSetGraphScores = channel.unary_unary(
+        '/topos.scores.v1.Scores/BatchSetGraphScores',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreResponse.FromString,
         )
-    self.DeleteScore = channel.unary_unary(
-        '/topos.scores.v1.Scores/DeleteScore',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteScoreRequest.SerializeToString,
+    self.DeleteGraph = channel.unary_unary(
+        '/topos.scores.v1.Scores/DeleteGraph',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteGraphRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
-    self.TopScores = channel.unary_unary(
-        '/topos.scores.v1.Scores/TopScores',
-        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresRequest.SerializeToString,
-        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresResponse.FromString,
+    self.DeleteGraphScore = channel.unary_unary(
+        '/topos.scores.v1.Scores/DeleteGraphScore',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteGraphScoreRequest.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
+    self.TopGraphScores = channel.unary_unary(
+        '/topos.scores.v1.Scores/TopGraphScores',
+        request_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopGraphScoresRequest.SerializeToString,
+        response_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopGraphScoresResponse.FromString,
         )
 
 
@@ -46,36 +56,50 @@ class ScoresServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
-  def GetScore(self, request, context):
-    """Gets a score.
+  def ListGraphScores(self, request, context):
+    """Lists a graph's scores.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SetScore(self, request, context):
-    """Sets a score.
+  def GetGraphScore(self, request, context):
+    """Gets a graph score.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def BatchSetScore(self, request, context):
-    """Sets a batch of scores.
+  def SetGraphScore(self, request, context):
+    """Sets a graph score.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def DeleteScore(self, request, context):
+  def BatchSetGraphScores(self, request, context):
+    """Sets a batch of graph scores.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def DeleteGraph(self, request, context):
+    """Deletes a graph.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def DeleteGraphScore(self, request, context):
     """Deletes a score.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def TopScores(self, request, context):
-    """Gets scores in descending order by score value.
+  def TopGraphScores(self, request, context):
+    """Gets graph scores in descending order by score value.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -84,30 +108,40 @@ class ScoresServicer(object):
 
 def add_ScoresServicer_to_server(servicer, server):
   rpc_method_handlers = {
-      'GetScore': grpc.unary_unary_rpc_method_handler(
-          servicer.GetScore,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.GetScoreRequest.FromString,
+      'ListGraphScores': grpc.unary_unary_rpc_method_handler(
+          servicer.ListGraphScores,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.ListGraphScoresRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.ListGraphScoresResponse.SerializeToString,
+      ),
+      'GetGraphScore': grpc.unary_unary_rpc_method_handler(
+          servicer.GetGraphScore,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.GetGraphScoreRequest.FromString,
           response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.SerializeToString,
       ),
-      'SetScore': grpc.unary_unary_rpc_method_handler(
-          servicer.SetScore,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetScoreRequest.FromString,
+      'SetGraphScore': grpc.unary_unary_rpc_method_handler(
+          servicer.SetGraphScore,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.SetGraphScoreRequest.FromString,
           response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.Score.SerializeToString,
       ),
-      'BatchSetScore': grpc.unary_unary_rpc_method_handler(
-          servicer.BatchSetScore,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreRequest.FromString,
-          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetScoreResponse.SerializeToString,
+      'BatchSetGraphScores': grpc.unary_unary_rpc_method_handler(
+          servicer.BatchSetGraphScores,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.BatchSetGraphScoreResponse.SerializeToString,
       ),
-      'DeleteScore': grpc.unary_unary_rpc_method_handler(
-          servicer.DeleteScore,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteScoreRequest.FromString,
+      'DeleteGraph': grpc.unary_unary_rpc_method_handler(
+          servicer.DeleteGraph,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteGraphRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
-      'TopScores': grpc.unary_unary_rpc_method_handler(
-          servicer.TopScores,
-          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresRequest.FromString,
-          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopScoresResponse.SerializeToString,
+      'DeleteGraphScore': grpc.unary_unary_rpc_method_handler(
+          servicer.DeleteGraphScore,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.DeleteGraphScoreRequest.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+      ),
+      'TopGraphScores': grpc.unary_unary_rpc_method_handler(
+          servicer.TopGraphScores,
+          request_deserializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopGraphScoresRequest.FromString,
+          response_serializer=topos_dot_scores_dot_v1_dot_scores__pb2.TopGraphScoresResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

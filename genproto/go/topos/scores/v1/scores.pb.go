@@ -8,7 +8,6 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	empty "github.com/golang/protobuf/ptypes/empty"
-	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	math "math"
@@ -26,30 +25,21 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Score struct {
-	// The name of the score. It must have the format `"scores/{score}"`.
-	// `{score}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The resource name of the origin vertex. It must match the [regular
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of
+	// the origin vertex. It must match the [regular
 	// expression](https://github.com/google/re2/wiki/Syntax)
 	// `^[\w-]+(/[\w-]+)*$`.
-	VertexA string `protobuf:"bytes,2,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
-	// The resource name of the destination vertex. It must match the [regular
+	VertexA string `protobuf:"bytes,1,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
+	// The [resource name](https://cloud.google.com/apis/design/resource_names) of
+	// the destination vertex. It must match the [regular
 	// expression](https://github.com/google/re2/wiki/Syntax)
 	// `^[\w-]+(/[\w-]+)*$`.
-	VertexB string `protobuf:"bytes,3,opt,name=vertex_b,json=vertexB,proto3" json:"vertex_b,omitempty"`
+	VertexB string `protobuf:"bytes,2,opt,name=vertex_b,json=vertexB,proto3" json:"vertex_b,omitempty"`
 	// The score value.
-	Score float64 `protobuf:"fixed64,4,opt,name=score,proto3" json:"score,omitempty"`
-	// The creation timestamp of the score. Only set as a return value when
-	// getting or setting an individual score.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of the score. Only set as a return value when
-	// getting or setting an individual score.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Score                float64  `protobuf:"fixed64,3,opt,name=score,proto3" json:"score,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *Score) Reset()         { *m = Score{} }
@@ -77,13 +67,6 @@ func (m *Score) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Score proto.InternalMessageInfo
 
-func (m *Score) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 func (m *Score) GetVertexA() string {
 	if m != nil {
 		return m.VertexA
@@ -105,190 +88,116 @@ func (m *Score) GetScore() float64 {
 	return 0
 }
 
-func (m *Score) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *Score) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
-type GetScoreRequest struct {
-	// The name of the score.
+type ListGraphScoresRequest struct {
+	// The name of the graph.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The resource name of the origin vertex.
-	VertexA string `protobuf:"bytes,2,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
-	// The resource name of the destination vertex.
-	VertexB              string   `protobuf:"bytes,3,opt,name=vertex_b,json=vertexB,proto3" json:"vertex_b,omitempty"`
+	// The maximum number of items to return.
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// The next_page_token value returned from a previous List request, if any.
+	PageToken            string   `protobuf:"bytes,3,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetScoreRequest) Reset()         { *m = GetScoreRequest{} }
-func (m *GetScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*GetScoreRequest) ProtoMessage()    {}
-func (*GetScoreRequest) Descriptor() ([]byte, []int) {
+func (m *ListGraphScoresRequest) Reset()         { *m = ListGraphScoresRequest{} }
+func (m *ListGraphScoresRequest) String() string { return proto.CompactTextString(m) }
+func (*ListGraphScoresRequest) ProtoMessage()    {}
+func (*ListGraphScoresRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_05589be8939bdcb5, []int{1}
 }
 
-func (m *GetScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetScoreRequest.Unmarshal(m, b)
+func (m *ListGraphScoresRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListGraphScoresRequest.Unmarshal(m, b)
 }
-func (m *GetScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetScoreRequest.Marshal(b, m, deterministic)
+func (m *ListGraphScoresRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListGraphScoresRequest.Marshal(b, m, deterministic)
 }
-func (m *GetScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetScoreRequest.Merge(m, src)
+func (m *ListGraphScoresRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListGraphScoresRequest.Merge(m, src)
 }
-func (m *GetScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_GetScoreRequest.Size(m)
+func (m *ListGraphScoresRequest) XXX_Size() int {
+	return xxx_messageInfo_ListGraphScoresRequest.Size(m)
 }
-func (m *GetScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetScoreRequest.DiscardUnknown(m)
+func (m *ListGraphScoresRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListGraphScoresRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetScoreRequest proto.InternalMessageInfo
+var xxx_messageInfo_ListGraphScoresRequest proto.InternalMessageInfo
 
-func (m *GetScoreRequest) GetName() string {
+func (m *ListGraphScoresRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *GetScoreRequest) GetVertexA() string {
+func (m *ListGraphScoresRequest) GetPageSize() int32 {
 	if m != nil {
-		return m.VertexA
+		return m.PageSize
+	}
+	return 0
+}
+
+func (m *ListGraphScoresRequest) GetPageToken() string {
+	if m != nil {
+		return m.PageToken
 	}
 	return ""
 }
 
-func (m *GetScoreRequest) GetVertexB() string {
-	if m != nil {
-		return m.VertexB
-	}
-	return ""
-}
-
-type SetScoreRequest struct {
-	Score                *Score   `protobuf:"bytes,1,opt,name=score,proto3" json:"score,omitempty"`
+type ListGraphScoresResponse struct {
+	// The name of the score.
+	Scores []*Score `protobuf:"bytes,1,rep,name=scores,proto3" json:"scores,omitempty"`
+	// Token to retrieve the next page of results, or empty if there are no more
+	// results in the list.
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *SetScoreRequest) Reset()         { *m = SetScoreRequest{} }
-func (m *SetScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*SetScoreRequest) ProtoMessage()    {}
-func (*SetScoreRequest) Descriptor() ([]byte, []int) {
+func (m *ListGraphScoresResponse) Reset()         { *m = ListGraphScoresResponse{} }
+func (m *ListGraphScoresResponse) String() string { return proto.CompactTextString(m) }
+func (*ListGraphScoresResponse) ProtoMessage()    {}
+func (*ListGraphScoresResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_05589be8939bdcb5, []int{2}
 }
 
-func (m *SetScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetScoreRequest.Unmarshal(m, b)
+func (m *ListGraphScoresResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListGraphScoresResponse.Unmarshal(m, b)
 }
-func (m *SetScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetScoreRequest.Marshal(b, m, deterministic)
+func (m *ListGraphScoresResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListGraphScoresResponse.Marshal(b, m, deterministic)
 }
-func (m *SetScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetScoreRequest.Merge(m, src)
+func (m *ListGraphScoresResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListGraphScoresResponse.Merge(m, src)
 }
-func (m *SetScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_SetScoreRequest.Size(m)
+func (m *ListGraphScoresResponse) XXX_Size() int {
+	return xxx_messageInfo_ListGraphScoresResponse.Size(m)
 }
-func (m *SetScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetScoreRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetScoreRequest proto.InternalMessageInfo
-
-func (m *SetScoreRequest) GetScore() *Score {
-	if m != nil {
-		return m.Score
-	}
-	return nil
+func (m *ListGraphScoresResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListGraphScoresResponse.DiscardUnknown(m)
 }
 
-type BatchSetScoreRequest struct {
-	// Scores to set.
-	Scores               []*Score `protobuf:"bytes,2,rep,name=scores,proto3" json:"scores,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
+var xxx_messageInfo_ListGraphScoresResponse proto.InternalMessageInfo
 
-func (m *BatchSetScoreRequest) Reset()         { *m = BatchSetScoreRequest{} }
-func (m *BatchSetScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*BatchSetScoreRequest) ProtoMessage()    {}
-func (*BatchSetScoreRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_05589be8939bdcb5, []int{3}
-}
-
-func (m *BatchSetScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BatchSetScoreRequest.Unmarshal(m, b)
-}
-func (m *BatchSetScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BatchSetScoreRequest.Marshal(b, m, deterministic)
-}
-func (m *BatchSetScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchSetScoreRequest.Merge(m, src)
-}
-func (m *BatchSetScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_BatchSetScoreRequest.Size(m)
-}
-func (m *BatchSetScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_BatchSetScoreRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BatchSetScoreRequest proto.InternalMessageInfo
-
-func (m *BatchSetScoreRequest) GetScores() []*Score {
+func (m *ListGraphScoresResponse) GetScores() []*Score {
 	if m != nil {
 		return m.Scores
 	}
 	return nil
 }
 
-type BatchSetScoreResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+func (m *ListGraphScoresResponse) GetNextPageToken() string {
+	if m != nil {
+		return m.NextPageToken
+	}
+	return ""
 }
 
-func (m *BatchSetScoreResponse) Reset()         { *m = BatchSetScoreResponse{} }
-func (m *BatchSetScoreResponse) String() string { return proto.CompactTextString(m) }
-func (*BatchSetScoreResponse) ProtoMessage()    {}
-func (*BatchSetScoreResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_05589be8939bdcb5, []int{4}
-}
-
-func (m *BatchSetScoreResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BatchSetScoreResponse.Unmarshal(m, b)
-}
-func (m *BatchSetScoreResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BatchSetScoreResponse.Marshal(b, m, deterministic)
-}
-func (m *BatchSetScoreResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BatchSetScoreResponse.Merge(m, src)
-}
-func (m *BatchSetScoreResponse) XXX_Size() int {
-	return xxx_messageInfo_BatchSetScoreResponse.Size(m)
-}
-func (m *BatchSetScoreResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_BatchSetScoreResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BatchSetScoreResponse proto.InternalMessageInfo
-
-type DeleteScoreRequest struct {
-	// The name of the score.
+type GetGraphScoreRequest struct {
+	// The name of the graph.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The resource name of the origin vertex.
 	VertexA string `protobuf:"bytes,2,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
@@ -299,57 +208,290 @@ type DeleteScoreRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *DeleteScoreRequest) Reset()         { *m = DeleteScoreRequest{} }
-func (m *DeleteScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*DeleteScoreRequest) ProtoMessage()    {}
-func (*DeleteScoreRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_05589be8939bdcb5, []int{5}
+func (m *GetGraphScoreRequest) Reset()         { *m = GetGraphScoreRequest{} }
+func (m *GetGraphScoreRequest) String() string { return proto.CompactTextString(m) }
+func (*GetGraphScoreRequest) ProtoMessage()    {}
+func (*GetGraphScoreRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{3}
 }
 
-func (m *DeleteScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteScoreRequest.Unmarshal(m, b)
+func (m *GetGraphScoreRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetGraphScoreRequest.Unmarshal(m, b)
 }
-func (m *DeleteScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteScoreRequest.Marshal(b, m, deterministic)
+func (m *GetGraphScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetGraphScoreRequest.Marshal(b, m, deterministic)
 }
-func (m *DeleteScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteScoreRequest.Merge(m, src)
+func (m *GetGraphScoreRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetGraphScoreRequest.Merge(m, src)
 }
-func (m *DeleteScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_DeleteScoreRequest.Size(m)
+func (m *GetGraphScoreRequest) XXX_Size() int {
+	return xxx_messageInfo_GetGraphScoreRequest.Size(m)
 }
-func (m *DeleteScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteScoreRequest.DiscardUnknown(m)
+func (m *GetGraphScoreRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetGraphScoreRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_DeleteScoreRequest proto.InternalMessageInfo
+var xxx_messageInfo_GetGraphScoreRequest proto.InternalMessageInfo
 
-func (m *DeleteScoreRequest) GetName() string {
+func (m *GetGraphScoreRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *DeleteScoreRequest) GetVertexA() string {
+func (m *GetGraphScoreRequest) GetVertexA() string {
 	if m != nil {
 		return m.VertexA
 	}
 	return ""
 }
 
-func (m *DeleteScoreRequest) GetVertexB() string {
+func (m *GetGraphScoreRequest) GetVertexB() string {
 	if m != nil {
 		return m.VertexB
 	}
 	return ""
 }
 
-type TopScoresRequest struct {
+type SetGraphScoreRequest struct {
+	// The name of the graph. It must have the format `"graphs/{graph}"`.
+	// `{graphs}` must match the [regular
+	// expression](https://github.com/google/re2/wiki/Syntax)
+	// `^[a-z\d]+(-[a-z\d]+)*$`.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The score to set
+	Score                *Score   `protobuf:"bytes,2,opt,name=score,proto3" json:"score,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetGraphScoreRequest) Reset()         { *m = SetGraphScoreRequest{} }
+func (m *SetGraphScoreRequest) String() string { return proto.CompactTextString(m) }
+func (*SetGraphScoreRequest) ProtoMessage()    {}
+func (*SetGraphScoreRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{4}
+}
+
+func (m *SetGraphScoreRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetGraphScoreRequest.Unmarshal(m, b)
+}
+func (m *SetGraphScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetGraphScoreRequest.Marshal(b, m, deterministic)
+}
+func (m *SetGraphScoreRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetGraphScoreRequest.Merge(m, src)
+}
+func (m *SetGraphScoreRequest) XXX_Size() int {
+	return xxx_messageInfo_SetGraphScoreRequest.Size(m)
+}
+func (m *SetGraphScoreRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetGraphScoreRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetGraphScoreRequest proto.InternalMessageInfo
+
+func (m *SetGraphScoreRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *SetGraphScoreRequest) GetScore() *Score {
+	if m != nil {
+		return m.Score
+	}
+	return nil
+}
+
+type BatchSetGraphScoreRequest struct {
+	// The name of the graph. It must have the format `"graphs/{graph}"`.
+	// `{graphs}` must match the [regular
+	// expression](https://github.com/google/re2/wiki/Syntax)
+	// `^[a-z\d]+(-[a-z\d]+)*$`.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The scores to set.
+	Score                []*Score `protobuf:"bytes,2,rep,name=score,proto3" json:"score,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BatchSetGraphScoreRequest) Reset()         { *m = BatchSetGraphScoreRequest{} }
+func (m *BatchSetGraphScoreRequest) String() string { return proto.CompactTextString(m) }
+func (*BatchSetGraphScoreRequest) ProtoMessage()    {}
+func (*BatchSetGraphScoreRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{5}
+}
+
+func (m *BatchSetGraphScoreRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchSetGraphScoreRequest.Unmarshal(m, b)
+}
+func (m *BatchSetGraphScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchSetGraphScoreRequest.Marshal(b, m, deterministic)
+}
+func (m *BatchSetGraphScoreRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchSetGraphScoreRequest.Merge(m, src)
+}
+func (m *BatchSetGraphScoreRequest) XXX_Size() int {
+	return xxx_messageInfo_BatchSetGraphScoreRequest.Size(m)
+}
+func (m *BatchSetGraphScoreRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchSetGraphScoreRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchSetGraphScoreRequest proto.InternalMessageInfo
+
+func (m *BatchSetGraphScoreRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *BatchSetGraphScoreRequest) GetScore() []*Score {
+	if m != nil {
+		return m.Score
+	}
+	return nil
+}
+
+type BatchSetGraphScoreResponse struct {
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BatchSetGraphScoreResponse) Reset()         { *m = BatchSetGraphScoreResponse{} }
+func (m *BatchSetGraphScoreResponse) String() string { return proto.CompactTextString(m) }
+func (*BatchSetGraphScoreResponse) ProtoMessage()    {}
+func (*BatchSetGraphScoreResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{6}
+}
+
+func (m *BatchSetGraphScoreResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchSetGraphScoreResponse.Unmarshal(m, b)
+}
+func (m *BatchSetGraphScoreResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchSetGraphScoreResponse.Marshal(b, m, deterministic)
+}
+func (m *BatchSetGraphScoreResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchSetGraphScoreResponse.Merge(m, src)
+}
+func (m *BatchSetGraphScoreResponse) XXX_Size() int {
+	return xxx_messageInfo_BatchSetGraphScoreResponse.Size(m)
+}
+func (m *BatchSetGraphScoreResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchSetGraphScoreResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchSetGraphScoreResponse proto.InternalMessageInfo
+
+type DeleteGraphRequest struct {
+	// The name of the graph.
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteGraphRequest) Reset()         { *m = DeleteGraphRequest{} }
+func (m *DeleteGraphRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteGraphRequest) ProtoMessage()    {}
+func (*DeleteGraphRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{7}
+}
+
+func (m *DeleteGraphRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteGraphRequest.Unmarshal(m, b)
+}
+func (m *DeleteGraphRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteGraphRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteGraphRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteGraphRequest.Merge(m, src)
+}
+func (m *DeleteGraphRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteGraphRequest.Size(m)
+}
+func (m *DeleteGraphRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteGraphRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteGraphRequest proto.InternalMessageInfo
+
+func (m *DeleteGraphRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type DeleteGraphScoreRequest struct {
+	// The name of the graph.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The resource name of the origin vertex.
+	VertexA string `protobuf:"bytes,2,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
+	// The resource name of the destination vertex.
+	VertexB              string   `protobuf:"bytes,3,opt,name=vertex_b,json=vertexB,proto3" json:"vertex_b,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeleteGraphScoreRequest) Reset()         { *m = DeleteGraphScoreRequest{} }
+func (m *DeleteGraphScoreRequest) String() string { return proto.CompactTextString(m) }
+func (*DeleteGraphScoreRequest) ProtoMessage()    {}
+func (*DeleteGraphScoreRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{8}
+}
+
+func (m *DeleteGraphScoreRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeleteGraphScoreRequest.Unmarshal(m, b)
+}
+func (m *DeleteGraphScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeleteGraphScoreRequest.Marshal(b, m, deterministic)
+}
+func (m *DeleteGraphScoreRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeleteGraphScoreRequest.Merge(m, src)
+}
+func (m *DeleteGraphScoreRequest) XXX_Size() int {
+	return xxx_messageInfo_DeleteGraphScoreRequest.Size(m)
+}
+func (m *DeleteGraphScoreRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeleteGraphScoreRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeleteGraphScoreRequest proto.InternalMessageInfo
+
+func (m *DeleteGraphScoreRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *DeleteGraphScoreRequest) GetVertexA() string {
+	if m != nil {
+		return m.VertexA
+	}
+	return ""
+}
+
+func (m *DeleteGraphScoreRequest) GetVertexB() string {
+	if m != nil {
+		return m.VertexB
+	}
+	return ""
+}
+
+type TopGraphScoresRequest struct {
+	// The name of the graph.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The maximum number of items to return.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The name of the score.
-	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	PageSize int32 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	// The resource name of the origin vertex.
 	VertexA              string   `protobuf:"bytes,3,opt,name=vertex_a,json=vertexA,proto3" json:"vertex_a,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -357,53 +499,53 @@ type TopScoresRequest struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TopScoresRequest) Reset()         { *m = TopScoresRequest{} }
-func (m *TopScoresRequest) String() string { return proto.CompactTextString(m) }
-func (*TopScoresRequest) ProtoMessage()    {}
-func (*TopScoresRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_05589be8939bdcb5, []int{6}
+func (m *TopGraphScoresRequest) Reset()         { *m = TopGraphScoresRequest{} }
+func (m *TopGraphScoresRequest) String() string { return proto.CompactTextString(m) }
+func (*TopGraphScoresRequest) ProtoMessage()    {}
+func (*TopGraphScoresRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{9}
 }
 
-func (m *TopScoresRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TopScoresRequest.Unmarshal(m, b)
+func (m *TopGraphScoresRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TopGraphScoresRequest.Unmarshal(m, b)
 }
-func (m *TopScoresRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TopScoresRequest.Marshal(b, m, deterministic)
+func (m *TopGraphScoresRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TopGraphScoresRequest.Marshal(b, m, deterministic)
 }
-func (m *TopScoresRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TopScoresRequest.Merge(m, src)
+func (m *TopGraphScoresRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TopGraphScoresRequest.Merge(m, src)
 }
-func (m *TopScoresRequest) XXX_Size() int {
-	return xxx_messageInfo_TopScoresRequest.Size(m)
+func (m *TopGraphScoresRequest) XXX_Size() int {
+	return xxx_messageInfo_TopGraphScoresRequest.Size(m)
 }
-func (m *TopScoresRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_TopScoresRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TopScoresRequest proto.InternalMessageInfo
-
-func (m *TopScoresRequest) GetPageSize() int32 {
-	if m != nil {
-		return m.PageSize
-	}
-	return 0
+func (m *TopGraphScoresRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_TopGraphScoresRequest.DiscardUnknown(m)
 }
 
-func (m *TopScoresRequest) GetName() string {
+var xxx_messageInfo_TopGraphScoresRequest proto.InternalMessageInfo
+
+func (m *TopGraphScoresRequest) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *TopScoresRequest) GetVertexA() string {
+func (m *TopGraphScoresRequest) GetPageSize() int32 {
+	if m != nil {
+		return m.PageSize
+	}
+	return 0
+}
+
+func (m *TopGraphScoresRequest) GetVertexA() string {
 	if m != nil {
 		return m.VertexA
 	}
 	return ""
 }
 
-type TopScoresResponse struct {
+type TopGraphScoresResponse struct {
 	// Scores in decending order by score value.
 	Scores               []*Score `protobuf:"bytes,1,rep,name=scores,proto3" json:"scores,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -411,32 +553,32 @@ type TopScoresResponse struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *TopScoresResponse) Reset()         { *m = TopScoresResponse{} }
-func (m *TopScoresResponse) String() string { return proto.CompactTextString(m) }
-func (*TopScoresResponse) ProtoMessage()    {}
-func (*TopScoresResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_05589be8939bdcb5, []int{7}
+func (m *TopGraphScoresResponse) Reset()         { *m = TopGraphScoresResponse{} }
+func (m *TopGraphScoresResponse) String() string { return proto.CompactTextString(m) }
+func (*TopGraphScoresResponse) ProtoMessage()    {}
+func (*TopGraphScoresResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_05589be8939bdcb5, []int{10}
 }
 
-func (m *TopScoresResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TopScoresResponse.Unmarshal(m, b)
+func (m *TopGraphScoresResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TopGraphScoresResponse.Unmarshal(m, b)
 }
-func (m *TopScoresResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TopScoresResponse.Marshal(b, m, deterministic)
+func (m *TopGraphScoresResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TopGraphScoresResponse.Marshal(b, m, deterministic)
 }
-func (m *TopScoresResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TopScoresResponse.Merge(m, src)
+func (m *TopGraphScoresResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TopGraphScoresResponse.Merge(m, src)
 }
-func (m *TopScoresResponse) XXX_Size() int {
-	return xxx_messageInfo_TopScoresResponse.Size(m)
+func (m *TopGraphScoresResponse) XXX_Size() int {
+	return xxx_messageInfo_TopGraphScoresResponse.Size(m)
 }
-func (m *TopScoresResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_TopScoresResponse.DiscardUnknown(m)
+func (m *TopGraphScoresResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_TopGraphScoresResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_TopScoresResponse proto.InternalMessageInfo
+var xxx_messageInfo_TopGraphScoresResponse proto.InternalMessageInfo
 
-func (m *TopScoresResponse) GetScores() []*Score {
+func (m *TopGraphScoresResponse) GetScores() []*Score {
 	if m != nil {
 		return m.Scores
 	}
@@ -445,54 +587,60 @@ func (m *TopScoresResponse) GetScores() []*Score {
 
 func init() {
 	proto.RegisterType((*Score)(nil), "topos.scores.v1.Score")
-	proto.RegisterType((*GetScoreRequest)(nil), "topos.scores.v1.GetScoreRequest")
-	proto.RegisterType((*SetScoreRequest)(nil), "topos.scores.v1.SetScoreRequest")
-	proto.RegisterType((*BatchSetScoreRequest)(nil), "topos.scores.v1.BatchSetScoreRequest")
-	proto.RegisterType((*BatchSetScoreResponse)(nil), "topos.scores.v1.BatchSetScoreResponse")
-	proto.RegisterType((*DeleteScoreRequest)(nil), "topos.scores.v1.DeleteScoreRequest")
-	proto.RegisterType((*TopScoresRequest)(nil), "topos.scores.v1.TopScoresRequest")
-	proto.RegisterType((*TopScoresResponse)(nil), "topos.scores.v1.TopScoresResponse")
+	proto.RegisterType((*ListGraphScoresRequest)(nil), "topos.scores.v1.ListGraphScoresRequest")
+	proto.RegisterType((*ListGraphScoresResponse)(nil), "topos.scores.v1.ListGraphScoresResponse")
+	proto.RegisterType((*GetGraphScoreRequest)(nil), "topos.scores.v1.GetGraphScoreRequest")
+	proto.RegisterType((*SetGraphScoreRequest)(nil), "topos.scores.v1.SetGraphScoreRequest")
+	proto.RegisterType((*BatchSetGraphScoreRequest)(nil), "topos.scores.v1.BatchSetGraphScoreRequest")
+	proto.RegisterType((*BatchSetGraphScoreResponse)(nil), "topos.scores.v1.BatchSetGraphScoreResponse")
+	proto.RegisterType((*DeleteGraphRequest)(nil), "topos.scores.v1.DeleteGraphRequest")
+	proto.RegisterType((*DeleteGraphScoreRequest)(nil), "topos.scores.v1.DeleteGraphScoreRequest")
+	proto.RegisterType((*TopGraphScoresRequest)(nil), "topos.scores.v1.TopGraphScoresRequest")
+	proto.RegisterType((*TopGraphScoresResponse)(nil), "topos.scores.v1.TopGraphScoresResponse")
 }
 
 func init() { proto.RegisterFile("topos/scores/v1/scores.proto", fileDescriptor_05589be8939bdcb5) }
 
 var fileDescriptor_05589be8939bdcb5 = []byte{
-	// 550 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x54, 0xdf, 0x6e, 0xd3, 0x3e,
-	0x14, 0x56, 0xba, 0xb6, 0xbf, 0xf6, 0x54, 0x3f, 0x0a, 0xde, 0xd6, 0xa5, 0xe9, 0x60, 0x9d, 0x11,
-	0x53, 0x55, 0x4d, 0xa9, 0x36, 0xee, 0x3a, 0x21, 0xb4, 0xf2, 0xef, 0x3e, 0xd9, 0x15, 0x48, 0xab,
-	0xdc, 0x62, 0x4a, 0xa4, 0x25, 0x36, 0xb1, 0x5b, 0xc1, 0x10, 0x5c, 0xf0, 0x0a, 0x3c, 0x12, 0x8f,
-	0xc0, 0x13, 0x20, 0xf1, 0x20, 0x28, 0xb6, 0xb3, 0xa5, 0xc9, 0xba, 0xed, 0x02, 0xee, 0xec, 0x73,
-	0xbe, 0xf3, 0x7d, 0xe7, 0xd8, 0x9f, 0x0d, 0xdb, 0x92, 0x71, 0x26, 0x06, 0x62, 0xca, 0x62, 0x2a,
-	0x06, 0x8b, 0x03, 0xb3, 0x72, 0x79, 0xcc, 0x24, 0x43, 0x4d, 0x95, 0x75, 0x4d, 0x6c, 0x71, 0xe0,
-	0x6c, 0xcf, 0x18, 0x9b, 0x9d, 0xd1, 0x01, 0xe1, 0xc1, 0x80, 0x44, 0x11, 0x93, 0x44, 0x06, 0x2c,
-	0x32, 0x70, 0xa7, 0x63, 0xb2, 0x6a, 0x37, 0x99, 0xbf, 0x1b, 0xd0, 0x90, 0xcb, 0x4f, 0x26, 0xb9,
-	0x93, 0x4f, 0xca, 0x20, 0xa4, 0x42, 0x92, 0x90, 0x6b, 0x00, 0xfe, 0x65, 0x41, 0xc5, 0x4f, 0x94,
-	0x10, 0x82, 0x72, 0x44, 0x42, 0x6a, 0x5b, 0x5d, 0xab, 0x57, 0xf7, 0xd4, 0x1a, 0xb5, 0xa1, 0xb6,
-	0xa0, 0xb1, 0xa4, 0x1f, 0xc7, 0xc4, 0x2e, 0xa9, 0xf8, 0x7f, 0x7a, 0x7f, 0x9c, 0x49, 0x4d, 0xec,
-	0xb5, 0x6c, 0x6a, 0x84, 0x36, 0xa0, 0xa2, 0x9a, 0xb7, 0xcb, 0x5d, 0xab, 0x67, 0x79, 0x7a, 0x83,
-	0x8e, 0xa0, 0x31, 0x8d, 0x29, 0x91, 0x74, 0x9c, 0xf4, 0x60, 0xdf, 0xe9, 0x5a, 0xbd, 0xc6, 0xa1,
-	0xe3, 0xea, 0x06, 0xdd, 0xb4, 0x41, 0xf7, 0x24, 0x6d, 0xd0, 0x03, 0x0d, 0x4f, 0x02, 0x49, 0xf1,
-	0x9c, 0xbf, 0xbd, 0x28, 0x6e, 0xde, 0x5c, 0xac, 0xe1, 0x49, 0x00, 0xbf, 0x81, 0xe6, 0x2b, 0x2a,
-	0xd5, 0x94, 0x1e, 0xfd, 0x30, 0xa7, 0x42, 0xfe, 0xbd, 0x61, 0xf1, 0x53, 0x68, 0xfa, 0x39, 0xf2,
-	0xfd, 0x74, 0x7e, 0x4b, 0xb5, 0xd9, 0x72, 0x73, 0x17, 0xea, 0x6a, 0xb4, 0x06, 0xe1, 0x97, 0xb0,
-	0x31, 0x22, 0x72, 0xfa, 0x3e, 0xcf, 0xe2, 0x42, 0x55, 0x57, 0xd8, 0xa5, 0xee, 0xda, 0x35, 0x34,
-	0x06, 0x85, 0xb7, 0x60, 0x33, 0xc7, 0x23, 0x38, 0x8b, 0x04, 0xc5, 0xa7, 0x80, 0x9e, 0xd3, 0x33,
-	0x2a, 0xe9, 0x3f, 0x3a, 0x81, 0x53, 0xb8, 0x7b, 0xc2, 0xb8, 0x22, 0x17, 0x29, 0x7b, 0x07, 0xea,
-	0x9c, 0xcc, 0xe8, 0x58, 0x04, 0xe7, 0x5a, 0xa2, 0xe2, 0xd5, 0x92, 0x80, 0x1f, 0x9c, 0x5f, 0x3a,
-	0xad, 0xb4, 0x42, 0x7a, 0x89, 0xff, 0x18, 0x3f, 0x83, 0x7b, 0x19, 0x7e, 0x3d, 0x54, 0xe6, 0x74,
-	0xac, 0xdb, 0x9c, 0xce, 0xe1, 0x8f, 0x32, 0x54, 0x35, 0x05, 0x22, 0x50, 0x4b, 0xed, 0x80, 0xba,
-	0x85, 0xb2, 0x9c, 0x53, 0x9c, 0x15, 0xc4, 0xb8, 0xf3, 0xed, 0xe7, 0xef, 0xef, 0xa5, 0x4d, 0xb4,
-	0x9e, 0xbc, 0xdf, 0xcf, 0xc9, 0x0c, 0x4f, 0xcc, 0x7b, 0xee, 0x7f, 0x41, 0x31, 0xd4, 0xfc, 0xd5,
-	0x12, 0xfe, 0x2d, 0x25, 0xf6, 0x95, 0xc4, 0x1e, 0xbe, 0xaf, 0x24, 0x54, 0xd6, 0x5d, 0x16, 0x1a,
-	0x0a, 0x2a, 0x87, 0xe6, 0x7d, 0x7d, 0x85, 0xff, 0x97, 0xee, 0x1f, 0x3d, 0x2a, 0xd0, 0x5e, 0xe5,
-	0x33, 0x67, 0xef, 0x26, 0x98, 0xb1, 0xd1, 0x03, 0xd5, 0x8d, 0x8d, 0xd7, 0x2f, 0x3f, 0xac, 0xe1,
-	0xc4, 0x20, 0x87, 0x56, 0x1f, 0x85, 0xd0, 0xc8, 0xd8, 0x0c, 0x3d, 0x2c, 0xd0, 0x16, 0x4d, 0xe8,
-	0xb4, 0x0a, 0x2f, 0xf8, 0x45, 0xf2, 0x79, 0xe1, 0x5d, 0xa5, 0xd5, 0xe9, 0xb7, 0x57, 0x4e, 0x8e,
-	0x04, 0xd4, 0x2f, 0x5c, 0x81, 0x76, 0x0b, 0x62, 0x79, 0x47, 0x3a, 0xf8, 0x3a, 0x88, 0x19, 0x71,
-	0x47, 0xc9, 0xb6, 0xd1, 0xd6, 0x15, 0x77, 0x3a, 0x94, 0x8c, 0x8f, 0xec, 0xd7, 0xad, 0xdc, 0xd7,
-	0x7d, 0xa4, 0x57, 0x93, 0xaa, 0x9a, 0xe0, 0xf1, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x49, 0xe0,
-	0xa9, 0xb1, 0xdb, 0x05, 0x00, 0x00,
+	// 605 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x95, 0xcf, 0x6f, 0xd3, 0x30,
+	0x14, 0xc7, 0x95, 0x95, 0x75, 0xeb, 0x9b, 0x4a, 0xd1, 0x5b, 0xd7, 0x75, 0x69, 0x41, 0x95, 0x27,
+	0xda, 0xa8, 0x40, 0xa2, 0x8d, 0x5b, 0x11, 0x87, 0x55, 0xa0, 0x71, 0xe0, 0x80, 0x92, 0x1d, 0x10,
+	0x12, 0x2a, 0x69, 0x65, 0xda, 0x8a, 0x2d, 0xce, 0x6a, 0xaf, 0x2a, 0x43, 0xbb, 0x70, 0x82, 0x33,
+	0x12, 0x47, 0xfe, 0x29, 0xfe, 0x05, 0xfe, 0x10, 0x14, 0xc7, 0x43, 0x69, 0x92, 0xa6, 0x65, 0x82,
+	0x5b, 0xec, 0xf7, 0xfc, 0xfd, 0xf8, 0xfd, 0x8a, 0xa1, 0x2e, 0x98, 0xcf, 0xb8, 0xc5, 0x07, 0x6c,
+	0x42, 0xb9, 0x35, 0x3d, 0x50, 0x5f, 0xa6, 0x3f, 0x61, 0x82, 0x61, 0x49, 0x5a, 0x4d, 0xb5, 0x37,
+	0x3d, 0xd0, 0xeb, 0x43, 0xc6, 0x86, 0xa7, 0xd4, 0x72, 0xfd, 0xb1, 0xe5, 0x7a, 0x1e, 0x13, 0xae,
+	0x18, 0x33, 0x4f, 0xb9, 0xeb, 0x35, 0x65, 0x95, 0xab, 0xfe, 0xc5, 0x7b, 0x8b, 0x9e, 0xf9, 0xe2,
+	0x63, 0x68, 0x24, 0x0e, 0xac, 0x3b, 0x81, 0x0e, 0xee, 0xc1, 0xe6, 0x94, 0x4e, 0x04, 0x9d, 0xf5,
+	0xdc, 0xaa, 0xd6, 0xd0, 0x8c, 0x82, 0xbd, 0x11, 0xae, 0x8f, 0x22, 0xa6, 0x7e, 0x75, 0x2d, 0x6a,
+	0xea, 0x62, 0x19, 0xd6, 0xe5, 0x35, 0xaa, 0xb9, 0x86, 0x66, 0x68, 0x76, 0xb8, 0x20, 0x23, 0xa8,
+	0xbc, 0x1c, 0x73, 0x71, 0x3c, 0x71, 0xfd, 0x91, 0x54, 0xe7, 0x36, 0x3d, 0xbf, 0xa0, 0x5c, 0x20,
+	0xc2, 0x2d, 0xcf, 0x3d, 0xa3, 0x8a, 0x20, 0xbf, 0xb1, 0x06, 0x05, 0xdf, 0x1d, 0xd2, 0x1e, 0x1f,
+	0x5f, 0x52, 0xa9, 0xbf, 0x6e, 0x6f, 0x06, 0x1b, 0xce, 0xf8, 0x92, 0xe2, 0x5d, 0x00, 0x69, 0x14,
+	0xec, 0x03, 0xf5, 0x24, 0xa5, 0x60, 0x4b, 0xf7, 0x93, 0x60, 0x83, 0x9c, 0xc3, 0x6e, 0x82, 0xc4,
+	0x7d, 0xe6, 0x71, 0x8a, 0x26, 0xe4, 0xc3, 0x0c, 0x55, 0xb5, 0x46, 0xce, 0xd8, 0x3a, 0xac, 0x98,
+	0xb1, 0xb4, 0x99, 0xf2, 0x80, 0xad, 0xbc, 0xb0, 0x09, 0x25, 0x8f, 0xce, 0x44, 0x2f, 0x82, 0x0b,
+	0x83, 0x2d, 0x06, 0xdb, 0xaf, 0xfe, 0x20, 0xdf, 0x41, 0xf9, 0x98, 0x46, 0x88, 0x59, 0xa1, 0x45,
+	0x93, 0xba, 0xb6, 0x38, 0xa9, 0xb9, 0xb9, 0xa4, 0x92, 0xd7, 0x50, 0x76, 0x56, 0x25, 0x3c, 0xbc,
+	0x2e, 0x40, 0x20, 0xbf, 0x38, 0x48, 0x55, 0x98, 0xb7, 0xb0, 0xd7, 0x75, 0xc5, 0x60, 0x74, 0x13,
+	0xf9, 0xdc, 0x72, 0xf9, 0x3a, 0xe8, 0x69, 0xf2, 0x61, 0x41, 0x88, 0x01, 0xf8, 0x8c, 0x9e, 0x52,
+	0x41, 0xa5, 0x2d, 0x83, 0x4a, 0x06, 0xb0, 0x1b, 0xf1, 0xfc, 0x4f, 0x59, 0x1e, 0xc0, 0xce, 0x09,
+	0xf3, 0xff, 0x45, 0x8f, 0x46, 0xf9, 0x73, 0x90, 0x23, 0xf2, 0x02, 0x2a, 0x71, 0xc8, 0xcd, 0xda,
+	0xf3, 0xf0, 0xfb, 0x06, 0xe4, 0x43, 0x09, 0xfc, 0xa2, 0x41, 0x29, 0xd6, 0xf5, 0xd8, 0x4a, 0x1c,
+	0x4f, 0x9f, 0x40, 0xdd, 0x58, 0xee, 0xa8, 0xea, 0x45, 0x3e, 0xff, 0xfc, 0xf5, 0x6d, 0xad, 0x8e,
+	0x7a, 0xf0, 0x03, 0xfa, 0x14, 0xa4, 0xe1, 0xe9, 0x30, 0x70, 0xe3, 0x56, 0xfb, 0x4a, 0xfd, 0x90,
+	0x70, 0x02, 0xc5, 0xb9, 0x61, 0xc0, 0xfb, 0x09, 0xf9, 0xb4, 0x61, 0xd1, 0x17, 0x44, 0xbb, 0x12,
+	0xf3, 0x0a, 0x8a, 0xce, 0x12, 0xa6, 0xf3, 0x37, 0xcc, 0x47, 0x92, 0xd9, 0x22, 0xf7, 0x16, 0x33,
+	0x3b, 0x9c, 0x8a, 0x4e, 0xd8, 0xe4, 0xf8, 0x43, 0x83, 0xed, 0x64, 0x97, 0x73, 0x6c, 0x27, 0xe4,
+	0x17, 0x8e, 0x9a, 0xfe, 0x60, 0x25, 0x5f, 0x55, 0x07, 0x53, 0xde, 0xcf, 0x20, 0xfb, 0x19, 0xf7,
+	0xeb, 0xab, 0xe3, 0x1d, 0xad, 0x8d, 0x43, 0xd8, 0x8a, 0x4c, 0x0f, 0xee, 0x27, 0x58, 0xc9, 0x29,
+	0xd4, 0x2b, 0x66, 0xf8, 0x48, 0x98, 0xd7, 0x8f, 0x84, 0xf9, 0x3c, 0x78, 0x24, 0x48, 0x4d, 0xb2,
+	0x77, 0xda, 0xdb, 0x29, 0x6c, 0x9c, 0xc1, 0x9d, 0xf8, 0x98, 0xa2, 0x91, 0x45, 0x8b, 0x95, 0x23,
+	0x1d, 0xa9, 0x5a, 0xa0, 0x9d, 0xd5, 0x02, 0x5f, 0x35, 0xb8, 0x3d, 0x3f, 0x57, 0xd8, 0x4c, 0x80,
+	0x53, 0xa7, 0x5b, 0x6f, 0x2d, 0xf5, 0x53, 0x69, 0x6f, 0xca, 0x7b, 0x34, 0x30, 0xab, 0x2d, 0x04,
+	0xf3, 0xbb, 0xd5, 0x37, 0x95, 0xd8, 0x6b, 0xfd, 0x24, 0xfc, 0xea, 0xe7, 0x65, 0x64, 0x8f, 0x7f,
+	0x07, 0x00, 0x00, 0xff, 0xff, 0x98, 0x92, 0xdd, 0x7b, 0xce, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -507,16 +655,20 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ScoresClient interface {
-	// Gets a score.
-	GetScore(ctx context.Context, in *GetScoreRequest, opts ...grpc.CallOption) (*Score, error)
-	// Sets a score.
-	SetScore(ctx context.Context, in *SetScoreRequest, opts ...grpc.CallOption) (*Score, error)
-	// Sets a batch of scores.
-	BatchSetScore(ctx context.Context, in *BatchSetScoreRequest, opts ...grpc.CallOption) (*BatchSetScoreResponse, error)
+	// Lists a graph's scores.
+	ListGraphScores(ctx context.Context, in *ListGraphScoresRequest, opts ...grpc.CallOption) (*ListGraphScoresResponse, error)
+	// Gets a graph score.
+	GetGraphScore(ctx context.Context, in *GetGraphScoreRequest, opts ...grpc.CallOption) (*Score, error)
+	// Sets a graph score.
+	SetGraphScore(ctx context.Context, in *SetGraphScoreRequest, opts ...grpc.CallOption) (*Score, error)
+	// Sets a batch of graph scores.
+	BatchSetGraphScores(ctx context.Context, in *BatchSetGraphScoreRequest, opts ...grpc.CallOption) (*BatchSetGraphScoreResponse, error)
+	// Deletes a graph.
+	DeleteGraph(ctx context.Context, in *DeleteGraphRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Deletes a score.
-	DeleteScore(ctx context.Context, in *DeleteScoreRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Gets scores in descending order by score value.
-	TopScores(ctx context.Context, in *TopScoresRequest, opts ...grpc.CallOption) (*TopScoresResponse, error)
+	DeleteGraphScore(ctx context.Context, in *DeleteGraphScoreRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Gets graph scores in descending order by score value.
+	TopGraphScores(ctx context.Context, in *TopGraphScoresRequest, opts ...grpc.CallOption) (*TopGraphScoresResponse, error)
 }
 
 type scoresClient struct {
@@ -527,45 +679,63 @@ func NewScoresClient(cc *grpc.ClientConn) ScoresClient {
 	return &scoresClient{cc}
 }
 
-func (c *scoresClient) GetScore(ctx context.Context, in *GetScoreRequest, opts ...grpc.CallOption) (*Score, error) {
+func (c *scoresClient) ListGraphScores(ctx context.Context, in *ListGraphScoresRequest, opts ...grpc.CallOption) (*ListGraphScoresResponse, error) {
+	out := new(ListGraphScoresResponse)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/ListGraphScores", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scoresClient) GetGraphScore(ctx context.Context, in *GetGraphScoreRequest, opts ...grpc.CallOption) (*Score, error) {
 	out := new(Score)
-	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/GetScore", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/GetGraphScore", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *scoresClient) SetScore(ctx context.Context, in *SetScoreRequest, opts ...grpc.CallOption) (*Score, error) {
+func (c *scoresClient) SetGraphScore(ctx context.Context, in *SetGraphScoreRequest, opts ...grpc.CallOption) (*Score, error) {
 	out := new(Score)
-	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/SetScore", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/SetGraphScore", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *scoresClient) BatchSetScore(ctx context.Context, in *BatchSetScoreRequest, opts ...grpc.CallOption) (*BatchSetScoreResponse, error) {
-	out := new(BatchSetScoreResponse)
-	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/BatchSetScore", in, out, opts...)
+func (c *scoresClient) BatchSetGraphScores(ctx context.Context, in *BatchSetGraphScoreRequest, opts ...grpc.CallOption) (*BatchSetGraphScoreResponse, error) {
+	out := new(BatchSetGraphScoreResponse)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/BatchSetGraphScores", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *scoresClient) DeleteScore(ctx context.Context, in *DeleteScoreRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *scoresClient) DeleteGraph(ctx context.Context, in *DeleteGraphRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/DeleteScore", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/DeleteGraph", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *scoresClient) TopScores(ctx context.Context, in *TopScoresRequest, opts ...grpc.CallOption) (*TopScoresResponse, error) {
-	out := new(TopScoresResponse)
-	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/TopScores", in, out, opts...)
+func (c *scoresClient) DeleteGraphScore(ctx context.Context, in *DeleteGraphScoreRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/DeleteGraphScore", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scoresClient) TopGraphScores(ctx context.Context, in *TopGraphScoresRequest, opts ...grpc.CallOption) (*TopGraphScoresResponse, error) {
+	out := new(TopGraphScoresResponse)
+	err := c.cc.Invoke(ctx, "/topos.scores.v1.Scores/TopGraphScores", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -574,108 +744,148 @@ func (c *scoresClient) TopScores(ctx context.Context, in *TopScoresRequest, opts
 
 // ScoresServer is the server API for Scores service.
 type ScoresServer interface {
-	// Gets a score.
-	GetScore(context.Context, *GetScoreRequest) (*Score, error)
-	// Sets a score.
-	SetScore(context.Context, *SetScoreRequest) (*Score, error)
-	// Sets a batch of scores.
-	BatchSetScore(context.Context, *BatchSetScoreRequest) (*BatchSetScoreResponse, error)
+	// Lists a graph's scores.
+	ListGraphScores(context.Context, *ListGraphScoresRequest) (*ListGraphScoresResponse, error)
+	// Gets a graph score.
+	GetGraphScore(context.Context, *GetGraphScoreRequest) (*Score, error)
+	// Sets a graph score.
+	SetGraphScore(context.Context, *SetGraphScoreRequest) (*Score, error)
+	// Sets a batch of graph scores.
+	BatchSetGraphScores(context.Context, *BatchSetGraphScoreRequest) (*BatchSetGraphScoreResponse, error)
+	// Deletes a graph.
+	DeleteGraph(context.Context, *DeleteGraphRequest) (*empty.Empty, error)
 	// Deletes a score.
-	DeleteScore(context.Context, *DeleteScoreRequest) (*empty.Empty, error)
-	// Gets scores in descending order by score value.
-	TopScores(context.Context, *TopScoresRequest) (*TopScoresResponse, error)
+	DeleteGraphScore(context.Context, *DeleteGraphScoreRequest) (*empty.Empty, error)
+	// Gets graph scores in descending order by score value.
+	TopGraphScores(context.Context, *TopGraphScoresRequest) (*TopGraphScoresResponse, error)
 }
 
 func RegisterScoresServer(s *grpc.Server, srv ScoresServer) {
 	s.RegisterService(&_Scores_serviceDesc, srv)
 }
 
-func _Scores_GetScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetScoreRequest)
+func _Scores_ListGraphScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGraphScoresRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScoresServer).GetScore(ctx, in)
+		return srv.(ScoresServer).ListGraphScores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.scores.v1.Scores/GetScore",
+		FullMethod: "/topos.scores.v1.Scores/ListGraphScores",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScoresServer).GetScore(ctx, req.(*GetScoreRequest))
+		return srv.(ScoresServer).ListGraphScores(ctx, req.(*ListGraphScoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Scores_SetScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetScoreRequest)
+func _Scores_GetGraphScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetGraphScoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScoresServer).SetScore(ctx, in)
+		return srv.(ScoresServer).GetGraphScore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.scores.v1.Scores/SetScore",
+		FullMethod: "/topos.scores.v1.Scores/GetGraphScore",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScoresServer).SetScore(ctx, req.(*SetScoreRequest))
+		return srv.(ScoresServer).GetGraphScore(ctx, req.(*GetGraphScoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Scores_BatchSetScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(BatchSetScoreRequest)
+func _Scores_SetGraphScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetGraphScoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScoresServer).BatchSetScore(ctx, in)
+		return srv.(ScoresServer).SetGraphScore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.scores.v1.Scores/BatchSetScore",
+		FullMethod: "/topos.scores.v1.Scores/SetGraphScore",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScoresServer).BatchSetScore(ctx, req.(*BatchSetScoreRequest))
+		return srv.(ScoresServer).SetGraphScore(ctx, req.(*SetGraphScoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Scores_DeleteScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteScoreRequest)
+func _Scores_BatchSetGraphScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchSetGraphScoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScoresServer).DeleteScore(ctx, in)
+		return srv.(ScoresServer).BatchSetGraphScores(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.scores.v1.Scores/DeleteScore",
+		FullMethod: "/topos.scores.v1.Scores/BatchSetGraphScores",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScoresServer).DeleteScore(ctx, req.(*DeleteScoreRequest))
+		return srv.(ScoresServer).BatchSetGraphScores(ctx, req.(*BatchSetGraphScoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Scores_TopScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TopScoresRequest)
+func _Scores_DeleteGraph_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteGraphRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScoresServer).TopScores(ctx, in)
+		return srv.(ScoresServer).DeleteGraph(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.scores.v1.Scores/TopScores",
+		FullMethod: "/topos.scores.v1.Scores/DeleteGraph",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScoresServer).TopScores(ctx, req.(*TopScoresRequest))
+		return srv.(ScoresServer).DeleteGraph(ctx, req.(*DeleteGraphRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Scores_DeleteGraphScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteGraphScoreRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScoresServer).DeleteGraphScore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.scores.v1.Scores/DeleteGraphScore",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScoresServer).DeleteGraphScore(ctx, req.(*DeleteGraphScoreRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Scores_TopGraphScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TopGraphScoresRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScoresServer).TopGraphScores(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.scores.v1.Scores/TopGraphScores",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScoresServer).TopGraphScores(ctx, req.(*TopGraphScoresRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -685,24 +895,32 @@ var _Scores_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ScoresServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetScore",
-			Handler:    _Scores_GetScore_Handler,
+			MethodName: "ListGraphScores",
+			Handler:    _Scores_ListGraphScores_Handler,
 		},
 		{
-			MethodName: "SetScore",
-			Handler:    _Scores_SetScore_Handler,
+			MethodName: "GetGraphScore",
+			Handler:    _Scores_GetGraphScore_Handler,
 		},
 		{
-			MethodName: "BatchSetScore",
-			Handler:    _Scores_BatchSetScore_Handler,
+			MethodName: "SetGraphScore",
+			Handler:    _Scores_SetGraphScore_Handler,
 		},
 		{
-			MethodName: "DeleteScore",
-			Handler:    _Scores_DeleteScore_Handler,
+			MethodName: "BatchSetGraphScores",
+			Handler:    _Scores_BatchSetGraphScores_Handler,
 		},
 		{
-			MethodName: "TopScores",
-			Handler:    _Scores_TopScores_Handler,
+			MethodName: "DeleteGraph",
+			Handler:    _Scores_DeleteGraph_Handler,
+		},
+		{
+			MethodName: "DeleteGraphScore",
+			Handler:    _Scores_DeleteGraphScore_Handler,
+		},
+		{
+			MethodName: "TopGraphScores",
+			Handler:    _Scores_TopGraphScores_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

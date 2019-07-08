@@ -638,116 +638,116 @@ DESCRIPTOR.message_types_by_name['CountIDsRequest'] = _COUNTIDSREQUEST
 DESCRIPTOR.message_types_by_name['CountIDsResponse'] = _COUNTIDSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-ListIDsRequest = _reflection.GeneratedProtocolMessageType('ListIDsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LISTIDSREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+ListIDsRequest = _reflection.GeneratedProtocolMessageType('ListIDsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTIDSREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:ListIDsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(ListIDsRequest)
 
-ListIDsResponse = _reflection.GeneratedProtocolMessageType('ListIDsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LISTIDSRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+ListIDsResponse = _reflection.GeneratedProtocolMessageType('ListIDsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTIDSRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:ListIDsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(ListIDsResponse)
 
-SetIDPositionRequest = _reflection.GeneratedProtocolMessageType('SetIDPositionRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETIDPOSITIONREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SetIDPositionRequest = _reflection.GeneratedProtocolMessageType('SetIDPositionRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETIDPOSITIONREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SetIDPositionRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetIDPositionRequest)
 
-SetIDPositionResponse = _reflection.GeneratedProtocolMessageType('SetIDPositionResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SETIDPOSITIONRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SetIDPositionResponse = _reflection.GeneratedProtocolMessageType('SetIDPositionResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SETIDPOSITIONRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SetIDPositionResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SetIDPositionResponse)
 
-DeleteIDRequest = _reflection.GeneratedProtocolMessageType('DeleteIDRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETEIDREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+DeleteIDRequest = _reflection.GeneratedProtocolMessageType('DeleteIDRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEIDREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:DeleteIDRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeleteIDRequest)
 
-DeleteIDResponse = _reflection.GeneratedProtocolMessageType('DeleteIDResponse', (_message.Message,), dict(
-  DESCRIPTOR = _DELETEIDRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+DeleteIDResponse = _reflection.GeneratedProtocolMessageType('DeleteIDResponse', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEIDRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:DeleteIDResponse)
-  ))
+  })
 _sym_db.RegisterMessage(DeleteIDResponse)
 
-GetIDKeyValuesRequest = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETIDKEYVALUESREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+GetIDKeyValuesRequest = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETIDKEYVALUESREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:GetIDKeyValuesRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetIDKeyValuesRequest)
 
-GetIDKeyValuesResponse = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesResponse', (_message.Message,), dict(
-  DESCRIPTOR = _GETIDKEYVALUESRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+GetIDKeyValuesResponse = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETIDKEYVALUESRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:GetIDKeyValuesResponse)
-  ))
+  })
 _sym_db.RegisterMessage(GetIDKeyValuesResponse)
 
-SetIDKeyValueRequest = _reflection.GeneratedProtocolMessageType('SetIDKeyValueRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETIDKEYVALUEREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SetIDKeyValueRequest = _reflection.GeneratedProtocolMessageType('SetIDKeyValueRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETIDKEYVALUEREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SetIDKeyValueRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetIDKeyValueRequest)
 
-SetIDKeyValueResponse = _reflection.GeneratedProtocolMessageType('SetIDKeyValueResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SETIDKEYVALUERESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SetIDKeyValueResponse = _reflection.GeneratedProtocolMessageType('SetIDKeyValueResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SETIDKEYVALUERESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SetIDKeyValueResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SetIDKeyValueResponse)
 
-KeyValuePair = _reflection.GeneratedProtocolMessageType('KeyValuePair', (_message.Message,), dict(
-  DESCRIPTOR = _KEYVALUEPAIR,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+KeyValuePair = _reflection.GeneratedProtocolMessageType('KeyValuePair', (_message.Message,), {
+  'DESCRIPTOR' : _KEYVALUEPAIR,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:KeyValuePair)
-  ))
+  })
 _sym_db.RegisterMessage(KeyValuePair)
 
-SearchIDsRequest = _reflection.GeneratedProtocolMessageType('SearchIDsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHIDSREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SearchIDsRequest = _reflection.GeneratedProtocolMessageType('SearchIDsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHIDSREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SearchIDsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchIDsRequest)
 
-SearchIDsResponse = _reflection.GeneratedProtocolMessageType('SearchIDsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHIDSRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+SearchIDsResponse = _reflection.GeneratedProtocolMessageType('SearchIDsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHIDSRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:SearchIDsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchIDsResponse)
 
-CountIDsRequest = _reflection.GeneratedProtocolMessageType('CountIDsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _COUNTIDSREQUEST,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+CountIDsRequest = _reflection.GeneratedProtocolMessageType('CountIDsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _COUNTIDSREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:CountIDsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CountIDsRequest)
 
-CountIDsResponse = _reflection.GeneratedProtocolMessageType('CountIDsResponse', (_message.Message,), dict(
+CountIDsResponse = _reflection.GeneratedProtocolMessageType('CountIDsResponse', (_message.Message,), {
 
-  ValueCountsEntry = _reflection.GeneratedProtocolMessageType('ValueCountsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _COUNTIDSRESPONSE_VALUECOUNTSENTRY,
-    __module__ = 'topos.topiary.v1.topiary_pb2'
+  'ValueCountsEntry' : _reflection.GeneratedProtocolMessageType('ValueCountsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _COUNTIDSRESPONSE_VALUECOUNTSENTRY,
+    '__module__' : 'topos.topiary.v1.topiary_pb2'
     # @@protoc_insertion_point(class_scope:CountIDsResponse.ValueCountsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _COUNTIDSRESPONSE,
-  __module__ = 'topos.topiary.v1.topiary_pb2'
+  'DESCRIPTOR' : _COUNTIDSRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
   # @@protoc_insertion_point(class_scope:CountIDsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(CountIDsResponse)
 _sym_db.RegisterMessage(CountIDsResponse.ValueCountsEntry)
 

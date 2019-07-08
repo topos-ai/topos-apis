@@ -15,7 +15,6 @@ _sym_db = _symbol_database.Default()
 
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -23,9 +22,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.scores.v1',
   syntax='proto3',
   serialized_options=_b('Z\026topos/scores/v1;scores'),
-  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\x05Score\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\x12\r\n\x05score\x18\x04 \x01(\x01\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"C\n\x0fGetScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"8\n\x0fSetScoreRequest\x12%\n\x05score\x18\x01 \x01(\x0b\x32\x16.topos.scores.v1.Score\">\n\x14\x42\x61tchSetScoreRequest\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x17\n\x15\x42\x61tchSetScoreResponse\"F\n\x12\x44\x65leteScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"E\n\x10TopScoresRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\";\n\x11TopScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\xc3\x04\n\x06Scores\x12\x61\n\x08GetScore\x12 .topos.scores.v1.GetScoreRequest\x1a\x16.topos.scores.v1.Score\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=scores/*}\x12r\n\x08SetScore\x12 .topos.scores.v1.SetScoreRequest\x1a\x16.topos.scores.v1.Score\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{score.name=scores/*}:set:\x05score\x12~\n\rBatchSetScore\x12%.topos.scores.v1.BatchSetScoreRequest\x1a&.topos.scores.v1.BatchSetScoreResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/scores:batchSet:\x01*\x12m\n\x0b\x44\x65leteScore\x12#.topos.scores.v1.DeleteScoreRequest\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b*\x19/v1/{score.name=scores/*}\x12s\n\tTopScores\x12!.topos.scores.v1.TopScoresRequest\x1a\".topos.scores.v1.TopScoresResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/v1/{name=scores/*}:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n\x05Score\x12\x10\n\x08vertex_a\x18\x01 \x01(\t\x12\x10\n\x08vertex_b\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x01\"M\n\x16ListGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"Z\n\x17ListGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"H\n\x14GetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"K\n\x14SetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x01(\x0b\x32\x16.topos.scores.v1.Score\"P\n\x19\x42\x61tchSetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x1c\n\x1a\x42\x61tchSetGraphScoreResponse\"\"\n\x12\x44\x65leteGraphRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"K\n\x17\x44\x65leteGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"J\n\x15TopGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\"@\n\x16TopGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\x96\x07\n\x06Scores\x12\x88\x01\n\x0fListGraphScores\x12\'.topos.scores.v1.ListGraphScoresRequest\x1a(.topos.scores.v1.ListGraphScoresResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12r\n\rGetGraphScore\x12%.topos.scores.v1.GetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12}\n\rSetGraphScore\x12%.topos.scores.v1.SetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"-\x82\xd3\xe4\x93\x02\'\"\x1e/v1/{name=graphs/*}/scores:set:\x05score\x12\x9e\x01\n\x13\x42\x61tchSetGraphScores\x12*.topos.scores.v1.BatchSetGraphScoreRequest\x1a+.topos.scores.v1.BatchSetGraphScoreResponse\".\x82\xd3\xe4\x93\x02(\"#/v1/{name=graphs/*}/scores:batchSet:\x01*\x12g\n\x0b\x44\x65leteGraph\x12#.topos.scores.v1.DeleteGraphRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=graphs/*}\x12x\n\x10\x44\x65leteGraphScore\x12(.topos.scores.v1.DeleteGraphScoreRequest\x1a\x16.google.protobuf.Empty\"\"\x82\xd3\xe4\x93\x02\x1c*\x1a/v1/{name=graphs/*}/scores\x12\x89\x01\n\x0eTopGraphScores\x12&.topos.scores.v1.TopGraphScoresRequest\x1a\'.topos.scores.v1.TopGraphScoresResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/{name=graphs/*}/scores:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
   ,
-  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
+  dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -38,47 +37,26 @@ _SCORE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.Score.name', index=0,
+      name='vertex_a', full_name='topos.scores.v1.Score.vertex_a', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='vertex_a', full_name='topos.scores.v1.Score.vertex_a', index=1,
+      name='vertex_b', full_name='topos.scores.v1.Score.vertex_b', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='vertex_b', full_name='topos.scores.v1.Score.vertex_b', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='score', full_name='topos.scores.v1.Score.score', index=3,
-      number=4, type=1, cpp_type=5, label=1,
+      name='score', full_name='topos.scores.v1.Score.score', index=2,
+      number=3, type=1, cpp_type=5, label=1,
       has_default_value=False, default_value=float(0),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='create_time', full_name='topos.scores.v1.Score.create_time', index=4,
-      number=14, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='update_time', full_name='topos.scores.v1.Score.update_time', index=5,
-      number=15, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -91,34 +69,34 @@ _SCORE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=142,
-  serialized_end=312,
+  serialized_start=108,
+  serialized_end=166,
 )
 
 
-_GETSCOREREQUEST = _descriptor.Descriptor(
-  name='GetScoreRequest',
-  full_name='topos.scores.v1.GetScoreRequest',
+_LISTGRAPHSCORESREQUEST = _descriptor.Descriptor(
+  name='ListGraphScoresRequest',
+  full_name='topos.scores.v1.ListGraphScoresRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.GetScoreRequest.name', index=0,
+      name='name', full_name='topos.scores.v1.ListGraphScoresRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='vertex_a', full_name='topos.scores.v1.GetScoreRequest.vertex_a', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='page_size', full_name='topos.scores.v1.ListGraphScoresRequest.page_size', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='vertex_b', full_name='topos.scores.v1.GetScoreRequest.vertex_b', index=2,
+      name='page_token', full_name='topos.scores.v1.ListGraphScoresRequest.page_token', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -136,21 +114,111 @@ _GETSCOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=314,
-  serialized_end=381,
+  serialized_start=168,
+  serialized_end=245,
 )
 
 
-_SETSCOREREQUEST = _descriptor.Descriptor(
-  name='SetScoreRequest',
-  full_name='topos.scores.v1.SetScoreRequest',
+_LISTGRAPHSCORESRESPONSE = _descriptor.Descriptor(
+  name='ListGraphScoresResponse',
+  full_name='topos.scores.v1.ListGraphScoresResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='score', full_name='topos.scores.v1.SetScoreRequest.score', index=0,
-      number=1, type=11, cpp_type=10, label=1,
+      name='scores', full_name='topos.scores.v1.ListGraphScoresResponse.scores', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='next_page_token', full_name='topos.scores.v1.ListGraphScoresResponse.next_page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=247,
+  serialized_end=337,
+)
+
+
+_GETGRAPHSCOREREQUEST = _descriptor.Descriptor(
+  name='GetGraphScoreRequest',
+  full_name='topos.scores.v1.GetGraphScoreRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='topos.scores.v1.GetGraphScoreRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_a', full_name='topos.scores.v1.GetGraphScoreRequest.vertex_a', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_b', full_name='topos.scores.v1.GetGraphScoreRequest.vertex_b', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=339,
+  serialized_end=411,
+)
+
+
+_SETGRAPHSCOREREQUEST = _descriptor.Descriptor(
+  name='SetGraphScoreRequest',
+  full_name='topos.scores.v1.SetGraphScoreRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='topos.scores.v1.SetGraphScoreRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='topos.scores.v1.SetGraphScoreRequest.score', index=1,
+      number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -167,20 +235,27 @@ _SETSCOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=383,
-  serialized_end=439,
+  serialized_start=413,
+  serialized_end=488,
 )
 
 
-_BATCHSETSCOREREQUEST = _descriptor.Descriptor(
-  name='BatchSetScoreRequest',
-  full_name='topos.scores.v1.BatchSetScoreRequest',
+_BATCHSETGRAPHSCOREREQUEST = _descriptor.Descriptor(
+  name='BatchSetGraphScoreRequest',
+  full_name='topos.scores.v1.BatchSetGraphScoreRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='scores', full_name='topos.scores.v1.BatchSetScoreRequest.scores', index=0,
+      name='name', full_name='topos.scores.v1.BatchSetGraphScoreRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='score', full_name='topos.scores.v1.BatchSetGraphScoreRequest.score', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -198,14 +273,14 @@ _BATCHSETSCOREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=441,
-  serialized_end=503,
+  serialized_start=490,
+  serialized_end=570,
 )
 
 
-_BATCHSETSCORERESPONSE = _descriptor.Descriptor(
-  name='BatchSetScoreResponse',
-  full_name='topos.scores.v1.BatchSetScoreResponse',
+_BATCHSETGRAPHSCORERESPONSE = _descriptor.Descriptor(
+  name='BatchSetGraphScoreResponse',
+  full_name='topos.scores.v1.BatchSetGraphScoreResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -222,80 +297,21 @@ _BATCHSETSCORERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=505,
-  serialized_end=528,
-)
-
-
-_DELETESCOREREQUEST = _descriptor.Descriptor(
-  name='DeleteScoreRequest',
-  full_name='topos.scores.v1.DeleteScoreRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.DeleteScoreRequest.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='vertex_a', full_name='topos.scores.v1.DeleteScoreRequest.vertex_a', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='vertex_b', full_name='topos.scores.v1.DeleteScoreRequest.vertex_b', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=530,
+  serialized_start=572,
   serialized_end=600,
 )
 
 
-_TOPSCORESREQUEST = _descriptor.Descriptor(
-  name='TopScoresRequest',
-  full_name='topos.scores.v1.TopScoresRequest',
+_DELETEGRAPHREQUEST = _descriptor.Descriptor(
+  name='DeleteGraphRequest',
+  full_name='topos.scores.v1.DeleteGraphRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='page_size', full_name='topos.scores.v1.TopScoresRequest.page_size', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='name', full_name='topos.scores.v1.TopScoresRequest.name', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='vertex_a', full_name='topos.scores.v1.TopScoresRequest.vertex_a', index=2,
-      number=3, type=9, cpp_type=9, label=1,
+      name='name', full_name='topos.scores.v1.DeleteGraphRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -313,19 +329,109 @@ _TOPSCORESREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=602,
-  serialized_end=671,
+  serialized_end=636,
 )
 
 
-_TOPSCORESRESPONSE = _descriptor.Descriptor(
-  name='TopScoresResponse',
-  full_name='topos.scores.v1.TopScoresResponse',
+_DELETEGRAPHSCOREREQUEST = _descriptor.Descriptor(
+  name='DeleteGraphScoreRequest',
+  full_name='topos.scores.v1.DeleteGraphScoreRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='scores', full_name='topos.scores.v1.TopScoresResponse.scores', index=0,
+      name='name', full_name='topos.scores.v1.DeleteGraphScoreRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_a', full_name='topos.scores.v1.DeleteGraphScoreRequest.vertex_a', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_b', full_name='topos.scores.v1.DeleteGraphScoreRequest.vertex_b', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=638,
+  serialized_end=713,
+)
+
+
+_TOPGRAPHSCORESREQUEST = _descriptor.Descriptor(
+  name='TopGraphScoresRequest',
+  full_name='topos.scores.v1.TopGraphScoresRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='topos.scores.v1.TopGraphScoresRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='page_size', full_name='topos.scores.v1.TopGraphScoresRequest.page_size', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_a', full_name='topos.scores.v1.TopGraphScoresRequest.vertex_a', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=715,
+  serialized_end=789,
+)
+
+
+_TOPGRAPHSCORESRESPONSE = _descriptor.Descriptor(
+  name='TopGraphScoresResponse',
+  full_name='topos.scores.v1.TopGraphScoresResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='scores', full_name='topos.scores.v1.TopGraphScoresResponse.scores', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -343,80 +449,103 @@ _TOPSCORESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=673,
-  serialized_end=732,
+  serialized_start=791,
+  serialized_end=855,
 )
 
-_SCORE.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_SCORE.fields_by_name['update_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_SETSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
-_BATCHSETSCOREREQUEST.fields_by_name['scores'].message_type = _SCORE
-_TOPSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
+_LISTGRAPHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
+_SETGRAPHSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
+_BATCHSETGRAPHSCOREREQUEST.fields_by_name['score'].message_type = _SCORE
+_TOPGRAPHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
 DESCRIPTOR.message_types_by_name['Score'] = _SCORE
-DESCRIPTOR.message_types_by_name['GetScoreRequest'] = _GETSCOREREQUEST
-DESCRIPTOR.message_types_by_name['SetScoreRequest'] = _SETSCOREREQUEST
-DESCRIPTOR.message_types_by_name['BatchSetScoreRequest'] = _BATCHSETSCOREREQUEST
-DESCRIPTOR.message_types_by_name['BatchSetScoreResponse'] = _BATCHSETSCORERESPONSE
-DESCRIPTOR.message_types_by_name['DeleteScoreRequest'] = _DELETESCOREREQUEST
-DESCRIPTOR.message_types_by_name['TopScoresRequest'] = _TOPSCORESREQUEST
-DESCRIPTOR.message_types_by_name['TopScoresResponse'] = _TOPSCORESRESPONSE
+DESCRIPTOR.message_types_by_name['ListGraphScoresRequest'] = _LISTGRAPHSCORESREQUEST
+DESCRIPTOR.message_types_by_name['ListGraphScoresResponse'] = _LISTGRAPHSCORESRESPONSE
+DESCRIPTOR.message_types_by_name['GetGraphScoreRequest'] = _GETGRAPHSCOREREQUEST
+DESCRIPTOR.message_types_by_name['SetGraphScoreRequest'] = _SETGRAPHSCOREREQUEST
+DESCRIPTOR.message_types_by_name['BatchSetGraphScoreRequest'] = _BATCHSETGRAPHSCOREREQUEST
+DESCRIPTOR.message_types_by_name['BatchSetGraphScoreResponse'] = _BATCHSETGRAPHSCORERESPONSE
+DESCRIPTOR.message_types_by_name['DeleteGraphRequest'] = _DELETEGRAPHREQUEST
+DESCRIPTOR.message_types_by_name['DeleteGraphScoreRequest'] = _DELETEGRAPHSCOREREQUEST
+DESCRIPTOR.message_types_by_name['TopGraphScoresRequest'] = _TOPGRAPHSCORESREQUEST
+DESCRIPTOR.message_types_by_name['TopGraphScoresResponse'] = _TOPGRAPHSCORESRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), dict(
-  DESCRIPTOR = _SCORE,
-  __module__ = 'topos.scores.v1.scores_pb2'
+Score = _reflection.GeneratedProtocolMessageType('Score', (_message.Message,), {
+  'DESCRIPTOR' : _SCORE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
   # @@protoc_insertion_point(class_scope:topos.scores.v1.Score)
-  ))
+  })
 _sym_db.RegisterMessage(Score)
 
-GetScoreRequest = _reflection.GeneratedProtocolMessageType('GetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.GetScoreRequest)
-  ))
-_sym_db.RegisterMessage(GetScoreRequest)
+ListGraphScoresRequest = _reflection.GeneratedProtocolMessageType('ListGraphScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTGRAPHSCORESREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.ListGraphScoresRequest)
+  })
+_sym_db.RegisterMessage(ListGraphScoresRequest)
 
-SetScoreRequest = _reflection.GeneratedProtocolMessageType('SetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.SetScoreRequest)
-  ))
-_sym_db.RegisterMessage(SetScoreRequest)
+ListGraphScoresResponse = _reflection.GeneratedProtocolMessageType('ListGraphScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTGRAPHSCORESRESPONSE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.ListGraphScoresResponse)
+  })
+_sym_db.RegisterMessage(ListGraphScoresResponse)
 
-BatchSetScoreRequest = _reflection.GeneratedProtocolMessageType('BatchSetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _BATCHSETSCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetScoreRequest)
-  ))
-_sym_db.RegisterMessage(BatchSetScoreRequest)
+GetGraphScoreRequest = _reflection.GeneratedProtocolMessageType('GetGraphScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETGRAPHSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.GetGraphScoreRequest)
+  })
+_sym_db.RegisterMessage(GetGraphScoreRequest)
 
-BatchSetScoreResponse = _reflection.GeneratedProtocolMessageType('BatchSetScoreResponse', (_message.Message,), dict(
-  DESCRIPTOR = _BATCHSETSCORERESPONSE,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetScoreResponse)
-  ))
-_sym_db.RegisterMessage(BatchSetScoreResponse)
+SetGraphScoreRequest = _reflection.GeneratedProtocolMessageType('SetGraphScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETGRAPHSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.SetGraphScoreRequest)
+  })
+_sym_db.RegisterMessage(SetGraphScoreRequest)
 
-DeleteScoreRequest = _reflection.GeneratedProtocolMessageType('DeleteScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETESCOREREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.DeleteScoreRequest)
-  ))
-_sym_db.RegisterMessage(DeleteScoreRequest)
+BatchSetGraphScoreRequest = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETGRAPHSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoreRequest)
+  })
+_sym_db.RegisterMessage(BatchSetGraphScoreRequest)
 
-TopScoresRequest = _reflection.GeneratedProtocolMessageType('TopScoresRequest', (_message.Message,), dict(
-  DESCRIPTOR = _TOPSCORESREQUEST,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresRequest)
-  ))
-_sym_db.RegisterMessage(TopScoresRequest)
+BatchSetGraphScoreResponse = _reflection.GeneratedProtocolMessageType('BatchSetGraphScoreResponse', (_message.Message,), {
+  'DESCRIPTOR' : _BATCHSETGRAPHSCORERESPONSE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.BatchSetGraphScoreResponse)
+  })
+_sym_db.RegisterMessage(BatchSetGraphScoreResponse)
 
-TopScoresResponse = _reflection.GeneratedProtocolMessageType('TopScoresResponse', (_message.Message,), dict(
-  DESCRIPTOR = _TOPSCORESRESPONSE,
-  __module__ = 'topos.scores.v1.scores_pb2'
-  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopScoresResponse)
-  ))
-_sym_db.RegisterMessage(TopScoresResponse)
+DeleteGraphRequest = _reflection.GeneratedProtocolMessageType('DeleteGraphRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEGRAPHREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.DeleteGraphRequest)
+  })
+_sym_db.RegisterMessage(DeleteGraphRequest)
+
+DeleteGraphScoreRequest = _reflection.GeneratedProtocolMessageType('DeleteGraphScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEGRAPHSCOREREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.DeleteGraphScoreRequest)
+  })
+_sym_db.RegisterMessage(DeleteGraphScoreRequest)
+
+TopGraphScoresRequest = _reflection.GeneratedProtocolMessageType('TopGraphScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _TOPGRAPHSCORESREQUEST,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopGraphScoresRequest)
+  })
+_sym_db.RegisterMessage(TopGraphScoresRequest)
+
+TopGraphScoresResponse = _reflection.GeneratedProtocolMessageType('TopGraphScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _TOPGRAPHSCORESRESPONSE,
+  '__module__' : 'topos.scores.v1.scores_pb2'
+  # @@protoc_insertion_point(class_scope:topos.scores.v1.TopGraphScoresResponse)
+  })
+_sym_db.RegisterMessage(TopGraphScoresResponse)
 
 
 DESCRIPTOR._options = None
@@ -427,53 +556,71 @@ _SCORES = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=735,
-  serialized_end=1314,
+  serialized_start=858,
+  serialized_end=1776,
   methods=[
   _descriptor.MethodDescriptor(
-    name='GetScore',
-    full_name='topos.scores.v1.Scores.GetScore',
+    name='ListGraphScores',
+    full_name='topos.scores.v1.Scores.ListGraphScores',
     index=0,
     containing_service=None,
-    input_type=_GETSCOREREQUEST,
-    output_type=_SCORE,
-    serialized_options=_b('\202\323\344\223\002\025\022\023/v1/{name=scores/*}'),
+    input_type=_LISTGRAPHSCORESREQUEST,
+    output_type=_LISTGRAPHSCORESRESPONSE,
+    serialized_options=_b('\202\323\344\223\002\034\022\032/v1/{name=graphs/*}/scores'),
   ),
   _descriptor.MethodDescriptor(
-    name='SetScore',
-    full_name='topos.scores.v1.Scores.SetScore',
+    name='GetGraphScore',
+    full_name='topos.scores.v1.Scores.GetGraphScore',
     index=1,
     containing_service=None,
-    input_type=_SETSCOREREQUEST,
+    input_type=_GETGRAPHSCOREREQUEST,
     output_type=_SCORE,
-    serialized_options=_b('\202\323\344\223\002&\"\035/v1/{score.name=scores/*}:set:\005score'),
+    serialized_options=_b('\202\323\344\223\002\034\022\032/v1/{name=graphs/*}/scores'),
   ),
   _descriptor.MethodDescriptor(
-    name='BatchSetScore',
-    full_name='topos.scores.v1.Scores.BatchSetScore',
+    name='SetGraphScore',
+    full_name='topos.scores.v1.Scores.SetGraphScore',
     index=2,
     containing_service=None,
-    input_type=_BATCHSETSCOREREQUEST,
-    output_type=_BATCHSETSCORERESPONSE,
-    serialized_options=_b('\202\323\344\223\002\030\"\023/v1/scores:batchSet:\001*'),
+    input_type=_SETGRAPHSCOREREQUEST,
+    output_type=_SCORE,
+    serialized_options=_b('\202\323\344\223\002\'\"\036/v1/{name=graphs/*}/scores:set:\005score'),
   ),
   _descriptor.MethodDescriptor(
-    name='DeleteScore',
-    full_name='topos.scores.v1.Scores.DeleteScore',
+    name='BatchSetGraphScores',
+    full_name='topos.scores.v1.Scores.BatchSetGraphScores',
     index=3,
     containing_service=None,
-    input_type=_DELETESCOREREQUEST,
-    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    serialized_options=_b('\202\323\344\223\002\033*\031/v1/{score.name=scores/*}'),
+    input_type=_BATCHSETGRAPHSCOREREQUEST,
+    output_type=_BATCHSETGRAPHSCORERESPONSE,
+    serialized_options=_b('\202\323\344\223\002(\"#/v1/{name=graphs/*}/scores:batchSet:\001*'),
   ),
   _descriptor.MethodDescriptor(
-    name='TopScores',
-    full_name='topos.scores.v1.Scores.TopScores',
+    name='DeleteGraph',
+    full_name='topos.scores.v1.Scores.DeleteGraph',
     index=4,
     containing_service=None,
-    input_type=_TOPSCORESREQUEST,
-    output_type=_TOPSCORESRESPONSE,
-    serialized_options=_b('\202\323\344\223\002\031\022\027/v1/{name=scores/*}:top'),
+    input_type=_DELETEGRAPHREQUEST,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=_b('\202\323\344\223\002\025*\023/v1/{name=graphs/*}'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteGraphScore',
+    full_name='topos.scores.v1.Scores.DeleteGraphScore',
+    index=5,
+    containing_service=None,
+    input_type=_DELETEGRAPHSCOREREQUEST,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=_b('\202\323\344\223\002\034*\032/v1/{name=graphs/*}/scores'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='TopGraphScores',
+    full_name='topos.scores.v1.Scores.TopGraphScores',
+    index=6,
+    containing_service=None,
+    input_type=_TOPGRAPHSCORESREQUEST,
+    output_type=_TOPGRAPHSCORESRESPONSE,
+    serialized_options=_b('\202\323\344\223\002 \022\036/v1/{name=graphs/*}/scores:top'),
   ),
 ])
 _sym_db.RegisterServiceDescriptor(_SCORES)

@@ -2992,454 +2992,454 @@ DESCRIPTOR.message_types_by_name['SearchRegionGraphEdgesResponse'] = _SEARCHREGI
 DESCRIPTOR.message_types_by_name['CreateFeedbackRequest'] = _CREATEFEEDBACKREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-FeatureStats = _reflection.GeneratedProtocolMessageType('FeatureStats', (_message.Message,), dict(
-  DESCRIPTOR = _FEATURESTATS,
-  __module__ = 'topos.points.v1.points_pb2'
+FeatureStats = _reflection.GeneratedProtocolMessageType('FeatureStats', (_message.Message,), {
+  'DESCRIPTOR' : _FEATURESTATS,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.FeatureStats)
-  ))
+  })
 _sym_db.RegisterMessage(FeatureStats)
 
-Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), dict(
+Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), {
 
-  Contact = _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,), dict(
-    DESCRIPTOR = _BRAND_CONTACT,
-    __module__ = 'topos.points.v1.points_pb2'
+  'Contact' : _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,), {
+    'DESCRIPTOR' : _BRAND_CONTACT,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.Brand.Contact)
-    ))
+    })
   ,
 
-  FeatureSetFeatureStatsEntry = _reflection.GeneratedProtocolMessageType('FeatureSetFeatureStatsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _BRAND_FEATURESETFEATURESTATSENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'FeatureSetFeatureStatsEntry' : _reflection.GeneratedProtocolMessageType('FeatureSetFeatureStatsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _BRAND_FEATURESETFEATURESTATSENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.Brand.FeatureSetFeatureStatsEntry)
-    ))
+    })
   ,
 
-  Preferences = _reflection.GeneratedProtocolMessageType('Preferences', (_message.Message,), dict(
-    DESCRIPTOR = _BRAND_PREFERENCES,
-    __module__ = 'topos.points.v1.points_pb2'
+  'Preferences' : _reflection.GeneratedProtocolMessageType('Preferences', (_message.Message,), {
+    'DESCRIPTOR' : _BRAND_PREFERENCES,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.Brand.Preferences)
-    ))
+    })
   ,
 
-  RegionPreferencesEntry = _reflection.GeneratedProtocolMessageType('RegionPreferencesEntry', (_message.Message,), dict(
-    DESCRIPTOR = _BRAND_REGIONPREFERENCESENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'RegionPreferencesEntry' : _reflection.GeneratedProtocolMessageType('RegionPreferencesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _BRAND_REGIONPREFERENCESENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.Brand.RegionPreferencesEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _BRAND,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _BRAND,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.Brand)
-  ))
+  })
 _sym_db.RegisterMessage(Brand)
 _sym_db.RegisterMessage(Brand.Contact)
 _sym_db.RegisterMessage(Brand.FeatureSetFeatureStatsEntry)
 _sym_db.RegisterMessage(Brand.Preferences)
 _sym_db.RegisterMessage(Brand.RegionPreferencesEntry)
 
-LatLng = _reflection.GeneratedProtocolMessageType('LatLng', (_message.Message,), dict(
-  DESCRIPTOR = _LATLNG,
-  __module__ = 'topos.points.v1.points_pb2'
+LatLng = _reflection.GeneratedProtocolMessageType('LatLng', (_message.Message,), {
+  'DESCRIPTOR' : _LATLNG,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.LatLng)
-  ))
+  })
 _sym_db.RegisterMessage(LatLng)
 
-Point = _reflection.GeneratedProtocolMessageType('Point', (_message.Message,), dict(
-  DESCRIPTOR = _POINT,
-  __module__ = 'topos.points.v1.points_pb2'
+Point = _reflection.GeneratedProtocolMessageType('Point', (_message.Message,), {
+  'DESCRIPTOR' : _POINT,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.Point)
-  ))
+  })
 _sym_db.RegisterMessage(Point)
 
-Tag = _reflection.GeneratedProtocolMessageType('Tag', (_message.Message,), dict(
-  DESCRIPTOR = _TAG,
-  __module__ = 'topos.points.v1.points_pb2'
+Tag = _reflection.GeneratedProtocolMessageType('Tag', (_message.Message,), {
+  'DESCRIPTOR' : _TAG,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.Tag)
-  ))
+  })
 _sym_db.RegisterMessage(Tag)
 
-PointSource = _reflection.GeneratedProtocolMessageType('PointSource', (_message.Message,), dict(
-  DESCRIPTOR = _POINTSOURCE,
-  __module__ = 'topos.points.v1.points_pb2'
+PointSource = _reflection.GeneratedProtocolMessageType('PointSource', (_message.Message,), {
+  'DESCRIPTOR' : _POINTSOURCE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PointSource)
-  ))
+  })
 _sym_db.RegisterMessage(PointSource)
 
-Region = _reflection.GeneratedProtocolMessageType('Region', (_message.Message,), dict(
-  DESCRIPTOR = _REGION,
-  __module__ = 'topos.points.v1.points_pb2'
+Region = _reflection.GeneratedProtocolMessageType('Region', (_message.Message,), {
+  'DESCRIPTOR' : _REGION,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.Region)
-  ))
+  })
 _sym_db.RegisterMessage(Region)
 
-BrandRegionScoreSetScore = _reflection.GeneratedProtocolMessageType('BrandRegionScoreSetScore', (_message.Message,), dict(
-  DESCRIPTOR = _BRANDREGIONSCORESETSCORE,
-  __module__ = 'topos.points.v1.points_pb2'
+BrandRegionScoreSetScore = _reflection.GeneratedProtocolMessageType('BrandRegionScoreSetScore', (_message.Message,), {
+  'DESCRIPTOR' : _BRANDREGIONSCORESETSCORE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.BrandRegionScoreSetScore)
-  ))
+  })
 _sym_db.RegisterMessage(BrandRegionScoreSetScore)
 
-TagRegionScoreSetScore = _reflection.GeneratedProtocolMessageType('TagRegionScoreSetScore', (_message.Message,), dict(
-  DESCRIPTOR = _TAGREGIONSCORESETSCORE,
-  __module__ = 'topos.points.v1.points_pb2'
+TagRegionScoreSetScore = _reflection.GeneratedProtocolMessageType('TagRegionScoreSetScore', (_message.Message,), {
+  'DESCRIPTOR' : _TAGREGIONSCORESETSCORE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.TagRegionScoreSetScore)
-  ))
+  })
 _sym_db.RegisterMessage(TagRegionScoreSetScore)
 
-RegionGraphEdge = _reflection.GeneratedProtocolMessageType('RegionGraphEdge', (_message.Message,), dict(
-  DESCRIPTOR = _REGIONGRAPHEDGE,
-  __module__ = 'topos.points.v1.points_pb2'
+RegionGraphEdge = _reflection.GeneratedProtocolMessageType('RegionGraphEdge', (_message.Message,), {
+  'DESCRIPTOR' : _REGIONGRAPHEDGE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.RegionGraphEdge)
-  ))
+  })
 _sym_db.RegisterMessage(RegionGraphEdge)
 
-Feedback = _reflection.GeneratedProtocolMessageType('Feedback', (_message.Message,), dict(
+Feedback = _reflection.GeneratedProtocolMessageType('Feedback', (_message.Message,), {
 
-  FeedbackEntry = _reflection.GeneratedProtocolMessageType('FeedbackEntry', (_message.Message,), dict(
-    DESCRIPTOR = _FEEDBACK_FEEDBACKENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'FeedbackEntry' : _reflection.GeneratedProtocolMessageType('FeedbackEntry', (_message.Message,), {
+    'DESCRIPTOR' : _FEEDBACK_FEEDBACKENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.Feedback.FeedbackEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _FEEDBACK,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _FEEDBACK,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.Feedback)
-  ))
+  })
 _sym_db.RegisterMessage(Feedback)
 _sym_db.RegisterMessage(Feedback.FeedbackEntry)
 
-GetBrandRequest = _reflection.GeneratedProtocolMessageType('GetBrandRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETBRANDREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+GetBrandRequest = _reflection.GeneratedProtocolMessageType('GetBrandRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETBRANDREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.GetBrandRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetBrandRequest)
 
-SetBrandRequest = _reflection.GeneratedProtocolMessageType('SetBrandRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETBRANDREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetBrandRequest = _reflection.GeneratedProtocolMessageType('SetBrandRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETBRANDREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetBrandRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetBrandRequest)
 
-ListBrandsRequest = _reflection.GeneratedProtocolMessageType('ListBrandsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LISTBRANDSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+ListBrandsRequest = _reflection.GeneratedProtocolMessageType('ListBrandsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTBRANDSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.ListBrandsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(ListBrandsRequest)
 
-ListBrand = _reflection.GeneratedProtocolMessageType('ListBrand', (_message.Message,), dict(
-  DESCRIPTOR = _LISTBRAND,
-  __module__ = 'topos.points.v1.points_pb2'
+ListBrand = _reflection.GeneratedProtocolMessageType('ListBrand', (_message.Message,), {
+  'DESCRIPTOR' : _LISTBRAND,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.ListBrand)
-  ))
+  })
 _sym_db.RegisterMessage(ListBrand)
 
-ListBrandsResponse = _reflection.GeneratedProtocolMessageType('ListBrandsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LISTBRANDSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+ListBrandsResponse = _reflection.GeneratedProtocolMessageType('ListBrandsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTBRANDSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.ListBrandsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(ListBrandsResponse)
 
-DeleteBrandRequest = _reflection.GeneratedProtocolMessageType('DeleteBrandRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETEBRANDREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+DeleteBrandRequest = _reflection.GeneratedProtocolMessageType('DeleteBrandRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEBRANDREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.DeleteBrandRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeleteBrandRequest)
 
-SearchPointsRequest = _reflection.GeneratedProtocolMessageType('SearchPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchPointsRequest = _reflection.GeneratedProtocolMessageType('SearchPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchPointsRequest)
 
-SearchPointsResponse = _reflection.GeneratedProtocolMessageType('SearchPointsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchPointsResponse = _reflection.GeneratedProtocolMessageType('SearchPointsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchPointsResponse)
 
-PolygonSearchPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonSearchPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _POLYGONSEARCHPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+PolygonSearchPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonSearchPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _POLYGONSEARCHPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonSearchPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonSearchPointsRequest)
 
-PolygonSearchPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonSearchPointsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _POLYGONSEARCHPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+PolygonSearchPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonSearchPointsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _POLYGONSEARCHPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonSearchPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonSearchPointsResponse)
 
-GetPointRequest = _reflection.GeneratedProtocolMessageType('GetPointRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETPOINTREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+GetPointRequest = _reflection.GeneratedProtocolMessageType('GetPointRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETPOINTREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.GetPointRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetPointRequest)
 
-UpdatePointRequest = _reflection.GeneratedProtocolMessageType('UpdatePointRequest', (_message.Message,), dict(
-  DESCRIPTOR = _UPDATEPOINTREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+UpdatePointRequest = _reflection.GeneratedProtocolMessageType('UpdatePointRequest', (_message.Message,), {
+  'DESCRIPTOR' : _UPDATEPOINTREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.UpdatePointRequest)
-  ))
+  })
 _sym_db.RegisterMessage(UpdatePointRequest)
 
-DeletePointRequest = _reflection.GeneratedProtocolMessageType('DeletePointRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETEPOINTREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+DeletePointRequest = _reflection.GeneratedProtocolMessageType('DeletePointRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEPOINTREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.DeletePointRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeletePointRequest)
 
-GetTagRequest = _reflection.GeneratedProtocolMessageType('GetTagRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETTAGREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+GetTagRequest = _reflection.GeneratedProtocolMessageType('GetTagRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETTAGREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.GetTagRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetTagRequest)
 
-SetTagRequest = _reflection.GeneratedProtocolMessageType('SetTagRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETTAGREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetTagRequest = _reflection.GeneratedProtocolMessageType('SetTagRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETTAGREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetTagRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetTagRequest)
 
-ListTagsRequest = _reflection.GeneratedProtocolMessageType('ListTagsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _LISTTAGSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+ListTagsRequest = _reflection.GeneratedProtocolMessageType('ListTagsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _LISTTAGSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.ListTagsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(ListTagsRequest)
 
-ListTagsResponse = _reflection.GeneratedProtocolMessageType('ListTagsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _LISTTAGSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+ListTagsResponse = _reflection.GeneratedProtocolMessageType('ListTagsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _LISTTAGSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.ListTagsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(ListTagsResponse)
 
-DeleteTagRequest = _reflection.GeneratedProtocolMessageType('DeleteTagRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETETAGREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+DeleteTagRequest = _reflection.GeneratedProtocolMessageType('DeleteTagRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETETAGREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.DeleteTagRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeleteTagRequest)
 
-GetPointSourceRequest = _reflection.GeneratedProtocolMessageType('GetPointSourceRequest', (_message.Message,), dict(
-  DESCRIPTOR = _GETPOINTSOURCEREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+GetPointSourceRequest = _reflection.GeneratedProtocolMessageType('GetPointSourceRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETPOINTSOURCEREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.GetPointSourceRequest)
-  ))
+  })
 _sym_db.RegisterMessage(GetPointSourceRequest)
 
-SetPointSourceRequest = _reflection.GeneratedProtocolMessageType('SetPointSourceRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETPOINTSOURCEREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetPointSourceRequest = _reflection.GeneratedProtocolMessageType('SetPointSourceRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETPOINTSOURCEREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetPointSourceRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetPointSourceRequest)
 
-CreatePointWithPointSourcesRequest = _reflection.GeneratedProtocolMessageType('CreatePointWithPointSourcesRequest', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEPOINTWITHPOINTSOURCESREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+CreatePointWithPointSourcesRequest = _reflection.GeneratedProtocolMessageType('CreatePointWithPointSourcesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEPOINTWITHPOINTSOURCESREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CreatePointWithPointSourcesRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CreatePointWithPointSourcesRequest)
 
-CreatePointWithPointSourcesResponse = _reflection.GeneratedProtocolMessageType('CreatePointWithPointSourcesResponse', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEPOINTWITHPOINTSOURCESRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+CreatePointWithPointSourcesResponse = _reflection.GeneratedProtocolMessageType('CreatePointWithPointSourcesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEPOINTWITHPOINTSOURCESRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CreatePointWithPointSourcesResponse)
-  ))
+  })
 _sym_db.RegisterMessage(CreatePointWithPointSourcesResponse)
 
-DeletePointSourceRequest = _reflection.GeneratedProtocolMessageType('DeletePointSourceRequest', (_message.Message,), dict(
-  DESCRIPTOR = _DELETEPOINTSOURCEREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+DeletePointSourceRequest = _reflection.GeneratedProtocolMessageType('DeletePointSourceRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEPOINTSOURCEREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.DeletePointSourceRequest)
-  ))
+  })
 _sym_db.RegisterMessage(DeletePointSourceRequest)
 
-CountBrandPointsRequest = _reflection.GeneratedProtocolMessageType('CountBrandPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _COUNTBRANDPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+CountBrandPointsRequest = _reflection.GeneratedProtocolMessageType('CountBrandPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _COUNTBRANDPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CountBrandPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CountBrandPointsRequest)
 
-CountBrandPointsResponse = _reflection.GeneratedProtocolMessageType('CountBrandPointsResponse', (_message.Message,), dict(
+CountBrandPointsResponse = _reflection.GeneratedProtocolMessageType('CountBrandPointsResponse', (_message.Message,), {
 
-  BrandPointsEntry = _reflection.GeneratedProtocolMessageType('BrandPointsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _COUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'BrandPointsEntry' : _reflection.GeneratedProtocolMessageType('BrandPointsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _COUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.CountBrandPointsResponse.BrandPointsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _COUNTBRANDPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _COUNTBRANDPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CountBrandPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(CountBrandPointsResponse)
 _sym_db.RegisterMessage(CountBrandPointsResponse.BrandPointsEntry)
 
-PolygonCountBrandPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonCountBrandPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _POLYGONCOUNTBRANDPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+PolygonCountBrandPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonCountBrandPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _POLYGONCOUNTBRANDPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountBrandPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonCountBrandPointsRequest)
 
-PolygonCountBrandPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonCountBrandPointsResponse', (_message.Message,), dict(
+PolygonCountBrandPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonCountBrandPointsResponse', (_message.Message,), {
 
-  BrandPointsEntry = _reflection.GeneratedProtocolMessageType('BrandPointsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _POLYGONCOUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'BrandPointsEntry' : _reflection.GeneratedProtocolMessageType('BrandPointsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _POLYGONCOUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountBrandPointsResponse.BrandPointsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _POLYGONCOUNTBRANDPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _POLYGONCOUNTBRANDPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountBrandPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonCountBrandPointsResponse)
 _sym_db.RegisterMessage(PolygonCountBrandPointsResponse.BrandPointsEntry)
 
-CountTagPointsRequest = _reflection.GeneratedProtocolMessageType('CountTagPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _COUNTTAGPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+CountTagPointsRequest = _reflection.GeneratedProtocolMessageType('CountTagPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _COUNTTAGPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CountTagPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CountTagPointsRequest)
 
-CountTagPointsResponse = _reflection.GeneratedProtocolMessageType('CountTagPointsResponse', (_message.Message,), dict(
+CountTagPointsResponse = _reflection.GeneratedProtocolMessageType('CountTagPointsResponse', (_message.Message,), {
 
-  TagPointsEntry = _reflection.GeneratedProtocolMessageType('TagPointsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _COUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'TagPointsEntry' : _reflection.GeneratedProtocolMessageType('TagPointsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _COUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.CountTagPointsResponse.TagPointsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _COUNTTAGPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _COUNTTAGPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CountTagPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(CountTagPointsResponse)
 _sym_db.RegisterMessage(CountTagPointsResponse.TagPointsEntry)
 
-PolygonCountTagPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonCountTagPointsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _POLYGONCOUNTTAGPOINTSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+PolygonCountTagPointsRequest = _reflection.GeneratedProtocolMessageType('PolygonCountTagPointsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _POLYGONCOUNTTAGPOINTSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountTagPointsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonCountTagPointsRequest)
 
-PolygonCountTagPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonCountTagPointsResponse', (_message.Message,), dict(
+PolygonCountTagPointsResponse = _reflection.GeneratedProtocolMessageType('PolygonCountTagPointsResponse', (_message.Message,), {
 
-  TagPointsEntry = _reflection.GeneratedProtocolMessageType('TagPointsEntry', (_message.Message,), dict(
-    DESCRIPTOR = _POLYGONCOUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY,
-    __module__ = 'topos.points.v1.points_pb2'
+  'TagPointsEntry' : _reflection.GeneratedProtocolMessageType('TagPointsEntry', (_message.Message,), {
+    'DESCRIPTOR' : _POLYGONCOUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY,
+    '__module__' : 'topos.points.v1.points_pb2'
     # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountTagPointsResponse.TagPointsEntry)
-    ))
+    })
   ,
-  DESCRIPTOR = _POLYGONCOUNTTAGPOINTSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+  'DESCRIPTOR' : _POLYGONCOUNTTAGPOINTSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.PolygonCountTagPointsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(PolygonCountTagPointsResponse)
 _sym_db.RegisterMessage(PolygonCountTagPointsResponse.TagPointsEntry)
 
-SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONSREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchRegionsRequest = _reflection.GeneratedProtocolMessageType('SearchRegionsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONSREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchRegionsRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionsRequest)
 
-SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONSRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchRegionsResponse = _reflection.GeneratedProtocolMessageType('SearchRegionsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONSRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchRegionsResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionsResponse)
 
-SetBrandRegionScoreSetScoreRequest = _reflection.GeneratedProtocolMessageType('SetBrandRegionScoreSetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETBRANDREGIONSCORESETSCOREREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetBrandRegionScoreSetScoreRequest = _reflection.GeneratedProtocolMessageType('SetBrandRegionScoreSetScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETBRANDREGIONSCORESETSCOREREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetBrandRegionScoreSetScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetBrandRegionScoreSetScoreRequest)
 
-SearchBrandRegionScoreSetScoresRequest = _reflection.GeneratedProtocolMessageType('SearchBrandRegionScoreSetScoresRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHBRANDREGIONSCORESETSCORESREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchBrandRegionScoreSetScoresRequest = _reflection.GeneratedProtocolMessageType('SearchBrandRegionScoreSetScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHBRANDREGIONSCORESETSCORESREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchBrandRegionScoreSetScoresRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchBrandRegionScoreSetScoresRequest)
 
-SearchBrandRegionScoreSetScoresResponse = _reflection.GeneratedProtocolMessageType('SearchBrandRegionScoreSetScoresResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHBRANDREGIONSCORESETSCORESRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchBrandRegionScoreSetScoresResponse = _reflection.GeneratedProtocolMessageType('SearchBrandRegionScoreSetScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHBRANDREGIONSCORESETSCORESRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchBrandRegionScoreSetScoresResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchBrandRegionScoreSetScoresResponse)
 
-SetTagRegionScoreSetScoreRequest = _reflection.GeneratedProtocolMessageType('SetTagRegionScoreSetScoreRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETTAGREGIONSCORESETSCOREREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetTagRegionScoreSetScoreRequest = _reflection.GeneratedProtocolMessageType('SetTagRegionScoreSetScoreRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETTAGREGIONSCORESETSCOREREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetTagRegionScoreSetScoreRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetTagRegionScoreSetScoreRequest)
 
-SearchTagRegionScoreSetScoresRequest = _reflection.GeneratedProtocolMessageType('SearchTagRegionScoreSetScoresRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHTAGREGIONSCORESETSCORESREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchTagRegionScoreSetScoresRequest = _reflection.GeneratedProtocolMessageType('SearchTagRegionScoreSetScoresRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHTAGREGIONSCORESETSCORESREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchTagRegionScoreSetScoresRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchTagRegionScoreSetScoresRequest)
 
-SearchTagRegionScoreSetScoresResponse = _reflection.GeneratedProtocolMessageType('SearchTagRegionScoreSetScoresResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHTAGREGIONSCORESETSCORESRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchTagRegionScoreSetScoresResponse = _reflection.GeneratedProtocolMessageType('SearchTagRegionScoreSetScoresResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHTAGREGIONSCORESETSCORESRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchTagRegionScoreSetScoresResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchTagRegionScoreSetScoresResponse)
 
-SetRegionGraphEdgeRequest = _reflection.GeneratedProtocolMessageType('SetRegionGraphEdgeRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SETREGIONGRAPHEDGEREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SetRegionGraphEdgeRequest = _reflection.GeneratedProtocolMessageType('SetRegionGraphEdgeRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETREGIONGRAPHEDGEREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SetRegionGraphEdgeRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SetRegionGraphEdgeRequest)
 
-SearchRegionGraphEdgesRequest = _reflection.GeneratedProtocolMessageType('SearchRegionGraphEdgesRequest', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONGRAPHEDGESREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchRegionGraphEdgesRequest = _reflection.GeneratedProtocolMessageType('SearchRegionGraphEdgesRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONGRAPHEDGESREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchRegionGraphEdgesRequest)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionGraphEdgesRequest)
 
-SearchRegionGraphEdgesResponse = _reflection.GeneratedProtocolMessageType('SearchRegionGraphEdgesResponse', (_message.Message,), dict(
-  DESCRIPTOR = _SEARCHREGIONGRAPHEDGESRESPONSE,
-  __module__ = 'topos.points.v1.points_pb2'
+SearchRegionGraphEdgesResponse = _reflection.GeneratedProtocolMessageType('SearchRegionGraphEdgesResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHREGIONGRAPHEDGESRESPONSE,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.SearchRegionGraphEdgesResponse)
-  ))
+  })
 _sym_db.RegisterMessage(SearchRegionGraphEdgesResponse)
 
-CreateFeedbackRequest = _reflection.GeneratedProtocolMessageType('CreateFeedbackRequest', (_message.Message,), dict(
-  DESCRIPTOR = _CREATEFEEDBACKREQUEST,
-  __module__ = 'topos.points.v1.points_pb2'
+CreateFeedbackRequest = _reflection.GeneratedProtocolMessageType('CreateFeedbackRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEFEEDBACKREQUEST,
+  '__module__' : 'topos.points.v1.points_pb2'
   # @@protoc_insertion_point(class_scope:topos.points.v1.CreateFeedbackRequest)
-  ))
+  })
 _sym_db.RegisterMessage(CreateFeedbackRequest)
 
 
