@@ -10,6 +10,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -759,6 +761,32 @@ type ScoresServer interface {
 	DeleteGraphScore(context.Context, *DeleteGraphScoreRequest) (*empty.Empty, error)
 	// Gets graph scores in descending order by score value.
 	TopGraphScores(context.Context, *TopGraphScoresRequest) (*TopGraphScoresResponse, error)
+}
+
+// UnimplementedScoresServer can be embedded to have forward compatible implementations.
+type UnimplementedScoresServer struct {
+}
+
+func (*UnimplementedScoresServer) ListGraphScores(ctx context.Context, req *ListGraphScoresRequest) (*ListGraphScoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGraphScores not implemented")
+}
+func (*UnimplementedScoresServer) GetGraphScore(ctx context.Context, req *GetGraphScoreRequest) (*Score, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetGraphScore not implemented")
+}
+func (*UnimplementedScoresServer) SetGraphScore(ctx context.Context, req *SetGraphScoreRequest) (*Score, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetGraphScore not implemented")
+}
+func (*UnimplementedScoresServer) BatchSetGraphScores(ctx context.Context, req *BatchSetGraphScoresRequest) (*BatchSetGraphScoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchSetGraphScores not implemented")
+}
+func (*UnimplementedScoresServer) DeleteGraph(ctx context.Context, req *DeleteGraphRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGraph not implemented")
+}
+func (*UnimplementedScoresServer) DeleteGraphScore(ctx context.Context, req *DeleteGraphScoreRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteGraphScore not implemented")
+}
+func (*UnimplementedScoresServer) TopGraphScores(ctx context.Context, req *TopGraphScoresRequest) (*TopGraphScoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TopGraphScores not implemented")
 }
 
 func RegisterScoresServer(s *grpc.Server, srv ScoresServer) {
