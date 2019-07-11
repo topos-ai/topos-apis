@@ -8,6 +8,8 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -956,6 +958,32 @@ type TopiaryServer interface {
 	SearchIDs(Topiary_SearchIDsServer) error
 	// Counts IDs.
 	CountIDs(Topiary_CountIDsServer) error
+}
+
+// UnimplementedTopiaryServer can be embedded to have forward compatible implementations.
+type UnimplementedTopiaryServer struct {
+}
+
+func (*UnimplementedTopiaryServer) ListIDs(ctx context.Context, req *ListIDsRequest) (*ListIDsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListIDs not implemented")
+}
+func (*UnimplementedTopiaryServer) SetIDPosition(ctx context.Context, req *SetIDPositionRequest) (*SetIDPositionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIDPosition not implemented")
+}
+func (*UnimplementedTopiaryServer) DeleteID(ctx context.Context, req *DeleteIDRequest) (*DeleteIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteID not implemented")
+}
+func (*UnimplementedTopiaryServer) GetIDKeyValues(ctx context.Context, req *GetIDKeyValuesRequest) (*GetIDKeyValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetIDKeyValues not implemented")
+}
+func (*UnimplementedTopiaryServer) SetIDKeyValue(ctx context.Context, req *SetIDKeyValueRequest) (*SetIDKeyValueResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetIDKeyValue not implemented")
+}
+func (*UnimplementedTopiaryServer) SearchIDs(srv Topiary_SearchIDsServer) error {
+	return status.Errorf(codes.Unimplemented, "method SearchIDs not implemented")
+}
+func (*UnimplementedTopiaryServer) CountIDs(srv Topiary_CountIDsServer) error {
+	return status.Errorf(codes.Unimplemented, "method CountIDs not implemented")
 }
 
 func RegisterTopiaryServer(s *grpc.Server, srv TopiaryServer) {

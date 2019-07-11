@@ -11,6 +11,8 @@ import (
 	timestamp "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -4076,6 +4078,98 @@ type PointsServer interface {
 	// Searches region graph edges.
 	SearchRegionGraphEdges(context.Context, *SearchRegionGraphEdgesRequest) (*SearchRegionGraphEdgesResponse, error)
 	CreateFeedback(context.Context, *CreateFeedbackRequest) (*Feedback, error)
+}
+
+// UnimplementedPointsServer can be embedded to have forward compatible implementations.
+type UnimplementedPointsServer struct {
+}
+
+func (*UnimplementedPointsServer) GetBrand(ctx context.Context, req *GetBrandRequest) (*Brand, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetBrand not implemented")
+}
+func (*UnimplementedPointsServer) SetBrand(ctx context.Context, req *SetBrandRequest) (*Brand, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBrand not implemented")
+}
+func (*UnimplementedPointsServer) ListBrands(ctx context.Context, req *ListBrandsRequest) (*ListBrandsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBrands not implemented")
+}
+func (*UnimplementedPointsServer) DeleteBrand(ctx context.Context, req *DeleteBrandRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteBrand not implemented")
+}
+func (*UnimplementedPointsServer) SearchPoints(ctx context.Context, req *SearchPointsRequest) (*SearchPointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchPoints not implemented")
+}
+func (*UnimplementedPointsServer) PolygonSearchPoints(srv Points_PolygonSearchPointsServer) error {
+	return status.Errorf(codes.Unimplemented, "method PolygonSearchPoints not implemented")
+}
+func (*UnimplementedPointsServer) GetPoint(ctx context.Context, req *GetPointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPoint not implemented")
+}
+func (*UnimplementedPointsServer) CreatePointWithPointSources(ctx context.Context, req *CreatePointWithPointSourcesRequest) (*CreatePointWithPointSourcesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePointWithPointSources not implemented")
+}
+func (*UnimplementedPointsServer) UpdatePoint(ctx context.Context, req *UpdatePointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePoint not implemented")
+}
+func (*UnimplementedPointsServer) DeletePoint(ctx context.Context, req *DeletePointRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePoint not implemented")
+}
+func (*UnimplementedPointsServer) GetTag(ctx context.Context, req *GetTagRequest) (*Tag, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTag not implemented")
+}
+func (*UnimplementedPointsServer) SetTag(ctx context.Context, req *SetTagRequest) (*Tag, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTag not implemented")
+}
+func (*UnimplementedPointsServer) ListTags(ctx context.Context, req *ListTagsRequest) (*ListTagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
+}
+func (*UnimplementedPointsServer) DeleteTag(ctx context.Context, req *DeleteTagRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
+}
+func (*UnimplementedPointsServer) GetPointSource(ctx context.Context, req *GetPointSourceRequest) (*PointSource, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPointSource not implemented")
+}
+func (*UnimplementedPointsServer) SetPointSource(ctx context.Context, req *SetPointSourceRequest) (*PointSource, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetPointSource not implemented")
+}
+func (*UnimplementedPointsServer) DeletePointSource(ctx context.Context, req *DeletePointSourceRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePointSource not implemented")
+}
+func (*UnimplementedPointsServer) CountBrandPoints(ctx context.Context, req *CountBrandPointsRequest) (*CountBrandPointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountBrandPoints not implemented")
+}
+func (*UnimplementedPointsServer) PolygonCountBrandPoints(srv Points_PolygonCountBrandPointsServer) error {
+	return status.Errorf(codes.Unimplemented, "method PolygonCountBrandPoints not implemented")
+}
+func (*UnimplementedPointsServer) CountTagPoints(ctx context.Context, req *CountTagPointsRequest) (*CountTagPointsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CountTagPoints not implemented")
+}
+func (*UnimplementedPointsServer) PolygonCountTagPoints(srv Points_PolygonCountTagPointsServer) error {
+	return status.Errorf(codes.Unimplemented, "method PolygonCountTagPoints not implemented")
+}
+func (*UnimplementedPointsServer) SearchRegions(ctx context.Context, req *SearchRegionsRequest) (*SearchRegionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchRegions not implemented")
+}
+func (*UnimplementedPointsServer) SetBrandRegionScoreSetScore(ctx context.Context, req *SetBrandRegionScoreSetScoreRequest) (*BrandRegionScoreSetScore, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBrandRegionScoreSetScore not implemented")
+}
+func (*UnimplementedPointsServer) SearchBrandRegionScoreSetScores(ctx context.Context, req *SearchBrandRegionScoreSetScoresRequest) (*SearchBrandRegionScoreSetScoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchBrandRegionScoreSetScores not implemented")
+}
+func (*UnimplementedPointsServer) SetTagRegionScoreSetScore(ctx context.Context, req *SetTagRegionScoreSetScoreRequest) (*TagRegionScoreSetScore, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTagRegionScoreSetScore not implemented")
+}
+func (*UnimplementedPointsServer) SearchTagRegionScoreSetScores(ctx context.Context, req *SearchTagRegionScoreSetScoresRequest) (*SearchTagRegionScoreSetScoresResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchTagRegionScoreSetScores not implemented")
+}
+func (*UnimplementedPointsServer) SetRegionGraphEdge(ctx context.Context, req *SetRegionGraphEdgeRequest) (*RegionGraphEdge, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetRegionGraphEdge not implemented")
+}
+func (*UnimplementedPointsServer) SearchRegionGraphEdges(ctx context.Context, req *SearchRegionGraphEdgesRequest) (*SearchRegionGraphEdgesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchRegionGraphEdges not implemented")
+}
+func (*UnimplementedPointsServer) CreateFeedback(ctx context.Context, req *CreateFeedbackRequest) (*Feedback, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateFeedback not implemented")
 }
 
 func RegisterPointsServer(s *grpc.Server, srv PointsServer) {

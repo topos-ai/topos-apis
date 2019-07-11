@@ -171,8 +171,8 @@ message ListFeaturesRequest {
 }
 
 message ListFeaturesResponse {
-  repeated Feature feature = 1;
-  string next_page_token = 2;
+  string next_page_token = 1;
+  repeated Feature features = 2;
 }
 
 enum RegionType {
