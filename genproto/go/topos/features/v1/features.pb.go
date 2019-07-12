@@ -10,6 +10,8 @@ import (
 	empty "github.com/golang/protobuf/ptypes/empty"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -1310,6 +1312,50 @@ type FeaturesServer interface {
 	DeleteFeatureValue(context.Context, *DeleteFeatureValueRequest) (*empty.Empty, error)
 	// Search feature values.
 	SearchFeatureValues(context.Context, *SearchFeatureValuesRequest) (*SearchFeatureValuesResponse, error)
+}
+
+// UnimplementedFeaturesServer can be embedded to have forward compatible implementations.
+type UnimplementedFeaturesServer struct {
+}
+
+func (*UnimplementedFeaturesServer) GetFeatureSet(ctx context.Context, req *GetFeatureSetRequest) (*FeatureSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetFeatureSet not implemented")
+}
+func (*UnimplementedFeaturesServer) SetFeatureSet(ctx context.Context, req *SetFeatureSetRequest) (*FeatureSet, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFeatureSet not implemented")
+}
+func (*UnimplementedFeaturesServer) DeleteFeatureSet(ctx context.Context, req *DeleteFeatureSetRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeatureSet not implemented")
+}
+func (*UnimplementedFeaturesServer) SetFeatureSetFeature(ctx context.Context, req *FeatureSetFeature) (*FeatureSetFeature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFeatureSetFeature not implemented")
+}
+func (*UnimplementedFeaturesServer) DeleteFeatureSetFeature(ctx context.Context, req *FeatureSetFeature) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeatureSetFeature not implemented")
+}
+func (*UnimplementedFeaturesServer) ListFeatureSets(ctx context.Context, req *ListFeatureSetsRequest) (*ListFeatureSetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFeatureSets not implemented")
+}
+func (*UnimplementedFeaturesServer) ListFeatures(ctx context.Context, req *ListFeaturesRequest) (*ListFeaturesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListFeatures not implemented")
+}
+func (*UnimplementedFeaturesServer) SetFeature(ctx context.Context, req *SetFeatureRequest) (*Feature, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFeature not implemented")
+}
+func (*UnimplementedFeaturesServer) DeleteFeature(ctx context.Context, req *DeleteFeatureRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeature not implemented")
+}
+func (*UnimplementedFeaturesServer) SetFeatureValue(ctx context.Context, req *SetFeatureValueRequest) (*FeatureValue, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetFeatureValue not implemented")
+}
+func (*UnimplementedFeaturesServer) BatchSetFeatureValue(ctx context.Context, req *BatchSetFeatureValueRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchSetFeatureValue not implemented")
+}
+func (*UnimplementedFeaturesServer) DeleteFeatureValue(ctx context.Context, req *DeleteFeatureValueRequest) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteFeatureValue not implemented")
+}
+func (*UnimplementedFeaturesServer) SearchFeatureValues(ctx context.Context, req *SearchFeatureValuesRequest) (*SearchFeatureValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchFeatureValues not implemented")
 }
 
 func RegisterFeaturesServer(s *grpc.Server, srv FeaturesServer) {

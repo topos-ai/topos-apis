@@ -9,6 +9,8 @@ import (
 	proto "github.com/golang/protobuf/proto"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
+	codes "google.golang.org/grpc/codes"
+	status "google.golang.org/grpc/status"
 	math "math"
 )
 
@@ -1010,6 +1012,29 @@ type LocationsServer interface {
 	LocateRegions(context.Context, *LocateRegionsRequest) (*LocateRegionsResponse, error)
 	// Intersect regions.
 	IntersectRegions(Locations_IntersectRegionsServer) error
+}
+
+// UnimplementedLocationsServer can be embedded to have forward compatible implementations.
+type UnimplementedLocationsServer struct {
+}
+
+func (*UnimplementedLocationsServer) GetRegion(ctx context.Context, req *GetRegionRequest) (*Region, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegion not implemented")
+}
+func (*UnimplementedLocationsServer) GetRegionGeometry(req *GetRegionGeometryRequest, srv Locations_GetRegionGeometryServer) error {
+	return status.Errorf(codes.Unimplemented, "method GetRegionGeometry not implemented")
+}
+func (*UnimplementedLocationsServer) GetRegionFeatureSetValues(ctx context.Context, req *GetRegionFeatureSetValuesRequest) (*GetRegionFeatureSetValuesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetRegionFeatureSetValues not implemented")
+}
+func (*UnimplementedLocationsServer) SearchRegions(ctx context.Context, req *SearchRegionsRequest) (*SearchRegionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SearchRegions not implemented")
+}
+func (*UnimplementedLocationsServer) LocateRegions(ctx context.Context, req *LocateRegionsRequest) (*LocateRegionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LocateRegions not implemented")
+}
+func (*UnimplementedLocationsServer) IntersectRegions(srv Locations_IntersectRegionsServer) error {
+	return status.Errorf(codes.Unimplemented, "method IntersectRegions not implemented")
 }
 
 func RegisterLocationsServer(s *grpc.Server, srv LocationsServer) {

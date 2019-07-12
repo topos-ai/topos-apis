@@ -325,6 +325,7 @@ message Brand {
   int64 total_locations = 16;
   repeated string states_of_expansion = 17;
   repeated string states_of_operation = 18;
+  string website = 19;
 }
 
 message LatLng {
