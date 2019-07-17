@@ -160,6 +160,9 @@ message TopGraphScoresRequest {
 
   // The resource name of the origin vertex.
   string vertex_a = 3;
+
+  // The resource name of the destination vertex.
+  string vertex_b = 4;
 }
 
 message TopGraphScoresResponse {
