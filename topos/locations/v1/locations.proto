@@ -22,6 +22,14 @@ service Locations {
     };
   }
 
+  // Sets a region.
+  rpc SetRegion(SetRegionRequest) returns (Region) {
+    option (google.api.http) = {
+      post : "/v1/{region.name=regionTypes/*/regions/*}"
+      body : "region"
+    };
+  }
+
   // Region feature values by feature.
   rpc GetRegionFeatureSetValues(GetRegionFeatureSetValuesRequest)
       returns (GetRegionFeatureSetValuesResponse) {
@@ -91,6 +99,8 @@ message GetRegionRequest { string name = 1; }
 message GetRegionGeometryRequest { string name = 1; }
 
 message GetRegionGeometryResponse { bytes polygon_chunk = 1; }
+
+message SetRegionRequest { Region region = 1; }
 
 message SearchRegionsRequest {
   // The maximum number of items to return.

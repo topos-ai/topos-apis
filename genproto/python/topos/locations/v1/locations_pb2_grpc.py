@@ -24,6 +24,11 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryResponse.FromString,
         )
+    self.SetRegion = channel.unary_unary(
+        '/topos.locations.v1.Locations/SetRegion',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.FromString,
+        )
     self.GetRegionFeatureSetValues = channel.unary_unary(
         '/topos.locations.v1.Locations/GetRegionFeatureSetValues',
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesRequest.SerializeToString,
@@ -59,6 +64,13 @@ class LocationsServicer(object):
 
   def GetRegionGeometry(self, request, context):
     """Gets a region geometry.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SetRegion(self, request, context):
+    """Sets a region.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -104,6 +116,11 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.GetRegionGeometry,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryResponse.SerializeToString,
+      ),
+      'SetRegion': grpc.unary_unary_rpc_method_handler(
+          servicer.SetRegion,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.SerializeToString,
       ),
       'GetRegionFeatureSetValues': grpc.unary_unary_rpc_method_handler(
           servicer.GetRegionFeatureSetValues,
