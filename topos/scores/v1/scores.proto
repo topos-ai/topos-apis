@@ -163,6 +163,9 @@ message TopGraphScoresRequest {
 
   // The resource name of the destination vertex.
   string vertex_b = 4;
+
+  // Return the scores in ascending order by score value.
+  bool ascending_order = 5;
 }
 
 message TopGraphScoresResponse {

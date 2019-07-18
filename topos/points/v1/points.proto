@@ -233,13 +233,6 @@ service Points {
       body : "*"
     };
   }
-
-  rpc CreateFeedback(CreateFeedbackRequest) returns (Feedback) {
-    option (google.api.http) = {
-      post : "/v1/feedback"
-      body : "feedback"
-    };
-  }
 }
 
 message FeatureStats {
@@ -278,6 +271,12 @@ message Brand {
 
     // The title of the contact.
     string title = 2;
+
+    // The phonenumber of the contact.
+    string email = 3;
+
+    // The phone number of the contact.
+    string phone_number = 4;
   }
 
   // The contacts for the brand.
@@ -371,6 +370,12 @@ message Tag {
 
   // Exclude tag from results.
   bool exclude = 3;
+
+  // The plural display name of the tag.
+  string plural_display_name = 4;
+
+  // The tag represents a category.
+  bool category = 5;
 
   // The creation timestamp of the tag.
   google.protobuf.Timestamp create_time = 14;
@@ -499,8 +504,6 @@ message RegionGraphEdge {
   // The last update timestamp of an region graph edge.
   google.protobuf.Timestamp update_time = 15;
 }
-
-message Feedback { map<string, string> feedback = 1; }
 
 message GetBrandRequest { string name = 1; }
 
@@ -826,5 +829,3 @@ message SearchRegionGraphEdgesResponse {
   // results in the list.
   string next_page_token = 2;
 }
-
-message CreateFeedbackRequest { Feedback feedback = 1; }

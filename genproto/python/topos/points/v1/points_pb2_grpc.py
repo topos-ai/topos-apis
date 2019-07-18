@@ -155,11 +155,6 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesResponse.FromString,
         )
-    self.CreateFeedback = channel.unary_unary(
-        '/topos.points.v1.Points/CreateFeedback',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.CreateFeedbackRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.Feedback.FromString,
-        )
 
 
 class PointsServicer(object):
@@ -362,13 +357,6 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def CreateFeedback(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -511,11 +499,6 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.SearchRegionGraphEdges,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionGraphEdgesResponse.SerializeToString,
-      ),
-      'CreateFeedback': grpc.unary_unary_rpc_method_handler(
-          servicer.CreateFeedback,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.CreateFeedbackRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.Feedback.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

@@ -73,6 +73,17 @@ message Region {
 
   // The WKB-encoded region geometry.
   bytes geometry = 2;
+
+  // A property value.
+  message Property {
+    oneof value {
+      string String = 1;
+      double Number = 2;
+    }
+  }
+
+  // The region properties.
+  map<string, Property> properties = 3;
 }
 
 message GetRegionRequest { string name = 1; }
