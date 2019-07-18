@@ -374,8 +374,8 @@ message Tag {
   // The plural display name of the tag.
   string plural_display_name = 4;
 
-  // The tag represents a category.
-  bool category = 5;
+  // Is the tag a category.
+  bool is_category = 5;
 
   // The creation timestamp of the tag.
   google.protobuf.Timestamp create_time = 14;
