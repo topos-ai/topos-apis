@@ -50,6 +50,11 @@ class FeaturesStub(object):
         request_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesRequest.SerializeToString,
         response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesResponse.FromString,
         )
+    self.GetFeature = channel.unary_unary(
+        '/topos.features.v1.Features/GetFeature',
+        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureRequest.SerializeToString,
+        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.FromString,
+        )
     self.SetFeature = channel.unary_unary(
         '/topos.features.v1.Features/SetFeature',
         request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureRequest.SerializeToString,
@@ -135,6 +140,13 @@ class FeaturesServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetFeature(self, request, context):
+    """Get a feature meta.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SetFeature(self, request, context):
     """Sets a feature meta.
     """
@@ -214,6 +226,11 @@ def add_FeaturesServicer_to_server(servicer, server):
           servicer.ListFeatures,
           request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesRequest.FromString,
           response_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesResponse.SerializeToString,
+      ),
+      'GetFeature': grpc.unary_unary_rpc_method_handler(
+          servicer.GetFeature,
+          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureRequest.FromString,
+          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.SerializeToString,
       ),
       'SetFeature': grpc.unary_unary_rpc_method_handler(
           servicer.SetFeature,
