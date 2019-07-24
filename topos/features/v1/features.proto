@@ -64,6 +64,13 @@ service Features {
     };
   }
 
+  // Get a feature meta.
+  rpc GetFeature(GetFeatureRequest) returns (Feature) {
+    option (google.api.http) = {
+      get : "/v1/{name=features/*}"
+    };
+  }
+
   // Sets a feature meta.
   rpc SetFeature(SetFeatureRequest) returns (Feature) {
     option (google.api.http) = {
@@ -158,6 +165,8 @@ message Feature {
   string source = 4;
 }
 
+message GetFeatureRequest { string feature_name = 1; }
+
 message SetFeatureRequest { Feature feature = 1; }
 
 message DeleteFeatureRequest { string feature_name = 1; }
@@ -193,7 +202,7 @@ enum TimeType {
 message FeatureValue {
   string feature_name = 1;
   RegionType region_type = 2;
-  string region = 3;
+  string region_id = 3;
   TimeType time_type = 4;
   string time = 5;
   double value = 6;
@@ -205,7 +214,7 @@ message BatchSetFeatureValueRequest {
   repeated FeatureValue feature_values = 1;
 }
 
-message DeleteFeatureValueRequest { string feature_name = 1; }
+message DeleteFeatureValueRequest { FeatureValue feature_value = 1; }
 
 message SearchFeatureValuesRequest {
   // The maximum number of items to return.
@@ -216,7 +225,7 @@ message SearchFeatureValuesRequest {
 
   string feature_name = 3;
   RegionType region_type = 4;
-  string region = 5;
+  string region_id = 5;
   TimeType time_type = 6;
   string time_from = 7;
   string time_to = 8;
