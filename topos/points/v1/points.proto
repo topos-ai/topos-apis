@@ -16,18 +16,18 @@ service Points {
     };
   }
 
+  // Lists brands.
+  rpc ListBrands(ListBrandsRequest) returns (ListBrandsResponse) {
+    option (google.api.http) = {
+      get : "/v1/brands"
+    };
+  }
+
   // Sets a brand.
   rpc SetBrand(SetBrandRequest) returns (Brand) {
     option (google.api.http) = {
       post : "/v1/{brand.name=brands/*}:set"
       body : "brand"
-    };
-  }
-
-  // Lists brands.
-  rpc ListBrands(ListBrandsRequest) returns (ListBrandsResponse) {
-    option (google.api.http) = {
-      get : "/v1/brands"
     };
   }
 
@@ -38,11 +38,17 @@ service Points {
     };
   }
 
+  // Gets a point.
+  rpc GetPoint(GetPointRequest) returns (Point) {
+    option (google.api.http) = {
+      get : "/v1/{name=points/*}"
+    };
+  }
+
   // Search points.
   rpc SearchPoints(SearchPointsRequest) returns (SearchPointsResponse) {
     option (google.api.http) = {
-      post : "/v1/points:search"
-      body : "*"
+      get : "/v1/points:search"
     };
   }
 
@@ -55,19 +61,11 @@ service Points {
     };
   }
 
-  // Gets a point.
-  rpc GetPoint(GetPointRequest) returns (Point) {
-    option (google.api.http) = {
-      get : "/v1/{name=points/*}"
-    };
-  }
-
   // Creates a point with the given point sources.
-  rpc CreatePointWithPointSources(CreatePointWithPointSourcesRequest)
-      returns (CreatePointWithPointSourcesResponse) {
+  rpc CreatePoint(CreatePointRequest) returns (Point) {
     option (google.api.http) = {
       post : "/v1/points"
-      body : "*"
+      body : "point"
     };
   }
 
@@ -93,18 +91,18 @@ service Points {
     };
   }
 
+  // Lists tags.
+  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+    option (google.api.http) = {
+      get : "/v1/tags"
+    };
+  }
+
   // Sets a tag.
   rpc SetTag(SetTagRequest) returns (Tag) {
     option (google.api.http) = {
       post : "/v1/{tag.name=tags/*}:set"
       body : "tag"
-    };
-  }
-
-  // Lists tags.
-  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
-    option (google.api.http) = {
-      get : "/v1/tags"
     };
   }
 
@@ -115,34 +113,10 @@ service Points {
     };
   }
 
-  // Gets a point source.
-  rpc GetPointSource(GetPointSourceRequest) returns (PointSource) {
-    option (google.api.http) = {
-      get : "/v1/{name=sources/*/pointSources/*}"
-    };
-  }
-
-  // Sets a point source.
-  rpc SetPointSource(SetPointSourceRequest) returns (PointSource) {
-    option (google.api.http) = {
-      post : "/v1/{point_source.name=sources/*/pointSources/*}:set"
-      body : "point_source"
-    };
-  }
-
-  // Deletes a point source.
-  rpc DeletePointSource(DeletePointSourceRequest)
-      returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=sources/*/pointSources/*}"
-    };
-  }
-
   rpc CountBrandPoints(CountBrandPointsRequest)
       returns (CountBrandPointsResponse) {
     option (google.api.http) = {
-      post : "/v1/brands:count"
-      body : "*"
+      get : "/v1/brands:count"
     };
   }
 
@@ -156,8 +130,7 @@ service Points {
 
   rpc CountTagPoints(CountTagPointsRequest) returns (CountTagPointsResponse) {
     option (google.api.http) = {
-      post : "/v1/tags:count"
-      body : "*"
+      get : "/v1/tags:count"
     };
   }
 
@@ -169,70 +142,17 @@ service Points {
     };
   }
 
-  //
   rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
     option (google.api.http) = {
       post : "/v1/regions:search"
       body : "*"
     };
   }
+}
 
-  // Sets a brand region score set score.
-  rpc SetBrandRegionScoreSetScore(SetBrandRegionScoreSetScoreRequest)
-      returns (BrandRegionScoreSetScore) {
-    option (google.api.http) = {
-      post : "/v1/"
-             "{brand_region_score_set_score.brand_region_score_set="
-             "brandRegionScoreSets/*}/scores:set"
-      body : "brand_region_score_set_score"
-    };
-  }
-
-  // Searches brand region score set scores.
-  rpc SearchBrandRegionScoreSetScores(SearchBrandRegionScoreSetScoresRequest)
-      returns (SearchBrandRegionScoreSetScoresResponse) {
-    option (google.api.http) = {
-      post : "/v1/{brand_region_score_set=brandRegionScoreSets/*}/scores:search"
-      body : "*"
-    };
-  }
-
-  // Sets a tag region score set score.
-  rpc SetTagRegionScoreSetScore(SetTagRegionScoreSetScoreRequest)
-      returns (TagRegionScoreSetScore) {
-    option (google.api.http) = {
-      post : "/v1/"
-             "{tag_region_score_set_score.tag_region_score_set="
-             "tagRegionScoreSets/*}/scores:set"
-      body : "tag_region_score_set_score"
-    };
-  }
-
-  // Searches tag region score set scores.
-  rpc SearchTagRegionScoreSetScores(SearchTagRegionScoreSetScoresRequest)
-      returns (SearchTagRegionScoreSetScoresResponse) {
-    option (google.api.http) = {
-      post : "/v1/{tag_region_score_set=tagRegionScoreSets/*}/scores:search"
-      body : "*"
-    };
-  }
-
-  // Sets a region graph edge.
-  rpc SetRegionGraphEdge(SetRegionGraphEdgeRequest) returns (RegionGraphEdge) {
-    option (google.api.http) = {
-      post : "/v1/{region_graph_edge.region_graph=regionGraphs/*}/edges:set"
-      body : "*"
-    };
-  }
-
-  // Searches region graph edges.
-  rpc SearchRegionGraphEdges(SearchRegionGraphEdgesRequest)
-      returns (SearchRegionGraphEdgesResponse) {
-    option (google.api.http) = {
-      post : "/v1/{region_graph=regionGraphs/*}/edges:search"
-      body : "*"
-    };
-  }
+enum PolygonEncoding {
+  S2 = 0;
+  GEOJSON = 1;
 }
 
 message FeatureStats {
@@ -336,26 +256,26 @@ message Point {
   // The name of the point. It must have the format `"points/{point}"`.
   string name = 1;
 
-  // The name of the point's brand if it has one.
-  string brand = 2;
-
   // The display name of the point.
-  string display_name = 3;
-
-  // The formatted, single-line address.
-  string formatted_address = 4;
+  string display_name = 2;
 
   // The geocoded point address.
-  LatLng location = 5;
+  LatLng location = 4;
+
+  // The formatted, single-line address.
+  string formatted_address = 5;
+
+  // The names of the point's sources. Each name must have the format
+  // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
+  // the [regular expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
+  repeated string sources = 6;
+
+  // The name of the point's brand if it has one.
+  string brand = 7;
 
   // A list of point tags.
-  repeated string tags = 6;
-
-  // The creation timestamp of the point.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an point.
-  google.protobuf.Timestamp update_time = 15;
+  repeated string tags = 8;
 }
 
 message Tag {
@@ -376,41 +296,6 @@ message Tag {
 
   // Is the tag a category.
   bool is_category = 5;
-
-  // The creation timestamp of the tag.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of the tag.
-  google.protobuf.Timestamp update_time = 15;
-}
-
-message PointSource {
-  // The name of the point source. It must have the format
-  // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
-  // the [regular expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
-  string name = 1;
-
-  // The name of the point associated with this point source if there is one.
-  string point = 2;
-
-  // The display name of the point source.
-  string display_name = 3;
-
-  // The formatted, single-line address.
-  string formatted_address = 4;
-
-  // The source-geocoded address.
-  LatLng location = 5;
-
-  // A list of potentially unnormalized, source-provided tags.
-  repeated string tags = 6;
-
-  // The creation timestamp of the point source.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an point source.
-  google.protobuf.Timestamp update_time = 15;
 }
 
 message Region {
@@ -425,89 +310,7 @@ message Region {
   bytes geometry = 2;
 }
 
-message BrandRegionScoreSetScore {
-  // The name of the brand region score set. It must have the format
-  // `"brandRegionScoreSets/{brand_region_score_set}"`.
-  // `{brand_region_score_set}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`.
-  string brand_region_score_set = 1;
-
-  // The score's brand.
-  string brand = 2;
-
-  // The brand's display name.
-  string brand_display_name = 3;
-
-  // The score's region.
-  string region = 4;
-
-  // The score value associated with the brand and region.
-  double score = 5;
-
-  // The prefered square footage of the brand.
-  string preferred_gla = 6;
-
-  // The creation timestamp of the brand region score.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an brand region score.
-  google.protobuf.Timestamp update_time = 15;
-}
-
-message TagRegionScoreSetScore {
-  // The name of the tag region score set. It must have the format
-  // `"tagRegionScoreSets/{brand_region_score_set}"`.
-  // `{brand_region_score_set}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`.
-  string tag_region_score_set = 1;
-
-  // The score's tag.
-  string tag = 2;
-
-  // The tag's display name.
-  string tag_display_name = 3;
-
-  // The score's region.
-  string region = 4;
-
-  // The score value associated with the tag and region.
-  double score = 5;
-
-  // The creation timestamp of the brand region score.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an brand region score.
-  google.protobuf.Timestamp update_time = 15;
-}
-
-message RegionGraphEdge {
-  // The name of the region graph. It must have the format
-  // `"regionGraphs/{region_graph}"`. `{region_graph}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`.
-  string region_graph = 1;
-
-  // A region ID representing the origin edge vertices.
-  string from_region = 2;
-
-  // A region ID representint the other edge vertices.
-  string to_region = 3;
-
-  // The weight of the edge.
-  double weight = 4;
-
-  // The creation timestamp of the region graph edge.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an region graph edge.
-  google.protobuf.Timestamp update_time = 15;
-}
-
 message GetBrandRequest { string name = 1; }
-
-message SetBrandRequest { Brand brand = 1; }
 
 message ListBrandsRequest {
   // The maximum number of items to return.
@@ -517,20 +320,25 @@ message ListBrandsRequest {
   string page_token = 2;
 }
 
-message ListBrand {
-  string name = 1;
-  string display_name = 2;
-}
-
 message ListBrandsResponse {
-  repeated ListBrand brands = 1;
+  repeated Brand brands = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
   // results in the list.
   string next_page_token = 2;
 }
 
+message SetBrandRequest { Brand brand = 1; }
+
 message DeleteBrandRequest { string name = 1; }
+
+message GetPointRequest { string name = 1; }
+
+message CreatePointRequest { Point point = 1; }
+
+message UpdatePointRequest { Point point = 1; }
+
+message DeletePointRequest { string name = 1; }
 
 message SearchPointsRequest {
   // The maximum number of items to return.
@@ -570,15 +378,8 @@ message PolygonSearchPointsRequest {
   // Return points with the given tags.
   repeated string tags = 4;
 
-  enum PolygonEncoding {
-    S2 = 0;
-    GEOJSON = 1;
-  }
-
+  // The polygon data's encoding.
   PolygonEncoding polygon_encoding = 5;
-
-  // The total number of bytes of the encoded S2 polygon.
-  int64 polygon_length = 14;
 
   // A chunk of bytes of the encoded S2 polygon.
   bytes polygon_chunk = 15;
@@ -591,12 +392,6 @@ message PolygonSearchPointsResponse {
   // results in the search.
   string next_page_token = 2;
 }
-
-message GetPointRequest { string name = 1; }
-
-message UpdatePointRequest { Point point = 1; }
-
-message DeletePointRequest { string name = 1; }
 
 message GetTagRequest { string name = 1; }
 
@@ -620,22 +415,6 @@ message ListTagsResponse {
 
 message DeleteTagRequest { string name = 1; }
 
-message GetPointSourceRequest { string name = 1; }
-
-message SetPointSourceRequest { PointSource point_source = 1; }
-
-message CreatePointWithPointSourcesRequest {
-  Point point = 1;
-  repeated PointSource point_sources = 2;
-}
-
-message CreatePointWithPointSourcesResponse {
-  Point point = 1;
-  repeated PointSource point_sources = 2;
-}
-
-message DeletePointSourceRequest { string name = 1; }
-
 message CountBrandPointsRequest {
   // Count brand points within this region.
   string region = 1;
@@ -656,15 +435,8 @@ message PolygonCountBrandPointsRequest {
   // Count points for the given brands.
   repeated string brands = 2;
 
-  enum PolygonEncoding {
-    S2 = 0;
-    GEOJSON = 1;
-  }
-
+  // The polygon data's encoding.
   PolygonEncoding polygon_encoding = 3;
-
-  // The total number of bytes of the encoded S2 polygon.
-  int64 polygon_length = 14;
 
   // A chunk of bytes of the encoded S2 polygon.
   bytes polygon_chunk = 15;
@@ -695,17 +467,10 @@ message PolygonCountTagPointsRequest {
   // Count points for the given tag.
   string tag = 2;
 
-  enum PolygonEncoding {
-    S2 = 0;
-    GEOJSON = 1;
-  }
-
+  // The polygon data's encoding.
   PolygonEncoding polygon_encoding = 3;
 
-  // The total number of bytes of the encoded S2 polygon.
-  int64 polygon_length = 14;
-
-  // A chunk of bytes of the encoded S2 polygon.
+  // A chunk of bytes of the encoded polygon.
   bytes polygon_chunk = 15;
 }
 
@@ -733,99 +498,5 @@ message SearchRegionsResponse {
 
   // Token to retrieve the next page of results, or empty if there are no more
   // results in the search.
-  string next_page_token = 2;
-}
-
-message SetBrandRegionScoreSetScoreRequest {
-  BrandRegionScoreSetScore brand_region_score_set_score = 1;
-}
-
-message SearchBrandRegionScoreSetScoresRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous Search request, if any.
-  string page_token = 2;
-
-  // Return scores from a given score set.
-  string brand_region_score_set = 3;
-
-  // Return scores with a given brand.
-  string brand = 4;
-
-  // Return scores with a given region.
-  string region = 5;
-
-  // Return scores with for brands with a given tag.
-  string tag = 6;
-
-  // Return scores with regions included by the given region.
-  string included_by_region = 7;
-}
-
-message SearchBrandRegionScoreSetScoresResponse {
-  repeated BrandRegionScoreSetScore brand_region_score_set_scores = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
-}
-
-message SetTagRegionScoreSetScoreRequest {
-  TagRegionScoreSetScore tag_region_score_set_score = 1;
-}
-
-message SearchTagRegionScoreSetScoresRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous Search request, if any.
-  string page_token = 2;
-
-  // Return scores from a given score set.
-  string tag_region_score_set = 3;
-
-  // Return scores with a given tag.
-  string tag = 4;
-
-  // Return scores with a given region.
-  string region = 5;
-
-  // Return scores with regions included by the given region.
-  string included_by_region = 6;
-}
-
-message SearchTagRegionScoreSetScoresResponse {
-  repeated TagRegionScoreSetScore tag_region_score_set_scores = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
-}
-
-message SetRegionGraphEdgeRequest { RegionGraphEdge region_graph_edge = 1; }
-
-message SearchRegionGraphEdgesRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous Search request, if any.
-  string page_token = 2;
-
-  // Return edges of the given graph.
-  string region_graph = 3;
-
-  // Return edges from a given region.
-  string from_region = 4;
-
-  // Return edges to a given region.
-  string to_region = 5;
-}
-
-message SearchRegionGraphEdgesResponse {
-  repeated RegionGraphEdge region_graph_edges = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
   string next_page_token = 2;
 }

@@ -27,79 +27,29 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type PolygonSearchPointsRequest_PolygonEncoding int32
+type PolygonEncoding int32
 
 const (
-	PolygonSearchPointsRequest_S2      PolygonSearchPointsRequest_PolygonEncoding = 0
-	PolygonSearchPointsRequest_GEOJSON PolygonSearchPointsRequest_PolygonEncoding = 1
+	PolygonEncoding_S2      PolygonEncoding = 0
+	PolygonEncoding_GEOJSON PolygonEncoding = 1
 )
 
-var PolygonSearchPointsRequest_PolygonEncoding_name = map[int32]string{
+var PolygonEncoding_name = map[int32]string{
 	0: "S2",
 	1: "GEOJSON",
 }
 
-var PolygonSearchPointsRequest_PolygonEncoding_value = map[string]int32{
+var PolygonEncoding_value = map[string]int32{
 	"S2":      0,
 	"GEOJSON": 1,
 }
 
-func (x PolygonSearchPointsRequest_PolygonEncoding) String() string {
-	return proto.EnumName(PolygonSearchPointsRequest_PolygonEncoding_name, int32(x))
+func (x PolygonEncoding) String() string {
+	return proto.EnumName(PolygonEncoding_name, int32(x))
 }
 
-func (PolygonSearchPointsRequest_PolygonEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{18, 0}
-}
-
-type PolygonCountBrandPointsRequest_PolygonEncoding int32
-
-const (
-	PolygonCountBrandPointsRequest_S2      PolygonCountBrandPointsRequest_PolygonEncoding = 0
-	PolygonCountBrandPointsRequest_GEOJSON PolygonCountBrandPointsRequest_PolygonEncoding = 1
-)
-
-var PolygonCountBrandPointsRequest_PolygonEncoding_name = map[int32]string{
-	0: "S2",
-	1: "GEOJSON",
-}
-
-var PolygonCountBrandPointsRequest_PolygonEncoding_value = map[string]int32{
-	"S2":      0,
-	"GEOJSON": 1,
-}
-
-func (x PolygonCountBrandPointsRequest_PolygonEncoding) String() string {
-	return proto.EnumName(PolygonCountBrandPointsRequest_PolygonEncoding_name, int32(x))
-}
-
-func (PolygonCountBrandPointsRequest_PolygonEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{35, 0}
-}
-
-type PolygonCountTagPointsRequest_PolygonEncoding int32
-
-const (
-	PolygonCountTagPointsRequest_S2      PolygonCountTagPointsRequest_PolygonEncoding = 0
-	PolygonCountTagPointsRequest_GEOJSON PolygonCountTagPointsRequest_PolygonEncoding = 1
-)
-
-var PolygonCountTagPointsRequest_PolygonEncoding_name = map[int32]string{
-	0: "S2",
-	1: "GEOJSON",
-}
-
-var PolygonCountTagPointsRequest_PolygonEncoding_value = map[string]int32{
-	"S2":      0,
-	"GEOJSON": 1,
-}
-
-func (x PolygonCountTagPointsRequest_PolygonEncoding) String() string {
-	return proto.EnumName(PolygonCountTagPointsRequest_PolygonEncoding_name, int32(x))
-}
-
-func (PolygonCountTagPointsRequest_PolygonEncoding) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{39, 0}
+func (PolygonEncoding) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{0}
 }
 
 type FeatureStats struct {
@@ -544,23 +494,24 @@ func (m *LatLng) GetLongitude() float64 {
 type Point struct {
 	// The name of the point. It must have the format `"points/{point}"`.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The name of the point's brand if it has one.
-	Brand string `protobuf:"bytes,2,opt,name=brand,proto3" json:"brand,omitempty"`
 	// The display name of the point.
-	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// The formatted, single-line address.
-	FormattedAddress string `protobuf:"bytes,4,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
 	// The geocoded point address.
-	Location *LatLng `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
+	Location *LatLng `protobuf:"bytes,4,opt,name=location,proto3" json:"location,omitempty"`
+	// The formatted, single-line address.
+	FormattedAddress string `protobuf:"bytes,5,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
+	// The names of the point's sources. Each name must have the format
+	// `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
+	// the [regular expression](https://github.com/google/re2/wiki/Syntax)
+	// `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
+	Sources []string `protobuf:"bytes,6,rep,name=sources,proto3" json:"sources,omitempty"`
+	// The name of the point's brand if it has one.
+	Brand string `protobuf:"bytes,7,opt,name=brand,proto3" json:"brand,omitempty"`
 	// A list of point tags.
-	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
-	// The creation timestamp of the point.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of an point.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	Tags                 []string `protobuf:"bytes,8,rep,name=tags,proto3" json:"tags,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *Point) Reset()         { *m = Point{} }
@@ -595,23 +546,9 @@ func (m *Point) GetName() string {
 	return ""
 }
 
-func (m *Point) GetBrand() string {
-	if m != nil {
-		return m.Brand
-	}
-	return ""
-}
-
 func (m *Point) GetDisplayName() string {
 	if m != nil {
 		return m.DisplayName
-	}
-	return ""
-}
-
-func (m *Point) GetFormattedAddress() string {
-	if m != nil {
-		return m.FormattedAddress
 	}
 	return ""
 }
@@ -623,23 +560,30 @@ func (m *Point) GetLocation() *LatLng {
 	return nil
 }
 
+func (m *Point) GetFormattedAddress() string {
+	if m != nil {
+		return m.FormattedAddress
+	}
+	return ""
+}
+
+func (m *Point) GetSources() []string {
+	if m != nil {
+		return m.Sources
+	}
+	return nil
+}
+
+func (m *Point) GetBrand() string {
+	if m != nil {
+		return m.Brand
+	}
+	return ""
+}
+
 func (m *Point) GetTags() []string {
 	if m != nil {
 		return m.Tags
-	}
-	return nil
-}
-
-func (m *Point) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *Point) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
 	}
 	return nil
 }
@@ -657,14 +601,10 @@ type Tag struct {
 	// The plural display name of the tag.
 	PluralDisplayName string `protobuf:"bytes,4,opt,name=plural_display_name,json=pluralDisplayName,proto3" json:"plural_display_name,omitempty"`
 	// Is the tag a category.
-	IsCategory bool `protobuf:"varint,5,opt,name=is_category,json=isCategory,proto3" json:"is_category,omitempty"`
-	// The creation timestamp of the tag.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of the tag.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+	IsCategory           bool     `protobuf:"varint,5,opt,name=is_category,json=isCategory,proto3" json:"is_category,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
 func (m *Tag) Reset()         { *m = Tag{} }
@@ -727,126 +667,6 @@ func (m *Tag) GetIsCategory() bool {
 	return false
 }
 
-func (m *Tag) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *Tag) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
-type PointSource struct {
-	// The name of the point source. It must have the format
-	// `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
-	// the [regular expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The name of the point associated with this point source if there is one.
-	Point string `protobuf:"bytes,2,opt,name=point,proto3" json:"point,omitempty"`
-	// The display name of the point source.
-	DisplayName string `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// The formatted, single-line address.
-	FormattedAddress string `protobuf:"bytes,4,opt,name=formatted_address,json=formattedAddress,proto3" json:"formatted_address,omitempty"`
-	// The source-geocoded address.
-	Location *LatLng `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	// A list of potentially unnormalized, source-provided tags.
-	Tags []string `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
-	// The creation timestamp of the point source.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of an point source.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *PointSource) Reset()         { *m = PointSource{} }
-func (m *PointSource) String() string { return proto.CompactTextString(m) }
-func (*PointSource) ProtoMessage()    {}
-func (*PointSource) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{5}
-}
-
-func (m *PointSource) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PointSource.Unmarshal(m, b)
-}
-func (m *PointSource) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PointSource.Marshal(b, m, deterministic)
-}
-func (m *PointSource) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PointSource.Merge(m, src)
-}
-func (m *PointSource) XXX_Size() int {
-	return xxx_messageInfo_PointSource.Size(m)
-}
-func (m *PointSource) XXX_DiscardUnknown() {
-	xxx_messageInfo_PointSource.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PointSource proto.InternalMessageInfo
-
-func (m *PointSource) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *PointSource) GetPoint() string {
-	if m != nil {
-		return m.Point
-	}
-	return ""
-}
-
-func (m *PointSource) GetDisplayName() string {
-	if m != nil {
-		return m.DisplayName
-	}
-	return ""
-}
-
-func (m *PointSource) GetFormattedAddress() string {
-	if m != nil {
-		return m.FormattedAddress
-	}
-	return ""
-}
-
-func (m *PointSource) GetLocation() *LatLng {
-	if m != nil {
-		return m.Location
-	}
-	return nil
-}
-
-func (m *PointSource) GetTags() []string {
-	if m != nil {
-		return m.Tags
-	}
-	return nil
-}
-
-func (m *PointSource) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *PointSource) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
 type Region struct {
 	// The name of the region. It must have the format
 	// `"regionTypes/{region_type}/regions/{region}"`.
@@ -865,7 +685,7 @@ func (m *Region) Reset()         { *m = Region{} }
 func (m *Region) String() string { return proto.CompactTextString(m) }
 func (*Region) ProtoMessage()    {}
 func (*Region) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{6}
+	return fileDescriptor_58bd33bd76af5b35, []int{5}
 }
 
 func (m *Region) XXX_Unmarshal(b []byte) error {
@@ -900,299 +720,6 @@ func (m *Region) GetGeometry() []byte {
 	return nil
 }
 
-type BrandRegionScoreSetScore struct {
-	// The name of the brand region score set. It must have the format
-	// `"brandRegionScoreSets/{brand_region_score_set}"`.
-	// `{brand_region_score_set}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`.
-	BrandRegionScoreSet string `protobuf:"bytes,1,opt,name=brand_region_score_set,json=brandRegionScoreSet,proto3" json:"brand_region_score_set,omitempty"`
-	// The score's brand.
-	Brand string `protobuf:"bytes,2,opt,name=brand,proto3" json:"brand,omitempty"`
-	// The brand's display name.
-	BrandDisplayName string `protobuf:"bytes,3,opt,name=brand_display_name,json=brandDisplayName,proto3" json:"brand_display_name,omitempty"`
-	// The score's region.
-	Region string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
-	// The score value associated with the brand and region.
-	Score float64 `protobuf:"fixed64,5,opt,name=score,proto3" json:"score,omitempty"`
-	// The prefered square footage of the brand.
-	PreferredGla string `protobuf:"bytes,6,opt,name=preferred_gla,json=preferredGla,proto3" json:"preferred_gla,omitempty"`
-	// The creation timestamp of the brand region score.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of an brand region score.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *BrandRegionScoreSetScore) Reset()         { *m = BrandRegionScoreSetScore{} }
-func (m *BrandRegionScoreSetScore) String() string { return proto.CompactTextString(m) }
-func (*BrandRegionScoreSetScore) ProtoMessage()    {}
-func (*BrandRegionScoreSetScore) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{7}
-}
-
-func (m *BrandRegionScoreSetScore) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BrandRegionScoreSetScore.Unmarshal(m, b)
-}
-func (m *BrandRegionScoreSetScore) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BrandRegionScoreSetScore.Marshal(b, m, deterministic)
-}
-func (m *BrandRegionScoreSetScore) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BrandRegionScoreSetScore.Merge(m, src)
-}
-func (m *BrandRegionScoreSetScore) XXX_Size() int {
-	return xxx_messageInfo_BrandRegionScoreSetScore.Size(m)
-}
-func (m *BrandRegionScoreSetScore) XXX_DiscardUnknown() {
-	xxx_messageInfo_BrandRegionScoreSetScore.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BrandRegionScoreSetScore proto.InternalMessageInfo
-
-func (m *BrandRegionScoreSetScore) GetBrandRegionScoreSet() string {
-	if m != nil {
-		return m.BrandRegionScoreSet
-	}
-	return ""
-}
-
-func (m *BrandRegionScoreSetScore) GetBrand() string {
-	if m != nil {
-		return m.Brand
-	}
-	return ""
-}
-
-func (m *BrandRegionScoreSetScore) GetBrandDisplayName() string {
-	if m != nil {
-		return m.BrandDisplayName
-	}
-	return ""
-}
-
-func (m *BrandRegionScoreSetScore) GetRegion() string {
-	if m != nil {
-		return m.Region
-	}
-	return ""
-}
-
-func (m *BrandRegionScoreSetScore) GetScore() float64 {
-	if m != nil {
-		return m.Score
-	}
-	return 0
-}
-
-func (m *BrandRegionScoreSetScore) GetPreferredGla() string {
-	if m != nil {
-		return m.PreferredGla
-	}
-	return ""
-}
-
-func (m *BrandRegionScoreSetScore) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *BrandRegionScoreSetScore) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
-type TagRegionScoreSetScore struct {
-	// The name of the tag region score set. It must have the format
-	// `"tagRegionScoreSets/{brand_region_score_set}"`.
-	// `{brand_region_score_set}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`.
-	TagRegionScoreSet string `protobuf:"bytes,1,opt,name=tag_region_score_set,json=tagRegionScoreSet,proto3" json:"tag_region_score_set,omitempty"`
-	// The score's tag.
-	Tag string `protobuf:"bytes,2,opt,name=tag,proto3" json:"tag,omitempty"`
-	// The tag's display name.
-	TagDisplayName string `protobuf:"bytes,3,opt,name=tag_display_name,json=tagDisplayName,proto3" json:"tag_display_name,omitempty"`
-	// The score's region.
-	Region string `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
-	// The score value associated with the tag and region.
-	Score float64 `protobuf:"fixed64,5,opt,name=score,proto3" json:"score,omitempty"`
-	// The creation timestamp of the brand region score.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of an brand region score.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *TagRegionScoreSetScore) Reset()         { *m = TagRegionScoreSetScore{} }
-func (m *TagRegionScoreSetScore) String() string { return proto.CompactTextString(m) }
-func (*TagRegionScoreSetScore) ProtoMessage()    {}
-func (*TagRegionScoreSetScore) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{8}
-}
-
-func (m *TagRegionScoreSetScore) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TagRegionScoreSetScore.Unmarshal(m, b)
-}
-func (m *TagRegionScoreSetScore) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TagRegionScoreSetScore.Marshal(b, m, deterministic)
-}
-func (m *TagRegionScoreSetScore) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TagRegionScoreSetScore.Merge(m, src)
-}
-func (m *TagRegionScoreSetScore) XXX_Size() int {
-	return xxx_messageInfo_TagRegionScoreSetScore.Size(m)
-}
-func (m *TagRegionScoreSetScore) XXX_DiscardUnknown() {
-	xxx_messageInfo_TagRegionScoreSetScore.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TagRegionScoreSetScore proto.InternalMessageInfo
-
-func (m *TagRegionScoreSetScore) GetTagRegionScoreSet() string {
-	if m != nil {
-		return m.TagRegionScoreSet
-	}
-	return ""
-}
-
-func (m *TagRegionScoreSetScore) GetTag() string {
-	if m != nil {
-		return m.Tag
-	}
-	return ""
-}
-
-func (m *TagRegionScoreSetScore) GetTagDisplayName() string {
-	if m != nil {
-		return m.TagDisplayName
-	}
-	return ""
-}
-
-func (m *TagRegionScoreSetScore) GetRegion() string {
-	if m != nil {
-		return m.Region
-	}
-	return ""
-}
-
-func (m *TagRegionScoreSetScore) GetScore() float64 {
-	if m != nil {
-		return m.Score
-	}
-	return 0
-}
-
-func (m *TagRegionScoreSetScore) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *TagRegionScoreSetScore) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
-type RegionGraphEdge struct {
-	// The name of the region graph. It must have the format
-	// `"regionGraphs/{region_graph}"`. `{region_graph}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`.
-	RegionGraph string `protobuf:"bytes,1,opt,name=region_graph,json=regionGraph,proto3" json:"region_graph,omitempty"`
-	// A region ID representing the origin edge vertices.
-	FromRegion string `protobuf:"bytes,2,opt,name=from_region,json=fromRegion,proto3" json:"from_region,omitempty"`
-	// A region ID representint the other edge vertices.
-	ToRegion string `protobuf:"bytes,3,opt,name=to_region,json=toRegion,proto3" json:"to_region,omitempty"`
-	// The weight of the edge.
-	Weight float64 `protobuf:"fixed64,4,opt,name=weight,proto3" json:"weight,omitempty"`
-	// The creation timestamp of the region graph edge.
-	CreateTime *timestamp.Timestamp `protobuf:"bytes,14,opt,name=create_time,json=createTime,proto3" json:"create_time,omitempty"`
-	// The last update timestamp of an region graph edge.
-	UpdateTime           *timestamp.Timestamp `protobuf:"bytes,15,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *RegionGraphEdge) Reset()         { *m = RegionGraphEdge{} }
-func (m *RegionGraphEdge) String() string { return proto.CompactTextString(m) }
-func (*RegionGraphEdge) ProtoMessage()    {}
-func (*RegionGraphEdge) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{9}
-}
-
-func (m *RegionGraphEdge) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegionGraphEdge.Unmarshal(m, b)
-}
-func (m *RegionGraphEdge) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegionGraphEdge.Marshal(b, m, deterministic)
-}
-func (m *RegionGraphEdge) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegionGraphEdge.Merge(m, src)
-}
-func (m *RegionGraphEdge) XXX_Size() int {
-	return xxx_messageInfo_RegionGraphEdge.Size(m)
-}
-func (m *RegionGraphEdge) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegionGraphEdge.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegionGraphEdge proto.InternalMessageInfo
-
-func (m *RegionGraphEdge) GetRegionGraph() string {
-	if m != nil {
-		return m.RegionGraph
-	}
-	return ""
-}
-
-func (m *RegionGraphEdge) GetFromRegion() string {
-	if m != nil {
-		return m.FromRegion
-	}
-	return ""
-}
-
-func (m *RegionGraphEdge) GetToRegion() string {
-	if m != nil {
-		return m.ToRegion
-	}
-	return ""
-}
-
-func (m *RegionGraphEdge) GetWeight() float64 {
-	if m != nil {
-		return m.Weight
-	}
-	return 0
-}
-
-func (m *RegionGraphEdge) GetCreateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.CreateTime
-	}
-	return nil
-}
-
-func (m *RegionGraphEdge) GetUpdateTime() *timestamp.Timestamp {
-	if m != nil {
-		return m.UpdateTime
-	}
-	return nil
-}
-
 type GetBrandRequest struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1204,7 +731,7 @@ func (m *GetBrandRequest) Reset()         { *m = GetBrandRequest{} }
 func (m *GetBrandRequest) String() string { return proto.CompactTextString(m) }
 func (*GetBrandRequest) ProtoMessage()    {}
 func (*GetBrandRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{10}
+	return fileDescriptor_58bd33bd76af5b35, []int{6}
 }
 
 func (m *GetBrandRequest) XXX_Unmarshal(b []byte) error {
@@ -1232,45 +759,6 @@ func (m *GetBrandRequest) GetName() string {
 	return ""
 }
 
-type SetBrandRequest struct {
-	Brand                *Brand   `protobuf:"bytes,1,opt,name=brand,proto3" json:"brand,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SetBrandRequest) Reset()         { *m = SetBrandRequest{} }
-func (m *SetBrandRequest) String() string { return proto.CompactTextString(m) }
-func (*SetBrandRequest) ProtoMessage()    {}
-func (*SetBrandRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{11}
-}
-
-func (m *SetBrandRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetBrandRequest.Unmarshal(m, b)
-}
-func (m *SetBrandRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetBrandRequest.Marshal(b, m, deterministic)
-}
-func (m *SetBrandRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetBrandRequest.Merge(m, src)
-}
-func (m *SetBrandRequest) XXX_Size() int {
-	return xxx_messageInfo_SetBrandRequest.Size(m)
-}
-func (m *SetBrandRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetBrandRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetBrandRequest proto.InternalMessageInfo
-
-func (m *SetBrandRequest) GetBrand() *Brand {
-	if m != nil {
-		return m.Brand
-	}
-	return nil
-}
-
 type ListBrandsRequest struct {
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1285,7 +773,7 @@ func (m *ListBrandsRequest) Reset()         { *m = ListBrandsRequest{} }
 func (m *ListBrandsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListBrandsRequest) ProtoMessage()    {}
 func (*ListBrandsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{12}
+	return fileDescriptor_58bd33bd76af5b35, []int{7}
 }
 
 func (m *ListBrandsRequest) XXX_Unmarshal(b []byte) error {
@@ -1320,55 +808,8 @@ func (m *ListBrandsRequest) GetPageToken() string {
 	return ""
 }
 
-type ListBrand struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	DisplayName          string   `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ListBrand) Reset()         { *m = ListBrand{} }
-func (m *ListBrand) String() string { return proto.CompactTextString(m) }
-func (*ListBrand) ProtoMessage()    {}
-func (*ListBrand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{13}
-}
-
-func (m *ListBrand) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ListBrand.Unmarshal(m, b)
-}
-func (m *ListBrand) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ListBrand.Marshal(b, m, deterministic)
-}
-func (m *ListBrand) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ListBrand.Merge(m, src)
-}
-func (m *ListBrand) XXX_Size() int {
-	return xxx_messageInfo_ListBrand.Size(m)
-}
-func (m *ListBrand) XXX_DiscardUnknown() {
-	xxx_messageInfo_ListBrand.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ListBrand proto.InternalMessageInfo
-
-func (m *ListBrand) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *ListBrand) GetDisplayName() string {
-	if m != nil {
-		return m.DisplayName
-	}
-	return ""
-}
-
 type ListBrandsResponse struct {
-	Brands []*ListBrand `protobuf:"bytes,1,rep,name=brands,proto3" json:"brands,omitempty"`
+	Brands []*Brand `protobuf:"bytes,1,rep,name=brands,proto3" json:"brands,omitempty"`
 	// Token to retrieve the next page of results, or empty if there are no more
 	// results in the list.
 	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
@@ -1381,7 +822,7 @@ func (m *ListBrandsResponse) Reset()         { *m = ListBrandsResponse{} }
 func (m *ListBrandsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListBrandsResponse) ProtoMessage()    {}
 func (*ListBrandsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{14}
+	return fileDescriptor_58bd33bd76af5b35, []int{8}
 }
 
 func (m *ListBrandsResponse) XXX_Unmarshal(b []byte) error {
@@ -1402,7 +843,7 @@ func (m *ListBrandsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ListBrandsResponse proto.InternalMessageInfo
 
-func (m *ListBrandsResponse) GetBrands() []*ListBrand {
+func (m *ListBrandsResponse) GetBrands() []*Brand {
 	if m != nil {
 		return m.Brands
 	}
@@ -1416,6 +857,45 @@ func (m *ListBrandsResponse) GetNextPageToken() string {
 	return ""
 }
 
+type SetBrandRequest struct {
+	Brand                *Brand   `protobuf:"bytes,1,opt,name=brand,proto3" json:"brand,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SetBrandRequest) Reset()         { *m = SetBrandRequest{} }
+func (m *SetBrandRequest) String() string { return proto.CompactTextString(m) }
+func (*SetBrandRequest) ProtoMessage()    {}
+func (*SetBrandRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{9}
+}
+
+func (m *SetBrandRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SetBrandRequest.Unmarshal(m, b)
+}
+func (m *SetBrandRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SetBrandRequest.Marshal(b, m, deterministic)
+}
+func (m *SetBrandRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetBrandRequest.Merge(m, src)
+}
+func (m *SetBrandRequest) XXX_Size() int {
+	return xxx_messageInfo_SetBrandRequest.Size(m)
+}
+func (m *SetBrandRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetBrandRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetBrandRequest proto.InternalMessageInfo
+
+func (m *SetBrandRequest) GetBrand() *Brand {
+	if m != nil {
+		return m.Brand
+	}
+	return nil
+}
+
 type DeleteBrandRequest struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1427,7 +907,7 @@ func (m *DeleteBrandRequest) Reset()         { *m = DeleteBrandRequest{} }
 func (m *DeleteBrandRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteBrandRequest) ProtoMessage()    {}
 func (*DeleteBrandRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{15}
+	return fileDescriptor_58bd33bd76af5b35, []int{10}
 }
 
 func (m *DeleteBrandRequest) XXX_Unmarshal(b []byte) error {
@@ -1455,6 +935,162 @@ func (m *DeleteBrandRequest) GetName() string {
 	return ""
 }
 
+type GetPointRequest struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetPointRequest) Reset()         { *m = GetPointRequest{} }
+func (m *GetPointRequest) String() string { return proto.CompactTextString(m) }
+func (*GetPointRequest) ProtoMessage()    {}
+func (*GetPointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{11}
+}
+
+func (m *GetPointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetPointRequest.Unmarshal(m, b)
+}
+func (m *GetPointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetPointRequest.Marshal(b, m, deterministic)
+}
+func (m *GetPointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetPointRequest.Merge(m, src)
+}
+func (m *GetPointRequest) XXX_Size() int {
+	return xxx_messageInfo_GetPointRequest.Size(m)
+}
+func (m *GetPointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetPointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetPointRequest proto.InternalMessageInfo
+
+func (m *GetPointRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type CreatePointRequest struct {
+	Point                *Point   `protobuf:"bytes,1,opt,name=point,proto3" json:"point,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CreatePointRequest) Reset()         { *m = CreatePointRequest{} }
+func (m *CreatePointRequest) String() string { return proto.CompactTextString(m) }
+func (*CreatePointRequest) ProtoMessage()    {}
+func (*CreatePointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{12}
+}
+
+func (m *CreatePointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CreatePointRequest.Unmarshal(m, b)
+}
+func (m *CreatePointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CreatePointRequest.Marshal(b, m, deterministic)
+}
+func (m *CreatePointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CreatePointRequest.Merge(m, src)
+}
+func (m *CreatePointRequest) XXX_Size() int {
+	return xxx_messageInfo_CreatePointRequest.Size(m)
+}
+func (m *CreatePointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_CreatePointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CreatePointRequest proto.InternalMessageInfo
+
+func (m *CreatePointRequest) GetPoint() *Point {
+	if m != nil {
+		return m.Point
+	}
+	return nil
+}
+
+type UpdatePointRequest struct {
+	Point                *Point   `protobuf:"bytes,1,opt,name=point,proto3" json:"point,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UpdatePointRequest) Reset()         { *m = UpdatePointRequest{} }
+func (m *UpdatePointRequest) String() string { return proto.CompactTextString(m) }
+func (*UpdatePointRequest) ProtoMessage()    {}
+func (*UpdatePointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{13}
+}
+
+func (m *UpdatePointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UpdatePointRequest.Unmarshal(m, b)
+}
+func (m *UpdatePointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UpdatePointRequest.Marshal(b, m, deterministic)
+}
+func (m *UpdatePointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdatePointRequest.Merge(m, src)
+}
+func (m *UpdatePointRequest) XXX_Size() int {
+	return xxx_messageInfo_UpdatePointRequest.Size(m)
+}
+func (m *UpdatePointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdatePointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UpdatePointRequest proto.InternalMessageInfo
+
+func (m *UpdatePointRequest) GetPoint() *Point {
+	if m != nil {
+		return m.Point
+	}
+	return nil
+}
+
+type DeletePointRequest struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DeletePointRequest) Reset()         { *m = DeletePointRequest{} }
+func (m *DeletePointRequest) String() string { return proto.CompactTextString(m) }
+func (*DeletePointRequest) ProtoMessage()    {}
+func (*DeletePointRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_58bd33bd76af5b35, []int{14}
+}
+
+func (m *DeletePointRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DeletePointRequest.Unmarshal(m, b)
+}
+func (m *DeletePointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DeletePointRequest.Marshal(b, m, deterministic)
+}
+func (m *DeletePointRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DeletePointRequest.Merge(m, src)
+}
+func (m *DeletePointRequest) XXX_Size() int {
+	return xxx_messageInfo_DeletePointRequest.Size(m)
+}
+func (m *DeletePointRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_DeletePointRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DeletePointRequest proto.InternalMessageInfo
+
+func (m *DeletePointRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
 type SearchPointsRequest struct {
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -1475,7 +1111,7 @@ func (m *SearchPointsRequest) Reset()         { *m = SearchPointsRequest{} }
 func (m *SearchPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchPointsRequest) ProtoMessage()    {}
 func (*SearchPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{16}
+	return fileDescriptor_58bd33bd76af5b35, []int{15}
 }
 
 func (m *SearchPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -1545,7 +1181,7 @@ func (m *SearchPointsResponse) Reset()         { *m = SearchPointsResponse{} }
 func (m *SearchPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchPointsResponse) ProtoMessage()    {}
 func (*SearchPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{17}
+	return fileDescriptor_58bd33bd76af5b35, []int{16}
 }
 
 func (m *SearchPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -1588,10 +1224,9 @@ type PolygonSearchPointsRequest struct {
 	// Return points with a given brand.
 	Brand string `protobuf:"bytes,3,opt,name=brand,proto3" json:"brand,omitempty"`
 	// Return points with the given tags.
-	Tags            []string                                   `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
-	PolygonEncoding PolygonSearchPointsRequest_PolygonEncoding `protobuf:"varint,5,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonSearchPointsRequest_PolygonEncoding" json:"polygon_encoding,omitempty"`
-	// The total number of bytes of the encoded S2 polygon.
-	PolygonLength int64 `protobuf:"varint,14,opt,name=polygon_length,json=polygonLength,proto3" json:"polygon_length,omitempty"`
+	Tags []string `protobuf:"bytes,4,rep,name=tags,proto3" json:"tags,omitempty"`
+	// The polygon data's encoding.
+	PolygonEncoding PolygonEncoding `protobuf:"varint,5,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonEncoding" json:"polygon_encoding,omitempty"`
 	// A chunk of bytes of the encoded S2 polygon.
 	PolygonChunk         []byte   `protobuf:"bytes,15,opt,name=polygon_chunk,json=polygonChunk,proto3" json:"polygon_chunk,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1603,7 +1238,7 @@ func (m *PolygonSearchPointsRequest) Reset()         { *m = PolygonSearchPointsR
 func (m *PolygonSearchPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*PolygonSearchPointsRequest) ProtoMessage()    {}
 func (*PolygonSearchPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{18}
+	return fileDescriptor_58bd33bd76af5b35, []int{17}
 }
 
 func (m *PolygonSearchPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -1652,18 +1287,11 @@ func (m *PolygonSearchPointsRequest) GetTags() []string {
 	return nil
 }
 
-func (m *PolygonSearchPointsRequest) GetPolygonEncoding() PolygonSearchPointsRequest_PolygonEncoding {
+func (m *PolygonSearchPointsRequest) GetPolygonEncoding() PolygonEncoding {
 	if m != nil {
 		return m.PolygonEncoding
 	}
-	return PolygonSearchPointsRequest_S2
-}
-
-func (m *PolygonSearchPointsRequest) GetPolygonLength() int64 {
-	if m != nil {
-		return m.PolygonLength
-	}
-	return 0
+	return PolygonEncoding_S2
 }
 
 func (m *PolygonSearchPointsRequest) GetPolygonChunk() []byte {
@@ -1687,7 +1315,7 @@ func (m *PolygonSearchPointsResponse) Reset()         { *m = PolygonSearchPoints
 func (m *PolygonSearchPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*PolygonSearchPointsResponse) ProtoMessage()    {}
 func (*PolygonSearchPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{19}
+	return fileDescriptor_58bd33bd76af5b35, []int{18}
 }
 
 func (m *PolygonSearchPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -1722,123 +1350,6 @@ func (m *PolygonSearchPointsResponse) GetNextPageToken() string {
 	return ""
 }
 
-type GetPointRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetPointRequest) Reset()         { *m = GetPointRequest{} }
-func (m *GetPointRequest) String() string { return proto.CompactTextString(m) }
-func (*GetPointRequest) ProtoMessage()    {}
-func (*GetPointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{20}
-}
-
-func (m *GetPointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetPointRequest.Unmarshal(m, b)
-}
-func (m *GetPointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetPointRequest.Marshal(b, m, deterministic)
-}
-func (m *GetPointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetPointRequest.Merge(m, src)
-}
-func (m *GetPointRequest) XXX_Size() int {
-	return xxx_messageInfo_GetPointRequest.Size(m)
-}
-func (m *GetPointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetPointRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetPointRequest proto.InternalMessageInfo
-
-func (m *GetPointRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-type UpdatePointRequest struct {
-	Point                *Point   `protobuf:"bytes,1,opt,name=point,proto3" json:"point,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdatePointRequest) Reset()         { *m = UpdatePointRequest{} }
-func (m *UpdatePointRequest) String() string { return proto.CompactTextString(m) }
-func (*UpdatePointRequest) ProtoMessage()    {}
-func (*UpdatePointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{21}
-}
-
-func (m *UpdatePointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdatePointRequest.Unmarshal(m, b)
-}
-func (m *UpdatePointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdatePointRequest.Marshal(b, m, deterministic)
-}
-func (m *UpdatePointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdatePointRequest.Merge(m, src)
-}
-func (m *UpdatePointRequest) XXX_Size() int {
-	return xxx_messageInfo_UpdatePointRequest.Size(m)
-}
-func (m *UpdatePointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdatePointRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdatePointRequest proto.InternalMessageInfo
-
-func (m *UpdatePointRequest) GetPoint() *Point {
-	if m != nil {
-		return m.Point
-	}
-	return nil
-}
-
-type DeletePointRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeletePointRequest) Reset()         { *m = DeletePointRequest{} }
-func (m *DeletePointRequest) String() string { return proto.CompactTextString(m) }
-func (*DeletePointRequest) ProtoMessage()    {}
-func (*DeletePointRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{22}
-}
-
-func (m *DeletePointRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeletePointRequest.Unmarshal(m, b)
-}
-func (m *DeletePointRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeletePointRequest.Marshal(b, m, deterministic)
-}
-func (m *DeletePointRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeletePointRequest.Merge(m, src)
-}
-func (m *DeletePointRequest) XXX_Size() int {
-	return xxx_messageInfo_DeletePointRequest.Size(m)
-}
-func (m *DeletePointRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeletePointRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeletePointRequest proto.InternalMessageInfo
-
-func (m *DeletePointRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 type GetTagRequest struct {
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -1850,7 +1361,7 @@ func (m *GetTagRequest) Reset()         { *m = GetTagRequest{} }
 func (m *GetTagRequest) String() string { return proto.CompactTextString(m) }
 func (*GetTagRequest) ProtoMessage()    {}
 func (*GetTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{23}
+	return fileDescriptor_58bd33bd76af5b35, []int{19}
 }
 
 func (m *GetTagRequest) XXX_Unmarshal(b []byte) error {
@@ -1889,7 +1400,7 @@ func (m *SetTagRequest) Reset()         { *m = SetTagRequest{} }
 func (m *SetTagRequest) String() string { return proto.CompactTextString(m) }
 func (*SetTagRequest) ProtoMessage()    {}
 func (*SetTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{24}
+	return fileDescriptor_58bd33bd76af5b35, []int{20}
 }
 
 func (m *SetTagRequest) XXX_Unmarshal(b []byte) error {
@@ -1931,7 +1442,7 @@ func (m *ListTagsRequest) Reset()         { *m = ListTagsRequest{} }
 func (m *ListTagsRequest) String() string { return proto.CompactTextString(m) }
 func (*ListTagsRequest) ProtoMessage()    {}
 func (*ListTagsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{25}
+	return fileDescriptor_58bd33bd76af5b35, []int{21}
 }
 
 func (m *ListTagsRequest) XXX_Unmarshal(b []byte) error {
@@ -1980,7 +1491,7 @@ func (m *ListTagsResponse) Reset()         { *m = ListTagsResponse{} }
 func (m *ListTagsResponse) String() string { return proto.CompactTextString(m) }
 func (*ListTagsResponse) ProtoMessage()    {}
 func (*ListTagsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{26}
+	return fileDescriptor_58bd33bd76af5b35, []int{22}
 }
 
 func (m *ListTagsResponse) XXX_Unmarshal(b []byte) error {
@@ -2026,7 +1537,7 @@ func (m *DeleteTagRequest) Reset()         { *m = DeleteTagRequest{} }
 func (m *DeleteTagRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteTagRequest) ProtoMessage()    {}
 func (*DeleteTagRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{27}
+	return fileDescriptor_58bd33bd76af5b35, []int{23}
 }
 
 func (m *DeleteTagRequest) XXX_Unmarshal(b []byte) error {
@@ -2054,217 +1565,6 @@ func (m *DeleteTagRequest) GetName() string {
 	return ""
 }
 
-type GetPointSourceRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetPointSourceRequest) Reset()         { *m = GetPointSourceRequest{} }
-func (m *GetPointSourceRequest) String() string { return proto.CompactTextString(m) }
-func (*GetPointSourceRequest) ProtoMessage()    {}
-func (*GetPointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{28}
-}
-
-func (m *GetPointSourceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetPointSourceRequest.Unmarshal(m, b)
-}
-func (m *GetPointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetPointSourceRequest.Marshal(b, m, deterministic)
-}
-func (m *GetPointSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetPointSourceRequest.Merge(m, src)
-}
-func (m *GetPointSourceRequest) XXX_Size() int {
-	return xxx_messageInfo_GetPointSourceRequest.Size(m)
-}
-func (m *GetPointSourceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetPointSourceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetPointSourceRequest proto.InternalMessageInfo
-
-func (m *GetPointSourceRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-type SetPointSourceRequest struct {
-	PointSource          *PointSource `protobuf:"bytes,1,opt,name=point_source,json=pointSource,proto3" json:"point_source,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
-}
-
-func (m *SetPointSourceRequest) Reset()         { *m = SetPointSourceRequest{} }
-func (m *SetPointSourceRequest) String() string { return proto.CompactTextString(m) }
-func (*SetPointSourceRequest) ProtoMessage()    {}
-func (*SetPointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{29}
-}
-
-func (m *SetPointSourceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetPointSourceRequest.Unmarshal(m, b)
-}
-func (m *SetPointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetPointSourceRequest.Marshal(b, m, deterministic)
-}
-func (m *SetPointSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetPointSourceRequest.Merge(m, src)
-}
-func (m *SetPointSourceRequest) XXX_Size() int {
-	return xxx_messageInfo_SetPointSourceRequest.Size(m)
-}
-func (m *SetPointSourceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetPointSourceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetPointSourceRequest proto.InternalMessageInfo
-
-func (m *SetPointSourceRequest) GetPointSource() *PointSource {
-	if m != nil {
-		return m.PointSource
-	}
-	return nil
-}
-
-type CreatePointWithPointSourcesRequest struct {
-	Point                *Point         `protobuf:"bytes,1,opt,name=point,proto3" json:"point,omitempty"`
-	PointSources         []*PointSource `protobuf:"bytes,2,rep,name=point_sources,json=pointSources,proto3" json:"point_sources,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *CreatePointWithPointSourcesRequest) Reset()         { *m = CreatePointWithPointSourcesRequest{} }
-func (m *CreatePointWithPointSourcesRequest) String() string { return proto.CompactTextString(m) }
-func (*CreatePointWithPointSourcesRequest) ProtoMessage()    {}
-func (*CreatePointWithPointSourcesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{30}
-}
-
-func (m *CreatePointWithPointSourcesRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreatePointWithPointSourcesRequest.Unmarshal(m, b)
-}
-func (m *CreatePointWithPointSourcesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreatePointWithPointSourcesRequest.Marshal(b, m, deterministic)
-}
-func (m *CreatePointWithPointSourcesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreatePointWithPointSourcesRequest.Merge(m, src)
-}
-func (m *CreatePointWithPointSourcesRequest) XXX_Size() int {
-	return xxx_messageInfo_CreatePointWithPointSourcesRequest.Size(m)
-}
-func (m *CreatePointWithPointSourcesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreatePointWithPointSourcesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreatePointWithPointSourcesRequest proto.InternalMessageInfo
-
-func (m *CreatePointWithPointSourcesRequest) GetPoint() *Point {
-	if m != nil {
-		return m.Point
-	}
-	return nil
-}
-
-func (m *CreatePointWithPointSourcesRequest) GetPointSources() []*PointSource {
-	if m != nil {
-		return m.PointSources
-	}
-	return nil
-}
-
-type CreatePointWithPointSourcesResponse struct {
-	Point                *Point         `protobuf:"bytes,1,opt,name=point,proto3" json:"point,omitempty"`
-	PointSources         []*PointSource `protobuf:"bytes,2,rep,name=point_sources,json=pointSources,proto3" json:"point_sources,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *CreatePointWithPointSourcesResponse) Reset()         { *m = CreatePointWithPointSourcesResponse{} }
-func (m *CreatePointWithPointSourcesResponse) String() string { return proto.CompactTextString(m) }
-func (*CreatePointWithPointSourcesResponse) ProtoMessage()    {}
-func (*CreatePointWithPointSourcesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{31}
-}
-
-func (m *CreatePointWithPointSourcesResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreatePointWithPointSourcesResponse.Unmarshal(m, b)
-}
-func (m *CreatePointWithPointSourcesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreatePointWithPointSourcesResponse.Marshal(b, m, deterministic)
-}
-func (m *CreatePointWithPointSourcesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreatePointWithPointSourcesResponse.Merge(m, src)
-}
-func (m *CreatePointWithPointSourcesResponse) XXX_Size() int {
-	return xxx_messageInfo_CreatePointWithPointSourcesResponse.Size(m)
-}
-func (m *CreatePointWithPointSourcesResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreatePointWithPointSourcesResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreatePointWithPointSourcesResponse proto.InternalMessageInfo
-
-func (m *CreatePointWithPointSourcesResponse) GetPoint() *Point {
-	if m != nil {
-		return m.Point
-	}
-	return nil
-}
-
-func (m *CreatePointWithPointSourcesResponse) GetPointSources() []*PointSource {
-	if m != nil {
-		return m.PointSources
-	}
-	return nil
-}
-
-type DeletePointSourceRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeletePointSourceRequest) Reset()         { *m = DeletePointSourceRequest{} }
-func (m *DeletePointSourceRequest) String() string { return proto.CompactTextString(m) }
-func (*DeletePointSourceRequest) ProtoMessage()    {}
-func (*DeletePointSourceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{32}
-}
-
-func (m *DeletePointSourceRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeletePointSourceRequest.Unmarshal(m, b)
-}
-func (m *DeletePointSourceRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeletePointSourceRequest.Marshal(b, m, deterministic)
-}
-func (m *DeletePointSourceRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeletePointSourceRequest.Merge(m, src)
-}
-func (m *DeletePointSourceRequest) XXX_Size() int {
-	return xxx_messageInfo_DeletePointSourceRequest.Size(m)
-}
-func (m *DeletePointSourceRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeletePointSourceRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeletePointSourceRequest proto.InternalMessageInfo
-
-func (m *DeletePointSourceRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
 type CountBrandPointsRequest struct {
 	// Count brand points within this region.
 	Region string `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
@@ -2279,7 +1579,7 @@ func (m *CountBrandPointsRequest) Reset()         { *m = CountBrandPointsRequest
 func (m *CountBrandPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*CountBrandPointsRequest) ProtoMessage()    {}
 func (*CountBrandPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{33}
+	return fileDescriptor_58bd33bd76af5b35, []int{24}
 }
 
 func (m *CountBrandPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -2326,7 +1626,7 @@ func (m *CountBrandPointsResponse) Reset()         { *m = CountBrandPointsRespon
 func (m *CountBrandPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*CountBrandPointsResponse) ProtoMessage()    {}
 func (*CountBrandPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{34}
+	return fileDescriptor_58bd33bd76af5b35, []int{25}
 }
 
 func (m *CountBrandPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -2358,10 +1658,9 @@ type PolygonCountBrandPointsRequest struct {
 	// Count brand points within this region.
 	Region string `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
 	// Count points for the given brands.
-	Brands          []string                                       `protobuf:"bytes,2,rep,name=brands,proto3" json:"brands,omitempty"`
-	PolygonEncoding PolygonCountBrandPointsRequest_PolygonEncoding `protobuf:"varint,3,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonCountBrandPointsRequest_PolygonEncoding" json:"polygon_encoding,omitempty"`
-	// The total number of bytes of the encoded S2 polygon.
-	PolygonLength int64 `protobuf:"varint,14,opt,name=polygon_length,json=polygonLength,proto3" json:"polygon_length,omitempty"`
+	Brands []string `protobuf:"bytes,2,rep,name=brands,proto3" json:"brands,omitempty"`
+	// The polygon data's encoding.
+	PolygonEncoding PolygonEncoding `protobuf:"varint,3,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonEncoding" json:"polygon_encoding,omitempty"`
 	// A chunk of bytes of the encoded S2 polygon.
 	PolygonChunk         []byte   `protobuf:"bytes,15,opt,name=polygon_chunk,json=polygonChunk,proto3" json:"polygon_chunk,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -2373,7 +1672,7 @@ func (m *PolygonCountBrandPointsRequest) Reset()         { *m = PolygonCountBran
 func (m *PolygonCountBrandPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*PolygonCountBrandPointsRequest) ProtoMessage()    {}
 func (*PolygonCountBrandPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{35}
+	return fileDescriptor_58bd33bd76af5b35, []int{26}
 }
 
 func (m *PolygonCountBrandPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -2408,18 +1707,11 @@ func (m *PolygonCountBrandPointsRequest) GetBrands() []string {
 	return nil
 }
 
-func (m *PolygonCountBrandPointsRequest) GetPolygonEncoding() PolygonCountBrandPointsRequest_PolygonEncoding {
+func (m *PolygonCountBrandPointsRequest) GetPolygonEncoding() PolygonEncoding {
 	if m != nil {
 		return m.PolygonEncoding
 	}
-	return PolygonCountBrandPointsRequest_S2
-}
-
-func (m *PolygonCountBrandPointsRequest) GetPolygonLength() int64 {
-	if m != nil {
-		return m.PolygonLength
-	}
-	return 0
+	return PolygonEncoding_S2
 }
 
 func (m *PolygonCountBrandPointsRequest) GetPolygonChunk() []byte {
@@ -2441,7 +1733,7 @@ func (m *PolygonCountBrandPointsResponse) Reset()         { *m = PolygonCountBra
 func (m *PolygonCountBrandPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*PolygonCountBrandPointsResponse) ProtoMessage()    {}
 func (*PolygonCountBrandPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{36}
+	return fileDescriptor_58bd33bd76af5b35, []int{27}
 }
 
 func (m *PolygonCountBrandPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -2483,7 +1775,7 @@ func (m *CountTagPointsRequest) Reset()         { *m = CountTagPointsRequest{} }
 func (m *CountTagPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*CountTagPointsRequest) ProtoMessage()    {}
 func (*CountTagPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{37}
+	return fileDescriptor_58bd33bd76af5b35, []int{28}
 }
 
 func (m *CountTagPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -2530,7 +1822,7 @@ func (m *CountTagPointsResponse) Reset()         { *m = CountTagPointsResponse{}
 func (m *CountTagPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*CountTagPointsResponse) ProtoMessage()    {}
 func (*CountTagPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{38}
+	return fileDescriptor_58bd33bd76af5b35, []int{29}
 }
 
 func (m *CountTagPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -2562,11 +1854,10 @@ type PolygonCountTagPointsRequest struct {
 	// Count brand points within this region.
 	Region string `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
 	// Count points for the given tag.
-	Tag             string                                       `protobuf:"bytes,2,opt,name=tag,proto3" json:"tag,omitempty"`
-	PolygonEncoding PolygonCountTagPointsRequest_PolygonEncoding `protobuf:"varint,3,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonCountTagPointsRequest_PolygonEncoding" json:"polygon_encoding,omitempty"`
-	// The total number of bytes of the encoded S2 polygon.
-	PolygonLength int64 `protobuf:"varint,14,opt,name=polygon_length,json=polygonLength,proto3" json:"polygon_length,omitempty"`
-	// A chunk of bytes of the encoded S2 polygon.
+	Tag string `protobuf:"bytes,2,opt,name=tag,proto3" json:"tag,omitempty"`
+	// The polygon data's encoding.
+	PolygonEncoding PolygonEncoding `protobuf:"varint,3,opt,name=polygon_encoding,json=polygonEncoding,proto3,enum=topos.points.v1.PolygonEncoding" json:"polygon_encoding,omitempty"`
+	// A chunk of bytes of the encoded polygon.
 	PolygonChunk         []byte   `protobuf:"bytes,15,opt,name=polygon_chunk,json=polygonChunk,proto3" json:"polygon_chunk,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -2577,7 +1868,7 @@ func (m *PolygonCountTagPointsRequest) Reset()         { *m = PolygonCountTagPoi
 func (m *PolygonCountTagPointsRequest) String() string { return proto.CompactTextString(m) }
 func (*PolygonCountTagPointsRequest) ProtoMessage()    {}
 func (*PolygonCountTagPointsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{39}
+	return fileDescriptor_58bd33bd76af5b35, []int{30}
 }
 
 func (m *PolygonCountTagPointsRequest) XXX_Unmarshal(b []byte) error {
@@ -2612,18 +1903,11 @@ func (m *PolygonCountTagPointsRequest) GetTag() string {
 	return ""
 }
 
-func (m *PolygonCountTagPointsRequest) GetPolygonEncoding() PolygonCountTagPointsRequest_PolygonEncoding {
+func (m *PolygonCountTagPointsRequest) GetPolygonEncoding() PolygonEncoding {
 	if m != nil {
 		return m.PolygonEncoding
 	}
-	return PolygonCountTagPointsRequest_S2
-}
-
-func (m *PolygonCountTagPointsRequest) GetPolygonLength() int64 {
-	if m != nil {
-		return m.PolygonLength
-	}
-	return 0
+	return PolygonEncoding_S2
 }
 
 func (m *PolygonCountTagPointsRequest) GetPolygonChunk() []byte {
@@ -2645,7 +1929,7 @@ func (m *PolygonCountTagPointsResponse) Reset()         { *m = PolygonCountTagPo
 func (m *PolygonCountTagPointsResponse) String() string { return proto.CompactTextString(m) }
 func (*PolygonCountTagPointsResponse) ProtoMessage()    {}
 func (*PolygonCountTagPointsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{40}
+	return fileDescriptor_58bd33bd76af5b35, []int{31}
 }
 
 func (m *PolygonCountTagPointsResponse) XXX_Unmarshal(b []byte) error {
@@ -2691,7 +1975,7 @@ func (m *SearchRegionsRequest) Reset()         { *m = SearchRegionsRequest{} }
 func (m *SearchRegionsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchRegionsRequest) ProtoMessage()    {}
 func (*SearchRegionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{41}
+	return fileDescriptor_58bd33bd76af5b35, []int{32}
 }
 
 func (m *SearchRegionsRequest) XXX_Unmarshal(b []byte) error {
@@ -2754,7 +2038,7 @@ func (m *SearchRegionsResponse) Reset()         { *m = SearchRegionsResponse{} }
 func (m *SearchRegionsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchRegionsResponse) ProtoMessage()    {}
 func (*SearchRegionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{42}
+	return fileDescriptor_58bd33bd76af5b35, []int{33}
 }
 
 func (m *SearchRegionsResponse) XXX_Unmarshal(b []byte) error {
@@ -2789,533 +2073,8 @@ func (m *SearchRegionsResponse) GetNextPageToken() string {
 	return ""
 }
 
-type SetBrandRegionScoreSetScoreRequest struct {
-	BrandRegionScoreSetScore *BrandRegionScoreSetScore `protobuf:"bytes,1,opt,name=brand_region_score_set_score,json=brandRegionScoreSetScore,proto3" json:"brand_region_score_set_score,omitempty"`
-	XXX_NoUnkeyedLiteral     struct{}                  `json:"-"`
-	XXX_unrecognized         []byte                    `json:"-"`
-	XXX_sizecache            int32                     `json:"-"`
-}
-
-func (m *SetBrandRegionScoreSetScoreRequest) Reset()         { *m = SetBrandRegionScoreSetScoreRequest{} }
-func (m *SetBrandRegionScoreSetScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*SetBrandRegionScoreSetScoreRequest) ProtoMessage()    {}
-func (*SetBrandRegionScoreSetScoreRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{43}
-}
-
-func (m *SetBrandRegionScoreSetScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetBrandRegionScoreSetScoreRequest.Unmarshal(m, b)
-}
-func (m *SetBrandRegionScoreSetScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetBrandRegionScoreSetScoreRequest.Marshal(b, m, deterministic)
-}
-func (m *SetBrandRegionScoreSetScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetBrandRegionScoreSetScoreRequest.Merge(m, src)
-}
-func (m *SetBrandRegionScoreSetScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_SetBrandRegionScoreSetScoreRequest.Size(m)
-}
-func (m *SetBrandRegionScoreSetScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetBrandRegionScoreSetScoreRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetBrandRegionScoreSetScoreRequest proto.InternalMessageInfo
-
-func (m *SetBrandRegionScoreSetScoreRequest) GetBrandRegionScoreSetScore() *BrandRegionScoreSetScore {
-	if m != nil {
-		return m.BrandRegionScoreSetScore
-	}
-	return nil
-}
-
-type SearchBrandRegionScoreSetScoresRequest struct {
-	// The maximum number of items to return.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The next_page_token value returned from a previous Search request, if any.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Return scores from a given score set.
-	BrandRegionScoreSet string `protobuf:"bytes,3,opt,name=brand_region_score_set,json=brandRegionScoreSet,proto3" json:"brand_region_score_set,omitempty"`
-	// Return scores with a given brand.
-	Brand string `protobuf:"bytes,4,opt,name=brand,proto3" json:"brand,omitempty"`
-	// Return scores with a given region.
-	Region string `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
-	// Return scores with for brands with a given tag.
-	Tag string `protobuf:"bytes,6,opt,name=tag,proto3" json:"tag,omitempty"`
-	// Return scores with regions included by the given region.
-	IncludedByRegion     string   `protobuf:"bytes,7,opt,name=included_by_region,json=includedByRegion,proto3" json:"included_by_region,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) Reset() {
-	*m = SearchBrandRegionScoreSetScoresRequest{}
-}
-func (m *SearchBrandRegionScoreSetScoresRequest) String() string { return proto.CompactTextString(m) }
-func (*SearchBrandRegionScoreSetScoresRequest) ProtoMessage()    {}
-func (*SearchBrandRegionScoreSetScoresRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{44}
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest.Unmarshal(m, b)
-}
-func (m *SearchBrandRegionScoreSetScoresRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest.Marshal(b, m, deterministic)
-}
-func (m *SearchBrandRegionScoreSetScoresRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest.Merge(m, src)
-}
-func (m *SearchBrandRegionScoreSetScoresRequest) XXX_Size() int {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest.Size(m)
-}
-func (m *SearchBrandRegionScoreSetScoresRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchBrandRegionScoreSetScoresRequest proto.InternalMessageInfo
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetPageSize() int32 {
-	if m != nil {
-		return m.PageSize
-	}
-	return 0
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetPageToken() string {
-	if m != nil {
-		return m.PageToken
-	}
-	return ""
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetBrandRegionScoreSet() string {
-	if m != nil {
-		return m.BrandRegionScoreSet
-	}
-	return ""
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetBrand() string {
-	if m != nil {
-		return m.Brand
-	}
-	return ""
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetRegion() string {
-	if m != nil {
-		return m.Region
-	}
-	return ""
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetTag() string {
-	if m != nil {
-		return m.Tag
-	}
-	return ""
-}
-
-func (m *SearchBrandRegionScoreSetScoresRequest) GetIncludedByRegion() string {
-	if m != nil {
-		return m.IncludedByRegion
-	}
-	return ""
-}
-
-type SearchBrandRegionScoreSetScoresResponse struct {
-	BrandRegionScoreSetScores []*BrandRegionScoreSetScore `protobuf:"bytes,1,rep,name=brand_region_score_set_scores,json=brandRegionScoreSetScores,proto3" json:"brand_region_score_set_scores,omitempty"`
-	// Token to retrieve the next page of results, or empty if there are no more
-	// results in the list.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchBrandRegionScoreSetScoresResponse) Reset() {
-	*m = SearchBrandRegionScoreSetScoresResponse{}
-}
-func (m *SearchBrandRegionScoreSetScoresResponse) String() string { return proto.CompactTextString(m) }
-func (*SearchBrandRegionScoreSetScoresResponse) ProtoMessage()    {}
-func (*SearchBrandRegionScoreSetScoresResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{45}
-}
-
-func (m *SearchBrandRegionScoreSetScoresResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse.Unmarshal(m, b)
-}
-func (m *SearchBrandRegionScoreSetScoresResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse.Marshal(b, m, deterministic)
-}
-func (m *SearchBrandRegionScoreSetScoresResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse.Merge(m, src)
-}
-func (m *SearchBrandRegionScoreSetScoresResponse) XXX_Size() int {
-	return xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse.Size(m)
-}
-func (m *SearchBrandRegionScoreSetScoresResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchBrandRegionScoreSetScoresResponse proto.InternalMessageInfo
-
-func (m *SearchBrandRegionScoreSetScoresResponse) GetBrandRegionScoreSetScores() []*BrandRegionScoreSetScore {
-	if m != nil {
-		return m.BrandRegionScoreSetScores
-	}
-	return nil
-}
-
-func (m *SearchBrandRegionScoreSetScoresResponse) GetNextPageToken() string {
-	if m != nil {
-		return m.NextPageToken
-	}
-	return ""
-}
-
-type SetTagRegionScoreSetScoreRequest struct {
-	TagRegionScoreSetScore *TagRegionScoreSetScore `protobuf:"bytes,1,opt,name=tag_region_score_set_score,json=tagRegionScoreSetScore,proto3" json:"tag_region_score_set_score,omitempty"`
-	XXX_NoUnkeyedLiteral   struct{}                `json:"-"`
-	XXX_unrecognized       []byte                  `json:"-"`
-	XXX_sizecache          int32                   `json:"-"`
-}
-
-func (m *SetTagRegionScoreSetScoreRequest) Reset()         { *m = SetTagRegionScoreSetScoreRequest{} }
-func (m *SetTagRegionScoreSetScoreRequest) String() string { return proto.CompactTextString(m) }
-func (*SetTagRegionScoreSetScoreRequest) ProtoMessage()    {}
-func (*SetTagRegionScoreSetScoreRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{46}
-}
-
-func (m *SetTagRegionScoreSetScoreRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetTagRegionScoreSetScoreRequest.Unmarshal(m, b)
-}
-func (m *SetTagRegionScoreSetScoreRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetTagRegionScoreSetScoreRequest.Marshal(b, m, deterministic)
-}
-func (m *SetTagRegionScoreSetScoreRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetTagRegionScoreSetScoreRequest.Merge(m, src)
-}
-func (m *SetTagRegionScoreSetScoreRequest) XXX_Size() int {
-	return xxx_messageInfo_SetTagRegionScoreSetScoreRequest.Size(m)
-}
-func (m *SetTagRegionScoreSetScoreRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetTagRegionScoreSetScoreRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetTagRegionScoreSetScoreRequest proto.InternalMessageInfo
-
-func (m *SetTagRegionScoreSetScoreRequest) GetTagRegionScoreSetScore() *TagRegionScoreSetScore {
-	if m != nil {
-		return m.TagRegionScoreSetScore
-	}
-	return nil
-}
-
-type SearchTagRegionScoreSetScoresRequest struct {
-	// The maximum number of items to return.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The next_page_token value returned from a previous Search request, if any.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Return scores from a given score set.
-	TagRegionScoreSet string `protobuf:"bytes,3,opt,name=tag_region_score_set,json=tagRegionScoreSet,proto3" json:"tag_region_score_set,omitempty"`
-	// Return scores with a given tag.
-	Tag string `protobuf:"bytes,4,opt,name=tag,proto3" json:"tag,omitempty"`
-	// Return scores with a given region.
-	Region string `protobuf:"bytes,5,opt,name=region,proto3" json:"region,omitempty"`
-	// Return scores with regions included by the given region.
-	IncludedByRegion     string   `protobuf:"bytes,6,opt,name=included_by_region,json=includedByRegion,proto3" json:"included_by_region,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) Reset()         { *m = SearchTagRegionScoreSetScoresRequest{} }
-func (m *SearchTagRegionScoreSetScoresRequest) String() string { return proto.CompactTextString(m) }
-func (*SearchTagRegionScoreSetScoresRequest) ProtoMessage()    {}
-func (*SearchTagRegionScoreSetScoresRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{47}
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresRequest.Unmarshal(m, b)
-}
-func (m *SearchTagRegionScoreSetScoresRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresRequest.Marshal(b, m, deterministic)
-}
-func (m *SearchTagRegionScoreSetScoresRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchTagRegionScoreSetScoresRequest.Merge(m, src)
-}
-func (m *SearchTagRegionScoreSetScoresRequest) XXX_Size() int {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresRequest.Size(m)
-}
-func (m *SearchTagRegionScoreSetScoresRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchTagRegionScoreSetScoresRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchTagRegionScoreSetScoresRequest proto.InternalMessageInfo
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetPageSize() int32 {
-	if m != nil {
-		return m.PageSize
-	}
-	return 0
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetPageToken() string {
-	if m != nil {
-		return m.PageToken
-	}
-	return ""
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetTagRegionScoreSet() string {
-	if m != nil {
-		return m.TagRegionScoreSet
-	}
-	return ""
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetTag() string {
-	if m != nil {
-		return m.Tag
-	}
-	return ""
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetRegion() string {
-	if m != nil {
-		return m.Region
-	}
-	return ""
-}
-
-func (m *SearchTagRegionScoreSetScoresRequest) GetIncludedByRegion() string {
-	if m != nil {
-		return m.IncludedByRegion
-	}
-	return ""
-}
-
-type SearchTagRegionScoreSetScoresResponse struct {
-	TagRegionScoreSetScores []*TagRegionScoreSetScore `protobuf:"bytes,1,rep,name=tag_region_score_set_scores,json=tagRegionScoreSetScores,proto3" json:"tag_region_score_set_scores,omitempty"`
-	// Token to retrieve the next page of results, or empty if there are no more
-	// results in the list.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchTagRegionScoreSetScoresResponse) Reset()         { *m = SearchTagRegionScoreSetScoresResponse{} }
-func (m *SearchTagRegionScoreSetScoresResponse) String() string { return proto.CompactTextString(m) }
-func (*SearchTagRegionScoreSetScoresResponse) ProtoMessage()    {}
-func (*SearchTagRegionScoreSetScoresResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{48}
-}
-
-func (m *SearchTagRegionScoreSetScoresResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresResponse.Unmarshal(m, b)
-}
-func (m *SearchTagRegionScoreSetScoresResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresResponse.Marshal(b, m, deterministic)
-}
-func (m *SearchTagRegionScoreSetScoresResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchTagRegionScoreSetScoresResponse.Merge(m, src)
-}
-func (m *SearchTagRegionScoreSetScoresResponse) XXX_Size() int {
-	return xxx_messageInfo_SearchTagRegionScoreSetScoresResponse.Size(m)
-}
-func (m *SearchTagRegionScoreSetScoresResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchTagRegionScoreSetScoresResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchTagRegionScoreSetScoresResponse proto.InternalMessageInfo
-
-func (m *SearchTagRegionScoreSetScoresResponse) GetTagRegionScoreSetScores() []*TagRegionScoreSetScore {
-	if m != nil {
-		return m.TagRegionScoreSetScores
-	}
-	return nil
-}
-
-func (m *SearchTagRegionScoreSetScoresResponse) GetNextPageToken() string {
-	if m != nil {
-		return m.NextPageToken
-	}
-	return ""
-}
-
-type SetRegionGraphEdgeRequest struct {
-	RegionGraphEdge      *RegionGraphEdge `protobuf:"bytes,1,opt,name=region_graph_edge,json=regionGraphEdge,proto3" json:"region_graph_edge,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
-}
-
-func (m *SetRegionGraphEdgeRequest) Reset()         { *m = SetRegionGraphEdgeRequest{} }
-func (m *SetRegionGraphEdgeRequest) String() string { return proto.CompactTextString(m) }
-func (*SetRegionGraphEdgeRequest) ProtoMessage()    {}
-func (*SetRegionGraphEdgeRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{49}
-}
-
-func (m *SetRegionGraphEdgeRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetRegionGraphEdgeRequest.Unmarshal(m, b)
-}
-func (m *SetRegionGraphEdgeRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetRegionGraphEdgeRequest.Marshal(b, m, deterministic)
-}
-func (m *SetRegionGraphEdgeRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetRegionGraphEdgeRequest.Merge(m, src)
-}
-func (m *SetRegionGraphEdgeRequest) XXX_Size() int {
-	return xxx_messageInfo_SetRegionGraphEdgeRequest.Size(m)
-}
-func (m *SetRegionGraphEdgeRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetRegionGraphEdgeRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetRegionGraphEdgeRequest proto.InternalMessageInfo
-
-func (m *SetRegionGraphEdgeRequest) GetRegionGraphEdge() *RegionGraphEdge {
-	if m != nil {
-		return m.RegionGraphEdge
-	}
-	return nil
-}
-
-type SearchRegionGraphEdgesRequest struct {
-	// The maximum number of items to return.
-	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The next_page_token value returned from a previous Search request, if any.
-	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
-	// Return edges of the given graph.
-	RegionGraph string `protobuf:"bytes,3,opt,name=region_graph,json=regionGraph,proto3" json:"region_graph,omitempty"`
-	// Return edges from a given region.
-	FromRegion string `protobuf:"bytes,4,opt,name=from_region,json=fromRegion,proto3" json:"from_region,omitempty"`
-	// Return edges to a given region.
-	ToRegion             string   `protobuf:"bytes,5,opt,name=to_region,json=toRegion,proto3" json:"to_region,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchRegionGraphEdgesRequest) Reset()         { *m = SearchRegionGraphEdgesRequest{} }
-func (m *SearchRegionGraphEdgesRequest) String() string { return proto.CompactTextString(m) }
-func (*SearchRegionGraphEdgesRequest) ProtoMessage()    {}
-func (*SearchRegionGraphEdgesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{50}
-}
-
-func (m *SearchRegionGraphEdgesRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchRegionGraphEdgesRequest.Unmarshal(m, b)
-}
-func (m *SearchRegionGraphEdgesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchRegionGraphEdgesRequest.Marshal(b, m, deterministic)
-}
-func (m *SearchRegionGraphEdgesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchRegionGraphEdgesRequest.Merge(m, src)
-}
-func (m *SearchRegionGraphEdgesRequest) XXX_Size() int {
-	return xxx_messageInfo_SearchRegionGraphEdgesRequest.Size(m)
-}
-func (m *SearchRegionGraphEdgesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchRegionGraphEdgesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchRegionGraphEdgesRequest proto.InternalMessageInfo
-
-func (m *SearchRegionGraphEdgesRequest) GetPageSize() int32 {
-	if m != nil {
-		return m.PageSize
-	}
-	return 0
-}
-
-func (m *SearchRegionGraphEdgesRequest) GetPageToken() string {
-	if m != nil {
-		return m.PageToken
-	}
-	return ""
-}
-
-func (m *SearchRegionGraphEdgesRequest) GetRegionGraph() string {
-	if m != nil {
-		return m.RegionGraph
-	}
-	return ""
-}
-
-func (m *SearchRegionGraphEdgesRequest) GetFromRegion() string {
-	if m != nil {
-		return m.FromRegion
-	}
-	return ""
-}
-
-func (m *SearchRegionGraphEdgesRequest) GetToRegion() string {
-	if m != nil {
-		return m.ToRegion
-	}
-	return ""
-}
-
-type SearchRegionGraphEdgesResponse struct {
-	RegionGraphEdges []*RegionGraphEdge `protobuf:"bytes,1,rep,name=region_graph_edges,json=regionGraphEdges,proto3" json:"region_graph_edges,omitempty"`
-	// Token to retrieve the next page of results, or empty if there are no more
-	// results in the list.
-	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchRegionGraphEdgesResponse) Reset()         { *m = SearchRegionGraphEdgesResponse{} }
-func (m *SearchRegionGraphEdgesResponse) String() string { return proto.CompactTextString(m) }
-func (*SearchRegionGraphEdgesResponse) ProtoMessage()    {}
-func (*SearchRegionGraphEdgesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_58bd33bd76af5b35, []int{51}
-}
-
-func (m *SearchRegionGraphEdgesResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchRegionGraphEdgesResponse.Unmarshal(m, b)
-}
-func (m *SearchRegionGraphEdgesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchRegionGraphEdgesResponse.Marshal(b, m, deterministic)
-}
-func (m *SearchRegionGraphEdgesResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchRegionGraphEdgesResponse.Merge(m, src)
-}
-func (m *SearchRegionGraphEdgesResponse) XXX_Size() int {
-	return xxx_messageInfo_SearchRegionGraphEdgesResponse.Size(m)
-}
-func (m *SearchRegionGraphEdgesResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchRegionGraphEdgesResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchRegionGraphEdgesResponse proto.InternalMessageInfo
-
-func (m *SearchRegionGraphEdgesResponse) GetRegionGraphEdges() []*RegionGraphEdge {
-	if m != nil {
-		return m.RegionGraphEdges
-	}
-	return nil
-}
-
-func (m *SearchRegionGraphEdgesResponse) GetNextPageToken() string {
-	if m != nil {
-		return m.NextPageToken
-	}
-	return ""
-}
-
 func init() {
-	proto.RegisterEnum("topos.points.v1.PolygonSearchPointsRequest_PolygonEncoding", PolygonSearchPointsRequest_PolygonEncoding_name, PolygonSearchPointsRequest_PolygonEncoding_value)
-	proto.RegisterEnum("topos.points.v1.PolygonCountBrandPointsRequest_PolygonEncoding", PolygonCountBrandPointsRequest_PolygonEncoding_name, PolygonCountBrandPointsRequest_PolygonEncoding_value)
-	proto.RegisterEnum("topos.points.v1.PolygonCountTagPointsRequest_PolygonEncoding", PolygonCountTagPointsRequest_PolygonEncoding_name, PolygonCountTagPointsRequest_PolygonEncoding_value)
+	proto.RegisterEnum("topos.points.v1.PolygonEncoding", PolygonEncoding_name, PolygonEncoding_value)
 	proto.RegisterType((*FeatureStats)(nil), "topos.points.v1.FeatureStats")
 	proto.RegisterType((*Brand)(nil), "topos.points.v1.Brand")
 	proto.RegisterMapType((map[string]*FeatureStats)(nil), "topos.points.v1.Brand.FeatureSetFeatureStatsEntry")
@@ -3325,34 +2084,25 @@ func init() {
 	proto.RegisterType((*LatLng)(nil), "topos.points.v1.LatLng")
 	proto.RegisterType((*Point)(nil), "topos.points.v1.Point")
 	proto.RegisterType((*Tag)(nil), "topos.points.v1.Tag")
-	proto.RegisterType((*PointSource)(nil), "topos.points.v1.PointSource")
 	proto.RegisterType((*Region)(nil), "topos.points.v1.Region")
-	proto.RegisterType((*BrandRegionScoreSetScore)(nil), "topos.points.v1.BrandRegionScoreSetScore")
-	proto.RegisterType((*TagRegionScoreSetScore)(nil), "topos.points.v1.TagRegionScoreSetScore")
-	proto.RegisterType((*RegionGraphEdge)(nil), "topos.points.v1.RegionGraphEdge")
 	proto.RegisterType((*GetBrandRequest)(nil), "topos.points.v1.GetBrandRequest")
-	proto.RegisterType((*SetBrandRequest)(nil), "topos.points.v1.SetBrandRequest")
 	proto.RegisterType((*ListBrandsRequest)(nil), "topos.points.v1.ListBrandsRequest")
-	proto.RegisterType((*ListBrand)(nil), "topos.points.v1.ListBrand")
 	proto.RegisterType((*ListBrandsResponse)(nil), "topos.points.v1.ListBrandsResponse")
+	proto.RegisterType((*SetBrandRequest)(nil), "topos.points.v1.SetBrandRequest")
 	proto.RegisterType((*DeleteBrandRequest)(nil), "topos.points.v1.DeleteBrandRequest")
+	proto.RegisterType((*GetPointRequest)(nil), "topos.points.v1.GetPointRequest")
+	proto.RegisterType((*CreatePointRequest)(nil), "topos.points.v1.CreatePointRequest")
+	proto.RegisterType((*UpdatePointRequest)(nil), "topos.points.v1.UpdatePointRequest")
+	proto.RegisterType((*DeletePointRequest)(nil), "topos.points.v1.DeletePointRequest")
 	proto.RegisterType((*SearchPointsRequest)(nil), "topos.points.v1.SearchPointsRequest")
 	proto.RegisterType((*SearchPointsResponse)(nil), "topos.points.v1.SearchPointsResponse")
 	proto.RegisterType((*PolygonSearchPointsRequest)(nil), "topos.points.v1.PolygonSearchPointsRequest")
 	proto.RegisterType((*PolygonSearchPointsResponse)(nil), "topos.points.v1.PolygonSearchPointsResponse")
-	proto.RegisterType((*GetPointRequest)(nil), "topos.points.v1.GetPointRequest")
-	proto.RegisterType((*UpdatePointRequest)(nil), "topos.points.v1.UpdatePointRequest")
-	proto.RegisterType((*DeletePointRequest)(nil), "topos.points.v1.DeletePointRequest")
 	proto.RegisterType((*GetTagRequest)(nil), "topos.points.v1.GetTagRequest")
 	proto.RegisterType((*SetTagRequest)(nil), "topos.points.v1.SetTagRequest")
 	proto.RegisterType((*ListTagsRequest)(nil), "topos.points.v1.ListTagsRequest")
 	proto.RegisterType((*ListTagsResponse)(nil), "topos.points.v1.ListTagsResponse")
 	proto.RegisterType((*DeleteTagRequest)(nil), "topos.points.v1.DeleteTagRequest")
-	proto.RegisterType((*GetPointSourceRequest)(nil), "topos.points.v1.GetPointSourceRequest")
-	proto.RegisterType((*SetPointSourceRequest)(nil), "topos.points.v1.SetPointSourceRequest")
-	proto.RegisterType((*CreatePointWithPointSourcesRequest)(nil), "topos.points.v1.CreatePointWithPointSourcesRequest")
-	proto.RegisterType((*CreatePointWithPointSourcesResponse)(nil), "topos.points.v1.CreatePointWithPointSourcesResponse")
-	proto.RegisterType((*DeletePointSourceRequest)(nil), "topos.points.v1.DeletePointSourceRequest")
 	proto.RegisterType((*CountBrandPointsRequest)(nil), "topos.points.v1.CountBrandPointsRequest")
 	proto.RegisterType((*CountBrandPointsResponse)(nil), "topos.points.v1.CountBrandPointsResponse")
 	proto.RegisterMapType((map[string]int64)(nil), "topos.points.v1.CountBrandPointsResponse.BrandPointsEntry")
@@ -3367,210 +2117,142 @@ func init() {
 	proto.RegisterMapType((map[string]int64)(nil), "topos.points.v1.PolygonCountTagPointsResponse.TagPointsEntry")
 	proto.RegisterType((*SearchRegionsRequest)(nil), "topos.points.v1.SearchRegionsRequest")
 	proto.RegisterType((*SearchRegionsResponse)(nil), "topos.points.v1.SearchRegionsResponse")
-	proto.RegisterType((*SetBrandRegionScoreSetScoreRequest)(nil), "topos.points.v1.SetBrandRegionScoreSetScoreRequest")
-	proto.RegisterType((*SearchBrandRegionScoreSetScoresRequest)(nil), "topos.points.v1.SearchBrandRegionScoreSetScoresRequest")
-	proto.RegisterType((*SearchBrandRegionScoreSetScoresResponse)(nil), "topos.points.v1.SearchBrandRegionScoreSetScoresResponse")
-	proto.RegisterType((*SetTagRegionScoreSetScoreRequest)(nil), "topos.points.v1.SetTagRegionScoreSetScoreRequest")
-	proto.RegisterType((*SearchTagRegionScoreSetScoresRequest)(nil), "topos.points.v1.SearchTagRegionScoreSetScoresRequest")
-	proto.RegisterType((*SearchTagRegionScoreSetScoresResponse)(nil), "topos.points.v1.SearchTagRegionScoreSetScoresResponse")
-	proto.RegisterType((*SetRegionGraphEdgeRequest)(nil), "topos.points.v1.SetRegionGraphEdgeRequest")
-	proto.RegisterType((*SearchRegionGraphEdgesRequest)(nil), "topos.points.v1.SearchRegionGraphEdgesRequest")
-	proto.RegisterType((*SearchRegionGraphEdgesResponse)(nil), "topos.points.v1.SearchRegionGraphEdgesResponse")
 }
 
 func init() { proto.RegisterFile("topos/points/v1/points.proto", fileDescriptor_58bd33bd76af5b35) }
 
 var fileDescriptor_58bd33bd76af5b35 = []byte{
-	// 3014 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x5b, 0xcf, 0x6f, 0x1c, 0x49,
-	0xf5, 0xff, 0xf6, 0x8c, 0x3d, 0x19, 0xbf, 0x71, 0x3c, 0xe3, 0xb2, 0x33, 0xe9, 0xb4, 0xed, 0xd8,
-	0xe9, 0x6c, 0x1c, 0xc7, 0xc9, 0xce, 0x7c, 0xe3, 0x2c, 0xbb, 0xc1, 0x4b, 0x58, 0xc5, 0x59, 0x6f,
-	0x60, 0x65, 0x92, 0x68, 0xc6, 0x2b, 0x7e, 0x2d, 0x1a, 0xb5, 0x67, 0xca, 0xed, 0x26, 0x33, 0xdd,
-	0x43, 0x77, 0x4d, 0x36, 0xb3, 0x61, 0x0f, 0x0b, 0x2b, 0xad, 0x38, 0x21, 0x40, 0xa0, 0x95, 0x38,
-	0x20, 0x40, 0xe2, 0xc4, 0x4a, 0x1c, 0x10, 0x12, 0x02, 0x71, 0x42, 0x42, 0xe2, 0xc0, 0x85, 0x0b,
-	0x27, 0x84, 0x10, 0x37, 0x6e, 0xfc, 0x05, 0xa8, 0x7e, 0xf4, 0x74, 0xf7, 0x74, 0xd5, 0xcc, 0x38,
-	0xf2, 0x6e, 0xf6, 0xc0, 0x29, 0x5d, 0xaf, 0x5e, 0x55, 0xbd, 0xfa, 0xbc, 0x1f, 0x55, 0xf5, 0xc9,
-	0x18, 0x96, 0x89, 0xd7, 0xf5, 0x82, 0x6a, 0xd7, 0x73, 0x5c, 0x12, 0x54, 0x1f, 0x5d, 0x17, 0x5f,
-	0x95, 0xae, 0xef, 0x11, 0x0f, 0x15, 0x59, 0x6f, 0x45, 0xc8, 0x1e, 0x5d, 0x37, 0x96, 0x6d, 0xcf,
-	0xb3, 0xdb, 0xb8, 0x6a, 0x75, 0x9d, 0xaa, 0xe5, 0xba, 0x1e, 0xb1, 0x88, 0xe3, 0xb9, 0x42, 0xdd,
-	0x58, 0x12, 0xbd, 0xac, 0x75, 0xd0, 0x3b, 0xac, 0xe2, 0x4e, 0x97, 0xf4, 0x45, 0xe7, 0xea, 0x70,
-	0x27, 0x71, 0x3a, 0x38, 0x20, 0x56, 0xa7, 0xcb, 0x15, 0xcc, 0x16, 0xcc, 0xbe, 0x86, 0x2d, 0xd2,
-	0xf3, 0x71, 0x9d, 0x58, 0x24, 0x40, 0x25, 0xc8, 0x76, 0x1c, 0x57, 0xd7, 0xd6, 0xb4, 0x0d, 0xad,
-	0x46, 0x3f, 0x99, 0xc4, 0x7a, 0xac, 0x67, 0x84, 0xc4, 0x7a, 0x8c, 0x74, 0x38, 0x65, 0x3d, 0xc2,
-	0xbe, 0x65, 0x63, 0x3d, 0xcb, 0xa4, 0x61, 0x13, 0x95, 0x21, 0xd7, 0xc1, 0x2d, 0xc7, 0x72, 0xf5,
-	0x29, 0xd6, 0x21, 0x5a, 0xe6, 0xf7, 0x01, 0xa6, 0x77, 0x7c, 0xcb, 0x6d, 0x21, 0x04, 0x53, 0xae,
-	0xd5, 0xc1, 0x6c, 0x81, 0x99, 0x1a, 0xfb, 0x46, 0x17, 0x60, 0xb6, 0xe5, 0x04, 0xdd, 0xb6, 0xd5,
-	0x6f, 0xb0, 0xbe, 0x0c, 0xeb, 0x2b, 0x08, 0xd9, 0x3d, 0xaa, 0x72, 0x15, 0xe6, 0x0f, 0x3d, 0xbf,
-	0x63, 0x11, 0x82, 0x5b, 0x0d, 0xab, 0xd5, 0xf2, 0x71, 0x10, 0xb0, 0xc5, 0x67, 0x6a, 0xa5, 0x41,
-	0xc7, 0x6d, 0x2e, 0x47, 0x8b, 0x30, 0x8d, 0x3b, 0x96, 0xd3, 0x66, 0x46, 0xcc, 0xd4, 0x78, 0x03,
-	0x5d, 0x81, 0x92, 0x8f, 0xad, 0x36, 0xdd, 0x3d, 0xc1, 0x0d, 0xae, 0x30, 0xcd, 0x14, 0x8a, 0x91,
-	0x7c, 0x97, 0xa9, 0x5e, 0x80, 0xd9, 0xee, 0x91, 0xe7, 0xe2, 0x86, 0xdb, 0xeb, 0x1c, 0x60, 0x5f,
-	0xcf, 0x71, 0x83, 0x98, 0xec, 0x1e, 0x13, 0xa1, 0x6d, 0xc8, 0x37, 0x3d, 0x97, 0x58, 0x4d, 0x12,
-	0xe8, 0xa7, 0xd6, 0xb2, 0x1b, 0x85, 0xad, 0xf3, 0x95, 0x21, 0xbf, 0x55, 0xd8, 0x8e, 0x2b, 0x77,
-	0xb8, 0x5a, 0x6d, 0xa0, 0x4f, 0xed, 0x73, 0x2d, 0xa7, 0x19, 0xe8, 0x79, 0x6e, 0x1f, 0x6b, 0xa0,
-	0x55, 0x28, 0x74, 0xbd, 0x80, 0x58, 0xed, 0x46, 0xd3, 0x6b, 0x61, 0x7d, 0x86, 0xf5, 0x01, 0x17,
-	0xdd, 0xf1, 0x5a, 0x18, 0x75, 0xe0, 0xdc, 0x21, 0x77, 0x55, 0x23, 0xc0, 0xa4, 0x31, 0xf8, 0xa6,
-	0x7e, 0xd3, 0x81, 0xd9, 0xb0, 0xa5, 0xb0, 0x21, 0x74, 0x31, 0x26, 0x71, 0x67, 0xef, 0xba, 0xc4,
-	0xef, 0xd7, 0xca, 0x87, 0xd2, 0x4e, 0xf4, 0x26, 0x20, 0x1f, 0xdb, 0x8e, 0xe7, 0x36, 0xba, 0x3e,
-	0x3e, 0xc4, 0x3e, 0x76, 0x9b, 0x38, 0xd0, 0x0b, 0x6c, 0x9d, 0xe7, 0x15, 0xeb, 0xd4, 0xd8, 0x80,
-	0x07, 0x91, 0x3e, 0x5f, 0x62, 0xde, 0x1f, 0x96, 0xd3, 0x38, 0x20, 0x96, 0x1d, 0xe8, 0xb3, 0x6b,
-	0x59, 0x1a, 0x07, 0xf4, 0x9b, 0xc6, 0x15, 0x7e, 0xdc, 0x6c, 0xf7, 0x5a, 0x58, 0x3f, 0xbd, 0xa6,
-	0x6d, 0xe4, 0x6b, 0x61, 0x13, 0xbd, 0x0c, 0x85, 0xa6, 0x8f, 0xa9, 0xdf, 0x68, 0xfc, 0xea, 0x73,
-	0x6b, 0xda, 0x46, 0x61, 0xcb, 0xa8, 0xf0, 0xe0, 0xae, 0x84, 0xc1, 0x5d, 0xd9, 0x0f, 0x83, 0xbb,
-	0x06, 0x5c, 0x9d, 0x0a, 0xe8, 0xe0, 0x5e, 0xb7, 0x35, 0x18, 0x5c, 0x1c, 0x3f, 0x98, 0xab, 0xb3,
-	0xc1, 0x97, 0xa1, 0x48, 0x3c, 0xea, 0x94, 0xb6, 0xd7, 0xe4, 0x69, 0xa7, 0x97, 0xd6, 0xb4, 0x8d,
-	0x6c, 0x6d, 0x8e, 0x89, 0xf7, 0x42, 0x29, 0xaa, 0xc0, 0x02, 0x8b, 0xa0, 0xa0, 0xe1, 0x1d, 0x36,
-	0xf0, 0xe3, 0xae, 0xe5, 0x06, 0x8e, 0xe7, 0xea, 0xf3, 0x6c, 0x7f, 0xf3, 0xbc, 0xeb, 0xfe, 0xe1,
-	0x6e, 0xd8, 0x91, 0xd4, 0xf7, 0xba, 0xd8, 0x67, 0xf3, 0xe8, 0x28, 0xa9, 0x7f, 0x3f, 0xec, 0xa0,
-	0xe0, 0xbc, 0x85, 0x0f, 0x02, 0x87, 0x60, 0x7d, 0x81, 0x85, 0x46, 0xd8, 0x34, 0x7a, 0x70, 0x4a,
-	0xc4, 0x18, 0x5a, 0x82, 0x99, 0xc3, 0x5e, 0xbb, 0xdd, 0x88, 0xa5, 0x58, 0x9e, 0x0a, 0x58, 0x0e,
-	0x2d, 0xc2, 0x34, 0x71, 0x48, 0x3b, 0xcc, 0x2f, 0xde, 0x88, 0x92, 0x25, 0x1b, 0x4f, 0x96, 0xe1,
-	0x0c, 0x98, 0x4a, 0x65, 0x80, 0x71, 0x04, 0x4b, 0x23, 0xc2, 0x8a, 0x96, 0x8d, 0x87, 0xb8, 0x2f,
-	0x8c, 0xa0, 0x9f, 0xe8, 0x06, 0x4c, 0x3f, 0xb2, 0xda, 0x3d, 0xbe, 0x7e, 0x61, 0x6b, 0x25, 0x15,
-	0x43, 0xf1, 0x49, 0x6a, 0x5c, 0x77, 0x3b, 0x73, 0x53, 0x33, 0x1e, 0x42, 0x21, 0x1e, 0x3a, 0x17,
-	0xe1, 0x34, 0x8f, 0x48, 0x1f, 0xb7, 0x1a, 0x76, 0xdb, 0x12, 0x6b, 0xcc, 0x0e, 0x84, 0x77, 0xdb,
-	0x16, 0xad, 0x44, 0x8e, 0xdb, 0x76, 0x5c, 0x2c, 0x0a, 0x97, 0x68, 0xd1, 0x2c, 0x0b, 0x88, 0xe5,
-	0xb6, 0x1a, 0x56, 0xdb, 0x73, 0xc3, 0xfa, 0x05, 0x4c, 0x74, 0x9b, 0x4a, 0x8c, 0x23, 0x28, 0xcb,
-	0xa3, 0x58, 0xb2, 0xa3, 0x9b, 0xc9, 0x1d, 0x99, 0x8a, 0xac, 0x88, 0xcd, 0x14, 0xdb, 0x96, 0xb9,
-	0x03, 0xb9, 0x3d, 0x8b, 0xec, 0xb9, 0x36, 0x32, 0x20, 0xdf, 0xb6, 0x88, 0x43, 0x68, 0xe4, 0xf3,
-	0xca, 0x3b, 0x68, 0xa3, 0x65, 0x98, 0x69, 0x7b, 0xae, 0xcd, 0x3b, 0xf9, 0x5e, 0x22, 0x81, 0xf9,
-	0xc7, 0x0c, 0x4c, 0x3f, 0xa0, 0xcb, 0x49, 0x0b, 0xeb, 0x22, 0x4c, 0x1f, 0x50, 0x0b, 0x42, 0x8f,
-	0xb3, 0x46, 0xaa, 0xdc, 0x66, 0x27, 0x2c, 0xb7, 0x53, 0x8a, 0x72, 0x7b, 0x03, 0xf2, 0x61, 0x72,
-	0xb0, 0x82, 0x5a, 0xd8, 0x3a, 0x9b, 0x02, 0x82, 0x6f, 0xb4, 0x36, 0x50, 0x1c, 0xe4, 0x7f, 0x2e,
-	0x96, 0xff, 0xcf, 0x2c, 0xcb, 0xcd, 0x9f, 0x66, 0x20, 0xbb, 0x6f, 0xd9, 0x4f, 0x7b, 0x3a, 0xc5,
-	0x0a, 0x57, 0x36, 0x59, 0xb8, 0x2a, 0xb0, 0xd0, 0x6d, 0xf7, 0x7c, 0xab, 0xdd, 0x48, 0xcc, 0xc1,
-	0xa1, 0x9c, 0xe7, 0x5d, 0xaf, 0xc6, 0x66, 0x5a, 0x85, 0x82, 0x13, 0x34, 0x9a, 0x16, 0xc1, 0xb6,
-	0xe7, 0xf7, 0x19, 0x9c, 0xf9, 0x1a, 0x38, 0xc1, 0x1d, 0x21, 0x79, 0x86, 0x18, 0xfd, 0x39, 0x03,
-	0x05, 0x16, 0x6a, 0x75, 0xaf, 0xe7, 0x37, 0xb1, 0x2a, 0xe0, 0x98, 0xcf, 0xc3, 0x80, 0x63, 0x8d,
-	0xff, 0x05, 0x5c, 0x1a, 0xcc, 0x9b, 0x90, 0xe3, 0x55, 0x46, 0x0a, 0xa3, 0x01, 0x79, 0x1b, 0x7b,
-	0x1d, 0x4c, 0xfc, 0x3e, 0x43, 0x72, 0xb6, 0x36, 0x68, 0x9b, 0xff, 0xc8, 0x80, 0xce, 0xca, 0x0a,
-	0x1f, 0x5f, 0x6f, 0x7a, 0xac, 0x00, 0xb3, 0x7f, 0xd1, 0x0d, 0x28, 0xb3, 0x1c, 0x6f, 0x88, 0x93,
-	0x3b, 0xa0, 0x52, 0x7a, 0x5b, 0x10, 0xd3, 0x2f, 0x1c, 0xa4, 0x47, 0x2a, 0xaa, 0xc4, 0x35, 0x40,
-	0x7c, 0x2a, 0x89, 0xeb, 0x4a, 0xac, 0x27, 0x1e, 0xb7, 0x65, 0xc8, 0xf1, 0x25, 0x85, 0xd3, 0x44,
-	0x8b, 0xce, 0xcd, 0x6c, 0x60, 0x7e, 0xd2, 0x6a, 0xbc, 0x91, 0xae, 0xe0, 0x39, 0x49, 0x05, 0x7f,
-	0x76, 0xce, 0xf9, 0x30, 0x03, 0xe5, 0x7d, 0xcb, 0x96, 0x01, 0x5c, 0x85, 0x45, 0x62, 0xd9, 0x2a,
-	0x78, 0xe7, 0xc9, 0xf0, 0x28, 0x7a, 0x68, 0x10, 0xcb, 0x16, 0xd0, 0xd2, 0x4f, 0xb4, 0x01, 0x25,
-	0x3a, 0x85, 0x04, 0xd6, 0x39, 0x62, 0xd9, 0x4f, 0x0f, 0xea, 0xb3, 0xc3, 0xeb, 0xbd, 0x0c, 0x14,
-	0xf9, 0xb6, 0xef, 0xfa, 0x56, 0xf7, 0x68, 0xb7, 0x65, 0xb3, 0xaa, 0x29, 0x40, 0xb2, 0xa9, 0x4c,
-	0x00, 0x54, 0xf0, 0x23, 0x35, 0x5a, 0xeb, 0x0e, 0x7d, 0xaf, 0x23, 0xc0, 0x14, 0x10, 0x01, 0x15,
-	0x89, 0xd4, 0x58, 0x82, 0x19, 0xe2, 0x85, 0xdd, 0x1c, 0xa2, 0x3c, 0xf1, 0x44, 0x67, 0x19, 0x72,
-	0x6f, 0x61, 0xc7, 0x3e, 0x22, 0xe1, 0x53, 0x83, 0xb7, 0x9e, 0x21, 0x0c, 0x97, 0xa0, 0x78, 0x17,
-	0x13, 0x91, 0x9b, 0xdf, 0xe8, 0xe1, 0x40, 0x7a, 0x28, 0x9b, 0xaf, 0x40, 0xb1, 0x3e, 0xa4, 0x76,
-	0x2d, 0xcc, 0x40, 0x8d, 0x2d, 0x58, 0x96, 0xdf, 0x23, 0x44, 0x66, 0x9a, 0xf7, 0x61, 0x7e, 0xcf,
-	0x09, 0xf8, 0x0c, 0x41, 0x38, 0xc5, 0x12, 0xcc, 0x74, 0x2d, 0x1b, 0x37, 0x02, 0xe7, 0x6d, 0xbe,
-	0xdc, 0x74, 0x2d, 0x4f, 0x05, 0x75, 0xe7, 0x6d, 0x8c, 0x56, 0x00, 0x58, 0x27, 0xf1, 0x1e, 0xe2,
-	0x10, 0x68, 0xa6, 0xbe, 0x4f, 0x05, 0xe6, 0x0e, 0xcc, 0x0c, 0x26, 0x7c, 0xca, 0x23, 0xd0, 0xec,
-	0x02, 0x8a, 0x1b, 0x15, 0x74, 0x3d, 0x37, 0xc0, 0x68, 0x0b, 0x72, 0xcc, 0xe6, 0x40, 0xd7, 0xd8,
-	0xbb, 0xc1, 0x48, 0xd7, 0xe9, 0x70, 0x50, 0x4d, 0x68, 0xa2, 0x75, 0x28, 0xba, 0xf8, 0x31, 0x69,
-	0xa4, 0x2c, 0x3e, 0x4d, 0xc5, 0x0f, 0x06, 0x56, 0x6f, 0x00, 0x7a, 0x15, 0xb7, 0x31, 0xc1, 0x63,
-	0x11, 0xff, 0x9e, 0x06, 0x0b, 0x75, 0x6c, 0xf9, 0xcd, 0x23, 0x76, 0x7e, 0x9d, 0x04, 0x66, 0x51,
-	0xd1, 0xcc, 0xc6, 0x8b, 0xa6, 0x2a, 0x63, 0x45, 0x15, 0x98, 0x1e, 0x54, 0x01, 0xd3, 0x85, 0xc5,
-	0xa4, 0x49, 0x02, 0xb1, 0x0a, 0xe4, 0x38, 0x38, 0x02, 0xb1, 0x74, 0x2c, 0xb0, 0x01, 0x35, 0xa1,
-	0x35, 0x31, 0x5a, 0x7f, 0xcf, 0x80, 0xf1, 0xc0, 0x6b, 0xf7, 0x6d, 0xcf, 0xfd, 0x78, 0xa0, 0x08,
-	0xcf, 0xdb, 0xa9, 0xd8, 0x79, 0x7b, 0x08, 0xa5, 0x2e, 0xb7, 0xa1, 0x81, 0xdd, 0xa6, 0xd7, 0x72,
-	0x5c, 0x8e, 0xc9, 0xdc, 0xd6, 0xcb, 0x92, 0x6d, 0xaa, 0x8c, 0x0d, 0xbb, 0x76, 0xc5, 0x14, 0xb5,
-	0x62, 0x37, 0x29, 0x40, 0x97, 0x60, 0x2e, 0x5c, 0xa7, 0x8d, 0x5d, 0x9b, 0x1c, 0xb1, 0x32, 0x90,
-	0xad, 0x9d, 0x16, 0xd2, 0x3d, 0x26, 0x64, 0xc7, 0x90, 0x50, 0x6b, 0x1e, 0xf5, 0xdc, 0x87, 0x2c,
-	0xdf, 0x67, 0x6b, 0xb3, 0x42, 0x78, 0x87, 0xca, 0xcc, 0x75, 0x28, 0x0e, 0xad, 0x87, 0x72, 0x90,
-	0xa9, 0x6f, 0x95, 0xfe, 0x0f, 0x15, 0xe0, 0xd4, 0xdd, 0xdd, 0xfb, 0xaf, 0xd7, 0xef, 0xdf, 0x2b,
-	0x69, 0x66, 0x0f, 0x96, 0xa4, 0x26, 0x7f, 0xc4, 0x7e, 0xe5, 0x45, 0x87, 0x8f, 0x1d, 0x91, 0x02,
-	0x3b, 0x80, 0xde, 0x60, 0x95, 0x2a, 0xa1, 0x79, 0x2d, 0xbc, 0xae, 0xa9, 0xea, 0x0e, 0xd7, 0xe6,
-	0x4a, 0x51, 0xc2, 0x8d, 0x5d, 0xed, 0x22, 0x9c, 0xbe, 0x8b, 0x09, 0x3b, 0x42, 0xd5, 0x4a, 0x2f,
-	0xc1, 0xe9, 0x7a, 0x42, 0x69, 0x9d, 0x27, 0x09, 0xb7, 0x65, 0x31, 0x65, 0x0b, 0xd5, 0x64, 0xa9,
-	0xf3, 0x05, 0x28, 0xd2, 0xaa, 0xb1, 0x6f, 0xd9, 0x27, 0x52, 0xfd, 0x5a, 0x50, 0x8a, 0xa6, 0x13,
-	0xde, 0xda, 0x10, 0xc1, 0xcb, 0x7d, 0x25, 0xb7, 0x85, 0x87, 0xf4, 0xa4, 0x7e, 0x5a, 0x87, 0x12,
-	0x07, 0x6f, 0x0c, 0x2a, 0x57, 0xe1, 0x4c, 0xe8, 0x4f, 0x7e, 0xcf, 0x1e, 0xa5, 0xfc, 0x25, 0x38,
-	0x53, 0x97, 0x2a, 0xbf, 0x02, 0xb3, 0xcc, 0xd8, 0x46, 0xc0, 0xc4, 0x02, 0xd3, 0x65, 0xb9, 0x7f,
-	0xc5, 0xd0, 0x42, 0x37, 0x6a, 0x98, 0x3f, 0xd4, 0xc0, 0xbc, 0xc3, 0xce, 0x45, 0xa6, 0xf2, 0x45,
-	0x87, 0x1c, 0xc5, 0x74, 0x83, 0xa7, 0x0a, 0x20, 0x74, 0x9b, 0xe6, 0x5b, 0x64, 0x55, 0xa0, 0x67,
-	0x18, 0xbc, 0xa3, 0xcd, 0x9a, 0x8d, 0x99, 0x15, 0x98, 0x3f, 0xd2, 0xe0, 0xe2, 0x48, 0xbb, 0x84,
-	0x03, 0x3f, 0x76, 0xc3, 0x2a, 0xa0, 0xc7, 0x92, 0x63, 0xbc, 0xeb, 0x3e, 0x0f, 0x67, 0xef, 0x78,
-	0x3d, 0x97, 0x9f, 0x7d, 0xc9, 0x5a, 0x1c, 0x1d, 0x22, 0x5a, 0xe2, 0x10, 0x29, 0x0f, 0x0e, 0xd3,
-	0x0c, 0xab, 0xa9, 0xa2, 0x65, 0xfe, 0x56, 0x03, 0x3d, 0x3d, 0x97, 0x00, 0xe2, 0x6b, 0x30, 0xcb,
-	0xaf, 0xf1, 0x89, 0xea, 0xb3, 0x9d, 0xda, 0x99, 0x6a, 0x82, 0x4a, 0x4c, 0xc6, 0xc9, 0xbc, 0xc2,
-	0x41, 0x24, 0x31, 0x3e, 0x0b, 0xa5, 0x61, 0x05, 0x09, 0x4f, 0xb2, 0x18, 0xe7, 0x49, 0xb2, 0x71,
-	0x0e, 0xe4, 0x57, 0x19, 0x38, 0x2f, 0xca, 0xe6, 0x09, 0xc1, 0x81, 0xbe, 0x2e, 0x39, 0x64, 0xb2,
-	0xec, 0x90, 0x79, 0x45, 0x75, 0xc8, 0x28, 0x96, 0xfe, 0x64, 0x1e, 0x34, 0x7f, 0xd2, 0x60, 0x55,
-	0x69, 0xb7, 0xf0, 0x7a, 0x4b, 0xea, 0xf5, 0xdb, 0x93, 0xef, 0xff, 0x63, 0x71, 0xfe, 0x6d, 0x38,
-	0xc3, 0x56, 0xde, 0xb7, 0xec, 0xc9, 0x5c, 0x9e, 0x7a, 0x4c, 0x99, 0x1f, 0x6a, 0x50, 0x1e, 0x9e,
-	0x43, 0x60, 0xf0, 0x06, 0x00, 0x7d, 0x67, 0x25, 0x10, 0x78, 0x51, 0x1e, 0xf7, 0xa9, 0xc1, 0x95,
-	0x81, 0x84, 0x6f, 0x7b, 0x86, 0x84, 0x6d, 0xe3, 0x33, 0x30, 0x97, 0xec, 0x3c, 0xd6, 0x96, 0x7f,
-	0x91, 0x81, 0xe5, 0x38, 0xe8, 0x4f, 0xbf, 0x75, 0x74, 0xa4, 0x8c, 0xf3, 0x5b, 0x23, 0xfd, 0x3c,
-	0xbc, 0xe4, 0x27, 0x33, 0xca, 0x7f, 0xa7, 0xc1, 0x8a, 0xc2, 0x6a, 0xe1, 0xdf, 0x37, 0x25, 0xfe,
-	0x9d, 0x78, 0xe7, 0x1f, 0xb1, 0x9b, 0xbf, 0xa3, 0x85, 0xd7, 0x7b, 0xfe, 0x5a, 0x3d, 0x91, 0x7b,
-	0xf6, 0x2a, 0x88, 0xe7, 0x73, 0x83, 0xf4, 0xbb, 0x21, 0x67, 0x00, 0x5c, 0xb4, 0xdf, 0xef, 0xc6,
-	0xe8, 0xde, 0xa9, 0xd8, 0x45, 0xdc, 0xf4, 0xe9, 0x25, 0x21, 0x61, 0x8a, 0x00, 0xf0, 0x3a, 0x9c,
-	0xe2, 0x83, 0x43, 0xf4, 0xd2, 0x2c, 0x1a, 0x1f, 0x52, 0x0b, 0xf5, 0x26, 0xbe, 0xed, 0x7c, 0x57,
-	0x03, 0x33, 0x7a, 0xe4, 0xa6, 0x68, 0x94, 0x10, 0x0d, 0x07, 0x96, 0xe5, 0x74, 0x15, 0xff, 0x12,
-	0x87, 0xf7, 0x15, 0xc5, 0x73, 0x58, 0x32, 0xaf, 0x7e, 0xa0, 0xe8, 0x31, 0xdf, 0xcf, 0xc0, 0x3a,
-	0x87, 0x41, 0x35, 0xf8, 0x44, 0x7c, 0xa4, 0x26, 0xe0, 0xb2, 0x13, 0x10, 0x70, 0x53, 0xf2, 0xb7,
-	0xe4, 0xb4, 0xac, 0x12, 0xe4, 0xa2, 0x4a, 0x70, 0x0d, 0x90, 0xe3, 0x32, 0xbe, 0xb9, 0xd5, 0x38,
-	0xe8, 0x87, 0x84, 0xc9, 0x29, 0x4e, 0xd5, 0x85, 0x3d, 0x3b, 0x7d, 0xbe, 0xaa, 0xf9, 0x07, 0x0d,
-	0x2e, 0x8f, 0x45, 0x42, 0x84, 0xc8, 0x43, 0x58, 0x19, 0xe5, 0xa0, 0x30, 0x70, 0x8e, 0xe1, 0xa1,
-	0x73, 0x2a, 0x0f, 0x4d, 0x1e, 0x5c, 0xef, 0x6b, 0xb0, 0x16, 0xbe, 0x1c, 0x94, 0xa1, 0xd5, 0x04,
-	0x43, 0x46, 0xd4, 0x25, 0x02, 0xeb, 0xb2, 0xf4, 0x5e, 0x2f, 0x99, 0xb3, 0x4c, 0xa4, 0x72, 0xf3,
-	0xdf, 0x1a, 0x3c, 0xc7, 0xa1, 0x94, 0x0f, 0x3c, 0x91, 0x90, 0x52, 0x51, 0x8e, 0xd9, 0x31, 0x94,
-	0xe3, 0x54, 0x14, 0x20, 0xaa, 0x50, 0x92, 0x07, 0x4e, 0x4e, 0x11, 0x38, 0xbf, 0xd1, 0xe0, 0xd2,
-	0x98, 0xdd, 0x8a, 0xb0, 0xc1, 0xb0, 0xa4, 0x06, 0x3f, 0x0c, 0x9a, 0x89, 0xd1, 0x3f, 0x2b, 0x47,
-	0x7f, 0xf2, 0x80, 0x71, 0xe0, 0x5c, 0x1d, 0x93, 0x21, 0x86, 0x32, 0x74, 0xcd, 0x1e, 0xcc, 0xc7,
-	0x89, 0xca, 0x06, 0x6e, 0xd9, 0x61, 0x7c, 0xac, 0x29, 0xea, 0x61, 0x34, 0x47, 0xd1, 0x4f, 0x0a,
-	0xcc, 0xdf, 0x6b, 0xb0, 0x12, 0xaf, 0xb6, 0x83, 0x9e, 0x13, 0x09, 0x85, 0x61, 0x52, 0x35, 0x3b,
-	0x96, 0x54, 0x9d, 0x1a, 0x4d, 0xaa, 0x4e, 0x27, 0x49, 0x55, 0xf3, 0x03, 0x0d, 0xce, 0xab, 0xcc,
-	0x17, 0xbe, 0xbd, 0x37, 0xf8, 0x59, 0x40, 0x84, 0x57, 0xe8, 0xd2, 0xf1, 0x80, 0x95, 0x86, 0x00,
-	0x9b, 0xd8, 0x89, 0x5b, 0x7f, 0x59, 0x85, 0x1c, 0x3f, 0x8e, 0x91, 0x05, 0xf9, 0x90, 0x68, 0x45,
-	0xe9, 0x25, 0x87, 0x38, 0x58, 0x43, 0xc1, 0xa6, 0x9a, 0x4b, 0xdf, 0xfa, 0xeb, 0xbf, 0x7e, 0x90,
-	0x39, 0x83, 0x16, 0xaa, 0x8f, 0xae, 0x57, 0x9f, 0xd0, 0x47, 0xd9, 0x2d, 0xfe, 0x82, 0xa8, 0x6e,
-	0xbe, 0x83, 0x7c, 0xc8, 0xd7, 0xd5, 0x4b, 0xd4, 0x27, 0x5c, 0xe2, 0x1a, 0x5b, 0x62, 0xdd, 0x5c,
-	0x61, 0x4b, 0xb0, 0xd9, 0x2b, 0xc9, 0x85, 0xb6, 0x03, 0x4c, 0xb6, 0x45, 0xc1, 0x77, 0x00, 0x22,
-	0x0a, 0x15, 0x99, 0x6a, 0xaa, 0x34, 0x8c, 0x25, 0xe3, 0xe2, 0x48, 0x1d, 0xee, 0x30, 0x13, 0x31,
-	0x23, 0x66, 0x11, 0x50, 0x23, 0xc4, 0x1b, 0xc9, 0x86, 0x42, 0x8c, 0x3b, 0x45, 0xe9, 0x79, 0xd2,
-	0xcc, 0xaa, 0x51, 0x4e, 0xd1, 0xe0, 0xbb, 0x9d, 0x2e, 0xe9, 0x87, 0x38, 0x6e, 0x4a, 0x71, 0xec,
-	0xc3, 0x6c, 0x9c, 0x0e, 0x43, 0xcf, 0x49, 0xb0, 0x4c, 0x11, 0x7c, 0xc6, 0xa5, 0x31, 0x5a, 0x62,
-	0x67, 0xcb, 0x6c, 0xe5, 0xb2, 0x39, 0x1f, 0xfd, 0x84, 0x6a, 0x3b, 0x60, 0x8a, 0xdb, 0xda, 0x26,
-	0xfa, 0x40, 0x83, 0x05, 0x09, 0x23, 0x87, 0xae, 0x1e, 0x83, 0x6a, 0x34, 0xae, 0x4d, 0xa6, 0x2c,
-	0x0c, 0x7a, 0x8e, 0x19, 0x74, 0xde, 0x3c, 0x17, 0x33, 0x28, 0xbc, 0x12, 0x0f, 0x0c, 0xdb, 0xd0,
-	0x44, 0x00, 0xf3, 0xff, 0xb7, 0x97, 0x06, 0x70, 0x9c, 0x61, 0x33, 0x14, 0xe4, 0x85, 0x2c, 0x80,
-	0xc5, 0x2f, 0xca, 0x36, 0xdf, 0x41, 0x3f, 0xd1, 0x60, 0x69, 0x04, 0x51, 0x82, 0x6e, 0xa4, 0x5f,
-	0x42, 0x63, 0xe9, 0x1e, 0xe3, 0x85, 0xe3, 0x0d, 0x12, 0xa8, 0x9c, 0x61, 0x76, 0x16, 0x4d, 0x88,
-	0xa1, 0xa2, 0x6d, 0x22, 0x02, 0x85, 0x18, 0x25, 0x29, 0x89, 0xc1, 0x34, 0x61, 0xa9, 0x84, 0x62,
-	0x83, 0x2d, 0x61, 0x1a, 0x0c, 0xf8, 0x27, 0xac, 0xb7, 0x92, 0x04, 0x64, 0x5b, 0x50, 0x3d, 0x83,
-	0xc8, 0x57, 0xad, 0x9a, 0xa6, 0x38, 0x8f, 0x13, 0xf9, 0x91, 0x03, 0xbe, 0x0c, 0x39, 0xce, 0x81,
-	0xa2, 0xf3, 0x32, 0x0f, 0x47, 0x34, 0xa0, 0x21, 0xa5, 0x17, 0xcd, 0x73, 0x6c, 0xf2, 0x05, 0x34,
-	0x1f, 0x4d, 0x4e, 0x2c, 0x9b, 0x4d, 0x7d, 0x08, 0xb9, 0xba, 0x6a, 0xea, 0xfa, 0x04, 0x53, 0xaf,
-	0xb3, 0xa9, 0xd7, 0x78, 0x98, 0x3e, 0x21, 0x96, 0x5d, 0x89, 0x4f, 0xcf, 0x4a, 0x12, 0xbb, 0x36,
-	0x58, 0x90, 0x0f, 0x99, 0x51, 0x49, 0x98, 0x0e, 0x71, 0xb0, 0xc6, 0x85, 0x11, 0x1a, 0x22, 0x12,
-	0x4a, 0x6c, 0x61, 0x40, 0x79, 0xba, 0x30, 0xa3, 0x4f, 0x2d, 0x98, 0x19, 0xd0, 0xa2, 0xe8, 0x82,
-	0xc2, 0x19, 0xb1, 0x0d, 0xa9, 0x5c, 0x21, 0xd0, 0xda, 0x94, 0xa0, 0xf5, 0x6d, 0x0d, 0xe6, 0x92,
-	0x94, 0x2a, 0x5a, 0x57, 0xe6, 0x5c, 0x82, 0xb8, 0x33, 0x46, 0x12, 0x80, 0xe6, 0x55, 0xb6, 0xe6,
-	0x25, 0x74, 0x31, 0x5a, 0x53, 0xf0, 0x87, 0xd5, 0xcd, 0x6a, 0x9c, 0x1c, 0xa4, 0x56, 0xfc, 0x4c,
-	0x83, 0xb9, 0xfa, 0x38, 0x2b, 0xea, 0x4f, 0x61, 0xc5, 0xeb, 0xcc, 0x8a, 0x57, 0xcd, 0x17, 0xa2,
-	0xd0, 0x17, 0x34, 0x66, 0x65, 0xb4, 0x49, 0xcc, 0xcf, 0x09, 0x9a, 0x98, 0x42, 0x35, 0x9f, 0x62,
-	0x31, 0xd1, 0x95, 0x51, 0x39, 0x92, 0x34, 0x55, 0xe5, 0x1e, 0x01, 0xd5, 0xe6, 0x44, 0x50, 0xbd,
-	0xa7, 0x41, 0x69, 0x98, 0x91, 0x42, 0x1b, 0x13, 0x30, 0x96, 0xdc, 0x86, 0x2b, 0x13, 0x73, 0x9b,
-	0x61, 0x02, 0x9b, 0xa5, 0xe8, 0x68, 0xdc, 0x6e, 0x52, 0x65, 0x5a, 0x9f, 0x7e, 0xae, 0xc1, 0x59,
-	0x05, 0x3f, 0x86, 0xaa, 0xc7, 0x64, 0x12, 0x8d, 0xff, 0x3f, 0x2e, 0xf5, 0x66, 0x5e, 0x64, 0xb6,
-	0xad, 0x98, 0x7a, 0xcc, 0xb6, 0x01, 0xbd, 0x22, 0x6c, 0xdc, 0xd0, 0xd0, 0x37, 0x61, 0x2e, 0xc9,
-	0x6d, 0x48, 0xc2, 0x4a, 0x4a, 0xfb, 0x18, 0x97, 0x27, 0xe4, 0xc2, 0xc2, 0xdc, 0x32, 0xe7, 0xc2,
-	0xac, 0x8d, 0x30, 0xfa, 0xb1, 0x06, 0x67, 0xa4, 0x0c, 0x0b, 0x7a, 0xfe, 0x58, 0x1c, 0x94, 0x51,
-	0x39, 0x1e, 0x71, 0x63, 0x5e, 0x60, 0x36, 0x2d, 0x99, 0xe5, 0x81, 0x4d, 0x12, 0x6c, 0xde, 0x81,
-	0xd3, 0x09, 0xe6, 0x03, 0xa9, 0xee, 0x15, 0x49, 0x92, 0xc6, 0x58, 0x1f, 0xa7, 0x26, 0x8c, 0x58,
-	0x61, 0x46, 0x9c, 0x35, 0x11, 0x35, 0x42, 0x50, 0x24, 0xb1, 0x0b, 0xc8, 0xbb, 0x19, 0x58, 0x1a,
-	0x41, 0x82, 0x48, 0x8e, 0xe0, 0xf1, 0x94, 0x89, 0x31, 0xf9, 0x53, 0xdb, 0x7c, 0x57, 0x63, 0xf6,
-	0x3d, 0x31, 0xbf, 0x1a, 0x5d, 0x3f, 0x15, 0x6f, 0xb2, 0x8a, 0xbc, 0xf3, 0x96, 0xe4, 0xb1, 0x4e,
-	0x53, 0xb4, 0xca, 0x1f, 0x72, 0xac, 0x82, 0x8c, 0x64, 0x70, 0xd0, 0x3f, 0x35, 0x58, 0x1d, 0x43,
-	0x36, 0xa0, 0x97, 0x14, 0x70, 0x8f, 0x23, 0x6a, 0x8c, 0x9b, 0xc7, 0x1f, 0x28, 0x3c, 0xb7, 0xc7,
-	0x90, 0x79, 0xcd, 0xbc, 0x3d, 0x02, 0x99, 0xf1, 0x9b, 0x0f, 0x1d, 0xfd, 0x1f, 0x8d, 0x3d, 0x30,
-	0x15, 0x3f, 0x19, 0xba, 0xae, 0x3c, 0xa3, 0x95, 0x4e, 0x9e, 0xf4, 0x69, 0x6c, 0xf6, 0xd9, 0x3e,
-	0x02, 0xf3, 0x8d, 0xf0, 0x24, 0x57, 0xf9, 0x57, 0xd6, 0x75, 0x2b, 0xf5, 0xae, 0x1e, 0xf6, 0xed,
-	0x08, 0x0a, 0x05, 0xfd, 0x6d, 0xf0, 0xd2, 0x55, 0xb0, 0x01, 0xe8, 0x53, 0x0a, 0xf7, 0x8c, 0xe6,
-	0x4a, 0x8c, 0x17, 0x8f, 0x3b, 0x4c, 0xf8, 0xf4, 0x73, 0x0c, 0x8b, 0x1d, 0xf3, 0x96, 0x12, 0x8b,
-	0x71, 0x1b, 0x0e, 0xfd, 0xf9, 0x4b, 0x0d, 0x50, 0x9a, 0x30, 0x40, 0x9b, 0x32, 0x47, 0xca, 0x59,
-	0x05, 0x63, 0xec, 0x4b, 0x78, 0xc8, 0xdc, 0xd4, 0x93, 0xba, 0x12, 0x97, 0xdc, 0x8a, 0xbd, 0x9a,
-	0x99, 0xc9, 0xec, 0xd1, 0xcd, 0x5c, 0xa4, 0x6d, 0xa2, 0x5f, 0x6b, 0x50, 0x96, 0x3f, 0xda, 0x51,
-	0x65, 0x64, 0x25, 0x4b, 0x91, 0x13, 0x46, 0x75, 0x62, 0x7d, 0x01, 0xfa, 0xa7, 0xd9, 0x2e, 0x6e,
-	0x98, 0x95, 0xd4, 0x2e, 0x94, 0x36, 0x0b, 0x94, 0x77, 0xf4, 0xaf, 0x94, 0x87, 0xfe, 0x0c, 0xe6,
-	0x65, 0xfe, 0x75, 0x90, 0x63, 0xb7, 0x87, 0x1b, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x21, 0x5b,
-	0x7c, 0x45, 0x27, 0x33, 0x00, 0x00,
+	// 2074 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x59, 0x5f, 0x73, 0xdb, 0x58,
+	0x15, 0x47, 0x71, 0xec, 0xd8, 0xc7, 0x4e, 0xec, 0xdc, 0xa4, 0xae, 0xaa, 0x34, 0x4d, 0xa2, 0xee,
+	0x66, 0xbd, 0xd9, 0xae, 0x4d, 0xd3, 0x19, 0xe8, 0x78, 0x59, 0x98, 0x36, 0x1b, 0x3a, 0x40, 0x69,
+	0x3a, 0x72, 0xf6, 0x01, 0x66, 0x19, 0xcd, 0x8d, 0x7d, 0xad, 0x68, 0x2a, 0x4b, 0x42, 0xba, 0x0e,
+	0xf1, 0x76, 0xfa, 0x00, 0x6f, 0x3c, 0x02, 0x2f, 0xcc, 0xf0, 0xc8, 0x03, 0x4f, 0x7c, 0x00, 0x96,
+	0x37, 0x5e, 0xf8, 0x00, 0x7c, 0x85, 0xfd, 0x08, 0x7c, 0x00, 0xe6, 0xfe, 0x91, 0x2d, 0x59, 0x52,
+	0xe2, 0x96, 0xee, 0xf6, 0x4d, 0xf7, 0xdc, 0x9f, 0xee, 0xf9, 0xf7, 0x3b, 0x47, 0xe7, 0xda, 0x70,
+	0x9b, 0x7a, 0xbe, 0x17, 0x76, 0x7c, 0xcf, 0x76, 0x69, 0xd8, 0xb9, 0xb8, 0x2f, 0x9f, 0xda, 0x7e,
+	0xe0, 0x51, 0x0f, 0xd5, 0xf9, 0x6e, 0x5b, 0xca, 0x2e, 0xee, 0x6b, 0xb7, 0x2d, 0xcf, 0xb3, 0x1c,
+	0xd2, 0xc1, 0xbe, 0xdd, 0xc1, 0xae, 0xeb, 0x51, 0x4c, 0x6d, 0xcf, 0x95, 0x70, 0x6d, 0x4b, 0xee,
+	0xf2, 0xd5, 0xd9, 0x78, 0xd8, 0x21, 0x23, 0x9f, 0x4e, 0xe4, 0xe6, 0xce, 0xfc, 0x26, 0xb5, 0x47,
+	0x24, 0xa4, 0x78, 0xe4, 0x0b, 0x80, 0x3e, 0x80, 0xda, 0x8f, 0x09, 0xa6, 0xe3, 0x80, 0xf4, 0x28,
+	0xa6, 0x21, 0x6a, 0x40, 0x61, 0x64, 0xbb, 0xaa, 0xb2, 0xab, 0xb4, 0x14, 0x83, 0x3d, 0x72, 0x09,
+	0xbe, 0x54, 0x97, 0xa4, 0x04, 0x5f, 0x22, 0x15, 0x56, 0xf0, 0x05, 0x09, 0xb0, 0x45, 0xd4, 0x02,
+	0x97, 0x46, 0x4b, 0xd4, 0x84, 0xd2, 0x88, 0x0c, 0x6c, 0xec, 0xaa, 0xcb, 0x7c, 0x43, 0xae, 0xf4,
+	0x3f, 0x02, 0x14, 0x1f, 0x07, 0xd8, 0x1d, 0x20, 0x04, 0xcb, 0x2e, 0x1e, 0x11, 0xae, 0xa0, 0x62,
+	0xf0, 0x67, 0xb4, 0x07, 0xb5, 0x81, 0x1d, 0xfa, 0x0e, 0x9e, 0x98, 0x7c, 0x6f, 0x89, 0xef, 0x55,
+	0xa5, 0xec, 0x19, 0x83, 0x7c, 0x04, 0xeb, 0x43, 0x2f, 0x18, 0x61, 0x4a, 0xc9, 0xc0, 0xc4, 0x83,
+	0x41, 0x40, 0xc2, 0x90, 0x2b, 0xaf, 0x18, 0x8d, 0xe9, 0xc6, 0x23, 0x21, 0x47, 0x9b, 0x50, 0x24,
+	0x23, 0x6c, 0x3b, 0xdc, 0x88, 0x8a, 0x21, 0x16, 0xe8, 0x43, 0x68, 0x04, 0x04, 0x3b, 0xcc, 0x7b,
+	0x4a, 0x4c, 0x01, 0x28, 0x72, 0x40, 0x7d, 0x26, 0x3f, 0xe6, 0xd0, 0x3d, 0xa8, 0xf9, 0xe7, 0x9e,
+	0x4b, 0x4c, 0x77, 0x3c, 0x3a, 0x23, 0x81, 0x5a, 0x12, 0x06, 0x71, 0xd9, 0x33, 0x2e, 0x42, 0x5d,
+	0x28, 0xf7, 0x3d, 0x97, 0xe2, 0x3e, 0x0d, 0xd5, 0x95, 0xdd, 0x42, 0xab, 0x7a, 0x78, 0xa7, 0x3d,
+	0x97, 0xb7, 0x36, 0xf7, 0xb8, 0x7d, 0x24, 0x60, 0xc6, 0x14, 0xcf, 0xec, 0x73, 0xb1, 0xdd, 0x0f,
+	0xd5, 0xb2, 0xb0, 0x8f, 0x2f, 0xd0, 0x0e, 0x54, 0x7d, 0x2f, 0xa4, 0xd8, 0x31, 0xfb, 0xde, 0x80,
+	0xa8, 0x15, 0xbe, 0x07, 0x42, 0x74, 0xe4, 0x0d, 0x08, 0x1a, 0xc1, 0xad, 0xa1, 0x48, 0x95, 0x19,
+	0x12, 0x6a, 0x4e, 0x9f, 0x59, 0xde, 0x54, 0xe0, 0x36, 0x1c, 0xe6, 0xd8, 0x10, 0xa5, 0x98, 0xd0,
+	0x78, 0xb2, 0x8f, 0x5d, 0x1a, 0x4c, 0x8c, 0xe6, 0x30, 0x73, 0x13, 0x7d, 0x01, 0x28, 0x20, 0x96,
+	0xed, 0xb9, 0xa6, 0x1f, 0x90, 0x21, 0x09, 0x88, 0xdb, 0x27, 0xa1, 0x5a, 0xe5, 0x7a, 0x3e, 0xce,
+	0xd1, 0x63, 0xf0, 0x17, 0x9e, 0xcf, 0xf0, 0x42, 0xc5, 0x7a, 0x30, 0x2f, 0x67, 0x3c, 0xa0, 0xd8,
+	0x0a, 0xd5, 0xda, 0x6e, 0x81, 0xf1, 0x80, 0x3d, 0x33, 0x5e, 0x91, 0xcb, 0xbe, 0x33, 0x1e, 0x10,
+	0x75, 0x75, 0x57, 0x69, 0x95, 0x8d, 0x68, 0x89, 0x3e, 0x81, 0x6a, 0x3f, 0x20, 0x2c, 0x6f, 0x8c,
+	0xbf, 0xea, 0xda, 0xae, 0xd2, 0xaa, 0x1e, 0x6a, 0x6d, 0x41, 0xee, 0x76, 0x44, 0xee, 0xf6, 0x69,
+	0x44, 0x6e, 0x03, 0x04, 0x9c, 0x09, 0xd8, 0xcb, 0x63, 0x7f, 0x30, 0x7d, 0xb9, 0x7e, 0xfd, 0xcb,
+	0x02, 0xce, 0x5f, 0xfe, 0x00, 0xea, 0xd4, 0x63, 0x49, 0x71, 0xbc, 0xbe, 0x28, 0x3b, 0xb5, 0xb1,
+	0xab, 0xb4, 0x0a, 0xc6, 0x1a, 0x17, 0x3f, 0x8d, 0xa4, 0xa8, 0x0d, 0x1b, 0x9c, 0x41, 0xa1, 0xe9,
+	0x0d, 0x4d, 0x72, 0xe9, 0x63, 0x37, 0xb4, 0x3d, 0x57, 0x5d, 0xe7, 0xfe, 0xad, 0x8b, 0xad, 0x93,
+	0xe1, 0x71, 0xb4, 0x91, 0xc4, 0x7b, 0x3e, 0x09, 0xf8, 0x39, 0x2a, 0x4a, 0xe2, 0x4f, 0xa2, 0x0d,
+	0x16, 0x9c, 0xdf, 0x90, 0xb3, 0xd0, 0xa6, 0x44, 0xdd, 0xe0, 0xd4, 0x88, 0x96, 0xda, 0x18, 0x56,
+	0x24, 0xc7, 0xd0, 0x16, 0x54, 0x86, 0x63, 0xc7, 0x31, 0x63, 0x25, 0x56, 0x66, 0x02, 0x5e, 0x43,
+	0x9b, 0x50, 0xa4, 0x36, 0x75, 0xa2, 0xfa, 0x12, 0x8b, 0x59, 0xb1, 0x14, 0xe2, 0xc5, 0x32, 0x5f,
+	0x01, 0xcb, 0xa9, 0x0a, 0xd0, 0xce, 0x61, 0xeb, 0x0a, 0x5a, 0xb1, 0xb6, 0xf1, 0x82, 0x4c, 0xa4,
+	0x11, 0xec, 0x11, 0x3d, 0x80, 0xe2, 0x05, 0x76, 0xc6, 0x42, 0x7f, 0xf5, 0x70, 0x3b, 0xc5, 0xa1,
+	0xf8, 0x21, 0x86, 0xc0, 0x76, 0x97, 0x1e, 0x2a, 0xda, 0x0b, 0xa8, 0xc6, 0xa9, 0x73, 0x17, 0x56,
+	0x05, 0x23, 0x03, 0x32, 0x30, 0x2d, 0x07, 0x4b, 0x1d, 0xb5, 0xa9, 0xf0, 0x89, 0x83, 0x59, 0x27,
+	0xb2, 0x5d, 0xc7, 0x76, 0x89, 0x6c, 0x5c, 0x72, 0xc5, 0xaa, 0x2c, 0xa4, 0xd8, 0x1d, 0x98, 0xd8,
+	0xf1, 0xdc, 0xa8, 0x7f, 0x01, 0x17, 0x3d, 0x62, 0x12, 0xed, 0x1c, 0x9a, 0xd9, 0x2c, 0xce, 0xf0,
+	0xe8, 0x61, 0xd2, 0x23, 0x3d, 0xa7, 0x2a, 0x62, 0x27, 0xc5, 0xdc, 0xd2, 0x1f, 0x43, 0xe9, 0x29,
+	0xa6, 0x4f, 0x5d, 0x0b, 0x69, 0x50, 0x76, 0x30, 0xb5, 0x29, 0x63, 0xbe, 0xe8, 0xbc, 0xd3, 0x35,
+	0xba, 0x0d, 0x15, 0xc7, 0x73, 0x2d, 0xb1, 0x29, 0x7c, 0x99, 0x09, 0xf4, 0xaf, 0x15, 0x28, 0x3e,
+	0x67, 0xea, 0xde, 0xb4, 0xb1, 0x3e, 0x80, 0x72, 0xc4, 0x6c, 0x9e, 0xe4, 0xea, 0xe1, 0xcd, 0x94,
+	0x17, 0xc2, 0x4a, 0x63, 0x0a, 0xcc, 0xee, 0xc6, 0xc5, 0x9c, 0x6e, 0xac, 0xc2, 0x4a, 0xe8, 0x8d,
+	0x03, 0xd6, 0x3c, 0x4a, 0x9c, 0xdc, 0xd1, 0x92, 0x51, 0xef, 0x8c, 0x05, 0x48, 0x5d, 0x11, 0xd4,
+	0x3b, 0x8b, 0xbe, 0x10, 0xbc, 0x33, 0x94, 0x67, 0x9d, 0x41, 0xff, 0x9b, 0x02, 0x85, 0x53, 0x6c,
+	0xbd, 0xa9, 0x93, 0xb1, 0xc6, 0x52, 0x48, 0x36, 0x96, 0x36, 0x6c, 0xf8, 0xce, 0x38, 0xc0, 0x8e,
+	0x99, 0x38, 0x43, 0xd0, 0x7d, 0x5d, 0x6c, 0x7d, 0x16, 0x3b, 0x69, 0x07, 0xaa, 0x76, 0x68, 0xf6,
+	0x31, 0x25, 0x96, 0x17, 0x4c, 0xb8, 0xcf, 0x65, 0x03, 0xec, 0xf0, 0x48, 0x4a, 0xf4, 0x87, 0x50,
+	0x12, 0xf4, 0xc9, 0xb4, 0x55, 0x83, 0xb2, 0x45, 0xbc, 0x11, 0xa1, 0xc1, 0x84, 0xdb, 0x59, 0x33,
+	0xa6, 0x6b, 0xfd, 0x7d, 0xa8, 0x3f, 0x21, 0x94, 0x33, 0xc6, 0x20, 0xbf, 0x1e, 0x93, 0x30, 0x33,
+	0xa7, 0xfa, 0x09, 0xac, 0x3f, 0xb5, 0x43, 0x81, 0x0b, 0x23, 0xe0, 0x16, 0x54, 0x7c, 0x6c, 0x11,
+	0x33, 0xb4, 0xbf, 0x14, 0xe8, 0xa2, 0x51, 0x66, 0x82, 0x9e, 0xfd, 0x25, 0x41, 0xdb, 0x00, 0x7c,
+	0x93, 0x7a, 0x2f, 0x88, 0x2b, 0xc3, 0xc3, 0xe1, 0xa7, 0x4c, 0xa0, 0x3b, 0x80, 0xe2, 0x07, 0x86,
+	0xbe, 0xe7, 0x86, 0x2c, 0x30, 0x25, 0x9e, 0x8e, 0x50, 0x55, 0x78, 0xc7, 0x6f, 0x66, 0x73, 0xdb,
+	0x90, 0x28, 0xb4, 0x0f, 0x75, 0x97, 0x5c, 0x52, 0x33, 0xa5, 0x69, 0x95, 0x89, 0x9f, 0x4f, 0xb5,
+	0xfd, 0x08, 0xea, 0xbd, 0x39, 0x2f, 0xef, 0x45, 0x34, 0x50, 0x38, 0xff, 0xf2, 0x34, 0x09, 0x90,
+	0xde, 0x02, 0xf4, 0x19, 0x71, 0x08, 0x25, 0xd7, 0x46, 0x4a, 0x04, 0x94, 0x57, 0xc7, 0x55, 0xb0,
+	0xc7, 0x80, 0x8e, 0xf8, 0xc7, 0x22, 0x81, 0xbc, 0x07, 0x45, 0x6e, 0x40, 0xae, 0x51, 0x02, 0x2d,
+	0x40, 0xec, 0x8c, 0xcf, 0xf9, 0x37, 0xe3, 0xff, 0x38, 0x63, 0xea, 0xd8, 0xb5, 0x16, 0xff, 0x41,
+	0x81, 0x8d, 0x1e, 0xc1, 0x41, 0xff, 0x9c, 0x43, 0xdf, 0x06, 0x0b, 0x66, 0xb5, 0x58, 0x88, 0xd7,
+	0x62, 0x13, 0x4a, 0xe2, 0xd3, 0x2d, 0x2b, 0x42, 0xae, 0x58, 0x2b, 0xa4, 0xd8, 0x92, 0x25, 0xcf,
+	0x1e, 0x75, 0x17, 0x36, 0x93, 0x26, 0xcd, 0x78, 0x24, 0xfc, 0xcd, 0xe5, 0x91, 0x70, 0x57, 0xa2,
+	0x16, 0xe6, 0xd1, 0x7f, 0x15, 0xd0, 0x9e, 0x7b, 0xce, 0xc4, 0xf2, 0xdc, 0x6f, 0x27, 0x14, 0x51,
+	0x5b, 0x5a, 0x8e, 0x0d, 0x2c, 0x3f, 0x83, 0x86, 0x2f, 0x6c, 0x30, 0x89, 0xdb, 0xf7, 0x06, 0xb6,
+	0x2b, 0x62, 0xb2, 0x76, 0xb8, 0x9b, 0xe1, 0x26, 0x07, 0x1e, 0x4b, 0x9c, 0x51, 0xf7, 0x93, 0x02,
+	0xfe, 0x59, 0x93, 0x87, 0xf5, 0xcf, 0xc7, 0xee, 0x0b, 0x3e, 0xa8, 0xd4, 0x8c, 0x9a, 0x14, 0x1e,
+	0x31, 0x99, 0x3e, 0x86, 0xad, 0x4c, 0xaf, 0xbf, 0xe1, 0x68, 0xdf, 0x85, 0xd5, 0x27, 0x84, 0x9e,
+	0x62, 0xeb, 0x2a, 0x5a, 0x7e, 0x1f, 0x56, 0x7b, 0x09, 0xd0, 0xbe, 0x60, 0x89, 0x60, 0xff, 0x66,
+	0xca, 0x14, 0x86, 0xe4, 0xdc, 0xf9, 0x39, 0xd4, 0x59, 0x07, 0x3a, 0xc5, 0xd6, 0x5b, 0x69, 0x68,
+	0x03, 0x68, 0xcc, 0x8e, 0x93, 0x81, 0x69, 0xc9, 0xec, 0x89, 0xb0, 0x64, 0xdb, 0x22, 0x72, 0xba,
+	0x68, 0x48, 0xf6, 0xa1, 0x21, 0xca, 0xf5, 0x9a, 0xa8, 0xfc, 0x04, 0x6e, 0x1e, 0x79, 0x63, 0x57,
+	0xb4, 0xbc, 0x24, 0x49, 0x67, 0xd5, 0xa5, 0x24, 0xaa, 0xab, 0x39, 0xed, 0xbd, 0x4b, 0x9c, 0x6c,
+	0x72, 0xa5, 0xff, 0x43, 0x01, 0x35, 0x7d, 0x96, 0xf4, 0xf0, 0x57, 0x50, 0xe3, 0x30, 0x33, 0x41,
+	0x80, 0x6e, 0xca, 0xd3, 0xbc, 0x03, 0xda, 0x31, 0x99, 0x98, 0xda, 0xab, 0x67, 0x33, 0x89, 0xf6,
+	0x43, 0x68, 0xcc, 0x03, 0x32, 0x06, 0xa2, 0xcd, 0xf8, 0x40, 0x54, 0x88, 0x0f, 0x3b, 0xff, 0x52,
+	0xe0, 0x8e, 0x64, 0xee, 0x5b, 0x0a, 0x47, 0x66, 0xf5, 0x15, 0xbe, 0xd1, 0xea, 0xfb, 0xb7, 0x02,
+	0x3b, 0xb9, 0x4e, 0xc8, 0x3c, 0x0c, 0x32, 0xf3, 0xf0, 0x28, 0xcf, 0xa2, 0x77, 0x94, 0x8e, 0x47,
+	0x70, 0x83, 0x6b, 0x3e, 0xc5, 0xd6, 0x62, 0x49, 0x90, 0x1d, 0x7f, 0x69, 0xd6, 0xf1, 0xff, 0xae,
+	0x40, 0x73, 0xfe, 0x0c, 0x19, 0x83, 0xcf, 0x01, 0x28, 0xb6, 0x92, 0x11, 0xf8, 0x5e, 0x36, 0x13,
+	0x53, 0x2f, 0xb7, 0xa7, 0x12, 0xe1, 0x76, 0x85, 0x46, 0x6b, 0xed, 0x07, 0xb0, 0x96, 0xdc, 0x7c,
+	0x2d, 0x97, 0xbf, 0x52, 0xe0, 0x76, 0x3c, 0xe8, 0x6f, 0xee, 0xfa, 0x3b, 0x60, 0xde, 0x3f, 0x15,
+	0xd8, 0xce, 0x31, 0x5e, 0xc6, 0xfc, 0x8b, 0x8c, 0x98, 0x7f, 0x7a, 0x25, 0xeb, 0xbe, 0xbd, 0xd0,
+	0xff, 0x5e, 0x89, 0xa6, 0x03, 0x31, 0x1b, 0xbf, 0x95, 0xcf, 0xf4, 0x0e, 0x54, 0xe5, 0xef, 0x13,
+	0x74, 0xe2, 0x13, 0xf9, 0xb1, 0x06, 0x21, 0x3a, 0x9d, 0xf8, 0x64, 0xf6, 0x1d, 0x5f, 0x8e, 0x7d,
+	0xc7, 0xf5, 0x00, 0x6e, 0xcc, 0x99, 0x22, 0x03, 0x78, 0x1f, 0x56, 0xc4, 0xcb, 0x51, 0xf4, 0xd2,
+	0x17, 0x21, 0xf1, 0x8a, 0x11, 0xe1, 0x16, 0xfd, 0x56, 0x1c, 0xec, 0x43, 0x7d, 0x8e, 0x06, 0xa8,
+	0x04, 0x4b, 0xbd, 0xc3, 0xc6, 0x77, 0x50, 0x15, 0x56, 0x9e, 0x1c, 0x9f, 0xfc, 0xb4, 0x77, 0xf2,
+	0xac, 0xa1, 0x1c, 0x7e, 0xb5, 0x0e, 0x25, 0x11, 0x63, 0x84, 0xa1, 0x1c, 0xdd, 0x06, 0x50, 0x9a,
+	0x54, 0x73, 0x17, 0x05, 0x2d, 0x67, 0x66, 0xd6, 0xb7, 0x7e, 0xf7, 0x9f, 0xaf, 0xff, 0xb4, 0x74,
+	0x03, 0x6d, 0x74, 0x2e, 0xee, 0x77, 0x5e, 0xb2, 0xef, 0xd1, 0xa7, 0xa2, 0x79, 0x76, 0x0e, 0x5e,
+	0x21, 0x1b, 0x60, 0x36, 0xf8, 0xa3, 0xf4, 0xe5, 0x35, 0x75, 0xcd, 0xd0, 0xee, 0x5e, 0x89, 0x11,
+	0x71, 0xd4, 0x11, 0xd7, 0x59, 0x43, 0xc0, 0x74, 0xca, 0x56, 0x1d, 0x40, 0xb9, 0x97, 0xef, 0x4d,
+	0x6f, 0x41, 0x6f, 0xee, 0xf1, 0x93, 0xf7, 0xf5, 0x6d, 0xee, 0x0d, 0x3f, 0xba, 0x9d, 0xf4, 0xa9,
+	0x1b, 0x12, 0xda, 0x95, 0x03, 0x9b, 0x05, 0xd5, 0xd8, 0x45, 0x01, 0xa5, 0x6d, 0x4f, 0x5f, 0x23,
+	0xb4, 0x66, 0xea, 0x57, 0xa1, 0xe3, 0x91, 0x4f, 0x27, 0x51, 0x1c, 0x0f, 0x32, 0xe3, 0x28, 0x52,
+	0x25, 0x6e, 0xe1, 0x99, 0xa9, 0x8a, 0x0f, 0xf4, 0x5a, 0xce, 0x48, 0x96, 0x95, 0x2a, 0xf9, 0xfb,
+	0xf0, 0xc1, 0x2b, 0x74, 0x01, 0xb5, 0xf8, 0xbc, 0x87, 0xde, 0xcb, 0x88, 0x61, 0x6a, 0x08, 0xd6,
+	0xde, 0xbf, 0x06, 0x25, 0x13, 0x76, 0x8b, 0x6b, 0xde, 0x40, 0xeb, 0xb3, 0x5f, 0xa2, 0xbb, 0x21,
+	0x07, 0xa2, 0x3f, 0x2b, 0xb0, 0x91, 0x31, 0x6f, 0xa2, 0x8f, 0xf2, 0x1a, 0x4b, 0x96, 0x19, 0xf7,
+	0x16, 0x03, 0x4b, 0x6b, 0xde, 0xe3, 0xd6, 0xdc, 0xd1, 0x6f, 0xc5, 0xac, 0x89, 0xfa, 0xa3, 0xb0,
+	0xaa, 0xab, 0x1c, 0xb4, 0x14, 0x44, 0xa0, 0x1a, 0xbb, 0xb6, 0x65, 0xa4, 0x37, 0x7d, 0xa9, 0xcb,
+	0x8d, 0xbd, 0x8c, 0x80, 0x0e, 0x31, 0x9d, 0xe2, 0x56, 0x86, 0x28, 0x54, 0x63, 0x37, 0xbb, 0x0c,
+	0x35, 0xe9, 0x7b, 0x5f, 0xae, 0x9a, 0x16, 0x57, 0xa3, 0x6b, 0xdc, 0xb5, 0x97, 0x7c, 0xb7, 0x9d,
+	0x4c, 0x74, 0xa4, 0x75, 0xca, 0xdd, 0x3c, 0xad, 0xe9, 0x9b, 0xe2, 0xeb, 0x70, 0x77, 0x46, 0xac,
+	0x5f, 0x40, 0x49, 0x0c, 0xf6, 0xe8, 0x4e, 0x16, 0x73, 0x67, 0xb3, 0xad, 0x96, 0x39, 0x33, 0x27,
+	0xb9, 0x23, 0x0e, 0x67, 0x53, 0xb4, 0x2c, 0x8b, 0x68, 0x0c, 0xcf, 0x28, 0x8b, 0xb9, 0x81, 0x5f,
+	0xdb, 0xbb, 0x02, 0x21, 0x99, 0xd1, 0xe0, 0xba, 0x00, 0x95, 0x99, 0x2e, 0x3e, 0xab, 0x0f, 0xa1,
+	0xd4, 0xcb, 0xb3, 0xbe, 0xb7, 0x80, 0xf5, 0xfb, 0xfc, 0xc4, 0x5d, 0xc1, 0xb5, 0x97, 0x14, 0x5b,
+	0xed, 0xb8, 0x07, 0xbc, 0x99, 0xf0, 0xef, 0x3d, 0x86, 0xca, 0x74, 0xd6, 0x47, 0x7b, 0x39, 0xc9,
+	0x88, 0x69, 0xcb, 0x4b, 0x85, 0x8c, 0xd6, 0x41, 0x46, 0xb4, 0x7e, 0xab, 0x40, 0x63, 0x7e, 0x16,
+	0x44, 0xad, 0x05, 0xa6, 0x77, 0xa1, 0xf1, 0xc3, 0x85, 0xe7, 0x7c, 0x5d, 0xe5, 0x46, 0x20, 0xd4,
+	0x98, 0xf5, 0xe7, 0x6e, 0x9f, 0x81, 0xd1, 0x5f, 0x15, 0xb8, 0x99, 0x33, 0x96, 0xa2, 0xce, 0xe2,
+	0x03, 0xac, 0xb0, 0xe8, 0xbb, 0xaf, 0x3b, 0xf1, 0xea, 0x77, 0xb9, 0x61, 0xdb, 0xba, 0x1a, 0x33,
+	0x6c, 0x3a, 0x19, 0xb1, 0x97, 0x44, 0xe1, 0x4f, 0x60, 0x2d, 0x39, 0xbe, 0xa0, 0xfd, 0x6b, 0x47,
+	0x4b, 0x61, 0xd2, 0x07, 0x0b, 0x8e, 0xa0, 0x7a, 0x93, 0x5b, 0xd2, 0x40, 0x6b, 0x11, 0xd3, 0x64,
+	0x80, 0xfe, 0xa2, 0xc0, 0x8d, 0xcc, 0x09, 0x0a, 0x7d, 0xbc, 0xe8, 0xa4, 0x25, 0x2c, 0x69, 0xbf,
+	0xde, 0x60, 0xa6, 0xef, 0x71, 0x83, 0xb6, 0xf4, 0xe6, 0xd4, 0xa0, 0x8c, 0xc0, 0xbc, 0x62, 0xf7,
+	0xef, 0xd8, 0x64, 0x83, 0xf2, 0xfa, 0x7f, 0x72, 0x08, 0xd3, 0xf6, 0xaf, 0x83, 0x49, 0x23, 0xb6,
+	0xb9, 0x11, 0x37, 0x75, 0xc4, 0x8c, 0x90, 0x23, 0x50, 0x77, 0xda, 0x92, 0x1f, 0xab, 0xbf, 0x6c,
+	0xce, 0xfd, 0xad, 0xf9, 0x89, 0x78, 0x3a, 0x2b, 0xf1, 0x32, 0x78, 0xf0, 0xbf, 0x00, 0x00, 0x00,
+	0xff, 0xff, 0x36, 0x2e, 0xe3, 0xf5, 0xf7, 0x1c, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -3587,56 +2269,37 @@ const _ = grpc.SupportPackageIsVersion4
 type PointsClient interface {
 	// Gets a brand.
 	GetBrand(ctx context.Context, in *GetBrandRequest, opts ...grpc.CallOption) (*Brand, error)
-	// Sets a brand.
-	SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error)
 	// Lists brands.
 	ListBrands(ctx context.Context, in *ListBrandsRequest, opts ...grpc.CallOption) (*ListBrandsResponse, error)
+	// Sets a brand.
+	SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error)
 	// Deletes a brand.
 	DeleteBrand(ctx context.Context, in *DeleteBrandRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	// Gets a point.
+	GetPoint(ctx context.Context, in *GetPointRequest, opts ...grpc.CallOption) (*Point, error)
 	// Search points.
 	SearchPoints(ctx context.Context, in *SearchPointsRequest, opts ...grpc.CallOption) (*SearchPointsResponse, error)
 	// Search points.
 	PolygonSearchPoints(ctx context.Context, opts ...grpc.CallOption) (Points_PolygonSearchPointsClient, error)
-	// Gets a point.
-	GetPoint(ctx context.Context, in *GetPointRequest, opts ...grpc.CallOption) (*Point, error)
 	// Creates a point with the given point sources.
-	CreatePointWithPointSources(ctx context.Context, in *CreatePointWithPointSourcesRequest, opts ...grpc.CallOption) (*CreatePointWithPointSourcesResponse, error)
+	CreatePoint(ctx context.Context, in *CreatePointRequest, opts ...grpc.CallOption) (*Point, error)
 	// Updates an existing point.
 	UpdatePoint(ctx context.Context, in *UpdatePointRequest, opts ...grpc.CallOption) (*Point, error)
 	// Deletes a point.
 	DeletePoint(ctx context.Context, in *DeletePointRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// Gets a tag.
 	GetTag(ctx context.Context, in *GetTagRequest, opts ...grpc.CallOption) (*Tag, error)
-	// Sets a tag.
-	SetTag(ctx context.Context, in *SetTagRequest, opts ...grpc.CallOption) (*Tag, error)
 	// Lists tags.
 	ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error)
+	// Sets a tag.
+	SetTag(ctx context.Context, in *SetTagRequest, opts ...grpc.CallOption) (*Tag, error)
 	// Deletes a tag.
 	DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	// Gets a point source.
-	GetPointSource(ctx context.Context, in *GetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
-	// Sets a point source.
-	SetPointSource(ctx context.Context, in *SetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error)
-	// Deletes a point source.
-	DeletePointSource(ctx context.Context, in *DeletePointSourceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	CountBrandPoints(ctx context.Context, in *CountBrandPointsRequest, opts ...grpc.CallOption) (*CountBrandPointsResponse, error)
 	PolygonCountBrandPoints(ctx context.Context, opts ...grpc.CallOption) (Points_PolygonCountBrandPointsClient, error)
 	CountTagPoints(ctx context.Context, in *CountTagPointsRequest, opts ...grpc.CallOption) (*CountTagPointsResponse, error)
 	PolygonCountTagPoints(ctx context.Context, opts ...grpc.CallOption) (Points_PolygonCountTagPointsClient, error)
-	//
 	SearchRegions(ctx context.Context, in *SearchRegionsRequest, opts ...grpc.CallOption) (*SearchRegionsResponse, error)
-	// Sets a brand region score set score.
-	SetBrandRegionScoreSetScore(ctx context.Context, in *SetBrandRegionScoreSetScoreRequest, opts ...grpc.CallOption) (*BrandRegionScoreSetScore, error)
-	// Searches brand region score set scores.
-	SearchBrandRegionScoreSetScores(ctx context.Context, in *SearchBrandRegionScoreSetScoresRequest, opts ...grpc.CallOption) (*SearchBrandRegionScoreSetScoresResponse, error)
-	// Sets a tag region score set score.
-	SetTagRegionScoreSetScore(ctx context.Context, in *SetTagRegionScoreSetScoreRequest, opts ...grpc.CallOption) (*TagRegionScoreSetScore, error)
-	// Searches tag region score set scores.
-	SearchTagRegionScoreSetScores(ctx context.Context, in *SearchTagRegionScoreSetScoresRequest, opts ...grpc.CallOption) (*SearchTagRegionScoreSetScoresResponse, error)
-	// Sets a region graph edge.
-	SetRegionGraphEdge(ctx context.Context, in *SetRegionGraphEdgeRequest, opts ...grpc.CallOption) (*RegionGraphEdge, error)
-	// Searches region graph edges.
-	SearchRegionGraphEdges(ctx context.Context, in *SearchRegionGraphEdgesRequest, opts ...grpc.CallOption) (*SearchRegionGraphEdgesResponse, error)
 }
 
 type pointsClient struct {
@@ -3656,15 +2319,6 @@ func (c *pointsClient) GetBrand(ctx context.Context, in *GetBrandRequest, opts .
 	return out, nil
 }
 
-func (c *pointsClient) SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error) {
-	out := new(Brand)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetBrand", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *pointsClient) ListBrands(ctx context.Context, in *ListBrandsRequest, opts ...grpc.CallOption) (*ListBrandsResponse, error) {
 	out := new(ListBrandsResponse)
 	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/ListBrands", in, out, opts...)
@@ -3674,9 +2328,27 @@ func (c *pointsClient) ListBrands(ctx context.Context, in *ListBrandsRequest, op
 	return out, nil
 }
 
+func (c *pointsClient) SetBrand(ctx context.Context, in *SetBrandRequest, opts ...grpc.CallOption) (*Brand, error) {
+	out := new(Brand)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetBrand", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *pointsClient) DeleteBrand(ctx context.Context, in *DeleteBrandRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/DeleteBrand", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *pointsClient) GetPoint(ctx context.Context, in *GetPointRequest, opts ...grpc.CallOption) (*Point, error) {
+	out := new(Point)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/GetPoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -3726,18 +2398,9 @@ func (x *pointsPolygonSearchPointsClient) CloseAndRecv() (*PolygonSearchPointsRe
 	return m, nil
 }
 
-func (c *pointsClient) GetPoint(ctx context.Context, in *GetPointRequest, opts ...grpc.CallOption) (*Point, error) {
+func (c *pointsClient) CreatePoint(ctx context.Context, in *CreatePointRequest, opts ...grpc.CallOption) (*Point, error) {
 	out := new(Point)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/GetPoint", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) CreatePointWithPointSources(ctx context.Context, in *CreatePointWithPointSourcesRequest, opts ...grpc.CallOption) (*CreatePointWithPointSourcesResponse, error) {
-	out := new(CreatePointWithPointSourcesResponse)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/CreatePointWithPointSources", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/CreatePoint", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -3771,15 +2434,6 @@ func (c *pointsClient) GetTag(ctx context.Context, in *GetTagRequest, opts ...gr
 	return out, nil
 }
 
-func (c *pointsClient) SetTag(ctx context.Context, in *SetTagRequest, opts ...grpc.CallOption) (*Tag, error) {
-	out := new(Tag)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetTag", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *pointsClient) ListTags(ctx context.Context, in *ListTagsRequest, opts ...grpc.CallOption) (*ListTagsResponse, error) {
 	out := new(ListTagsResponse)
 	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/ListTags", in, out, opts...)
@@ -3789,36 +2443,18 @@ func (c *pointsClient) ListTags(ctx context.Context, in *ListTagsRequest, opts .
 	return out, nil
 }
 
+func (c *pointsClient) SetTag(ctx context.Context, in *SetTagRequest, opts ...grpc.CallOption) (*Tag, error) {
+	out := new(Tag)
+	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetTag", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *pointsClient) DeleteTag(ctx context.Context, in *DeleteTagRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/DeleteTag", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) GetPointSource(ctx context.Context, in *GetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error) {
-	out := new(PointSource)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/GetPointSource", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SetPointSource(ctx context.Context, in *SetPointSourceRequest, opts ...grpc.CallOption) (*PointSource, error) {
-	out := new(PointSource)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetPointSource", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) DeletePointSource(ctx context.Context, in *DeletePointSourceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/DeletePointSource", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -3920,114 +2556,41 @@ func (c *pointsClient) SearchRegions(ctx context.Context, in *SearchRegionsReque
 	return out, nil
 }
 
-func (c *pointsClient) SetBrandRegionScoreSetScore(ctx context.Context, in *SetBrandRegionScoreSetScoreRequest, opts ...grpc.CallOption) (*BrandRegionScoreSetScore, error) {
-	out := new(BrandRegionScoreSetScore)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetBrandRegionScoreSetScore", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SearchBrandRegionScoreSetScores(ctx context.Context, in *SearchBrandRegionScoreSetScoresRequest, opts ...grpc.CallOption) (*SearchBrandRegionScoreSetScoresResponse, error) {
-	out := new(SearchBrandRegionScoreSetScoresResponse)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SearchBrandRegionScoreSetScores", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SetTagRegionScoreSetScore(ctx context.Context, in *SetTagRegionScoreSetScoreRequest, opts ...grpc.CallOption) (*TagRegionScoreSetScore, error) {
-	out := new(TagRegionScoreSetScore)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetTagRegionScoreSetScore", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SearchTagRegionScoreSetScores(ctx context.Context, in *SearchTagRegionScoreSetScoresRequest, opts ...grpc.CallOption) (*SearchTagRegionScoreSetScoresResponse, error) {
-	out := new(SearchTagRegionScoreSetScoresResponse)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SearchTagRegionScoreSetScores", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SetRegionGraphEdge(ctx context.Context, in *SetRegionGraphEdgeRequest, opts ...grpc.CallOption) (*RegionGraphEdge, error) {
-	out := new(RegionGraphEdge)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SetRegionGraphEdge", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *pointsClient) SearchRegionGraphEdges(ctx context.Context, in *SearchRegionGraphEdgesRequest, opts ...grpc.CallOption) (*SearchRegionGraphEdgesResponse, error) {
-	out := new(SearchRegionGraphEdgesResponse)
-	err := c.cc.Invoke(ctx, "/topos.points.v1.Points/SearchRegionGraphEdges", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // PointsServer is the server API for Points service.
 type PointsServer interface {
 	// Gets a brand.
 	GetBrand(context.Context, *GetBrandRequest) (*Brand, error)
-	// Sets a brand.
-	SetBrand(context.Context, *SetBrandRequest) (*Brand, error)
 	// Lists brands.
 	ListBrands(context.Context, *ListBrandsRequest) (*ListBrandsResponse, error)
+	// Sets a brand.
+	SetBrand(context.Context, *SetBrandRequest) (*Brand, error)
 	// Deletes a brand.
 	DeleteBrand(context.Context, *DeleteBrandRequest) (*empty.Empty, error)
+	// Gets a point.
+	GetPoint(context.Context, *GetPointRequest) (*Point, error)
 	// Search points.
 	SearchPoints(context.Context, *SearchPointsRequest) (*SearchPointsResponse, error)
 	// Search points.
 	PolygonSearchPoints(Points_PolygonSearchPointsServer) error
-	// Gets a point.
-	GetPoint(context.Context, *GetPointRequest) (*Point, error)
 	// Creates a point with the given point sources.
-	CreatePointWithPointSources(context.Context, *CreatePointWithPointSourcesRequest) (*CreatePointWithPointSourcesResponse, error)
+	CreatePoint(context.Context, *CreatePointRequest) (*Point, error)
 	// Updates an existing point.
 	UpdatePoint(context.Context, *UpdatePointRequest) (*Point, error)
 	// Deletes a point.
 	DeletePoint(context.Context, *DeletePointRequest) (*empty.Empty, error)
 	// Gets a tag.
 	GetTag(context.Context, *GetTagRequest) (*Tag, error)
-	// Sets a tag.
-	SetTag(context.Context, *SetTagRequest) (*Tag, error)
 	// Lists tags.
 	ListTags(context.Context, *ListTagsRequest) (*ListTagsResponse, error)
+	// Sets a tag.
+	SetTag(context.Context, *SetTagRequest) (*Tag, error)
 	// Deletes a tag.
 	DeleteTag(context.Context, *DeleteTagRequest) (*empty.Empty, error)
-	// Gets a point source.
-	GetPointSource(context.Context, *GetPointSourceRequest) (*PointSource, error)
-	// Sets a point source.
-	SetPointSource(context.Context, *SetPointSourceRequest) (*PointSource, error)
-	// Deletes a point source.
-	DeletePointSource(context.Context, *DeletePointSourceRequest) (*empty.Empty, error)
 	CountBrandPoints(context.Context, *CountBrandPointsRequest) (*CountBrandPointsResponse, error)
 	PolygonCountBrandPoints(Points_PolygonCountBrandPointsServer) error
 	CountTagPoints(context.Context, *CountTagPointsRequest) (*CountTagPointsResponse, error)
 	PolygonCountTagPoints(Points_PolygonCountTagPointsServer) error
-	//
 	SearchRegions(context.Context, *SearchRegionsRequest) (*SearchRegionsResponse, error)
-	// Sets a brand region score set score.
-	SetBrandRegionScoreSetScore(context.Context, *SetBrandRegionScoreSetScoreRequest) (*BrandRegionScoreSetScore, error)
-	// Searches brand region score set scores.
-	SearchBrandRegionScoreSetScores(context.Context, *SearchBrandRegionScoreSetScoresRequest) (*SearchBrandRegionScoreSetScoresResponse, error)
-	// Sets a tag region score set score.
-	SetTagRegionScoreSetScore(context.Context, *SetTagRegionScoreSetScoreRequest) (*TagRegionScoreSetScore, error)
-	// Searches tag region score set scores.
-	SearchTagRegionScoreSetScores(context.Context, *SearchTagRegionScoreSetScoresRequest) (*SearchTagRegionScoreSetScoresResponse, error)
-	// Sets a region graph edge.
-	SetRegionGraphEdge(context.Context, *SetRegionGraphEdgeRequest) (*RegionGraphEdge, error)
-	// Searches region graph edges.
-	SearchRegionGraphEdges(context.Context, *SearchRegionGraphEdgesRequest) (*SearchRegionGraphEdgesResponse, error)
 }
 
 // UnimplementedPointsServer can be embedded to have forward compatible implementations.
@@ -4037,14 +2600,17 @@ type UnimplementedPointsServer struct {
 func (*UnimplementedPointsServer) GetBrand(ctx context.Context, req *GetBrandRequest) (*Brand, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBrand not implemented")
 }
-func (*UnimplementedPointsServer) SetBrand(ctx context.Context, req *SetBrandRequest) (*Brand, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetBrand not implemented")
-}
 func (*UnimplementedPointsServer) ListBrands(ctx context.Context, req *ListBrandsRequest) (*ListBrandsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListBrands not implemented")
 }
+func (*UnimplementedPointsServer) SetBrand(ctx context.Context, req *SetBrandRequest) (*Brand, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetBrand not implemented")
+}
 func (*UnimplementedPointsServer) DeleteBrand(ctx context.Context, req *DeleteBrandRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteBrand not implemented")
+}
+func (*UnimplementedPointsServer) GetPoint(ctx context.Context, req *GetPointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPoint not implemented")
 }
 func (*UnimplementedPointsServer) SearchPoints(ctx context.Context, req *SearchPointsRequest) (*SearchPointsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchPoints not implemented")
@@ -4052,11 +2618,8 @@ func (*UnimplementedPointsServer) SearchPoints(ctx context.Context, req *SearchP
 func (*UnimplementedPointsServer) PolygonSearchPoints(srv Points_PolygonSearchPointsServer) error {
 	return status.Errorf(codes.Unimplemented, "method PolygonSearchPoints not implemented")
 }
-func (*UnimplementedPointsServer) GetPoint(ctx context.Context, req *GetPointRequest) (*Point, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPoint not implemented")
-}
-func (*UnimplementedPointsServer) CreatePointWithPointSources(ctx context.Context, req *CreatePointWithPointSourcesRequest) (*CreatePointWithPointSourcesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreatePointWithPointSources not implemented")
+func (*UnimplementedPointsServer) CreatePoint(ctx context.Context, req *CreatePointRequest) (*Point, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePoint not implemented")
 }
 func (*UnimplementedPointsServer) UpdatePoint(ctx context.Context, req *UpdatePointRequest) (*Point, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdatePoint not implemented")
@@ -4067,23 +2630,14 @@ func (*UnimplementedPointsServer) DeletePoint(ctx context.Context, req *DeletePo
 func (*UnimplementedPointsServer) GetTag(ctx context.Context, req *GetTagRequest) (*Tag, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTag not implemented")
 }
-func (*UnimplementedPointsServer) SetTag(ctx context.Context, req *SetTagRequest) (*Tag, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetTag not implemented")
-}
 func (*UnimplementedPointsServer) ListTags(ctx context.Context, req *ListTagsRequest) (*ListTagsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTags not implemented")
 }
+func (*UnimplementedPointsServer) SetTag(ctx context.Context, req *SetTagRequest) (*Tag, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SetTag not implemented")
+}
 func (*UnimplementedPointsServer) DeleteTag(ctx context.Context, req *DeleteTagRequest) (*empty.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteTag not implemented")
-}
-func (*UnimplementedPointsServer) GetPointSource(ctx context.Context, req *GetPointSourceRequest) (*PointSource, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPointSource not implemented")
-}
-func (*UnimplementedPointsServer) SetPointSource(ctx context.Context, req *SetPointSourceRequest) (*PointSource, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetPointSource not implemented")
-}
-func (*UnimplementedPointsServer) DeletePointSource(ctx context.Context, req *DeletePointSourceRequest) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeletePointSource not implemented")
 }
 func (*UnimplementedPointsServer) CountBrandPoints(ctx context.Context, req *CountBrandPointsRequest) (*CountBrandPointsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CountBrandPoints not implemented")
@@ -4099,24 +2653,6 @@ func (*UnimplementedPointsServer) PolygonCountTagPoints(srv Points_PolygonCountT
 }
 func (*UnimplementedPointsServer) SearchRegions(ctx context.Context, req *SearchRegionsRequest) (*SearchRegionsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SearchRegions not implemented")
-}
-func (*UnimplementedPointsServer) SetBrandRegionScoreSetScore(ctx context.Context, req *SetBrandRegionScoreSetScoreRequest) (*BrandRegionScoreSetScore, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetBrandRegionScoreSetScore not implemented")
-}
-func (*UnimplementedPointsServer) SearchBrandRegionScoreSetScores(ctx context.Context, req *SearchBrandRegionScoreSetScoresRequest) (*SearchBrandRegionScoreSetScoresResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchBrandRegionScoreSetScores not implemented")
-}
-func (*UnimplementedPointsServer) SetTagRegionScoreSetScore(ctx context.Context, req *SetTagRegionScoreSetScoreRequest) (*TagRegionScoreSetScore, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetTagRegionScoreSetScore not implemented")
-}
-func (*UnimplementedPointsServer) SearchTagRegionScoreSetScores(ctx context.Context, req *SearchTagRegionScoreSetScoresRequest) (*SearchTagRegionScoreSetScoresResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchTagRegionScoreSetScores not implemented")
-}
-func (*UnimplementedPointsServer) SetRegionGraphEdge(ctx context.Context, req *SetRegionGraphEdgeRequest) (*RegionGraphEdge, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetRegionGraphEdge not implemented")
-}
-func (*UnimplementedPointsServer) SearchRegionGraphEdges(ctx context.Context, req *SearchRegionGraphEdgesRequest) (*SearchRegionGraphEdgesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SearchRegionGraphEdges not implemented")
 }
 
 func RegisterPointsServer(s *grpc.Server, srv PointsServer) {
@@ -4141,24 +2677,6 @@ func _Points_GetBrand_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Points_SetBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetBrandRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetBrand(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetBrand",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetBrand(ctx, req.(*SetBrandRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Points_ListBrands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListBrandsRequest)
 	if err := dec(in); err != nil {
@@ -4177,6 +2695,24 @@ func _Points_ListBrands_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Points_SetBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetBrandRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PointsServer).SetBrand(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.points.v1.Points/SetBrand",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PointsServer).SetBrand(ctx, req.(*SetBrandRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Points_DeleteBrand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteBrandRequest)
 	if err := dec(in); err != nil {
@@ -4191,6 +2727,24 @@ func _Points_DeleteBrand_Handler(srv interface{}, ctx context.Context, dec func(
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PointsServer).DeleteBrand(ctx, req.(*DeleteBrandRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Points_GetPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPointRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PointsServer).GetPoint(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.points.v1.Points/GetPoint",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PointsServer).GetPoint(ctx, req.(*GetPointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -4239,38 +2793,20 @@ func (x *pointsPolygonSearchPointsServer) Recv() (*PolygonSearchPointsRequest, e
 	return m, nil
 }
 
-func _Points_GetPoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPointRequest)
+func _Points_CreatePoint_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreatePointRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(PointsServer).GetPoint(ctx, in)
+		return srv.(PointsServer).CreatePoint(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/GetPoint",
+		FullMethod: "/topos.points.v1.Points/CreatePoint",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).GetPoint(ctx, req.(*GetPointRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_CreatePointWithPointSources_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreatePointWithPointSourcesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).CreatePointWithPointSources(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/CreatePointWithPointSources",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).CreatePointWithPointSources(ctx, req.(*CreatePointWithPointSourcesRequest))
+		return srv.(PointsServer).CreatePoint(ctx, req.(*CreatePointRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -4329,24 +2865,6 @@ func _Points_GetTag_Handler(srv interface{}, ctx context.Context, dec func(inter
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Points_SetTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetTagRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetTag(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetTag",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetTag(ctx, req.(*SetTagRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Points_ListTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTagsRequest)
 	if err := dec(in); err != nil {
@@ -4365,6 +2883,24 @@ func _Points_ListTags_Handler(srv interface{}, ctx context.Context, dec func(int
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Points_SetTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SetTagRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(PointsServer).SetTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.points.v1.Points/SetTag",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(PointsServer).SetTag(ctx, req.(*SetTagRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Points_DeleteTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteTagRequest)
 	if err := dec(in); err != nil {
@@ -4379,60 +2915,6 @@ func _Points_DeleteTag_Handler(srv interface{}, ctx context.Context, dec func(in
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(PointsServer).DeleteTag(ctx, req.(*DeleteTagRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_GetPointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPointSourceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).GetPointSource(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/GetPointSource",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).GetPointSource(ctx, req.(*GetPointSourceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SetPointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetPointSourceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetPointSource(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetPointSource",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetPointSource(ctx, req.(*SetPointSourceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_DeletePointSource_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeletePointSourceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).DeletePointSource(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/DeletePointSource",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).DeletePointSource(ctx, req.(*DeletePointSourceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -4543,114 +3025,6 @@ func _Points_SearchRegions_Handler(srv interface{}, ctx context.Context, dec fun
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Points_SetBrandRegionScoreSetScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetBrandRegionScoreSetScoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetBrandRegionScoreSetScore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetBrandRegionScoreSetScore",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetBrandRegionScoreSetScore(ctx, req.(*SetBrandRegionScoreSetScoreRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SearchBrandRegionScoreSetScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchBrandRegionScoreSetScoresRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SearchBrandRegionScoreSetScores(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SearchBrandRegionScoreSetScores",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SearchBrandRegionScoreSetScores(ctx, req.(*SearchBrandRegionScoreSetScoresRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SetTagRegionScoreSetScore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetTagRegionScoreSetScoreRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetTagRegionScoreSetScore(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetTagRegionScoreSetScore",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetTagRegionScoreSetScore(ctx, req.(*SetTagRegionScoreSetScoreRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SearchTagRegionScoreSetScores_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchTagRegionScoreSetScoresRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SearchTagRegionScoreSetScores(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SearchTagRegionScoreSetScores",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SearchTagRegionScoreSetScores(ctx, req.(*SearchTagRegionScoreSetScoresRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SetRegionGraphEdge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetRegionGraphEdgeRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SetRegionGraphEdge(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SetRegionGraphEdge",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SetRegionGraphEdge(ctx, req.(*SetRegionGraphEdgeRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Points_SearchRegionGraphEdges_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SearchRegionGraphEdgesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(PointsServer).SearchRegionGraphEdges(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.points.v1.Points/SearchRegionGraphEdges",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(PointsServer).SearchRegionGraphEdges(ctx, req.(*SearchRegionGraphEdgesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _Points_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "topos.points.v1.Points",
 	HandlerType: (*PointsServer)(nil),
@@ -4660,28 +3034,28 @@ var _Points_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Points_GetBrand_Handler,
 		},
 		{
-			MethodName: "SetBrand",
-			Handler:    _Points_SetBrand_Handler,
-		},
-		{
 			MethodName: "ListBrands",
 			Handler:    _Points_ListBrands_Handler,
+		},
+		{
+			MethodName: "SetBrand",
+			Handler:    _Points_SetBrand_Handler,
 		},
 		{
 			MethodName: "DeleteBrand",
 			Handler:    _Points_DeleteBrand_Handler,
 		},
 		{
-			MethodName: "SearchPoints",
-			Handler:    _Points_SearchPoints_Handler,
-		},
-		{
 			MethodName: "GetPoint",
 			Handler:    _Points_GetPoint_Handler,
 		},
 		{
-			MethodName: "CreatePointWithPointSources",
-			Handler:    _Points_CreatePointWithPointSources_Handler,
+			MethodName: "SearchPoints",
+			Handler:    _Points_SearchPoints_Handler,
+		},
+		{
+			MethodName: "CreatePoint",
+			Handler:    _Points_CreatePoint_Handler,
 		},
 		{
 			MethodName: "UpdatePoint",
@@ -4696,28 +3070,16 @@ var _Points_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Points_GetTag_Handler,
 		},
 		{
-			MethodName: "SetTag",
-			Handler:    _Points_SetTag_Handler,
-		},
-		{
 			MethodName: "ListTags",
 			Handler:    _Points_ListTags_Handler,
 		},
 		{
+			MethodName: "SetTag",
+			Handler:    _Points_SetTag_Handler,
+		},
+		{
 			MethodName: "DeleteTag",
 			Handler:    _Points_DeleteTag_Handler,
-		},
-		{
-			MethodName: "GetPointSource",
-			Handler:    _Points_GetPointSource_Handler,
-		},
-		{
-			MethodName: "SetPointSource",
-			Handler:    _Points_SetPointSource_Handler,
-		},
-		{
-			MethodName: "DeletePointSource",
-			Handler:    _Points_DeletePointSource_Handler,
 		},
 		{
 			MethodName: "CountBrandPoints",
@@ -4730,30 +3092,6 @@ var _Points_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SearchRegions",
 			Handler:    _Points_SearchRegions_Handler,
-		},
-		{
-			MethodName: "SetBrandRegionScoreSetScore",
-			Handler:    _Points_SetBrandRegionScoreSetScore_Handler,
-		},
-		{
-			MethodName: "SearchBrandRegionScoreSetScores",
-			Handler:    _Points_SearchBrandRegionScoreSetScores_Handler,
-		},
-		{
-			MethodName: "SetTagRegionScoreSetScore",
-			Handler:    _Points_SetTagRegionScoreSetScore_Handler,
-		},
-		{
-			MethodName: "SearchTagRegionScoreSetScores",
-			Handler:    _Points_SearchTagRegionScoreSetScores_Handler,
-		},
-		{
-			MethodName: "SetRegionGraphEdge",
-			Handler:    _Points_SetRegionGraphEdge_Handler,
-		},
-		{
-			MethodName: "SearchRegionGraphEdges",
-			Handler:    _Points_SearchRegionGraphEdges_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
