@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.points.v1',
   syntax='proto3',
   serialized_options=_b('Z\026topos/points/v1;points'),
-  serialized_pb=_b('\n\x1ctopos/points/v1/points.proto\x12\x0ftopos.points.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"I\n\x0c\x46\x65\x61tureStats\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\x12\x0f\n\x07\x61verage\x18\x03 \x01(\x01\x12\x0e\n\x06median\x18\x04 \x01(\x01\"\xbb\x07\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x18\n\x10realestate_email\x18\x05 \x01(\t\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x30\n\x08\x63ontacts\x18\x07 \x03(\x0b\x32\x1e.topos.points.v1.Brand.Contact\x12\r\n\x05naics\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12U\n\x19\x66\x65\x61ture_set_feature_stats\x18\n \x03(\x0b\x32\x32.topos.points.v1.Brand.FeatureSetFeatureStatsEntry\x12I\n\x12region_preferences\x18\x0b \x03(\x0b\x32-.topos.points.v1.Brand.RegionPreferencesEntry\x12\x0c\n\x04tags\x18\x0c \x03(\t\x12\x0f\n\x07\x65xclude\x18\r \x01(\x08\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_locations\x18\x10 \x01(\x03\x12\x1b\n\x13states_of_expansion\x18\x11 \x03(\t\x12\x1b\n\x13states_of_operation\x18\x12 \x03(\t\x12\x0f\n\x07website\x18\x13 \x01(\t\x1aP\n\x07\x43ontact\x12\x11\n\tfull_name\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x1a\\\n\x1b\x46\x65\x61tureSetFeatureStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x1d.topos.points.v1.FeatureStats:\x02\x38\x01\x1aI\n\x0bPreferences\x12\x15\n\rpreferred_gla\x18\x01 \x01(\t\x12\x0e\n\x06inline\x18\x02 \x01(\x01\x12\x13\n\x0bstand_alone\x18\x03 \x01(\x01\x1a\\\n\x16RegionPreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".topos.points.v1.Brand.Preferences:\x02\x38\x01\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\x9f\x01\n\x05Point\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12)\n\x08location\x18\x04 \x01(\x0b\x32\x17.topos.points.v1.LatLng\x12\x19\n\x11\x66ormatted_address\x18\x05 \x01(\t\x12\x0f\n\x07sources\x18\x06 \x03(\t\x12\r\n\x05\x62rand\x18\x07 \x01(\t\x12\x0c\n\x04tags\x18\x08 \x03(\t\"l\n\x03Tag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x01(\x08\x12\x1b\n\x13plural_display_name\x18\x04 \x01(\t\x12\x13\n\x0bis_category\x18\x05 \x01(\x08\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\":\n\x11ListBrandsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"U\n\x12ListBrandsResponse\x12&\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Brand\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"8\n\x0fSetBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1f\n\x0fGetPointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\";\n\x12UpdatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\"\"\n\x12\x44\x65letePointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"h\n\x13SearchPointsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\x0e\n\x06region\x18\x04 \x01(\t\x12\x0b\n\x03tag\x18\x05 \x01(\t\"W\n\x14SearchPointsResponse\x12&\n\x06points\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Point\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\xb3\x01\n\x1aPolygonSearchPointsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12:\n\x10polygon_encoding\x18\x05 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"^\n\x1bPolygonSearchPointsResponse\x12&\n\x06points\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Point\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\x1d\n\rGetTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"2\n\rSetTagRequest\x12!\n\x03tag\x18\x01 \x01(\x0b\x32\x14.topos.points.v1.Tag\"8\n\x0fListTagsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"O\n\x10ListTagsResponse\x12\"\n\x04tags\x18\x01 \x03(\x0b\x32\x14.topos.points.v1.Tag\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\" \n\x10\x44\x65leteTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"9\n\x17\x43ountBrandPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0e\n\x06\x62rands\x18\x02 \x03(\t\"\xa0\x01\n\x18\x43ountBrandPointsResponse\x12P\n\x0c\x62rand_points\x18\x01 \x03(\x0b\x32:.topos.points.v1.CountBrandPointsResponse.BrandPointsEntry\x1a\x32\n\x10\x42randPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x93\x01\n\x1ePolygonCountBrandPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0e\n\x06\x62rands\x18\x02 \x03(\t\x12:\n\x10polygon_encoding\x18\x03 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"\xae\x01\n\x1fPolygonCountBrandPointsResponse\x12W\n\x0c\x62rand_points\x18\x01 \x03(\x0b\x32\x41.topos.points.v1.PolygonCountBrandPointsResponse.BrandPointsEntry\x1a\x32\n\x10\x42randPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"5\n\x15\x43ountTagPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\"\x96\x01\n\x16\x43ountTagPointsResponse\x12J\n\ntag_points\x18\x01 \x03(\x0b\x32\x36.topos.points.v1.CountTagPointsResponse.TagPointsEntry\x1a\x30\n\x0eTagPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8f\x01\n\x1cPolygonCountTagPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\x12:\n\x10polygon_encoding\x18\x03 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"\xa4\x01\n\x1dPolygonCountTagPointsResponse\x12Q\n\ntag_points\x18\x01 \x03(\x0b\x32=.topos.points.v1.PolygonCountTagPointsResponse.TagPointsEntry\x1a\x30\n\x0eTagPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"a\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\r\n\x05\x62rand\x18\x04 \x01(\t\"Z\n\x15SearchRegionsResponse\x12(\n\x07regions\x18\x01 \x03(\x0b\x32\x17.topos.points.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*&\n\x0fPolygonEncoding\x12\x06\n\x02S2\x10\x00\x12\x0b\n\x07GEOJSON\x10\x01\x32\xba\x11\n\x06Points\x12\x61\n\x08GetBrand\x12 .topos.points.v1.GetBrandRequest\x1a\x16.topos.points.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12i\n\nListBrands\x12\".topos.points.v1.ListBrandsRequest\x1a#.topos.points.v1.ListBrandsResponse\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/brands\x12r\n\x08SetBrand\x12 .topos.points.v1.SetBrandRequest\x1a\x16.topos.points.v1.Brand\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{brand.name=brands/*}:set:\x05\x62rand\x12g\n\x0b\x44\x65leteBrand\x12#.topos.points.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12\x61\n\x08GetPoint\x12 .topos.points.v1.GetPointRequest\x1a\x16.topos.points.v1.Point\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=points/*}\x12v\n\x0cSearchPoints\x12$.topos.points.v1.SearchPointsRequest\x1a%.topos.points.v1.SearchPointsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/points:search\x12\x98\x01\n\x13PolygonSearchPoints\x12+.topos.points.v1.PolygonSearchPointsRequest\x1a,.topos.points.v1.PolygonSearchPointsResponse\"$\x82\xd3\xe4\x93\x02\x1e\"\x19/v1/points:polygon_search:\x01*(\x01\x12\x65\n\x0b\x43reatePoint\x12#.topos.points.v1.CreatePointRequest\x1a\x16.topos.points.v1.Point\"\x19\x82\xd3\xe4\x93\x02\x13\"\n/v1/points:\x05point\x12t\n\x0bUpdatePoint\x12#.topos.points.v1.UpdatePointRequest\x1a\x16.topos.points.v1.Point\"(\x82\xd3\xe4\x93\x02\"\x1a\x19/v1/{point.name=points/*}:\x05point\x12g\n\x0b\x44\x65letePoint\x12#.topos.points.v1.DeletePointRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=points/*}\x12Y\n\x06GetTag\x12\x1e.topos.points.v1.GetTagRequest\x1a\x14.topos.points.v1.Tag\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/{name=tags/*}\x12\x61\n\x08ListTags\x12 .topos.points.v1.ListTagsRequest\x1a!.topos.points.v1.ListTagsResponse\"\x10\x82\xd3\xe4\x93\x02\n\x12\x08/v1/tags\x12\x66\n\x06SetTag\x12\x1e.topos.points.v1.SetTagRequest\x1a\x14.topos.points.v1.Tag\"&\x82\xd3\xe4\x93\x02 \"\x19/v1/{tag.name=tags/*}:set:\x03tag\x12\x61\n\tDeleteTag\x12!.topos.points.v1.DeleteTagRequest\x1a\x16.google.protobuf.Empty\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/{name=tags/*}\x12\x81\x01\n\x10\x43ountBrandPoints\x12(.topos.points.v1.CountBrandPointsRequest\x1a).topos.points.v1.CountBrandPointsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/brands:count\x12\xa3\x01\n\x17PolygonCountBrandPoints\x12/.topos.points.v1.PolygonCountBrandPointsRequest\x1a\x30.topos.points.v1.PolygonCountBrandPointsResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/brands:polygon_count:\x01*(\x01\x12y\n\x0e\x43ountTagPoints\x12&.topos.points.v1.CountTagPointsRequest\x1a\'.topos.points.v1.CountTagPointsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v1/tags:count\x12\x9b\x01\n\x15PolygonCountTagPoints\x12-.topos.points.v1.PolygonCountTagPointsRequest\x1a..topos.points.v1.PolygonCountTagPointsResponse\"!\x82\xd3\xe4\x93\x02\x1b\"\x16/v1/tags:polygon_count:\x01*(\x01\x12}\n\rSearchRegions\x12%.topos.points.v1.SearchRegionsRequest\x1a&.topos.points.v1.SearchRegionsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/v1/regions:search:\x01*B\x18Z\x16topos/points/v1;pointsb\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/points/v1/points.proto\x12\x0ftopos.points.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"I\n\x0c\x46\x65\x61tureStats\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\x12\x0f\n\x07\x61verage\x18\x03 \x01(\x01\x12\x0e\n\x06median\x18\x04 \x01(\x01\"\xbb\x07\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x18\n\x10realestate_email\x18\x05 \x01(\t\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x30\n\x08\x63ontacts\x18\x07 \x03(\x0b\x32\x1e.topos.points.v1.Brand.Contact\x12\r\n\x05naics\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12U\n\x19\x66\x65\x61ture_set_feature_stats\x18\n \x03(\x0b\x32\x32.topos.points.v1.Brand.FeatureSetFeatureStatsEntry\x12I\n\x12region_preferences\x18\x0b \x03(\x0b\x32-.topos.points.v1.Brand.RegionPreferencesEntry\x12\x0c\n\x04tags\x18\x0c \x03(\t\x12\x0f\n\x07\x65xclude\x18\r \x01(\x08\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_locations\x18\x10 \x01(\x03\x12\x1b\n\x13states_of_expansion\x18\x11 \x03(\t\x12\x1b\n\x13states_of_operation\x18\x12 \x03(\t\x12\x0f\n\x07website\x18\x13 \x01(\t\x1aP\n\x07\x43ontact\x12\x11\n\tfull_name\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x1a\\\n\x1b\x46\x65\x61tureSetFeatureStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x1d.topos.points.v1.FeatureStats:\x02\x38\x01\x1aI\n\x0bPreferences\x12\x15\n\rpreferred_gla\x18\x01 \x01(\t\x12\x0e\n\x06inline\x18\x02 \x01(\x01\x12\x13\n\x0bstand_alone\x18\x03 \x01(\x01\x1a\\\n\x16RegionPreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x31\n\x05value\x18\x02 \x01(\x0b\x32\".topos.points.v1.Brand.Preferences:\x02\x38\x01\"-\n\x06LatLng\x12\x10\n\x08latitude\x18\x01 \x01(\x01\x12\x11\n\tlongitude\x18\x02 \x01(\x01\"\x9f\x01\n\x05Point\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12)\n\x08location\x18\x04 \x01(\x0b\x32\x17.topos.points.v1.LatLng\x12\x19\n\x11\x66ormatted_address\x18\x05 \x01(\t\x12\x0f\n\x07sources\x18\x06 \x03(\t\x12\r\n\x05\x62rand\x18\x07 \x01(\t\x12\x0c\n\x04tags\x18\x08 \x03(\t\"l\n\x03Tag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x01(\x08\x12\x1b\n\x13plural_display_name\x18\x04 \x01(\t\x12\x13\n\x0bis_category\x18\x05 \x01(\x08\"(\n\x06Region\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08geometry\x18\x02 \x01(\x0c\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\":\n\x11ListBrandsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"U\n\x12ListBrandsResponse\x12&\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Brand\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"8\n\x0fSetBrandRequest\x12%\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Brand\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1f\n\x0fGetPointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\";\n\x12\x43reatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\";\n\x12UpdatePointRequest\x12%\n\x05point\x18\x01 \x01(\x0b\x32\x16.topos.points.v1.Point\"\"\n\x12\x44\x65letePointRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"i\n\x13SearchPointsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12\x0e\n\x06region\x18\x05 \x01(\t\"W\n\x14SearchPointsResponse\x12&\n\x06points\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Point\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\xb3\x01\n\x1aPolygonSearchPointsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\r\n\x05\x62rand\x18\x03 \x01(\t\x12\x0c\n\x04tags\x18\x04 \x03(\t\x12:\n\x10polygon_encoding\x18\x05 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"^\n\x1bPolygonSearchPointsResponse\x12&\n\x06points\x18\x01 \x03(\x0b\x32\x16.topos.points.v1.Point\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\x1d\n\rGetTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"2\n\rSetTagRequest\x12!\n\x03tag\x18\x01 \x01(\x0b\x32\x14.topos.points.v1.Tag\"8\n\x0fListTagsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"O\n\x10ListTagsResponse\x12\"\n\x04tags\x18\x01 \x03(\x0b\x32\x14.topos.points.v1.Tag\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\" \n\x10\x44\x65leteTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"9\n\x17\x43ountBrandPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0e\n\x06\x62rands\x18\x02 \x03(\t\"\xa0\x01\n\x18\x43ountBrandPointsResponse\x12P\n\x0c\x62rand_points\x18\x01 \x03(\x0b\x32:.topos.points.v1.CountBrandPointsResponse.BrandPointsEntry\x1a\x32\n\x10\x42randPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x93\x01\n\x1ePolygonCountBrandPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0e\n\x06\x62rands\x18\x02 \x03(\t\x12:\n\x10polygon_encoding\x18\x03 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"\xae\x01\n\x1fPolygonCountBrandPointsResponse\x12W\n\x0c\x62rand_points\x18\x01 \x03(\x0b\x32\x41.topos.points.v1.PolygonCountBrandPointsResponse.BrandPointsEntry\x1a\x32\n\x10\x42randPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"5\n\x15\x43ountTagPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\"\x96\x01\n\x16\x43ountTagPointsResponse\x12J\n\ntag_points\x18\x01 \x03(\x0b\x32\x36.topos.points.v1.CountTagPointsResponse.TagPointsEntry\x1a\x30\n\x0eTagPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"\x8f\x01\n\x1cPolygonCountTagPointsRequest\x12\x0e\n\x06region\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\x12:\n\x10polygon_encoding\x18\x03 \x01(\x0e\x32 .topos.points.v1.PolygonEncoding\x12\x15\n\rpolygon_chunk\x18\x0f \x01(\x0c\"\xa4\x01\n\x1dPolygonCountTagPointsResponse\x12Q\n\ntag_points\x18\x01 \x03(\x0b\x32=.topos.points.v1.PolygonCountTagPointsResponse.TagPointsEntry\x1a\x30\n\x0eTagPointsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"a\n\x14SearchRegionsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x13\n\x0bregion_type\x18\x03 \x01(\t\x12\r\n\x05\x62rand\x18\x04 \x01(\t\"Z\n\x15SearchRegionsResponse\x12(\n\x07regions\x18\x01 \x03(\x0b\x32\x17.topos.points.v1.Region\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*&\n\x0fPolygonEncoding\x12\x06\n\x02S2\x10\x00\x12\x0b\n\x07GEOJSON\x10\x01\x32\xba\x11\n\x06Points\x12\x61\n\x08GetBrand\x12 .topos.points.v1.GetBrandRequest\x1a\x16.topos.points.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12i\n\nListBrands\x12\".topos.points.v1.ListBrandsRequest\x1a#.topos.points.v1.ListBrandsResponse\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/brands\x12r\n\x08SetBrand\x12 .topos.points.v1.SetBrandRequest\x1a\x16.topos.points.v1.Brand\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{brand.name=brands/*}:set:\x05\x62rand\x12g\n\x0b\x44\x65leteBrand\x12#.topos.points.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12\x61\n\x08GetPoint\x12 .topos.points.v1.GetPointRequest\x1a\x16.topos.points.v1.Point\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=points/*}\x12v\n\x0cSearchPoints\x12$.topos.points.v1.SearchPointsRequest\x1a%.topos.points.v1.SearchPointsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/points:search\x12\x98\x01\n\x13PolygonSearchPoints\x12+.topos.points.v1.PolygonSearchPointsRequest\x1a,.topos.points.v1.PolygonSearchPointsResponse\"$\x82\xd3\xe4\x93\x02\x1e\"\x19/v1/points:polygon_search:\x01*(\x01\x12\x65\n\x0b\x43reatePoint\x12#.topos.points.v1.CreatePointRequest\x1a\x16.topos.points.v1.Point\"\x19\x82\xd3\xe4\x93\x02\x13\"\n/v1/points:\x05point\x12t\n\x0bUpdatePoint\x12#.topos.points.v1.UpdatePointRequest\x1a\x16.topos.points.v1.Point\"(\x82\xd3\xe4\x93\x02\"\x1a\x19/v1/{point.name=points/*}:\x05point\x12g\n\x0b\x44\x65letePoint\x12#.topos.points.v1.DeletePointRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=points/*}\x12Y\n\x06GetTag\x12\x1e.topos.points.v1.GetTagRequest\x1a\x14.topos.points.v1.Tag\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/{name=tags/*}\x12\x61\n\x08ListTags\x12 .topos.points.v1.ListTagsRequest\x1a!.topos.points.v1.ListTagsResponse\"\x10\x82\xd3\xe4\x93\x02\n\x12\x08/v1/tags\x12\x66\n\x06SetTag\x12\x1e.topos.points.v1.SetTagRequest\x1a\x14.topos.points.v1.Tag\"&\x82\xd3\xe4\x93\x02 \"\x19/v1/{tag.name=tags/*}:set:\x03tag\x12\x61\n\tDeleteTag\x12!.topos.points.v1.DeleteTagRequest\x1a\x16.google.protobuf.Empty\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/{name=tags/*}\x12\x81\x01\n\x10\x43ountBrandPoints\x12(.topos.points.v1.CountBrandPointsRequest\x1a).topos.points.v1.CountBrandPointsResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/v1/brands:count\x12\xa3\x01\n\x17PolygonCountBrandPoints\x12/.topos.points.v1.PolygonCountBrandPointsRequest\x1a\x30.topos.points.v1.PolygonCountBrandPointsResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/brands:polygon_count:\x01*(\x01\x12y\n\x0e\x43ountTagPoints\x12&.topos.points.v1.CountTagPointsRequest\x1a\'.topos.points.v1.CountTagPointsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/v1/tags:count\x12\x9b\x01\n\x15PolygonCountTagPoints\x12-.topos.points.v1.PolygonCountTagPointsRequest\x1a..topos.points.v1.PolygonCountTagPointsResponse\"!\x82\xd3\xe4\x93\x02\x1b\"\x16/v1/tags:polygon_count:\x01*(\x01\x12}\n\rSearchRegions\x12%.topos.points.v1.SearchRegionsRequest\x1a&.topos.points.v1.SearchRegionsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/v1/regions:search:\x01*B\x18Z\x16topos/points/v1;pointsb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -45,8 +45,8 @@ _POLYGONENCODING = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=3990,
-  serialized_end=4028,
+  serialized_start=3991,
+  serialized_end=4029,
 )
 _sym_db.RegisterEnumDescriptor(_POLYGONENCODING)
 
@@ -964,14 +964,14 @@ _SEARCHPOINTSREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='region', full_name='topos.points.v1.SearchPointsRequest.region', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='tags', full_name='topos.points.v1.SearchPointsRequest.tags', index=3,
+      number=4, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='tag', full_name='topos.points.v1.SearchPointsRequest.tag', index=4,
+      name='region', full_name='topos.points.v1.SearchPointsRequest.region', index=4,
       number=5, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -990,7 +990,7 @@ _SEARCHPOINTSREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=2000,
-  serialized_end=2104,
+  serialized_end=2105,
 )
 
 
@@ -1027,8 +1027,8 @@ _SEARCHPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2106,
-  serialized_end=2193,
+  serialized_start=2107,
+  serialized_end=2194,
 )
 
 
@@ -1093,8 +1093,8 @@ _POLYGONSEARCHPOINTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2196,
-  serialized_end=2375,
+  serialized_start=2197,
+  serialized_end=2376,
 )
 
 
@@ -1131,8 +1131,8 @@ _POLYGONSEARCHPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2377,
-  serialized_end=2471,
+  serialized_start=2378,
+  serialized_end=2472,
 )
 
 
@@ -1162,8 +1162,8 @@ _GETTAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2473,
-  serialized_end=2502,
+  serialized_start=2474,
+  serialized_end=2503,
 )
 
 
@@ -1193,8 +1193,8 @@ _SETTAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2504,
-  serialized_end=2554,
+  serialized_start=2505,
+  serialized_end=2555,
 )
 
 
@@ -1231,8 +1231,8 @@ _LISTTAGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2556,
-  serialized_end=2612,
+  serialized_start=2557,
+  serialized_end=2613,
 )
 
 
@@ -1269,8 +1269,8 @@ _LISTTAGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2614,
-  serialized_end=2693,
+  serialized_start=2615,
+  serialized_end=2694,
 )
 
 
@@ -1300,8 +1300,8 @@ _DELETETAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2695,
-  serialized_end=2727,
+  serialized_start=2696,
+  serialized_end=2728,
 )
 
 
@@ -1338,8 +1338,8 @@ _COUNTBRANDPOINTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2729,
-  serialized_end=2786,
+  serialized_start=2730,
+  serialized_end=2787,
 )
 
 
@@ -1376,8 +1376,8 @@ _COUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2899,
-  serialized_end=2949,
+  serialized_start=2900,
+  serialized_end=2950,
 )
 
 _COUNTBRANDPOINTSRESPONSE = _descriptor.Descriptor(
@@ -1406,8 +1406,8 @@ _COUNTBRANDPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2789,
-  serialized_end=2949,
+  serialized_start=2790,
+  serialized_end=2950,
 )
 
 
@@ -1458,8 +1458,8 @@ _POLYGONCOUNTBRANDPOINTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2952,
-  serialized_end=3099,
+  serialized_start=2953,
+  serialized_end=3100,
 )
 
 
@@ -1496,8 +1496,8 @@ _POLYGONCOUNTBRANDPOINTSRESPONSE_BRANDPOINTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2899,
-  serialized_end=2949,
+  serialized_start=2900,
+  serialized_end=2950,
 )
 
 _POLYGONCOUNTBRANDPOINTSRESPONSE = _descriptor.Descriptor(
@@ -1526,8 +1526,8 @@ _POLYGONCOUNTBRANDPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3102,
-  serialized_end=3276,
+  serialized_start=3103,
+  serialized_end=3277,
 )
 
 
@@ -1564,8 +1564,8 @@ _COUNTTAGPOINTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3278,
-  serialized_end=3331,
+  serialized_start=3279,
+  serialized_end=3332,
 )
 
 
@@ -1602,8 +1602,8 @@ _COUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3436,
-  serialized_end=3484,
+  serialized_start=3437,
+  serialized_end=3485,
 )
 
 _COUNTTAGPOINTSRESPONSE = _descriptor.Descriptor(
@@ -1632,8 +1632,8 @@ _COUNTTAGPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3334,
-  serialized_end=3484,
+  serialized_start=3335,
+  serialized_end=3485,
 )
 
 
@@ -1684,8 +1684,8 @@ _POLYGONCOUNTTAGPOINTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3487,
-  serialized_end=3630,
+  serialized_start=3488,
+  serialized_end=3631,
 )
 
 
@@ -1722,8 +1722,8 @@ _POLYGONCOUNTTAGPOINTSRESPONSE_TAGPOINTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3436,
-  serialized_end=3484,
+  serialized_start=3437,
+  serialized_end=3485,
 )
 
 _POLYGONCOUNTTAGPOINTSRESPONSE = _descriptor.Descriptor(
@@ -1752,8 +1752,8 @@ _POLYGONCOUNTTAGPOINTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3633,
-  serialized_end=3797,
+  serialized_start=3634,
+  serialized_end=3798,
 )
 
 
@@ -1804,8 +1804,8 @@ _SEARCHREGIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3799,
-  serialized_end=3896,
+  serialized_start=3800,
+  serialized_end=3897,
 )
 
 
@@ -1842,8 +1842,8 @@ _SEARCHREGIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3898,
-  serialized_end=3988,
+  serialized_start=3899,
+  serialized_end=3989,
 )
 
 _BRAND_CONTACT.containing_type = _BRAND
@@ -2232,8 +2232,8 @@ _POINTS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=4031,
-  serialized_end=6265,
+  serialized_start=4032,
+  serialized_end=6266,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBrand',

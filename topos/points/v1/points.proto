@@ -350,11 +350,11 @@ message SearchPointsRequest {
   // Return points with a given brand.
   string brand = 3;
 
-  // Return points within a region.
-  string region = 4;
+  // Return points with the given tags.
+  repeated string tags = 4;
 
-  // Return points with a tag.
-  string tag = 5;
+  // Return points within a region.
+  string region = 5;
 }
 
 message SearchPointsResponse {
