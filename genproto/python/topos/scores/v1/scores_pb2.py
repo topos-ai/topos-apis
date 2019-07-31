@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.scores.v1',
   syntax='proto3',
   serialized_options=_b('Z\026topos/scores/v1;scores'),
-  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n\x05Score\x12\x10\n\x08vertex_a\x18\x01 \x01(\t\x12\x10\n\x08vertex_b\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x01\"M\n\x16ListGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"Z\n\x17ListGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"H\n\x14GetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"K\n\x14SetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x01(\x0b\x32\x16.topos.scores.v1.Score\"R\n\x1a\x42\x61tchSetGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x1d\n\x1b\x42\x61tchSetGraphScoresResponse\"\"\n\x12\x44\x65leteGraphRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"K\n\x17\x44\x65leteGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"u\n\x15TopGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\x12\x10\n\x08vertex_b\x18\x04 \x01(\t\x12\x17\n\x0f\x61scending_order\x18\x05 \x01(\x08\"@\n\x16TopGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\x98\x07\n\x06Scores\x12\x88\x01\n\x0fListGraphScores\x12\'.topos.scores.v1.ListGraphScoresRequest\x1a(.topos.scores.v1.ListGraphScoresResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12r\n\rGetGraphScore\x12%.topos.scores.v1.GetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12}\n\rSetGraphScore\x12%.topos.scores.v1.SetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"-\x82\xd3\xe4\x93\x02\'\"\x1e/v1/{name=graphs/*}/scores:set:\x05score\x12\xa0\x01\n\x13\x42\x61tchSetGraphScores\x12+.topos.scores.v1.BatchSetGraphScoresRequest\x1a,.topos.scores.v1.BatchSetGraphScoresResponse\".\x82\xd3\xe4\x93\x02(\"#/v1/{name=graphs/*}/scores:batchSet:\x01*\x12g\n\x0b\x44\x65leteGraph\x12#.topos.scores.v1.DeleteGraphRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=graphs/*}\x12x\n\x10\x44\x65leteGraphScore\x12(.topos.scores.v1.DeleteGraphScoreRequest\x1a\x16.google.protobuf.Empty\"\"\x82\xd3\xe4\x93\x02\x1c*\x1a/v1/{name=graphs/*}/scores\x12\x89\x01\n\x0eTopGraphScores\x12&.topos.scores.v1.TopGraphScoresRequest\x1a\'.topos.scores.v1.TopGraphScoresResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/{name=graphs/*}/scores:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
+  serialized_pb=_b('\n\x1ctopos/scores/v1/scores.proto\x12\x0ftopos.scores.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\":\n\x05Score\x12\x10\n\x08vertex_a\x18\x01 \x01(\t\x12\x10\n\x08vertex_b\x18\x02 \x01(\t\x12\r\n\x05score\x18\x03 \x01(\x01\"M\n\x16ListGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"Z\n\x17ListGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"H\n\x14GetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"K\n\x14SetGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12%\n\x05score\x18\x02 \x01(\x0b\x32\x16.topos.scores.v1.Score\"R\n\x1a\x42\x61tchSetGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x06scores\x18\x02 \x03(\x0b\x32\x16.topos.scores.v1.Score\"\x1d\n\x1b\x42\x61tchSetGraphScoresResponse\"\"\n\x12\x44\x65leteGraphRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"K\n\x17\x44\x65leteGraphScoreRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08vertex_a\x18\x02 \x01(\t\x12\x10\n\x08vertex_b\x18\x03 \x01(\t\"\x8d\x01\n\x15TopGraphScoresRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x10\n\x08vertex_a\x18\x03 \x01(\t\x12\x10\n\x08vertex_b\x18\x04 \x01(\t\x12\x17\n\x0f\x61scending_order\x18\x05 \x01(\x08\x12\x16\n\x0evertex_filters\x18\x06 \x03(\t\"@\n\x16TopGraphScoresResponse\x12&\n\x06scores\x18\x01 \x03(\x0b\x32\x16.topos.scores.v1.Score2\x98\x07\n\x06Scores\x12\x88\x01\n\x0fListGraphScores\x12\'.topos.scores.v1.ListGraphScoresRequest\x1a(.topos.scores.v1.ListGraphScoresResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12r\n\rGetGraphScore\x12%.topos.scores.v1.GetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/v1/{name=graphs/*}/scores\x12}\n\rSetGraphScore\x12%.topos.scores.v1.SetGraphScoreRequest\x1a\x16.topos.scores.v1.Score\"-\x82\xd3\xe4\x93\x02\'\"\x1e/v1/{name=graphs/*}/scores:set:\x05score\x12\xa0\x01\n\x13\x42\x61tchSetGraphScores\x12+.topos.scores.v1.BatchSetGraphScoresRequest\x1a,.topos.scores.v1.BatchSetGraphScoresResponse\".\x82\xd3\xe4\x93\x02(\"#/v1/{name=graphs/*}/scores:batchSet:\x01*\x12g\n\x0b\x44\x65leteGraph\x12#.topos.scores.v1.DeleteGraphRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=graphs/*}\x12x\n\x10\x44\x65leteGraphScore\x12(.topos.scores.v1.DeleteGraphScoreRequest\x1a\x16.google.protobuf.Empty\"\"\x82\xd3\xe4\x93\x02\x1c*\x1a/v1/{name=graphs/*}/scores\x12\x89\x01\n\x0eTopGraphScores\x12&.topos.scores.v1.TopGraphScoresRequest\x1a\'.topos.scores.v1.TopGraphScoresResponse\"&\x82\xd3\xe4\x93\x02 \x12\x1e/v1/{name=graphs/*}/scores:topB\x18Z\x16topos/scores/v1;scoresb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -420,6 +420,13 @@ _TOPGRAPHSCORESREQUEST = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='vertex_filters', full_name='topos.scores.v1.TopGraphScoresRequest.vertex_filters', index=5,
+      number=6, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -432,8 +439,8 @@ _TOPGRAPHSCORESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=718,
-  serialized_end=835,
+  serialized_start=719,
+  serialized_end=860,
 )
 
 
@@ -463,8 +470,8 @@ _TOPGRAPHSCORESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=837,
-  serialized_end=901,
+  serialized_start=862,
+  serialized_end=926,
 )
 
 _LISTGRAPHSCORESRESPONSE.fields_by_name['scores'].message_type = _SCORE
@@ -570,8 +577,8 @@ _SCORES = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=904,
-  serialized_end=1824,
+  serialized_start=929,
+  serialized_end=1849,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListGraphScores',

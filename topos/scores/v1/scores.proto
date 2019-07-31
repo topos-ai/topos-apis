@@ -166,6 +166,10 @@ message TopGraphScoresRequest {
 
   // Return the scores in ascending order by score value.
   bool ascending_order = 5;
+
+  // If any are specified, only return scores where the name of vertex
+  // unspecified in the query is one of the filter values.
+  repeated string vertex_filters = 6;
 }
 
 message TopGraphScoresResponse {
