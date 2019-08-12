@@ -17,10 +17,10 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='topos/topiary/v1/topiary.proto',
-  package='',
+  package='topos.topiary.v1',
   syntax='proto3',
   serialized_options=_b('Z\030topos/topiary/v1;topiary'),
-  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\"7\n\x0eListIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"7\n\x0fListIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"\x1d\n\x0f\x44\x65leteIDRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x12\n\x10\x44\x65leteIDResponse\"0\n\x15GetIDKeyValuesRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\"(\n\x16GetIDKeyValuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\t\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x90\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12&\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\r.KeyValuePair\x12\x16\n\x0epolygon_length\x18\x04 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x05 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"]\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x16\n\x0epolygon_length\x18\x03 \x01(\x03\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"\x80\x01\n\x10\x43ountIDsResponse\x12\x38\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\".CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\x98\x03\n\x07Topiary\x12.\n\x07ListIDs\x12\x0f.ListIDsRequest\x1a\x10.ListIDsResponse\"\x00\x12>\n\rSetIDPosition\x12\x15.SetIDPositionRequest\x1a\x16.SetIDPositionResponse\x12\x31\n\x08\x44\x65leteID\x12\x10.DeleteIDRequest\x1a\x11.DeleteIDResponse\"\x00\x12\x41\n\x0eGetIDKeyValues\x12\x16.GetIDKeyValuesRequest\x1a\x17.GetIDKeyValuesResponse\x12>\n\rSetIDKeyValue\x12\x15.SetIDKeyValueRequest\x1a\x16.SetIDKeyValueResponse\x12\x34\n\tSearchIDs\x12\x11.SearchIDsRequest\x1a\x12.SearchIDsResponse(\x01\x12\x31\n\x08\x43ountIDs\x12\x10.CountIDsRequest\x1a\x11.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
+  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\x12\x10topos.topiary.v1\"7\n\x0eListIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"7\n\x0fListIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"\x1d\n\x0f\x44\x65leteIDRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x12\n\x10\x44\x65leteIDResponse\"0\n\x15GetIDKeyValuesRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\"(\n\x16GetIDKeyValuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\t\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x89\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x37\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\x1e.topos.topiary.v1.KeyValuePair\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"E\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x15\n\rpolygon_chunk\x18\x03 \x01(\x0c\"\x91\x01\n\x10\x43ountIDsResponse\x12I\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\x33.topos.topiary.v1.CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\x86\x05\n\x07Topiary\x12P\n\x07ListIDs\x12 .topos.topiary.v1.ListIDsRequest\x1a!.topos.topiary.v1.ListIDsResponse\"\x00\x12`\n\rSetIDPosition\x12&.topos.topiary.v1.SetIDPositionRequest\x1a\'.topos.topiary.v1.SetIDPositionResponse\x12S\n\x08\x44\x65leteID\x12!.topos.topiary.v1.DeleteIDRequest\x1a\".topos.topiary.v1.DeleteIDResponse\"\x00\x12\x63\n\x0eGetIDKeyValues\x12\'.topos.topiary.v1.GetIDKeyValuesRequest\x1a(.topos.topiary.v1.GetIDKeyValuesResponse\x12`\n\rSetIDKeyValue\x12&.topos.topiary.v1.SetIDKeyValueRequest\x1a\'.topos.topiary.v1.SetIDKeyValueResponse\x12V\n\tSearchIDs\x12\".topos.topiary.v1.SearchIDsRequest\x1a#.topos.topiary.v1.SearchIDsResponse(\x01\x12S\n\x08\x43ountIDs\x12!.topos.topiary.v1.CountIDsRequest\x1a\".topos.topiary.v1.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
 )
 
 
@@ -28,20 +28,20 @@ DESCRIPTOR = _descriptor.FileDescriptor(
 
 _LISTIDSREQUEST = _descriptor.Descriptor(
   name='ListIDsRequest',
-  full_name='ListIDsRequest',
+  full_name='topos.topiary.v1.ListIDsRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='page_size', full_name='ListIDsRequest.page_size', index=0,
+      name='page_size', full_name='topos.topiary.v1.ListIDsRequest.page_size', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='page_token', full_name='ListIDsRequest.page_token', index=1,
+      name='page_token', full_name='topos.topiary.v1.ListIDsRequest.page_token', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -59,27 +59,27 @@ _LISTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34,
-  serialized_end=89,
+  serialized_start=52,
+  serialized_end=107,
 )
 
 
 _LISTIDSRESPONSE = _descriptor.Descriptor(
   name='ListIDsResponse',
-  full_name='ListIDsResponse',
+  full_name='topos.topiary.v1.ListIDsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='ids', full_name='ListIDsResponse.ids', index=0,
+      name='ids', full_name='topos.topiary.v1.ListIDsResponse.ids', index=0,
       number=1, type=12, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='next_page_token', full_name='ListIDsResponse.next_page_token', index=1,
+      name='next_page_token', full_name='topos.topiary.v1.ListIDsResponse.next_page_token', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -97,27 +97,27 @@ _LISTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=91,
-  serialized_end=146,
+  serialized_start=109,
+  serialized_end=164,
 )
 
 
 _SETIDPOSITIONREQUEST = _descriptor.Descriptor(
   name='SetIDPositionRequest',
-  full_name='SetIDPositionRequest',
+  full_name='topos.topiary.v1.SetIDPositionRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='SetIDPositionRequest.id', index=0,
+      name='id', full_name='topos.topiary.v1.SetIDPositionRequest.id', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='position', full_name='SetIDPositionRequest.position', index=1,
+      name='position', full_name='topos.topiary.v1.SetIDPositionRequest.position', index=1,
       number=2, type=6, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -135,14 +135,14 @@ _SETIDPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=148,
-  serialized_end=200,
+  serialized_start=166,
+  serialized_end=218,
 )
 
 
 _SETIDPOSITIONRESPONSE = _descriptor.Descriptor(
   name='SetIDPositionResponse',
-  full_name='SetIDPositionResponse',
+  full_name='topos.topiary.v1.SetIDPositionResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -159,20 +159,20 @@ _SETIDPOSITIONRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=202,
-  serialized_end=225,
+  serialized_start=220,
+  serialized_end=243,
 )
 
 
 _DELETEIDREQUEST = _descriptor.Descriptor(
   name='DeleteIDRequest',
-  full_name='DeleteIDRequest',
+  full_name='topos.topiary.v1.DeleteIDRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='DeleteIDRequest.id', index=0,
+      name='id', full_name='topos.topiary.v1.DeleteIDRequest.id', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
@@ -190,14 +190,14 @@ _DELETEIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=227,
-  serialized_end=256,
+  serialized_start=245,
+  serialized_end=274,
 )
 
 
 _DELETEIDRESPONSE = _descriptor.Descriptor(
   name='DeleteIDResponse',
-  full_name='DeleteIDResponse',
+  full_name='topos.topiary.v1.DeleteIDResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -214,27 +214,27 @@ _DELETEIDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=258,
-  serialized_end=276,
+  serialized_start=276,
+  serialized_end=294,
 )
 
 
 _GETIDKEYVALUESREQUEST = _descriptor.Descriptor(
   name='GetIDKeyValuesRequest',
-  full_name='GetIDKeyValuesRequest',
+  full_name='topos.topiary.v1.GetIDKeyValuesRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='GetIDKeyValuesRequest.id', index=0,
+      name='id', full_name='topos.topiary.v1.GetIDKeyValuesRequest.id', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='key', full_name='GetIDKeyValuesRequest.key', index=1,
+      name='key', full_name='topos.topiary.v1.GetIDKeyValuesRequest.key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -252,20 +252,20 @@ _GETIDKEYVALUESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=278,
-  serialized_end=326,
+  serialized_start=296,
+  serialized_end=344,
 )
 
 
 _GETIDKEYVALUESRESPONSE = _descriptor.Descriptor(
   name='GetIDKeyValuesResponse',
-  full_name='GetIDKeyValuesResponse',
+  full_name='topos.topiary.v1.GetIDKeyValuesResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='values', full_name='GetIDKeyValuesResponse.values', index=0,
+      name='values', full_name='topos.topiary.v1.GetIDKeyValuesResponse.values', index=0,
       number=1, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -283,41 +283,41 @@ _GETIDKEYVALUESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=328,
-  serialized_end=368,
+  serialized_start=346,
+  serialized_end=386,
 )
 
 
 _SETIDKEYVALUEREQUEST = _descriptor.Descriptor(
   name='SetIDKeyValueRequest',
-  full_name='SetIDKeyValueRequest',
+  full_name='topos.topiary.v1.SetIDKeyValueRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='id', full_name='SetIDKeyValueRequest.id', index=0,
+      name='id', full_name='topos.topiary.v1.SetIDKeyValueRequest.id', index=0,
       number=1, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='key', full_name='SetIDKeyValueRequest.key', index=1,
+      name='key', full_name='topos.topiary.v1.SetIDKeyValueRequest.key', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='values', full_name='SetIDKeyValueRequest.values', index=2,
+      name='values', full_name='topos.topiary.v1.SetIDKeyValueRequest.values', index=2,
       number=3, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='clear', full_name='SetIDKeyValueRequest.clear', index=3,
+      name='clear', full_name='topos.topiary.v1.SetIDKeyValueRequest.clear', index=3,
       number=4, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
@@ -335,14 +335,14 @@ _SETIDKEYVALUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=370,
-  serialized_end=448,
+  serialized_start=388,
+  serialized_end=466,
 )
 
 
 _SETIDKEYVALUERESPONSE = _descriptor.Descriptor(
   name='SetIDKeyValueResponse',
-  full_name='SetIDKeyValueResponse',
+  full_name='topos.topiary.v1.SetIDKeyValueResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
@@ -359,27 +359,27 @@ _SETIDKEYVALUERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=450,
-  serialized_end=473,
+  serialized_start=468,
+  serialized_end=491,
 )
 
 
 _KEYVALUEPAIR = _descriptor.Descriptor(
   name='KeyValuePair',
-  full_name='KeyValuePair',
+  full_name='topos.topiary.v1.KeyValuePair',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='KeyValuePair.key', index=0,
+      name='key', full_name='topos.topiary.v1.KeyValuePair.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='value', full_name='KeyValuePair.value', index=1,
+      name='value', full_name='topos.topiary.v1.KeyValuePair.value', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -397,138 +397,41 @@ _KEYVALUEPAIR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=475,
-  serialized_end=517,
+  serialized_start=493,
+  serialized_end=535,
 )
 
 
 _SEARCHIDSREQUEST = _descriptor.Descriptor(
   name='SearchIDsRequest',
-  full_name='SearchIDsRequest',
+  full_name='topos.topiary.v1.SearchIDsRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='page_size', full_name='SearchIDsRequest.page_size', index=0,
+      name='page_size', full_name='topos.topiary.v1.SearchIDsRequest.page_size', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='page_token', full_name='SearchIDsRequest.page_token', index=1,
+      name='page_token', full_name='topos.topiary.v1.SearchIDsRequest.page_token', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='key_value_pairs', full_name='SearchIDsRequest.key_value_pairs', index=2,
+      name='key_value_pairs', full_name='topos.topiary.v1.SearchIDsRequest.key_value_pairs', index=2,
       number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='polygon_length', full_name='SearchIDsRequest.polygon_length', index=3,
-      number=4, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='polygon_chunk', full_name='SearchIDsRequest.polygon_chunk', index=4,
-      number=5, type=12, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b(""),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=520,
-  serialized_end=664,
-)
-
-
-_SEARCHIDSRESPONSE = _descriptor.Descriptor(
-  name='SearchIDsResponse',
-  full_name='SearchIDsResponse',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='ids', full_name='SearchIDsResponse.ids', index=0,
-      number=1, type=12, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='next_page_token', full_name='SearchIDsResponse.next_page_token', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=666,
-  serialized_end=723,
-)
-
-
-_COUNTIDSREQUEST = _descriptor.Descriptor(
-  name='CountIDsRequest',
-  full_name='CountIDsRequest',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='key', full_name='CountIDsRequest.key', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='values', full_name='CountIDsRequest.values', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='polygon_length', full_name='CountIDsRequest.polygon_length', index=2,
-      number=3, type=3, cpp_type=2, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='polygon_chunk', full_name='CountIDsRequest.polygon_chunk', index=3,
+      name='polygon_chunk', full_name='topos.topiary.v1.SearchIDsRequest.polygon_chunk', index=3,
       number=4, type=12, cpp_type=9, label=1,
       has_default_value=False, default_value=_b(""),
       message_type=None, enum_type=None, containing_type=None,
@@ -546,27 +449,110 @@ _COUNTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=725,
-  serialized_end=818,
+  serialized_start=538,
+  serialized_end=675,
 )
 
 
-_COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
-  name='ValueCountsEntry',
-  full_name='CountIDsResponse.ValueCountsEntry',
+_SEARCHIDSRESPONSE = _descriptor.Descriptor(
+  name='SearchIDsResponse',
+  full_name='topos.topiary.v1.SearchIDsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='key', full_name='CountIDsResponse.ValueCountsEntry.key', index=0,
+      name='ids', full_name='topos.topiary.v1.SearchIDsResponse.ids', index=0,
+      number=1, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='next_page_token', full_name='topos.topiary.v1.SearchIDsResponse.next_page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=677,
+  serialized_end=734,
+)
+
+
+_COUNTIDSREQUEST = _descriptor.Descriptor(
+  name='CountIDsRequest',
+  full_name='topos.topiary.v1.CountIDsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='topos.topiary.v1.CountIDsRequest.key', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='value', full_name='CountIDsResponse.ValueCountsEntry.value', index=1,
+      name='values', full_name='topos.topiary.v1.CountIDsRequest.values', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='polygon_chunk', full_name='topos.topiary.v1.CountIDsRequest.polygon_chunk', index=2,
+      number=3, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=736,
+  serialized_end=805,
+)
+
+
+_COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
+  name='ValueCountsEntry',
+  full_name='topos.topiary.v1.CountIDsResponse.ValueCountsEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='topos.topiary.v1.CountIDsResponse.ValueCountsEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='topos.topiary.v1.CountIDsResponse.ValueCountsEntry.value', index=1,
       number=2, type=3, cpp_type=2, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -584,19 +570,19 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=899,
-  serialized_end=949,
+  serialized_start=903,
+  serialized_end=953,
 )
 
 _COUNTIDSRESPONSE = _descriptor.Descriptor(
   name='CountIDsResponse',
-  full_name='CountIDsResponse',
+  full_name='topos.topiary.v1.CountIDsResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='value_counts', full_name='CountIDsResponse.value_counts', index=0,
+      name='value_counts', full_name='topos.topiary.v1.CountIDsResponse.value_counts', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -614,8 +600,8 @@ _COUNTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=821,
-  serialized_end=949,
+  serialized_start=808,
+  serialized_end=953,
 )
 
 _SEARCHIDSREQUEST.fields_by_name['key_value_pairs'].message_type = _KEYVALUEPAIR
@@ -641,98 +627,98 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 ListIDsRequest = _reflection.GeneratedProtocolMessageType('ListIDsRequest', (_message.Message,), {
   'DESCRIPTOR' : _LISTIDSREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:ListIDsRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.ListIDsRequest)
   })
 _sym_db.RegisterMessage(ListIDsRequest)
 
 ListIDsResponse = _reflection.GeneratedProtocolMessageType('ListIDsResponse', (_message.Message,), {
   'DESCRIPTOR' : _LISTIDSRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:ListIDsResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.ListIDsResponse)
   })
 _sym_db.RegisterMessage(ListIDsResponse)
 
 SetIDPositionRequest = _reflection.GeneratedProtocolMessageType('SetIDPositionRequest', (_message.Message,), {
   'DESCRIPTOR' : _SETIDPOSITIONREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SetIDPositionRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SetIDPositionRequest)
   })
 _sym_db.RegisterMessage(SetIDPositionRequest)
 
 SetIDPositionResponse = _reflection.GeneratedProtocolMessageType('SetIDPositionResponse', (_message.Message,), {
   'DESCRIPTOR' : _SETIDPOSITIONRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SetIDPositionResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SetIDPositionResponse)
   })
 _sym_db.RegisterMessage(SetIDPositionResponse)
 
 DeleteIDRequest = _reflection.GeneratedProtocolMessageType('DeleteIDRequest', (_message.Message,), {
   'DESCRIPTOR' : _DELETEIDREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:DeleteIDRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.DeleteIDRequest)
   })
 _sym_db.RegisterMessage(DeleteIDRequest)
 
 DeleteIDResponse = _reflection.GeneratedProtocolMessageType('DeleteIDResponse', (_message.Message,), {
   'DESCRIPTOR' : _DELETEIDRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:DeleteIDResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.DeleteIDResponse)
   })
 _sym_db.RegisterMessage(DeleteIDResponse)
 
 GetIDKeyValuesRequest = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesRequest', (_message.Message,), {
   'DESCRIPTOR' : _GETIDKEYVALUESREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:GetIDKeyValuesRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.GetIDKeyValuesRequest)
   })
 _sym_db.RegisterMessage(GetIDKeyValuesRequest)
 
 GetIDKeyValuesResponse = _reflection.GeneratedProtocolMessageType('GetIDKeyValuesResponse', (_message.Message,), {
   'DESCRIPTOR' : _GETIDKEYVALUESRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:GetIDKeyValuesResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.GetIDKeyValuesResponse)
   })
 _sym_db.RegisterMessage(GetIDKeyValuesResponse)
 
 SetIDKeyValueRequest = _reflection.GeneratedProtocolMessageType('SetIDKeyValueRequest', (_message.Message,), {
   'DESCRIPTOR' : _SETIDKEYVALUEREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SetIDKeyValueRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SetIDKeyValueRequest)
   })
 _sym_db.RegisterMessage(SetIDKeyValueRequest)
 
 SetIDKeyValueResponse = _reflection.GeneratedProtocolMessageType('SetIDKeyValueResponse', (_message.Message,), {
   'DESCRIPTOR' : _SETIDKEYVALUERESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SetIDKeyValueResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SetIDKeyValueResponse)
   })
 _sym_db.RegisterMessage(SetIDKeyValueResponse)
 
 KeyValuePair = _reflection.GeneratedProtocolMessageType('KeyValuePair', (_message.Message,), {
   'DESCRIPTOR' : _KEYVALUEPAIR,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:KeyValuePair)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.KeyValuePair)
   })
 _sym_db.RegisterMessage(KeyValuePair)
 
 SearchIDsRequest = _reflection.GeneratedProtocolMessageType('SearchIDsRequest', (_message.Message,), {
   'DESCRIPTOR' : _SEARCHIDSREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SearchIDsRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SearchIDsRequest)
   })
 _sym_db.RegisterMessage(SearchIDsRequest)
 
 SearchIDsResponse = _reflection.GeneratedProtocolMessageType('SearchIDsResponse', (_message.Message,), {
   'DESCRIPTOR' : _SEARCHIDSRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:SearchIDsResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SearchIDsResponse)
   })
 _sym_db.RegisterMessage(SearchIDsResponse)
 
 CountIDsRequest = _reflection.GeneratedProtocolMessageType('CountIDsRequest', (_message.Message,), {
   'DESCRIPTOR' : _COUNTIDSREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:CountIDsRequest)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.CountIDsRequest)
   })
 _sym_db.RegisterMessage(CountIDsRequest)
 
@@ -741,12 +727,12 @@ CountIDsResponse = _reflection.GeneratedProtocolMessageType('CountIDsResponse', 
   'ValueCountsEntry' : _reflection.GeneratedProtocolMessageType('ValueCountsEntry', (_message.Message,), {
     'DESCRIPTOR' : _COUNTIDSRESPONSE_VALUECOUNTSENTRY,
     '__module__' : 'topos.topiary.v1.topiary_pb2'
-    # @@protoc_insertion_point(class_scope:CountIDsResponse.ValueCountsEntry)
+    # @@protoc_insertion_point(class_scope:topos.topiary.v1.CountIDsResponse.ValueCountsEntry)
     })
   ,
   'DESCRIPTOR' : _COUNTIDSRESPONSE,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
-  # @@protoc_insertion_point(class_scope:CountIDsResponse)
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.CountIDsResponse)
   })
 _sym_db.RegisterMessage(CountIDsResponse)
 _sym_db.RegisterMessage(CountIDsResponse.ValueCountsEntry)
@@ -757,16 +743,16 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY._options = None
 
 _TOPIARY = _descriptor.ServiceDescriptor(
   name='Topiary',
-  full_name='Topiary',
+  full_name='topos.topiary.v1.Topiary',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=952,
-  serialized_end=1360,
+  serialized_start=956,
+  serialized_end=1602,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListIDs',
-    full_name='Topiary.ListIDs',
+    full_name='topos.topiary.v1.Topiary.ListIDs',
     index=0,
     containing_service=None,
     input_type=_LISTIDSREQUEST,
@@ -775,7 +761,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='SetIDPosition',
-    full_name='Topiary.SetIDPosition',
+    full_name='topos.topiary.v1.Topiary.SetIDPosition',
     index=1,
     containing_service=None,
     input_type=_SETIDPOSITIONREQUEST,
@@ -784,7 +770,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='DeleteID',
-    full_name='Topiary.DeleteID',
+    full_name='topos.topiary.v1.Topiary.DeleteID',
     index=2,
     containing_service=None,
     input_type=_DELETEIDREQUEST,
@@ -793,7 +779,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='GetIDKeyValues',
-    full_name='Topiary.GetIDKeyValues',
+    full_name='topos.topiary.v1.Topiary.GetIDKeyValues',
     index=3,
     containing_service=None,
     input_type=_GETIDKEYVALUESREQUEST,
@@ -802,7 +788,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='SetIDKeyValue',
-    full_name='Topiary.SetIDKeyValue',
+    full_name='topos.topiary.v1.Topiary.SetIDKeyValue',
     index=4,
     containing_service=None,
     input_type=_SETIDKEYVALUEREQUEST,
@@ -811,7 +797,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='SearchIDs',
-    full_name='Topiary.SearchIDs',
+    full_name='topos.topiary.v1.Topiary.SearchIDs',
     index=5,
     containing_service=None,
     input_type=_SEARCHIDSREQUEST,
@@ -820,7 +806,7 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   ),
   _descriptor.MethodDescriptor(
     name='CountIDs',
-    full_name='Topiary.CountIDs',
+    full_name='topos.topiary.v1.Topiary.CountIDs',
     index=6,
     containing_service=None,
     input_type=_COUNTIDSREQUEST,

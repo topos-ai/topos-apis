@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package topos.topiary.v1;
+
 option go_package = "topos/topiary/v1;topiary";
 
 service Topiary {
@@ -88,8 +90,8 @@ message SearchIDsRequest {
   // The key/value pairs to search by.
   repeated KeyValuePair key_value_pairs = 3;
 
-  int64 polygon_length = 4;
-  bytes polygon_chunk = 5;
+  // A chunk of bytes of the encoded S2 polygon.
+  bytes polygon_chunk = 4;
 }
 
 message SearchIDsResponse {
@@ -109,8 +111,8 @@ message CountIDsRequest {
   // given key will be counted.
   repeated string values = 2;
 
-  int64 polygon_length = 3;
-  bytes polygon_chunk = 4;
+  // A chunk of bytes of the encoded S2 polygon.
+  bytes polygon_chunk = 3;
 }
 
 message CountIDsResponse { map<string, int64> value_counts = 1; }

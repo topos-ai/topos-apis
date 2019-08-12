@@ -15,37 +15,37 @@ class TopiaryStub(object):
       channel: A grpc.Channel.
     """
     self.ListIDs = channel.unary_unary(
-        '/Topiary/ListIDs',
+        '/topos.topiary.v1.Topiary/ListIDs',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsResponse.FromString,
         )
     self.SetIDPosition = channel.unary_unary(
-        '/Topiary/SetIDPosition',
+        '/topos.topiary.v1.Topiary/SetIDPosition',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionResponse.FromString,
         )
     self.DeleteID = channel.unary_unary(
-        '/Topiary/DeleteID',
+        '/topos.topiary.v1.Topiary/DeleteID',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.DeleteIDResponse.FromString,
         )
     self.GetIDKeyValues = channel.unary_unary(
-        '/Topiary/GetIDKeyValues',
+        '/topos.topiary.v1.Topiary/GetIDKeyValues',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDKeyValuesResponse.FromString,
         )
     self.SetIDKeyValue = channel.unary_unary(
-        '/Topiary/SetIDKeyValue',
+        '/topos.topiary.v1.Topiary/SetIDKeyValue',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDKeyValueRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDKeyValueResponse.FromString,
         )
     self.SearchIDs = channel.stream_unary(
-        '/Topiary/SearchIDs',
+        '/topos.topiary.v1.Topiary/SearchIDs',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsResponse.FromString,
         )
     self.CountIDs = channel.stream_unary(
-        '/Topiary/CountIDs',
+        '/topos.topiary.v1.Topiary/CountIDs',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.CountIDsRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.CountIDsResponse.FromString,
         )
@@ -144,5 +144,5 @@ def add_TopiaryServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'Topiary', rpc_method_handlers)
+      'topos.topiary.v1.Topiary', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
