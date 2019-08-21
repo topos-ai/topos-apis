@@ -176,3 +176,32 @@ message TopGraphScoresResponse {
   // Scores in decending order by score value.
   repeated Score scores = 1;
 }
+
+message BigQueryIngestRequest {
+  // The name of the graph.
+  string name = 1;
+
+  // The GCP project name.
+  string project = 2;
+
+  // The BigQuery dataset name.
+  string dataset = 3;
+
+  // The BigQuery table name.
+  string table = 4;
+
+  // Then name of the origin vertex column.
+  string vertex_a_column = 5;
+
+  // Then name of the destination vertex column.
+  string vertex_b_column = 6;
+
+  // Then name of the score column.
+  string score_column = 7;
+
+  // The origin vertex format.
+  string vertex_a_format = 8;
+
+  // The destination vertex format.
+  string vertex_b_format = 9;
+}
