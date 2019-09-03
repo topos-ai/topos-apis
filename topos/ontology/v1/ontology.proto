@@ -1,0 +1,277 @@
+syntax = "proto3";
+
+package topos.ontology.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service Ontology {
+  // Gets a brand.
+  rpc GetBrand(GetBrandRequest) returns (Brand) {
+    option (google.api.http) = {
+      get : "/v1/{name=brands/*}"
+    };
+  }
+
+  // Gets a number of brands.
+  rpc GetBrandsBulk(GetBrandsBulkRequest) returns (GetBrandsBulkResponse) {
+    option (google.api.http) = {
+      post : "/v1/brands/bulk"
+      body : "names"
+    };
+  }
+
+  // Lists brands.
+  rpc ListBrands(ListBrandsRequest) returns (ListBrandsResponse) {
+    option (google.api.http) = {
+      get : "/v1/brands"
+    };
+  }
+
+  // Searches brands.
+  rpc SearchBrands(SearchBrandsRequest) returns (SearchBrandsResponse) {
+    option (google.api.http) = {
+      post : "/v1/brands/search"
+      body : "*"
+    };
+  }
+
+  // Sets a brand.
+  rpc SetBrand(SetBrandRequest) returns (Brand) {
+    option (google.api.http) = {
+      post : "/v1/{brand.name=brands/*}:set"
+      body : "brand"
+    };
+  }
+
+  // Deletes a brand.
+  rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=brands/*}"
+    };
+  }
+
+  // Gets a tag.
+  rpc GetTag(GetTagRequest) returns (Tag) {
+    option (google.api.http) = {
+      get : "/v1/{name=tags/*}"
+    };
+  }
+
+  // Lists tags.
+  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
+    option (google.api.http) = {
+      get : "/v1/tags"
+    };
+  }
+
+  // Sets a tag.
+  rpc SetTag(SetTagRequest) returns (Tag) {
+    option (google.api.http) = {
+      post : "/v1/{tag.name=tags/*}:set"
+      body : "tag"
+    };
+  }
+
+  // Deletes a tag.
+  rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=tags/*}"
+    };
+  }
+}
+
+message FeatureStats {
+  double min = 1;
+  double max = 2;
+  double average = 3;
+  double median = 4;
+}
+
+message Brand {
+  // The name of the point brand. It must have the format `"brands/{brand}"`.
+  // `{brand}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
+
+  // The display name of the brand.
+  string display_name = 2;
+
+  // The formatted, single-line address of the brand's headquarters.
+  string formatted_address = 3;
+
+  // The email of the brand.
+  string email = 4;
+
+  // The realestate email of the brand.
+  string realestate_email = 5;
+
+  // The phone number of the brand.
+  string phone_number = 6;
+
+  message Contact {
+
+    // The full name of the contact.
+    string full_name = 1;
+
+    // The title of the contact.
+    string title = 2;
+
+    // The phonenumber of the contact.
+    string email = 3;
+
+    // The phone number of the contact.
+    string phone_number = 4;
+
+    // The region that a contact covers
+    string region = 5;
+  }
+
+  // The contacts for the brand.
+  repeated Contact contacts = 7;
+
+  // The [2017 NAICS
+  // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of the
+  // brand.
+  string naics = 8;
+
+  // The postal code of the brand's headquarters.
+  string postal_code = 9;
+
+  // The feature set statistics for this brand's locations.
+  map<string, FeatureStats> feature_set_feature_stats = 10;
+
+  message Preferences {
+
+    // The prefered square footage of the brand.
+    string preferred_gla = 1;
+
+    // The percentage of locations where this brand shares a building.
+    double inline = 2;
+
+    // The percentage of locations where this brand occupies a stand-alone
+    // building.
+    double stand_alone = 3;
+  }
+
+  // The brand's location preferences by region.
+  map<string, Preferences> region_preferences = 11;
+
+  // A list of brand tags.
+  repeated string tags = 12;
+
+  // Exclude the brand from results.
+  bool exclude = 13;
+
+  // The creation timestamp of the brand.
+  google.protobuf.Timestamp create_time = 14;
+
+  // The last update timestamp of an brand.
+  google.protobuf.Timestamp update_time = 15;
+
+  int64 total_locations = 16;
+  repeated string states_of_expansion = 17;
+  repeated string states_of_operation = 18;
+  string website = 19;
+
+  // The name of a parent brand, if existing
+  string parent_name = 20;
+
+  // Preferred cotenants for a particular brand
+  repeated string preferred_cotenants = 21;
+
+  // Preferred road types for a brand
+  repeated int64 preferred_road_type = 22;
+
+  // Preferred location type for a brand
+  repeated string location_types_considered = 23;
+
+}
+
+message Tag {
+  // The name of the tag. It must have the format `"tags/{tag}"`. `{tag}`
+  // must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+(-[a-z\d]+)*$`
+  string name = 1;
+
+  // The display name of the tag.
+  string display_name = 2;
+
+  // Exclude tag from results.
+  bool exclude = 3;
+
+  // The plural display name of the tag.
+  string plural_display_name = 4;
+
+  // Is the tag a category.
+  bool is_category = 5;
+
+  // The name of a parent tag, if existing
+  string parent_name = 6;
+}
+
+message GetBrandRequest { string name = 1; }
+
+message GetBrandsBulkRequest { repeated string names = 1; }
+
+message SearchBrandsRequest {
+  string display_name = 1;
+  repeated string tags = 2;
+  repeated int32 preferred_gla = 3;
+  repeated string tenancy_prefs = 4;
+  repeated string regions_of_expansion = 5;
+  repeated string regions_of_operation = 6;
+}
+
+message ListBrandsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 2;
+}
+
+message ListBrandsResponse {
+  repeated Brand brands = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message SetBrandRequest { Brand brand = 1; }
+
+message DeleteBrandRequest { string name = 1; }
+
+message GetTagRequest { string name = 1; }
+
+message SetTagRequest { Tag tag = 1; }
+
+message ListTagsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 2;
+}
+
+message ListTagsResponse {
+  repeated Tag tags = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message DeleteTagRequest { string name = 1; }
+
+message GetBrandsBulkResponse {
+  repeated Brand brands = 1;
+}
+
+message SearchBrandsResponse {
+  repeated Brand brands = 1;
+}
