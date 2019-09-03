@@ -18,7 +18,7 @@ service Ontology {
   rpc GetBrandsBulk(GetBrandsBulkRequest) returns (GetBrandsBulkResponse) {
     option (google.api.http) = {
       post : "/v1/brands/bulk"
-      body : "names"
+      body : "*"
     };
   }
 
