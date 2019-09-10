@@ -34,7 +34,7 @@ service Locations {
   rpc GetRegionFeatureSetValues(GetRegionFeatureSetValuesRequest)
       returns (GetRegionFeatureSetValuesResponse) {
     option (google.api.http) = {
-      get : "/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSet/*}/"
+      get : "/v1/{region=regionTypes/*/regions/*}/{feature_set=featureSets/*}/"
             "values"
     };
   }
