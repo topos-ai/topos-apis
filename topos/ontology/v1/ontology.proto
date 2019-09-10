@@ -14,6 +14,13 @@ service Ontology {
     };
   }
 
+  // Gets features for a brand.
+  rpc GetBrandFeatures(GetBrandFeaturesRequest) returns (GetBrandFeaturesResponse) {
+    option (google.api.http) = {
+      get : "/v1/features/{name=brands/*}"
+    };
+  }
+
   // Gets a number of brands.
   rpc GetBrandsBulk(GetBrandsBulkRequest) returns (GetBrandsBulkResponse) {
     option (google.api.http) = {
@@ -215,6 +222,8 @@ message Tag {
 
 message GetBrandRequest { string name = 1; }
 
+message GetBrandFeaturesRequest { string name = 1; }
+
 message GetBrandsBulkRequest { repeated string names = 1; }
 
 message SearchBrandsRequest {
@@ -267,6 +276,10 @@ message ListTagsResponse {
 }
 
 message DeleteTagRequest { string name = 1; }
+
+message GetBrandFeaturesResponse {
+  map<string, FeatureStats> features = 1;
+}
 
 message GetBrandsBulkResponse {
   repeated Brand brands = 1;
