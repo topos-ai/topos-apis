@@ -41,7 +41,7 @@ pkg-python: includes/googleapis genproto/python
 			'{}'/*.proto" \;'
 
 pkg-descriptors: includes/googleapis
-	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.10.1 sh -c \
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.10.2 sh -c \
 	'set -ex \
 		&& apk add protobuf-dev \
 		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "protoc \
