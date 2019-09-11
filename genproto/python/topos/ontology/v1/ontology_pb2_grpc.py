@@ -20,6 +20,11 @@ class OntologyStub(object):
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandRequest.SerializeToString,
         response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.Brand.FromString,
         )
+    self.GetBrandFeatures = channel.unary_unary(
+        '/topos.ontology.v1.Ontology/GetBrandFeatures',
+        request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesRequest.SerializeToString,
+        response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesResponse.FromString,
+        )
     self.GetBrandsBulk = channel.unary_unary(
         '/topos.ontology.v1.Ontology/GetBrandsBulk',
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsBulkRequest.SerializeToString,
@@ -73,6 +78,13 @@ class OntologyServicer(object):
 
   def GetBrand(self, request, context):
     """Gets a brand.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetBrandFeatures(self, request, context):
+    """Gets features for a brand.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -148,6 +160,11 @@ def add_OntologyServicer_to_server(servicer, server):
           servicer.GetBrand,
           request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandRequest.FromString,
           response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.Brand.SerializeToString,
+      ),
+      'GetBrandFeatures': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBrandFeatures,
+          request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesRequest.FromString,
+          response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesResponse.SerializeToString,
       ),
       'GetBrandsBulk': grpc.unary_unary_rpc_method_handler(
           servicer.GetBrandsBulk,
