@@ -38,52 +38,6 @@ service Points {
     };
   }
 
-  // Gets a point.
-  rpc GetPoint(GetPointRequest) returns (Point) {
-    option (google.api.http) = {
-      get : "/v1/{name=points/*}"
-    };
-  }
-
-  // Search points.
-  rpc SearchPoints(SearchPointsRequest) returns (SearchPointsResponse) {
-    option (google.api.http) = {
-      get : "/v1/points:search"
-    };
-  }
-
-  // Search points.
-  rpc PolygonSearchPoints(stream PolygonSearchPointsRequest)
-      returns (PolygonSearchPointsResponse) {
-    option (google.api.http) = {
-      post : "/v1/points:polygon_search"
-      body : "*"
-    };
-  }
-
-  // Creates a point with the given point sources.
-  rpc CreatePoint(CreatePointRequest) returns (Point) {
-    option (google.api.http) = {
-      post : "/v1/points"
-      body : "point"
-    };
-  }
-
-  // Updates an existing point.
-  rpc UpdatePoint(UpdatePointRequest) returns (Point) {
-    option (google.api.http) = {
-      put : "/v1/{point.name=points/*}"
-      body : "point"
-    };
-  }
-
-  // Deletes a point.
-  rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=points/*}"
-    };
-  }
-
   // Gets a tag.
   rpc GetTag(GetTagRequest) returns (Tag) {
     option (google.api.http) = {
@@ -110,6 +64,44 @@ service Points {
   rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/v1/{name=tags/*}"
+    };
+  }
+
+  // Gets a point.
+  rpc GetPoint(GetPointRequest) returns (Point) {
+    option (google.api.http) = {
+      get : "/v1/{name=points/*}"
+    };
+  }
+
+  // Search points.
+  rpc SearchPoints(SearchPointsRequest) returns (SearchPointsResponse) {
+    option (google.api.http) = {
+      get : "/v1/points:search"
+    };
+  }
+
+  // Search points.
+  rpc PolygonSearchPoints(stream PolygonSearchPointsRequest)
+      returns (PolygonSearchPointsResponse) {
+    option (google.api.http) = {
+      post : "/v1/points:polygon_search"
+      body : "*"
+    };
+  }
+
+  // Sets a point.
+  rpc SetPoint(SetPointRequest) returns (Point) {
+    option (google.api.http) = {
+      put : "/v1/{point.name=points/*}"
+      body : "point"
+    };
+  }
+
+  // Deletes a point.
+  rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete : "/v1/{name=points/*}"
     };
   }
 
@@ -265,12 +257,6 @@ message Point {
   // The formatted, single-line address.
   string formatted_address = 5;
 
-  // The names of the point's sources. Each name must have the format
-  // `"sources/{source}/pointSources/{point_source}"`. `{source}` must match
-  // the [regular expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`. {point_source} is the remote point source ID.
-  repeated string sources = 6;
-
   // The name of the point's brand if it has one.
   string brand = 7;
 
@@ -334,9 +320,7 @@ message DeleteBrandRequest { string name = 1; }
 
 message GetPointRequest { string name = 1; }
 
-message CreatePointRequest { Point point = 1; }
-
-message UpdatePointRequest { Point point = 1; }
+message SetPointRequest { Point point = 1; }
 
 message DeletePointRequest { string name = 1; }
 
