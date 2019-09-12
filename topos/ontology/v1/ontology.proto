@@ -195,6 +195,12 @@ message Brand {
   // Preferred location type for a brand
   repeated string location_types_considered = 23;
 
+  // Pricepoint for a brand
+  string pricing = 24;
+
+  // "Vibes" of a brand
+  repeated string attributes = 25;
+
 }
 
 message Tag {
