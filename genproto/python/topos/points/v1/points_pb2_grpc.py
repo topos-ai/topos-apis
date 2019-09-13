@@ -70,6 +70,11 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsResponse.FromString,
         )
+    self.RadiusSearchPoints = channel.unary_unary(
+        '/topos.points.v1.Points/RadiusSearchPoints',
+        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.RadiusSearchPointsRequest.SerializeToString,
+        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.RadiusSearchPointsResponse.FromString,
+        )
     self.SetPoint = channel.unary_unary(
         '/topos.points.v1.Points/SetPoint',
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SetPointRequest.SerializeToString,
@@ -188,6 +193,13 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def RadiusSearchPoints(self, request, context):
+    """Search points.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SetPoint(self, request, context):
     """Sets a point.
     """
@@ -294,6 +306,11 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.PolygonSearchPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonSearchPointsResponse.SerializeToString,
+      ),
+      'RadiusSearchPoints': grpc.unary_unary_rpc_method_handler(
+          servicer.RadiusSearchPoints,
+          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.RadiusSearchPointsRequest.FromString,
+          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.RadiusSearchPointsResponse.SerializeToString,
       ),
       'SetPoint': grpc.unary_unary_rpc_method_handler(
           servicer.SetPoint,

@@ -90,6 +90,14 @@ service Points {
     };
   }
 
+  // Search points.
+  rpc RadiusSearchPoints(RadiusSearchPointsRequest)
+      returns (RadiusSearchPointsResponse) {
+    option (google.api.http) = {
+      get : "/v1/points:radius_search"
+    };
+  }
+
   // Sets a point.
   rpc SetPoint(SetPointRequest) returns (Point) {
     option (google.api.http) = {
@@ -370,6 +378,34 @@ message PolygonSearchPointsRequest {
 }
 
 message PolygonSearchPointsResponse {
+  repeated Point points = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
+
+message RadiusSearchPointsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous search request, if any.
+  string page_token = 2;
+
+  // Return points with a given brand.
+  string brand = 3;
+
+  // Return points with the given tags.
+  repeated string tags = 4;
+
+  // An S2 leaf cell ID to use as the center of the area inclosed by the radius.
+  LatLng center = 5;
+
+  // A radius in meters.
+  double radius = 6;
+}
+
+message RadiusSearchPointsResponse {
   repeated Point points = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
