@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.topiary.v1',
   syntax='proto3',
   serialized_options=_b('Z\030topos/topiary/v1;topiary'),
-  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\x12\x10topos.topiary.v1\"7\n\x0eListIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"7\n\x0fListIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"\x1d\n\x0f\x44\x65leteIDRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x12\n\x10\x44\x65leteIDResponse\"0\n\x15GetIDKeyValuesRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\"(\n\x16GetIDKeyValuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\t\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x89\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x37\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\x1e.topos.topiary.v1.KeyValuePair\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"E\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x15\n\rpolygon_chunk\x18\x03 \x01(\x0c\"\x91\x01\n\x10\x43ountIDsResponse\x12I\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\x33.topos.topiary.v1.CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\x86\x05\n\x07Topiary\x12P\n\x07ListIDs\x12 .topos.topiary.v1.ListIDsRequest\x1a!.topos.topiary.v1.ListIDsResponse\"\x00\x12`\n\rSetIDPosition\x12&.topos.topiary.v1.SetIDPositionRequest\x1a\'.topos.topiary.v1.SetIDPositionResponse\x12S\n\x08\x44\x65leteID\x12!.topos.topiary.v1.DeleteIDRequest\x1a\".topos.topiary.v1.DeleteIDResponse\"\x00\x12\x63\n\x0eGetIDKeyValues\x12\'.topos.topiary.v1.GetIDKeyValuesRequest\x1a(.topos.topiary.v1.GetIDKeyValuesResponse\x12`\n\rSetIDKeyValue\x12&.topos.topiary.v1.SetIDKeyValueRequest\x1a\'.topos.topiary.v1.SetIDKeyValueResponse\x12V\n\tSearchIDs\x12\".topos.topiary.v1.SearchIDsRequest\x1a#.topos.topiary.v1.SearchIDsResponse(\x01\x12S\n\x08\x43ountIDs\x12!.topos.topiary.v1.CountIDsRequest\x1a\".topos.topiary.v1.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
+  serialized_pb=_b('\n\x1etopos/topiary/v1/topiary.proto\x12\x10topos.topiary.v1\"7\n\x0eListIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"7\n\x0fListIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"4\n\x14SetIDPositionRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x06\"\x17\n\x15SetIDPositionResponse\"\x1d\n\x0f\x44\x65leteIDRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\"\x12\n\x10\x44\x65leteIDResponse\"0\n\x15GetIDKeyValuesRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\"(\n\x16GetIDKeyValuesResponse\x12\x0e\n\x06values\x18\x01 \x03(\t\"N\n\x14SetIDKeyValueRequest\x12\n\n\x02id\x18\x01 \x01(\x0c\x12\x0b\n\x03key\x18\x02 \x01(\t\x12\x0e\n\x06values\x18\x03 \x03(\t\x12\r\n\x05\x63lear\x18\x04 \x01(\x08\"\x17\n\x15SetIDKeyValueResponse\"*\n\x0cKeyValuePair\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"\x89\x01\n\x10SearchIDsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x37\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\x1e.topos.topiary.v1.KeyValuePair\x12\x15\n\rpolygon_chunk\x18\x04 \x01(\x0c\"9\n\x11SearchIDsResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\x9e\x01\n\x1cSearchIDsWithinRadiusRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x37\n\x0fkey_value_pairs\x18\x03 \x03(\x0b\x32\x1e.topos.topiary.v1.KeyValuePair\x12\x0e\n\x06\x63\x65nter\x18\x04 \x01(\x06\x12\x0e\n\x06radius\x18\x05 \x01(\x01\"E\n\x1dSearchIDsWithinRadiusResponse\x12\x0b\n\x03ids\x18\x01 \x03(\x0c\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"E\n\x0f\x43ountIDsRequest\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x0e\n\x06values\x18\x02 \x03(\t\x12\x15\n\rpolygon_chunk\x18\x03 \x01(\x0c\"\x91\x01\n\x10\x43ountIDsResponse\x12I\n\x0cvalue_counts\x18\x01 \x03(\x0b\x32\x33.topos.topiary.v1.CountIDsResponse.ValueCountsEntry\x1a\x32\n\x10ValueCountsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\x32\x80\x06\n\x07Topiary\x12P\n\x07ListIDs\x12 .topos.topiary.v1.ListIDsRequest\x1a!.topos.topiary.v1.ListIDsResponse\"\x00\x12`\n\rSetIDPosition\x12&.topos.topiary.v1.SetIDPositionRequest\x1a\'.topos.topiary.v1.SetIDPositionResponse\x12S\n\x08\x44\x65leteID\x12!.topos.topiary.v1.DeleteIDRequest\x1a\".topos.topiary.v1.DeleteIDResponse\"\x00\x12\x63\n\x0eGetIDKeyValues\x12\'.topos.topiary.v1.GetIDKeyValuesRequest\x1a(.topos.topiary.v1.GetIDKeyValuesResponse\x12`\n\rSetIDKeyValue\x12&.topos.topiary.v1.SetIDKeyValueRequest\x1a\'.topos.topiary.v1.SetIDKeyValueResponse\x12V\n\tSearchIDs\x12\".topos.topiary.v1.SearchIDsRequest\x1a#.topos.topiary.v1.SearchIDsResponse(\x01\x12x\n\x15SearchIDsWithinRadius\x12..topos.topiary.v1.SearchIDsWithinRadiusRequest\x1a/.topos.topiary.v1.SearchIDsWithinRadiusResponse\x12S\n\x08\x43ountIDs\x12!.topos.topiary.v1.CountIDsRequest\x1a\".topos.topiary.v1.CountIDsResponse(\x01\x42\x1aZ\x18topos/topiary/v1;topiaryb\x06proto3')
 )
 
 
@@ -492,6 +492,103 @@ _SEARCHIDSRESPONSE = _descriptor.Descriptor(
 )
 
 
+_SEARCHIDSWITHINRADIUSREQUEST = _descriptor.Descriptor(
+  name='SearchIDsWithinRadiusRequest',
+  full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='page_size', full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest.page_size', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='page_token', full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest.page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='key_value_pairs', full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest.key_value_pairs', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='center', full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest.center', index=3,
+      number=4, type=6, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='radius', full_name='topos.topiary.v1.SearchIDsWithinRadiusRequest.radius', index=4,
+      number=5, type=1, cpp_type=5, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=737,
+  serialized_end=895,
+)
+
+
+_SEARCHIDSWITHINRADIUSRESPONSE = _descriptor.Descriptor(
+  name='SearchIDsWithinRadiusResponse',
+  full_name='topos.topiary.v1.SearchIDsWithinRadiusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ids', full_name='topos.topiary.v1.SearchIDsWithinRadiusResponse.ids', index=0,
+      number=1, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='next_page_token', full_name='topos.topiary.v1.SearchIDsWithinRadiusResponse.next_page_token', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=897,
+  serialized_end=966,
+)
+
+
 _COUNTIDSREQUEST = _descriptor.Descriptor(
   name='CountIDsRequest',
   full_name='topos.topiary.v1.CountIDsRequest',
@@ -532,8 +629,8 @@ _COUNTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=736,
-  serialized_end=805,
+  serialized_start=968,
+  serialized_end=1037,
 )
 
 
@@ -570,8 +667,8 @@ _COUNTIDSRESPONSE_VALUECOUNTSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=903,
-  serialized_end=953,
+  serialized_start=1135,
+  serialized_end=1185,
 )
 
 _COUNTIDSRESPONSE = _descriptor.Descriptor(
@@ -600,11 +697,12 @@ _COUNTIDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=808,
-  serialized_end=953,
+  serialized_start=1040,
+  serialized_end=1185,
 )
 
 _SEARCHIDSREQUEST.fields_by_name['key_value_pairs'].message_type = _KEYVALUEPAIR
+_SEARCHIDSWITHINRADIUSREQUEST.fields_by_name['key_value_pairs'].message_type = _KEYVALUEPAIR
 _COUNTIDSRESPONSE_VALUECOUNTSENTRY.containing_type = _COUNTIDSRESPONSE
 _COUNTIDSRESPONSE.fields_by_name['value_counts'].message_type = _COUNTIDSRESPONSE_VALUECOUNTSENTRY
 DESCRIPTOR.message_types_by_name['ListIDsRequest'] = _LISTIDSREQUEST
@@ -620,6 +718,8 @@ DESCRIPTOR.message_types_by_name['SetIDKeyValueResponse'] = _SETIDKEYVALUERESPON
 DESCRIPTOR.message_types_by_name['KeyValuePair'] = _KEYVALUEPAIR
 DESCRIPTOR.message_types_by_name['SearchIDsRequest'] = _SEARCHIDSREQUEST
 DESCRIPTOR.message_types_by_name['SearchIDsResponse'] = _SEARCHIDSRESPONSE
+DESCRIPTOR.message_types_by_name['SearchIDsWithinRadiusRequest'] = _SEARCHIDSWITHINRADIUSREQUEST
+DESCRIPTOR.message_types_by_name['SearchIDsWithinRadiusResponse'] = _SEARCHIDSWITHINRADIUSRESPONSE
 DESCRIPTOR.message_types_by_name['CountIDsRequest'] = _COUNTIDSREQUEST
 DESCRIPTOR.message_types_by_name['CountIDsResponse'] = _COUNTIDSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -715,6 +815,20 @@ SearchIDsResponse = _reflection.GeneratedProtocolMessageType('SearchIDsResponse'
   })
 _sym_db.RegisterMessage(SearchIDsResponse)
 
+SearchIDsWithinRadiusRequest = _reflection.GeneratedProtocolMessageType('SearchIDsWithinRadiusRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHIDSWITHINRADIUSREQUEST,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SearchIDsWithinRadiusRequest)
+  })
+_sym_db.RegisterMessage(SearchIDsWithinRadiusRequest)
+
+SearchIDsWithinRadiusResponse = _reflection.GeneratedProtocolMessageType('SearchIDsWithinRadiusResponse', (_message.Message,), {
+  'DESCRIPTOR' : _SEARCHIDSWITHINRADIUSRESPONSE,
+  '__module__' : 'topos.topiary.v1.topiary_pb2'
+  # @@protoc_insertion_point(class_scope:topos.topiary.v1.SearchIDsWithinRadiusResponse)
+  })
+_sym_db.RegisterMessage(SearchIDsWithinRadiusResponse)
+
 CountIDsRequest = _reflection.GeneratedProtocolMessageType('CountIDsRequest', (_message.Message,), {
   'DESCRIPTOR' : _COUNTIDSREQUEST,
   '__module__' : 'topos.topiary.v1.topiary_pb2'
@@ -747,8 +861,8 @@ _TOPIARY = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=956,
-  serialized_end=1602,
+  serialized_start=1188,
+  serialized_end=1956,
   methods=[
   _descriptor.MethodDescriptor(
     name='ListIDs',
@@ -805,9 +919,18 @@ _TOPIARY = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='SearchIDsWithinRadius',
+    full_name='topos.topiary.v1.Topiary.SearchIDsWithinRadius',
+    index=6,
+    containing_service=None,
+    input_type=_SEARCHIDSWITHINRADIUSREQUEST,
+    output_type=_SEARCHIDSWITHINRADIUSRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='CountIDs',
     full_name='topos.topiary.v1.Topiary.CountIDs',
-    index=6,
+    index=7,
     containing_service=None,
     input_type=_COUNTIDSREQUEST,
     output_type=_COUNTIDSRESPONSE,

@@ -24,6 +24,10 @@ service Topiary {
   // Searches IDs.
   rpc SearchIDs(stream SearchIDsRequest) returns (SearchIDsResponse);
 
+  // Searches IDs within a given radius.
+  rpc SearchIDsWithinRadius(SearchIDsWithinRadiusRequest)
+      returns (SearchIDsWithinRadiusResponse);
+
   // Counts IDs.
   rpc CountIDs(stream CountIDsRequest) returns (CountIDsResponse);
 }
@@ -95,6 +99,31 @@ message SearchIDsRequest {
 }
 
 message SearchIDsResponse {
+  repeated bytes ids = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the search.
+  string next_page_token = 2;
+}
+
+message SearchIDsWithinRadiusRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous search request, if any.
+  string page_token = 2;
+
+  // The key/value pairs to search by.
+  repeated KeyValuePair key_value_pairs = 3;
+
+  // An S2 leaf cell ID to use as the center of the area inclosed by the radius.
+  fixed64 center = 4;
+
+  // A radius in radians.
+  double radius = 5;
+}
+
+message SearchIDsWithinRadiusResponse {
   repeated bytes ids = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more

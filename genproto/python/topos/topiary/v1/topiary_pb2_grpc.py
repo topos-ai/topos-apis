@@ -44,6 +44,11 @@ class TopiaryStub(object):
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsResponse.FromString,
         )
+    self.SearchIDsWithinRadius = channel.unary_unary(
+        '/topos.topiary.v1.Topiary/SearchIDsWithinRadius',
+        request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsWithinRadiusRequest.SerializeToString,
+        response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsWithinRadiusResponse.FromString,
+        )
     self.CountIDs = channel.stream_unary(
         '/topos.topiary.v1.Topiary/CountIDs',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.CountIDsRequest.SerializeToString,
@@ -97,6 +102,13 @@ class TopiaryServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SearchIDsWithinRadius(self, request, context):
+    """Searches IDs within a given radius.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def CountIDs(self, request_iterator, context):
     """Counts IDs.
     """
@@ -136,6 +148,11 @@ def add_TopiaryServicer_to_server(servicer, server):
           servicer.SearchIDs,
           request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsRequest.FromString,
           response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsResponse.SerializeToString,
+      ),
+      'SearchIDsWithinRadius': grpc.unary_unary_rpc_method_handler(
+          servicer.SearchIDsWithinRadius,
+          request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsWithinRadiusRequest.FromString,
+          response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SearchIDsWithinRadiusResponse.SerializeToString,
       ),
       'CountIDs': grpc.stream_unary_rpc_method_handler(
           servicer.CountIDs,
