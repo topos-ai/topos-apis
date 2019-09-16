@@ -132,8 +132,8 @@ message Brand {
     // The phone number of the contact.
     string phone_number = 4;
 
-    // The region that a contact covers
-    string region = 5;
+    // The regions that a contact covers
+    repeated string regions = 5;
   }
 
   // The contacts for the brand.
@@ -200,6 +200,9 @@ message Brand {
 
   // "Vibes" of a brand
   repeated string attributes = 25;
+
+  // description of a brand
+  string description = 26;
 
 }
 
