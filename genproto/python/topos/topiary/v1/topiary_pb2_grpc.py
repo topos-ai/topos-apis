@@ -19,6 +19,11 @@ class TopiaryStub(object):
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsRequest.SerializeToString,
         response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsResponse.FromString,
         )
+    self.GetIDPosition = channel.unary_unary(
+        '/topos.topiary.v1.Topiary/GetIDPosition',
+        request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDPositionRequest.SerializeToString,
+        response_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDPositionResponse.FromString,
+        )
     self.SetIDPosition = channel.unary_unary(
         '/topos.topiary.v1.Topiary/SetIDPosition',
         request_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.SetIDPositionRequest.SerializeToString,
@@ -62,6 +67,13 @@ class TopiaryServicer(object):
 
   def ListIDs(self, request, context):
     """Lists IDs.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetIDPosition(self, request, context):
+    """Get an ID's position.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -123,6 +135,11 @@ def add_TopiaryServicer_to_server(servicer, server):
           servicer.ListIDs,
           request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsRequest.FromString,
           response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.ListIDsResponse.SerializeToString,
+      ),
+      'GetIDPosition': grpc.unary_unary_rpc_method_handler(
+          servicer.GetIDPosition,
+          request_deserializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDPositionRequest.FromString,
+          response_serializer=topos_dot_topiary_dot_v1_dot_topiary__pb2.GetIDPositionResponse.SerializeToString,
       ),
       'SetIDPosition': grpc.unary_unary_rpc_method_handler(
           servicer.SetIDPosition,

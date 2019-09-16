@@ -9,6 +9,9 @@ service Topiary {
   // Lists IDs.
   rpc ListIDs(ListIDsRequest) returns (ListIDsResponse) {}
 
+  // Get an ID's position.
+  rpc GetIDPosition(GetIDPositionRequest) returns (GetIDPositionResponse);
+
   // Set a position key balue.
   rpc SetIDPosition(SetIDPositionRequest) returns (SetIDPositionResponse);
 
@@ -46,6 +49,14 @@ message ListIDsResponse {
   // Token to retrieve the next page of results, or empty if there are no more
   // results in the search.
   string next_page_token = 2;
+}
+
+message GetIDPositionRequest { bytes id = 1; }
+
+message GetIDPositionResponse {
+
+  // An S2 leaf cell ID.
+  fixed64 position = 1;
 }
 
 message SetIDPositionRequest {
