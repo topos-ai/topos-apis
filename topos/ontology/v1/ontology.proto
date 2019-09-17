@@ -204,6 +204,10 @@ message Brand {
   // description of a brand
   string description = 26;
 
+  // neighborhood correlations for a brand
+  repeated string neighborhood_correlations = 27;
+
+
 }
 
 message Tag {
