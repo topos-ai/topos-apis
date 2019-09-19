@@ -207,6 +207,14 @@ message Brand {
   // neighborhood correlations for a brand
   repeated string neighborhood_correlations = 27;
 
+  // the minimum distance in meters to another brand location
+  int64 minimum_distance = 28;
+
+  // the approximate size of a brand - large, medium, small, etc.
+  string brand_size = 29;
+
+  // the income bracket a brand targets - high, low, etc
+  string income_iqr = 30;
 
 }
 
