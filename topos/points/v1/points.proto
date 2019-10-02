@@ -270,6 +270,9 @@ message Point {
 
   // A list of point tags.
   repeated string tags = 8;
+
+  // Count of points with this point's brand.
+  int64 location_count = 9;
 }
 
 message Tag {
