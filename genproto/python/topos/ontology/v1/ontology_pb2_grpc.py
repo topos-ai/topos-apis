@@ -25,6 +25,16 @@ class OntologyStub(object):
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesRequest.SerializeToString,
         response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesResponse.FromString,
         )
+    self.GetBrandContacts = channel.unary_unary(
+        '/topos.ontology.v1.Ontology/GetBrandContacts',
+        request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandContactsRequest.SerializeToString,
+        response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandContactsResponse.FromString,
+        )
+    self.GetBrandsMinDistance = channel.unary_unary(
+        '/topos.ontology.v1.Ontology/GetBrandsMinDistance',
+        request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsMinDistanceRequest.SerializeToString,
+        response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsMinDistanceResponse.FromString,
+        )
     self.GetBrandsBulk = channel.unary_unary(
         '/topos.ontology.v1.Ontology/GetBrandsBulk',
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsBulkRequest.SerializeToString,
@@ -85,6 +95,20 @@ class OntologyServicer(object):
 
   def GetBrandFeatures(self, request, context):
     """Gets features for a brand.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetBrandContacts(self, request, context):
+    """Gets features for a brand.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetBrandsMinDistance(self, request, context):
+    """Gets min distanct for a number brand.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -165,6 +189,16 @@ def add_OntologyServicer_to_server(servicer, server):
           servicer.GetBrandFeatures,
           request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesRequest.FromString,
           response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandFeaturesResponse.SerializeToString,
+      ),
+      'GetBrandContacts': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBrandContacts,
+          request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandContactsRequest.FromString,
+          response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandContactsResponse.SerializeToString,
+      ),
+      'GetBrandsMinDistance': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBrandsMinDistance,
+          request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsMinDistanceRequest.FromString,
+          response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.GetBrandsMinDistanceResponse.SerializeToString,
       ),
       'GetBrandsBulk': grpc.unary_unary_rpc_method_handler(
           servicer.GetBrandsBulk,
