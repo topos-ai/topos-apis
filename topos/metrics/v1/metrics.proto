@@ -1,13 +1,13 @@
 syntax = "proto3";
 
-package topos.features.v1;
+package topos.metrics.v1;
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "topos/features/v1;features";
+option go_package = "topos/metrics/v1;metrics";
 
-service Features {
+service Metrics {
   // Gets a feature set.
   rpc GetFeatureSet(GetFeatureSetRequest) returns (FeatureSet) {
     option (google.api.http) = {
