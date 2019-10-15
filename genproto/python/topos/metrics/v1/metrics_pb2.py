@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.metrics.v1',
   syntax='proto3',
   serialized_options=_b('Z\030topos/metrics/v1;metrics'),
-  serialized_pb=_b('\n\x1etopos/metrics/v1/metrics.proto\x12\x10topos.metrics.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x98\x01\n\nFeatureSet\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x18\n\x10include_features\x18\x04 \x01(\x08\x12+\n\x08\x66\x65\x61tures\x18\x05 \x03(\x0b\x32\x19.topos.metrics.v1.Feature\"J\n\x14GetFeatureSetRequest\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\x12\x18\n\x10include_features\x18\x02 \x01(\x08\"I\n\x14SetFeatureSetRequest\x12\x31\n\x0b\x66\x65\x61ture_set\x18\x01 \x01(\x0b\x32\x1c.topos.metrics.v1.FeatureSet\"3\n\x17\x44\x65leteFeatureSetRequest\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\"C\n\x11\x46\x65\x61tureSetFeature\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\"?\n\x16ListFeatureSetsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"f\n\x17ListFeatureSetsResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12\x32\n\x0c\x66\x65\x61ture_sets\x18\x02 \x03(\x0b\x32\x1c.topos.metrics.v1.FeatureSet\"Z\n\x07\x46\x65\x61ture\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\")\n\x11GetFeatureRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\"?\n\x11SetFeatureRequest\x12*\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0b\x32\x19.topos.metrics.v1.Feature\",\n\x14\x44\x65leteFeatureRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\"<\n\x13ListFeaturesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"\\\n\x14ListFeaturesResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12+\n\x08\x66\x65\x61tures\x18\x02 \x03(\x0b\x32\x19.topos.metrics.v1.Feature\"\xb6\x01\n\x0c\x46\x65\x61tureValue\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x31\n\x0bregion_type\x18\x02 \x01(\x0e\x32\x1c.topos.metrics.v1.RegionType\x12\x11\n\tregion_id\x18\x03 \x01(\t\x12-\n\ttime_type\x18\x04 \x01(\x0e\x32\x1a.topos.metrics.v1.TimeType\x12\x0c\n\x04time\x18\x05 \x01(\t\x12\r\n\x05value\x18\x06 \x01(\x01\"O\n\x16SetFeatureValueRequest\x12\x35\n\rfeature_value\x18\x01 \x01(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"U\n\x1b\x42\x61tchSetFeatureValueRequest\x12\x36\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"R\n\x19\x44\x65leteFeatureValueRequest\x12\x35\n\rfeature_value\x18\x01 \x01(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"\xf2\x01\n\x1aSearchFeatureValuesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x03 \x01(\t\x12\x31\n\x0bregion_type\x18\x04 \x01(\x0e\x32\x1c.topos.metrics.v1.RegionType\x12\x11\n\tregion_id\x18\x05 \x01(\t\x12-\n\ttime_type\x18\x06 \x01(\x0e\x32\x1a.topos.metrics.v1.TimeType\x12\x11\n\ttime_from\x18\x07 \x01(\t\x12\x0f\n\x07time_to\x18\x08 \x01(\t\"f\n\x1bSearchFeatureValuesResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12.\n\x06values\x18\x02 \x03(\x0b\x32\x1e.topos.metrics.v1.FeatureValue*9\n\nRegionType\x12\x1b\n\x17REGION_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nUS_ZIPCODE\x10\x01*d\n\x08TimeType\x12\x19\n\x15TIME_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05\x45POCH\x10\x01\x12\x08\n\x04YEAR\x10\x02\x12\t\n\x05MONTH\x10\x03\x12\x07\n\x03\x44\x41Y\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\n\n\x06MINUTE\x10\x06\x32\x9c\x10\n\x07Metrics\x12w\n\rGetFeatureSet\x12&.topos.metrics.v1.GetFeatureSetRequest\x1a\x1c.topos.metrics.v1.FeatureSet\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/{name=featureSets/*}\x12\xa0\x01\n\rSetFeatureSet\x12&.topos.metrics.v1.SetFeatureSetRequest\x1a\x1c.topos.metrics.v1.FeatureSet\"I\x82\xd3\xe4\x93\x02\x43\"4/v1/{feature_set.feature_set_name=featureSets/*}:set:\x0b\x66\x65\x61ture_set\x12\x83\x01\n\x10\x44\x65leteFeatureSet\x12).topos.metrics.v1.DeleteFeatureSetRequest\x1a\x16.google.protobuf.Empty\",\x82\xd3\xe4\x93\x02&*$/v1/{feature_set_name=featureSets/*}\x12\xeb\x01\n\x14SetFeatureSetFeature\x12#.topos.metrics.v1.FeatureSetFeature\x1a#.topos.metrics.v1.FeatureSetFeature\"\x88\x01\x82\xd3\xe4\x93\x02\x81\x01\"j/v1/{feature_set_feature.feature_set_name=featureSets/*}/{feature_set_feature.feature_name=features/*}:set:\x13\x66\x65\x61ture_set_feature\x12\xc6\x01\n\x17\x44\x65leteFeatureSetFeature\x12#.topos.metrics.v1.FeatureSetFeature\x1a\x16.google.protobuf.Empty\"n\x82\xd3\xe4\x93\x02h*f/v1/{feature_set_feature.feature_set_name=featureSets/*}/{feature_set_feature.feature_name=features/*}\x12\x7f\n\x0fListFeatureSets\x12(.topos.metrics.v1.ListFeatureSetsRequest\x1a).topos.metrics.v1.ListFeatureSetsResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/featureSets\x12s\n\x0cListFeatures\x12%.topos.metrics.v1.ListFeaturesRequest\x1a&.topos.metrics.v1.ListFeaturesResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/v1/features\x12k\n\nGetFeature\x12#.topos.metrics.v1.GetFeatureRequest\x1a\x19.topos.metrics.v1.Feature\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/{name=features/*}\x12\x88\x01\n\nSetFeature\x12#.topos.metrics.v1.SetFeatureRequest\x1a\x19.topos.metrics.v1.Feature\":\x82\xd3\xe4\x93\x02\x34\")/v1/{feature.feature_name=features/*}:set:\x07\x66\x65\x61ture\x12v\n\rDeleteFeature\x12&.topos.metrics.v1.DeleteFeatureRequest\x1a\x16.google.protobuf.Empty\"%\x82\xd3\xe4\x93\x02\x1f*\x1d/v1/{feature_name=features/*}\x12\xa8\x01\n\x0fSetFeatureValue\x12(.topos.metrics.v1.SetFeatureValueRequest\x1a\x1e.topos.metrics.v1.FeatureValue\"K\x82\xd3\xe4\x93\x02\x45\"4/v1/{feature_value.feature_name=featureValues/*}:set:\rfeature_value\x12\x84\x01\n\x14\x42\x61tchSetFeatureValue\x12-.topos.metrics.v1.BatchSetFeatureValueRequest\x1a\x16.google.protobuf.Empty\"%\x82\xd3\xe4\x93\x02\x1f\"\x1a/v1/featureValues:batchSet:\x01*\x12\x85\x01\n\x12\x44\x65leteFeatureValue\x12+.topos.metrics.v1.DeleteFeatureValueRequest\x1a\x16.google.protobuf.Empty\"*\x82\xd3\xe4\x93\x02$*\"/v1/{feature_name=featureValues/*}\x12\x97\x01\n\x13SearchFeatureValues\x12,.topos.metrics.v1.SearchFeatureValuesRequest\x1a-.topos.metrics.v1.SearchFeatureValuesResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/featureValues:search:\x01*B\x1aZ\x18topos/metrics/v1;metricsb\x06proto3')
+  serialized_pb=_b('\n\x1etopos/metrics/v1/metrics.proto\x12\x10topos.metrics.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"\x8c\x01\n\nFeatureSet\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x18\n\x10include_features\x18\x04 \x01(\x08\x12+\n\x08\x66\x65\x61tures\x18\x05 \x03(\x0b\x32\x19.topos.metrics.v1.Feature\">\n\x14GetFeatureSetRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x18\n\x10include_features\x18\x02 \x01(\x08\"I\n\x14SetFeatureSetRequest\x12\x31\n\x0b\x66\x65\x61ture_set\x18\x01 \x01(\x0b\x32\x1c.topos.metrics.v1.FeatureSet\"N\n\x1c\x43reateFeatureRelationRequest\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\"\'\n\x17\x44\x65leteFeatureSetRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"C\n\x11\x46\x65\x61tureSetFeature\x12\x18\n\x10\x66\x65\x61ture_set_name\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\"?\n\x16ListFeatureSetsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"f\n\x17ListFeatureSetsResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12\x32\n\x0c\x66\x65\x61ture_sets\x18\x02 \x03(\x0b\x32\x1c.topos.metrics.v1.FeatureSet\"R\n\x07\x46\x65\x61ture\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\"!\n\x11GetFeatureRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"?\n\x11SetFeatureRequest\x12*\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0b\x32\x19.topos.metrics.v1.Feature\"$\n\x14\x44\x65leteFeatureRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"<\n\x13ListFeaturesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"\\\n\x14ListFeaturesResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12+\n\x08\x66\x65\x61tures\x18\x02 \x03(\x0b\x32\x19.topos.metrics.v1.Feature\"\xb6\x01\n\x0c\x46\x65\x61tureValue\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x31\n\x0bregion_type\x18\x02 \x01(\x0e\x32\x1c.topos.metrics.v1.RegionType\x12\x11\n\tregion_id\x18\x03 \x01(\t\x12-\n\ttime_type\x18\x04 \x01(\x0e\x32\x1a.topos.metrics.v1.TimeType\x12\x0c\n\x04time\x18\x05 \x01(\t\x12\r\n\x05value\x18\x06 \x01(\x01\"O\n\x16SetFeatureValueRequest\x12\x35\n\rfeature_value\x18\x01 \x01(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"U\n\x1b\x42\x61tchSetFeatureValueRequest\x12\x36\n\x0e\x66\x65\x61ture_values\x18\x01 \x03(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"R\n\x19\x44\x65leteFeatureValueRequest\x12\x35\n\rfeature_value\x18\x01 \x01(\x0b\x32\x1e.topos.metrics.v1.FeatureValue\"\xf2\x01\n\x1aSearchFeatureValuesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x03 \x01(\t\x12\x31\n\x0bregion_type\x18\x04 \x01(\x0e\x32\x1c.topos.metrics.v1.RegionType\x12\x11\n\tregion_id\x18\x05 \x01(\t\x12-\n\ttime_type\x18\x06 \x01(\x0e\x32\x1a.topos.metrics.v1.TimeType\x12\x11\n\ttime_from\x18\x07 \x01(\t\x12\x0f\n\x07time_to\x18\x08 \x01(\t\"f\n\x1bSearchFeatureValuesResponse\x12\x17\n\x0fnext_page_token\x18\x01 \x01(\t\x12.\n\x06values\x18\x02 \x03(\x0b\x32\x1e.topos.metrics.v1.FeatureValue*9\n\nRegionType\x12\x1b\n\x17REGION_TYPE_UNSPECIFIED\x10\x00\x12\x0e\n\nUS_ZIPCODE\x10\x01*d\n\x08TimeType\x12\x19\n\x15TIME_TYPE_UNSPECIFIED\x10\x00\x12\t\n\x05\x45POCH\x10\x01\x12\x08\n\x04YEAR\x10\x02\x12\t\n\x05MONTH\x10\x03\x12\x07\n\x03\x44\x41Y\x10\x04\x12\x08\n\x04HOUR\x10\x05\x12\n\n\x06MINUTE\x10\x06\x32\xa6\x0f\n\x07Metrics\x12w\n\rGetFeatureSet\x12&.topos.metrics.v1.GetFeatureSetRequest\x1a\x1c.topos.metrics.v1.FeatureSet\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/{name=featureSets/*}\x12\x94\x01\n\rSetFeatureSet\x12&.topos.metrics.v1.SetFeatureSetRequest\x1a\x1c.topos.metrics.v1.FeatureSet\"=\x82\xd3\xe4\x93\x02\x37\"(/v1/{feature_set.name=featureSets/*}:set:\x0b\x66\x65\x61ture_set\x12w\n\x10\x44\x65leteFeatureSet\x12).topos.metrics.v1.DeleteFeatureSetRequest\x1a\x16.google.protobuf.Empty\" \x82\xd3\xe4\x93\x02\x1a*\x18/v1/{name=featureSets/*}\x12\xbb\x01\n\x15\x43reateFeatureRelation\x12..topos.metrics.v1.CreateFeatureRelationRequest\x1a#.topos.metrics.v1.FeatureSetFeature\"M\x82\xd3\xe4\x93\x02G\"B/v1/{feature_set_name=featureSets/*}/{feature_name=features/*}:set:\x01*\x12\x9e\x01\n\x17\x44\x65leteFeatureSetFeature\x12#.topos.metrics.v1.FeatureSetFeature\x1a\x16.google.protobuf.Empty\"F\x82\xd3\xe4\x93\x02@*>/v1/{feature_set_name=featureSets/*}/{feature_name=features/*}\x12\x7f\n\x0fListFeatureSets\x12(.topos.metrics.v1.ListFeatureSetsRequest\x1a).topos.metrics.v1.ListFeatureSetsResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/v1/featureSets\x12s\n\x0cListFeatures\x12%.topos.metrics.v1.ListFeaturesRequest\x1a&.topos.metrics.v1.ListFeaturesResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/v1/features\x12k\n\nGetFeature\x12#.topos.metrics.v1.GetFeatureRequest\x1a\x19.topos.metrics.v1.Feature\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/v1/{name=features/*}\x12\x7f\n\nSetFeature\x12#.topos.metrics.v1.SetFeatureRequest\x1a\x19.topos.metrics.v1.Feature\"1\x82\xd3\xe4\x93\x02+\" /v1/{feature.name=feature/*}:set:\x07\x66\x65\x61ture\x12m\n\rDeleteFeature\x12&.topos.metrics.v1.DeleteFeatureRequest\x1a\x16.google.protobuf.Empty\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/v1/{name=feature/*}\x12\xa8\x01\n\x0fSetFeatureValue\x12(.topos.metrics.v1.SetFeatureValueRequest\x1a\x1e.topos.metrics.v1.FeatureValue\"K\x82\xd3\xe4\x93\x02\x45\"4/v1/{feature_value.feature_name=featureValues/*}:set:\rfeature_value\x12\x84\x01\n\x14\x42\x61tchSetFeatureValue\x12-.topos.metrics.v1.BatchSetFeatureValueRequest\x1a\x16.google.protobuf.Empty\"%\x82\xd3\xe4\x93\x02\x1f\"\x1a/v1/featureValues:batchSet:\x01*\x12\x93\x01\n\x12\x44\x65leteFeatureValue\x12+.topos.metrics.v1.DeleteFeatureValueRequest\x1a\x16.google.protobuf.Empty\"8\x82\xd3\xe4\x93\x02\x32*0/v1/{feature_value.feature_name=featureValues/*}\x12\x97\x01\n\x13SearchFeatureValues\x12,.topos.metrics.v1.SearchFeatureValuesRequest\x1a-.topos.metrics.v1.SearchFeatureValuesResponse\"#\x82\xd3\xe4\x93\x02\x1d\"\x18/v1/featureValues:search:\x01*B\x1aZ\x18topos/metrics/v1;metricsb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -44,8 +44,8 @@ _REGIONTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1896,
-  serialized_end=1953,
+  serialized_start=1916,
+  serialized_end=1973,
 )
 _sym_db.RegisterEnumDescriptor(_REGIONTYPE)
 
@@ -87,8 +87,8 @@ _TIMETYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1955,
-  serialized_end=2055,
+  serialized_start=1975,
+  serialized_end=2075,
 )
 _sym_db.RegisterEnumDescriptor(_TIMETYPE)
 
@@ -113,7 +113,7 @@ _FEATURESET = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_set_name', full_name='topos.metrics.v1.FeatureSet.feature_set_name', index=0,
+      name='name', full_name='topos.metrics.v1.FeatureSet.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -160,7 +160,7 @@ _FEATURESET = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=112,
-  serialized_end=264,
+  serialized_end=252,
 )
 
 
@@ -172,7 +172,7 @@ _GETFEATURESETREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_set_name', full_name='topos.metrics.v1.GetFeatureSetRequest.feature_set_name', index=0,
+      name='name', full_name='topos.metrics.v1.GetFeatureSetRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -197,8 +197,8 @@ _GETFEATURESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=266,
-  serialized_end=340,
+  serialized_start=254,
+  serialized_end=316,
 )
 
 
@@ -228,8 +228,46 @@ _SETFEATURESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=342,
-  serialized_end=415,
+  serialized_start=318,
+  serialized_end=391,
+)
+
+
+_CREATEFEATURERELATIONREQUEST = _descriptor.Descriptor(
+  name='CreateFeatureRelationRequest',
+  full_name='topos.metrics.v1.CreateFeatureRelationRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='feature_set_name', full_name='topos.metrics.v1.CreateFeatureRelationRequest.feature_set_name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='feature_name', full_name='topos.metrics.v1.CreateFeatureRelationRequest.feature_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=393,
+  serialized_end=471,
 )
 
 
@@ -241,7 +279,7 @@ _DELETEFEATURESETREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_set_name', full_name='topos.metrics.v1.DeleteFeatureSetRequest.feature_set_name', index=0,
+      name='name', full_name='topos.metrics.v1.DeleteFeatureSetRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -259,8 +297,8 @@ _DELETEFEATURESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=417,
-  serialized_end=468,
+  serialized_start=473,
+  serialized_end=512,
 )
 
 
@@ -297,8 +335,8 @@ _FEATURESETFEATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=470,
-  serialized_end=537,
+  serialized_start=514,
+  serialized_end=581,
 )
 
 
@@ -335,8 +373,8 @@ _LISTFEATURESETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=539,
-  serialized_end=602,
+  serialized_start=583,
+  serialized_end=646,
 )
 
 
@@ -373,8 +411,8 @@ _LISTFEATURESETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=604,
-  serialized_end=706,
+  serialized_start=648,
+  serialized_end=750,
 )
 
 
@@ -386,7 +424,7 @@ _FEATURE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_name', full_name='topos.metrics.v1.Feature.feature_name', index=0,
+      name='name', full_name='topos.metrics.v1.Feature.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -425,8 +463,8 @@ _FEATURE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=708,
-  serialized_end=798,
+  serialized_start=752,
+  serialized_end=834,
 )
 
 
@@ -438,7 +476,7 @@ _GETFEATUREREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_name', full_name='topos.metrics.v1.GetFeatureRequest.feature_name', index=0,
+      name='name', full_name='topos.metrics.v1.GetFeatureRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -456,8 +494,8 @@ _GETFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=800,
-  serialized_end=841,
+  serialized_start=836,
+  serialized_end=869,
 )
 
 
@@ -487,8 +525,8 @@ _SETFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=843,
-  serialized_end=906,
+  serialized_start=871,
+  serialized_end=934,
 )
 
 
@@ -500,7 +538,7 @@ _DELETEFEATUREREQUEST = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_name', full_name='topos.metrics.v1.DeleteFeatureRequest.feature_name', index=0,
+      name='name', full_name='topos.metrics.v1.DeleteFeatureRequest.name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -518,8 +556,8 @@ _DELETEFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=908,
-  serialized_end=952,
+  serialized_start=936,
+  serialized_end=972,
 )
 
 
@@ -556,8 +594,8 @@ _LISTFEATURESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=954,
-  serialized_end=1014,
+  serialized_start=974,
+  serialized_end=1034,
 )
 
 
@@ -594,8 +632,8 @@ _LISTFEATURESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1016,
-  serialized_end=1108,
+  serialized_start=1036,
+  serialized_end=1128,
 )
 
 
@@ -660,8 +698,8 @@ _FEATUREVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1111,
-  serialized_end=1293,
+  serialized_start=1131,
+  serialized_end=1313,
 )
 
 
@@ -691,8 +729,8 @@ _SETFEATUREVALUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1295,
-  serialized_end=1374,
+  serialized_start=1315,
+  serialized_end=1394,
 )
 
 
@@ -722,8 +760,8 @@ _BATCHSETFEATUREVALUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1376,
-  serialized_end=1461,
+  serialized_start=1396,
+  serialized_end=1481,
 )
 
 
@@ -753,8 +791,8 @@ _DELETEFEATUREVALUEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1463,
-  serialized_end=1545,
+  serialized_start=1483,
+  serialized_end=1565,
 )
 
 
@@ -833,8 +871,8 @@ _SEARCHFEATUREVALUESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1548,
-  serialized_end=1790,
+  serialized_start=1568,
+  serialized_end=1810,
 )
 
 
@@ -871,8 +909,8 @@ _SEARCHFEATUREVALUESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1792,
-  serialized_end=1894,
+  serialized_start=1812,
+  serialized_end=1914,
 )
 
 _FEATURESET.fields_by_name['features'].message_type = _FEATURE
@@ -891,6 +929,7 @@ _SEARCHFEATUREVALUESRESPONSE.fields_by_name['values'].message_type = _FEATUREVAL
 DESCRIPTOR.message_types_by_name['FeatureSet'] = _FEATURESET
 DESCRIPTOR.message_types_by_name['GetFeatureSetRequest'] = _GETFEATURESETREQUEST
 DESCRIPTOR.message_types_by_name['SetFeatureSetRequest'] = _SETFEATURESETREQUEST
+DESCRIPTOR.message_types_by_name['CreateFeatureRelationRequest'] = _CREATEFEATURERELATIONREQUEST
 DESCRIPTOR.message_types_by_name['DeleteFeatureSetRequest'] = _DELETEFEATURESETREQUEST
 DESCRIPTOR.message_types_by_name['FeatureSetFeature'] = _FEATURESETFEATURE
 DESCRIPTOR.message_types_by_name['ListFeatureSetsRequest'] = _LISTFEATURESETSREQUEST
@@ -931,6 +970,13 @@ SetFeatureSetRequest = _reflection.GeneratedProtocolMessageType('SetFeatureSetRe
   # @@protoc_insertion_point(class_scope:topos.metrics.v1.SetFeatureSetRequest)
   })
 _sym_db.RegisterMessage(SetFeatureSetRequest)
+
+CreateFeatureRelationRequest = _reflection.GeneratedProtocolMessageType('CreateFeatureRelationRequest', (_message.Message,), {
+  'DESCRIPTOR' : _CREATEFEATURERELATIONREQUEST,
+  '__module__' : 'topos.metrics.v1.metrics_pb2'
+  # @@protoc_insertion_point(class_scope:topos.metrics.v1.CreateFeatureRelationRequest)
+  })
+_sym_db.RegisterMessage(CreateFeatureRelationRequest)
 
 DeleteFeatureSetRequest = _reflection.GeneratedProtocolMessageType('DeleteFeatureSetRequest', (_message.Message,), {
   'DESCRIPTOR' : _DELETEFEATURESETREQUEST,
@@ -1053,8 +1099,8 @@ _METRICS = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2058,
-  serialized_end=4134,
+  serialized_start=2078,
+  serialized_end=4036,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFeatureSet',
@@ -1072,7 +1118,7 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SETFEATURESETREQUEST,
     output_type=_FEATURESET,
-    serialized_options=_b('\202\323\344\223\002C\"4/v1/{feature_set.feature_set_name=featureSets/*}:set:\013feature_set'),
+    serialized_options=_b('\202\323\344\223\0027\"(/v1/{feature_set.name=featureSets/*}:set:\013feature_set'),
   ),
   _descriptor.MethodDescriptor(
     name='DeleteFeatureSet',
@@ -1081,16 +1127,16 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DELETEFEATURESETREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    serialized_options=_b('\202\323\344\223\002&*$/v1/{feature_set_name=featureSets/*}'),
+    serialized_options=_b('\202\323\344\223\002\032*\030/v1/{name=featureSets/*}'),
   ),
   _descriptor.MethodDescriptor(
-    name='SetFeatureSetFeature',
-    full_name='topos.metrics.v1.Metrics.SetFeatureSetFeature',
+    name='CreateFeatureRelation',
+    full_name='topos.metrics.v1.Metrics.CreateFeatureRelation',
     index=3,
     containing_service=None,
-    input_type=_FEATURESETFEATURE,
+    input_type=_CREATEFEATURERELATIONREQUEST,
     output_type=_FEATURESETFEATURE,
-    serialized_options=_b('\202\323\344\223\002\201\001\"j/v1/{feature_set_feature.feature_set_name=featureSets/*}/{feature_set_feature.feature_name=features/*}:set:\023feature_set_feature'),
+    serialized_options=_b('\202\323\344\223\002G\"B/v1/{feature_set_name=featureSets/*}/{feature_name=features/*}:set:\001*'),
   ),
   _descriptor.MethodDescriptor(
     name='DeleteFeatureSetFeature',
@@ -1099,7 +1145,7 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_FEATURESETFEATURE,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    serialized_options=_b('\202\323\344\223\002h*f/v1/{feature_set_feature.feature_set_name=featureSets/*}/{feature_set_feature.feature_name=features/*}'),
+    serialized_options=_b('\202\323\344\223\002@*>/v1/{feature_set_name=featureSets/*}/{feature_name=features/*}'),
   ),
   _descriptor.MethodDescriptor(
     name='ListFeatureSets',
@@ -1135,7 +1181,7 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_SETFEATUREREQUEST,
     output_type=_FEATURE,
-    serialized_options=_b('\202\323\344\223\0024\")/v1/{feature.feature_name=features/*}:set:\007feature'),
+    serialized_options=_b('\202\323\344\223\002+\" /v1/{feature.name=feature/*}:set:\007feature'),
   ),
   _descriptor.MethodDescriptor(
     name='DeleteFeature',
@@ -1144,7 +1190,7 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DELETEFEATUREREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    serialized_options=_b('\202\323\344\223\002\037*\035/v1/{feature_name=features/*}'),
+    serialized_options=_b('\202\323\344\223\002\026*\024/v1/{name=feature/*}'),
   ),
   _descriptor.MethodDescriptor(
     name='SetFeatureValue',
@@ -1171,7 +1217,7 @@ _METRICS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_DELETEFEATUREVALUEREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
-    serialized_options=_b('\202\323\344\223\002$*\"/v1/{feature_name=featureValues/*}'),
+    serialized_options=_b('\202\323\344\223\0022*0/v1/{feature_value.feature_name=featureValues/*}'),
   ),
   _descriptor.MethodDescriptor(
     name='SearchFeatureValues',

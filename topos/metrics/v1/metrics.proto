@@ -18,7 +18,7 @@ service Metrics {
   // Sets a feature set.
   rpc SetFeatureSet(SetFeatureSetRequest) returns (FeatureSet) {
     option (google.api.http) = {
-      post : "/v1/{feature_set.feature_set_name=featureSets/*}:set"
+      post : "/v1/{feature_set.name=featureSets/*}:set"
       body : "feature_set"
     };
   }
@@ -27,16 +27,16 @@ service Metrics {
   rpc DeleteFeatureSet(DeleteFeatureSetRequest)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{feature_set_name=featureSets/*}"
+      delete : "/v1/{name=featureSets/*}"
     };
   }
 
-  // Sets a feature set and a feature relation.
-  rpc SetFeatureSetFeature(FeatureSetFeature) returns (FeatureSetFeature) {
+  // Create a relationship between a feature set and feature
+  rpc CreateFeatureRelation(CreateFeatureRelationRequest) returns (FeatureSetFeature) {
     option (google.api.http) = {
-      post : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
-             "{feature_set_feature.feature_name=features/*}:set"
-      body : "feature_set_feature"
+      post : "/v1/{feature_set_name=featureSets/*}/"
+             "{feature_name=features/*}:set"
+      body : "*"
     };
   }
 
@@ -44,8 +44,8 @@ service Metrics {
   rpc DeleteFeatureSetFeature(FeatureSetFeature)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{feature_set_feature.feature_set_name=featureSets/*}/"
-               "{feature_set_feature.feature_name=features/*}"
+      delete : "/v1/{feature_set_name=featureSets/*}/"
+               "{feature_name=features/*}"
     };
   }
 
@@ -74,7 +74,7 @@ service Metrics {
   // Sets a feature meta.
   rpc SetFeature(SetFeatureRequest) returns (Feature) {
     option (google.api.http) = {
-      post : "/v1/{feature.feature_name=features/*}:set"
+      post : "/v1/{feature.name=feature/*}:set"
       body : "feature"
     };
   }
@@ -82,7 +82,7 @@ service Metrics {
   // Deletes a feature meta
   rpc DeleteFeature(DeleteFeatureRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{feature_name=features/*}"
+      delete : "/v1/{name=feature/*}"
     };
   }
 
@@ -107,7 +107,7 @@ service Metrics {
   rpc DeleteFeatureValue(DeleteFeatureValueRequest)
       returns (google.protobuf.Empty) {
     option (google.api.http) = {
-      delete : "/v1/{feature_name=featureValues/*}"
+      delete : "/v1/{feature_value.feature_name=featureValues/*}"
     };
   }
 
@@ -122,7 +122,7 @@ service Metrics {
 }
 
 message FeatureSet {
-  string feature_set_name = 1;
+  string name = 1;
   string display_name = 2;
   string description = 3;
   bool include_features = 4;
@@ -130,7 +130,7 @@ message FeatureSet {
 }
 
 message GetFeatureSetRequest {
-  string feature_set_name = 1;
+  string name = 1;
 
   // If set true, response includes features of each feature set
   bool include_features = 2;
@@ -138,7 +138,13 @@ message GetFeatureSetRequest {
 
 message SetFeatureSetRequest { FeatureSet feature_set = 1; }
 
-message DeleteFeatureSetRequest { string feature_set_name = 1; }
+message CreateFeatureRelationRequest {
+  string feature_set_name = 1;
+  string feature_name = 2;
+}
+
+
+message DeleteFeatureSetRequest { string name = 1; }
 
 message FeatureSetFeature {
   string feature_set_name = 1;
@@ -159,17 +165,17 @@ message ListFeatureSetsResponse {
 }
 
 message Feature {
-  string feature_name = 1;
+  string name = 1;
   string display_name = 2;
   string description = 3;
   string source = 4;
 }
 
-message GetFeatureRequest { string feature_name = 1; }
+message GetFeatureRequest { string name = 1; }
 
 message SetFeatureRequest { Feature feature = 1; }
 
-message DeleteFeatureRequest { string feature_name = 1; }
+message DeleteFeatureRequest { string name = 1; }
 
 message ListFeaturesRequest {
   // The maximum number of items to return.

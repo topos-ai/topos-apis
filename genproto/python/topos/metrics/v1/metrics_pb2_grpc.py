@@ -30,9 +30,9 @@ class MetricsStub(object):
         request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureSetRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
-    self.SetFeatureSetFeature = channel.unary_unary(
-        '/topos.metrics.v1.Metrics/SetFeatureSetFeature',
-        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.SerializeToString,
+    self.CreateFeatureRelation = channel.unary_unary(
+        '/topos.metrics.v1.Metrics/CreateFeatureRelation',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.CreateFeatureRelationRequest.SerializeToString,
         response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.FromString,
         )
     self.DeleteFeatureSetFeature = channel.unary_unary(
@@ -112,8 +112,8 @@ class MetricsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SetFeatureSetFeature(self, request, context):
-    """Sets a feature set and a feature relation.
+  def CreateFeatureRelation(self, request, context):
+    """Create a relationship between a feature set and feature
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -207,9 +207,9 @@ def add_MetricsServicer_to_server(servicer, server):
           request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureSetRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
-      'SetFeatureSetFeature': grpc.unary_unary_rpc_method_handler(
-          servicer.SetFeatureSetFeature,
-          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.FromString,
+      'CreateFeatureRelation': grpc.unary_unary_rpc_method_handler(
+          servicer.CreateFeatureRelation,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.CreateFeatureRelationRequest.FromString,
           response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.SerializeToString,
       ),
       'DeleteFeatureSetFeature': grpc.unary_unary_rpc_method_handler(
