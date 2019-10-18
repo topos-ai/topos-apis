@@ -21,6 +21,21 @@ service Ontology {
     };
   }
 
+  // Gets features for a brand.
+  rpc GetBrandContacts(GetBrandContactsRequest) returns (GetBrandContactsResponse) {
+    option (google.api.http) = {
+      get : "/v1/contacts/{name=brands/*}"
+    };
+  }
+
+  // Gets min distanct for a number brand.
+  rpc GetBrandsMinDistance(GetBrandsMinDistanceRequest) returns (GetBrandsMinDistanceResponse) {
+    option (google.api.http) = {
+      post : "/v1/brands/minimum-distance"
+      body : "*"
+    };
+  }
+
   // Gets a number of brands.
   rpc GetBrandsBulk(GetBrandsBulkRequest) returns (GetBrandsBulkResponse) {
     option (google.api.http) = {
@@ -96,6 +111,24 @@ message FeatureStats {
   double median = 4;
 }
 
+message Contact {
+
+  // The full name of the contact.
+  string full_name = 1;
+
+  // The title of the contact.
+  string title = 2;
+
+  // The phonenumber of the contact.
+  string email = 3;
+
+  // The phone number of the contact.
+  string phone_number = 4;
+
+  // The regions that a contact covers
+  repeated string regions = 5;
+}
+
 message Brand {
   // The name of the point brand. It must have the format `"brands/{brand}"`.
   // `{brand}` must match the [regular
@@ -117,24 +150,6 @@ message Brand {
 
   // The phone number of the brand.
   string phone_number = 6;
-
-  message Contact {
-
-    // The full name of the contact.
-    string full_name = 1;
-
-    // The title of the contact.
-    string title = 2;
-
-    // The phonenumber of the contact.
-    string email = 3;
-
-    // The phone number of the contact.
-    string phone_number = 4;
-
-    // The regions that a contact covers
-    repeated string regions = 5;
-  }
 
   // The contacts for the brand.
   repeated Contact contacts = 7;
@@ -216,6 +231,9 @@ message Brand {
   // the income bracket a brand targets - high, low, etc
   string income_iqr = 30;
 
+  // the count of contacts for a brand
+  string contact_count = 31;
+
 }
 
 message Tag {
@@ -244,6 +262,10 @@ message Tag {
 message GetBrandRequest { string name = 1; }
 
 message GetBrandFeaturesRequest { string name = 1; }
+
+message GetBrandsMinDistanceRequest { repeated string names = 1; }
+
+message GetBrandContactsRequest { string name = 1; }
 
 message GetBrandsBulkRequest { repeated string names = 1; }
 
@@ -300,6 +322,14 @@ message DeleteTagRequest { string name = 1; }
 
 message GetBrandFeaturesResponse {
   map<string, FeatureStats> features = 1;
+}
+
+message GetBrandContactsResponse {
+  repeated Contact contacts = 1;
+}
+
+message GetBrandsMinDistanceResponse {
+  map<string, int64> minimum_distances = 1;
 }
 
 message GetBrandsBulkResponse {

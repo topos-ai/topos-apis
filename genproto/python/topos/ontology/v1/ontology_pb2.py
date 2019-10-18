@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.ontology.v1',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n topos/ontology/v1/ontology.proto\x12\x11topos.ontology.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"I\n\x0c\x46\x65\x61tureStats\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\x12\x0f\n\x07\x61verage\x18\x03 \x01(\x01\x12\x0e\n\x06median\x18\x04 \x01(\x01\"\xe7\t\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x18\n\x10realestate_email\x18\x05 \x01(\t\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12\x32\n\x08\x63ontacts\x18\x07 \x03(\x0b\x32 .topos.ontology.v1.Brand.Contact\x12\r\n\x05naics\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12W\n\x19\x66\x65\x61ture_set_feature_stats\x18\n \x03(\x0b\x32\x34.topos.ontology.v1.Brand.FeatureSetFeatureStatsEntry\x12K\n\x12region_preferences\x18\x0b \x03(\x0b\x32/.topos.ontology.v1.Brand.RegionPreferencesEntry\x12\x0c\n\x04tags\x18\x0c \x03(\t\x12\x0f\n\x07\x65xclude\x18\r \x01(\x08\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_locations\x18\x10 \x01(\x03\x12\x1b\n\x13states_of_expansion\x18\x11 \x03(\t\x12\x1b\n\x13states_of_operation\x18\x12 \x03(\t\x12\x0f\n\x07website\x18\x13 \x01(\t\x12\x13\n\x0bparent_name\x18\x14 \x01(\t\x12\x1b\n\x13preferred_cotenants\x18\x15 \x03(\t\x12\x1b\n\x13preferred_road_type\x18\x16 \x03(\x03\x12!\n\x19location_types_considered\x18\x17 \x03(\t\x12\x0f\n\x07pricing\x18\x18 \x01(\t\x12\x12\n\nattributes\x18\x19 \x03(\t\x12\x13\n\x0b\x64\x65scription\x18\x1a \x01(\t\x12!\n\x19neighborhood_correlations\x18\x1b \x03(\t\x12\x18\n\x10minimum_distance\x18\x1c \x01(\x03\x12\x12\n\nbrand_size\x18\x1d \x01(\t\x12\x12\n\nincome_iqr\x18\x1e \x01(\t\x1a\x61\n\x07\x43ontact\x12\x11\n\tfull_name\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x12\x0f\n\x07regions\x18\x05 \x03(\t\x1a^\n\x1b\x46\x65\x61tureSetFeatureStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.topos.ontology.v1.FeatureStats:\x02\x38\x01\x1aI\n\x0bPreferences\x12\x15\n\rpreferred_gla\x18\x01 \x01(\t\x12\x0e\n\x06inline\x18\x02 \x01(\x01\x12\x13\n\x0bstand_alone\x18\x03 \x01(\x01\x1a^\n\x16RegionPreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.topos.ontology.v1.Brand.Preferences:\x02\x38\x01\"\x81\x01\n\x03Tag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x01(\x08\x12\x1b\n\x13plural_display_name\x18\x04 \x01(\t\x12\x13\n\x0bis_category\x18\x05 \x01(\x08\x12\x13\n\x0bparent_name\x18\x06 \x01(\t\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\'\n\x17GetBrandFeaturesRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x14GetBrandsBulkRequest\x12\r\n\x05names\x18\x01 \x03(\t\"\xa3\x01\n\x13SearchBrandsRequest\x12\x14\n\x0c\x64isplay_name\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\x12\x15\n\rpreferred_gla\x18\x03 \x03(\x05\x12\x15\n\rtenancy_prefs\x18\x04 \x03(\t\x12\x1c\n\x14regions_of_expansion\x18\x05 \x03(\t\x12\x1c\n\x14regions_of_operation\x18\x06 \x03(\t\":\n\x11ListBrandsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"W\n\x12ListBrandsResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\":\n\x0fSetBrandRequest\x12\'\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x18.topos.ontology.v1.Brand\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\rGetTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"4\n\rSetTagRequest\x12#\n\x03tag\x18\x01 \x01(\x0b\x32\x16.topos.ontology.v1.Tag\"8\n\x0fListTagsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"Q\n\x10ListTagsResponse\x12$\n\x04tags\x18\x01 \x03(\x0b\x32\x16.topos.ontology.v1.Tag\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\" \n\x10\x44\x65leteTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xb9\x01\n\x18GetBrandFeaturesResponse\x12K\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\x39.topos.ontology.v1.GetBrandFeaturesResponse.FeaturesEntry\x1aP\n\rFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.topos.ontology.v1.FeatureStats:\x02\x38\x01\"A\n\x15GetBrandsBulkResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand\"@\n\x14SearchBrandsResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand2\xed\t\n\x08Ontology\x12\x65\n\x08GetBrand\x12\".topos.ontology.v1.GetBrandRequest\x1a\x18.topos.ontology.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12\x91\x01\n\x10GetBrandFeatures\x12*.topos.ontology.v1.GetBrandFeaturesRequest\x1a+.topos.ontology.v1.GetBrandFeaturesResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v1/features/{name=brands/*}\x12~\n\rGetBrandsBulk\x12\'.topos.ontology.v1.GetBrandsBulkRequest\x1a(.topos.ontology.v1.GetBrandsBulkResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\"\x0f/v1/brands/bulk:\x01*\x12m\n\nListBrands\x12$.topos.ontology.v1.ListBrandsRequest\x1a%.topos.ontology.v1.ListBrandsResponse\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/brands\x12}\n\x0cSearchBrands\x12&.topos.ontology.v1.SearchBrandsRequest\x1a\'.topos.ontology.v1.SearchBrandsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x11/v1/brands/search:\x01*\x12v\n\x08SetBrand\x12\".topos.ontology.v1.SetBrandRequest\x1a\x18.topos.ontology.v1.Brand\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{brand.name=brands/*}:set:\x05\x62rand\x12i\n\x0b\x44\x65leteBrand\x12%.topos.ontology.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12]\n\x06GetTag\x12 .topos.ontology.v1.GetTagRequest\x1a\x16.topos.ontology.v1.Tag\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/{name=tags/*}\x12\x65\n\x08ListTags\x12\".topos.ontology.v1.ListTagsRequest\x1a#.topos.ontology.v1.ListTagsResponse\"\x10\x82\xd3\xe4\x93\x02\n\x12\x08/v1/tags\x12j\n\x06SetTag\x12 .topos.ontology.v1.SetTagRequest\x1a\x16.topos.ontology.v1.Tag\"&\x82\xd3\xe4\x93\x02 \"\x19/v1/{tag.name=tags/*}:set:\x03tag\x12\x63\n\tDeleteTag\x12#.topos.ontology.v1.DeleteTagRequest\x1a\x16.google.protobuf.Empty\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/{name=tags/*}b\x06proto3')
+  serialized_pb=_b('\n topos/ontology/v1/ontology.proto\x12\x11topos.ontology.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"I\n\x0c\x46\x65\x61tureStats\x12\x0b\n\x03min\x18\x01 \x01(\x01\x12\x0b\n\x03max\x18\x02 \x01(\x01\x12\x0f\n\x07\x61verage\x18\x03 \x01(\x01\x12\x0e\n\x06median\x18\x04 \x01(\x01\"a\n\x07\x43ontact\x12\x11\n\tfull_name\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\r\n\x05\x65mail\x18\x03 \x01(\t\x12\x14\n\x0cphone_number\x18\x04 \x01(\t\x12\x0f\n\x07regions\x18\x05 \x03(\t\"\x95\t\n\x05\x42rand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x19\n\x11\x66ormatted_address\x18\x03 \x01(\t\x12\r\n\x05\x65mail\x18\x04 \x01(\t\x12\x18\n\x10realestate_email\x18\x05 \x01(\t\x12\x14\n\x0cphone_number\x18\x06 \x01(\t\x12,\n\x08\x63ontacts\x18\x07 \x03(\x0b\x32\x1a.topos.ontology.v1.Contact\x12\r\n\x05naics\x18\x08 \x01(\t\x12\x13\n\x0bpostal_code\x18\t \x01(\t\x12W\n\x19\x66\x65\x61ture_set_feature_stats\x18\n \x03(\x0b\x32\x34.topos.ontology.v1.Brand.FeatureSetFeatureStatsEntry\x12K\n\x12region_preferences\x18\x0b \x03(\x0b\x32/.topos.ontology.v1.Brand.RegionPreferencesEntry\x12\x0c\n\x04tags\x18\x0c \x03(\t\x12\x0f\n\x07\x65xclude\x18\r \x01(\x08\x12/\n\x0b\x63reate_time\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x17\n\x0ftotal_locations\x18\x10 \x01(\x03\x12\x1b\n\x13states_of_expansion\x18\x11 \x03(\t\x12\x1b\n\x13states_of_operation\x18\x12 \x03(\t\x12\x0f\n\x07website\x18\x13 \x01(\t\x12\x13\n\x0bparent_name\x18\x14 \x01(\t\x12\x1b\n\x13preferred_cotenants\x18\x15 \x03(\t\x12\x1b\n\x13preferred_road_type\x18\x16 \x03(\x03\x12!\n\x19location_types_considered\x18\x17 \x03(\t\x12\x0f\n\x07pricing\x18\x18 \x01(\t\x12\x12\n\nattributes\x18\x19 \x03(\t\x12\x13\n\x0b\x64\x65scription\x18\x1a \x01(\t\x12!\n\x19neighborhood_correlations\x18\x1b \x03(\t\x12\x18\n\x10minimum_distance\x18\x1c \x01(\x03\x12\x12\n\nbrand_size\x18\x1d \x01(\t\x12\x12\n\nincome_iqr\x18\x1e \x01(\t\x12\x15\n\rcontact_count\x18\x1f \x01(\t\x1a^\n\x1b\x46\x65\x61tureSetFeatureStatsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.topos.ontology.v1.FeatureStats:\x02\x38\x01\x1aI\n\x0bPreferences\x12\x15\n\rpreferred_gla\x18\x01 \x01(\t\x12\x0e\n\x06inline\x18\x02 \x01(\x01\x12\x13\n\x0bstand_alone\x18\x03 \x01(\x01\x1a^\n\x16RegionPreferencesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x33\n\x05value\x18\x02 \x01(\x0b\x32$.topos.ontology.v1.Brand.Preferences:\x02\x38\x01\"\x81\x01\n\x03Tag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x0f\n\x07\x65xclude\x18\x03 \x01(\x08\x12\x1b\n\x13plural_display_name\x18\x04 \x01(\t\x12\x13\n\x0bis_category\x18\x05 \x01(\x08\x12\x13\n\x0bparent_name\x18\x06 \x01(\t\"\x1f\n\x0fGetBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\'\n\x17GetBrandFeaturesRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\",\n\x1bGetBrandsMinDistanceRequest\x12\r\n\x05names\x18\x01 \x03(\t\"\'\n\x17GetBrandContactsRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"%\n\x14GetBrandsBulkRequest\x12\r\n\x05names\x18\x01 \x03(\t\"\xa3\x01\n\x13SearchBrandsRequest\x12\x14\n\x0c\x64isplay_name\x18\x01 \x01(\t\x12\x0c\n\x04tags\x18\x02 \x03(\t\x12\x15\n\rpreferred_gla\x18\x03 \x03(\x05\x12\x15\n\rtenancy_prefs\x18\x04 \x03(\t\x12\x1c\n\x14regions_of_expansion\x18\x05 \x03(\t\x12\x1c\n\x14regions_of_operation\x18\x06 \x03(\t\":\n\x11ListBrandsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"W\n\x12ListBrandsResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\":\n\x0fSetBrandRequest\x12\'\n\x05\x62rand\x18\x01 \x01(\x0b\x32\x18.topos.ontology.v1.Brand\"\"\n\x12\x44\x65leteBrandRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\rGetTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"4\n\rSetTagRequest\x12#\n\x03tag\x18\x01 \x01(\x0b\x32\x16.topos.ontology.v1.Tag\"8\n\x0fListTagsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"Q\n\x10ListTagsResponse\x12$\n\x04tags\x18\x01 \x03(\x0b\x32\x16.topos.ontology.v1.Tag\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\" \n\x10\x44\x65leteTagRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\xb9\x01\n\x18GetBrandFeaturesResponse\x12K\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\x39.topos.ontology.v1.GetBrandFeaturesResponse.FeaturesEntry\x1aP\n\rFeaturesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12.\n\x05value\x18\x02 \x01(\x0b\x32\x1f.topos.ontology.v1.FeatureStats:\x02\x38\x01\"H\n\x18GetBrandContactsResponse\x12,\n\x08\x63ontacts\x18\x01 \x03(\x0b\x32\x1a.topos.ontology.v1.Contact\"\xb9\x01\n\x1cGetBrandsMinDistanceResponse\x12`\n\x11minimum_distances\x18\x01 \x03(\x0b\x32\x45.topos.ontology.v1.GetBrandsMinDistanceResponse.MinimumDistancesEntry\x1a\x37\n\x15MinimumDistancesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x03:\x02\x38\x01\"A\n\x15GetBrandsBulkResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand\"@\n\x14SearchBrandsResponse\x12(\n\x06\x62rands\x18\x01 \x03(\x0b\x32\x18.topos.ontology.v1.Brand2\xa3\x0c\n\x08Ontology\x12\x65\n\x08GetBrand\x12\".topos.ontology.v1.GetBrandRequest\x1a\x18.topos.ontology.v1.Brand\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/v1/{name=brands/*}\x12\x91\x01\n\x10GetBrandFeatures\x12*.topos.ontology.v1.GetBrandFeaturesRequest\x1a+.topos.ontology.v1.GetBrandFeaturesResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v1/features/{name=brands/*}\x12\x91\x01\n\x10GetBrandContacts\x12*.topos.ontology.v1.GetBrandContactsRequest\x1a+.topos.ontology.v1.GetBrandContactsResponse\"$\x82\xd3\xe4\x93\x02\x1e\x12\x1c/v1/contacts/{name=brands/*}\x12\x9f\x01\n\x14GetBrandsMinDistance\x12..topos.ontology.v1.GetBrandsMinDistanceRequest\x1a/.topos.ontology.v1.GetBrandsMinDistanceResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/v1/brands/minimum-distance:\x01*\x12~\n\rGetBrandsBulk\x12\'.topos.ontology.v1.GetBrandsBulkRequest\x1a(.topos.ontology.v1.GetBrandsBulkResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\"\x0f/v1/brands/bulk:\x01*\x12m\n\nListBrands\x12$.topos.ontology.v1.ListBrandsRequest\x1a%.topos.ontology.v1.ListBrandsResponse\"\x12\x82\xd3\xe4\x93\x02\x0c\x12\n/v1/brands\x12}\n\x0cSearchBrands\x12&.topos.ontology.v1.SearchBrandsRequest\x1a\'.topos.ontology.v1.SearchBrandsResponse\"\x1c\x82\xd3\xe4\x93\x02\x16\"\x11/v1/brands/search:\x01*\x12v\n\x08SetBrand\x12\".topos.ontology.v1.SetBrandRequest\x1a\x18.topos.ontology.v1.Brand\",\x82\xd3\xe4\x93\x02&\"\x1d/v1/{brand.name=brands/*}:set:\x05\x62rand\x12i\n\x0b\x44\x65leteBrand\x12%.topos.ontology.v1.DeleteBrandRequest\x1a\x16.google.protobuf.Empty\"\x1b\x82\xd3\xe4\x93\x02\x15*\x13/v1/{name=brands/*}\x12]\n\x06GetTag\x12 .topos.ontology.v1.GetTagRequest\x1a\x16.topos.ontology.v1.Tag\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/v1/{name=tags/*}\x12\x65\n\x08ListTags\x12\".topos.ontology.v1.ListTagsRequest\x1a#.topos.ontology.v1.ListTagsResponse\"\x10\x82\xd3\xe4\x93\x02\n\x12\x08/v1/tags\x12j\n\x06SetTag\x12 .topos.ontology.v1.SetTagRequest\x1a\x16.topos.ontology.v1.Tag\"&\x82\xd3\xe4\x93\x02 \"\x19/v1/{tag.name=tags/*}:set:\x03tag\x12\x63\n\tDeleteTag\x12#.topos.ontology.v1.DeleteTagRequest\x1a\x16.google.protobuf.Empty\"\x19\x82\xd3\xe4\x93\x02\x13*\x11/v1/{name=tags/*}b\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -82,43 +82,43 @@ _FEATURESTATS = _descriptor.Descriptor(
 )
 
 
-_BRAND_CONTACT = _descriptor.Descriptor(
+_CONTACT = _descriptor.Descriptor(
   name='Contact',
-  full_name='topos.ontology.v1.Brand.Contact',
+  full_name='topos.ontology.v1.Contact',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='full_name', full_name='topos.ontology.v1.Brand.Contact.full_name', index=0,
+      name='full_name', full_name='topos.ontology.v1.Contact.full_name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='title', full_name='topos.ontology.v1.Brand.Contact.title', index=1,
+      name='title', full_name='topos.ontology.v1.Contact.title', index=1,
       number=2, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='email', full_name='topos.ontology.v1.Brand.Contact.email', index=2,
+      name='email', full_name='topos.ontology.v1.Contact.email', index=2,
       number=3, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='phone_number', full_name='topos.ontology.v1.Brand.Contact.phone_number', index=3,
+      name='phone_number', full_name='topos.ontology.v1.Contact.phone_number', index=3,
       number=4, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='regions', full_name='topos.ontology.v1.Brand.Contact.regions', index=4,
+      name='regions', full_name='topos.ontology.v1.Contact.regions', index=4,
       number=5, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -136,9 +136,10 @@ _BRAND_CONTACT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1114,
-  serialized_end=1211,
+  serialized_start=222,
+  serialized_end=319,
 )
+
 
 _BRAND_FEATURESETFEATURESTATSENTRY = _descriptor.Descriptor(
   name='FeatureSetFeatureStatsEntry',
@@ -173,8 +174,8 @@ _BRAND_FEATURESETFEATURESTATSENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1213,
-  serialized_end=1307,
+  serialized_start=1230,
+  serialized_end=1324,
 )
 
 _BRAND_PREFERENCES = _descriptor.Descriptor(
@@ -217,8 +218,8 @@ _BRAND_PREFERENCES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1309,
-  serialized_end=1382,
+  serialized_start=1326,
+  serialized_end=1399,
 )
 
 _BRAND_REGIONPREFERENCESENTRY = _descriptor.Descriptor(
@@ -254,8 +255,8 @@ _BRAND_REGIONPREFERENCESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1384,
-  serialized_end=1478,
+  serialized_start=1401,
+  serialized_end=1495,
 )
 
 _BRAND = _descriptor.Descriptor(
@@ -475,10 +476,17 @@ _BRAND = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='contact_count', full_name='topos.ontology.v1.Brand.contact_count', index=30,
+      number=31, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
-  nested_types=[_BRAND_CONTACT, _BRAND_FEATURESETFEATURESTATSENTRY, _BRAND_PREFERENCES, _BRAND_REGIONPREFERENCESENTRY, ],
+  nested_types=[_BRAND_FEATURESETFEATURESTATSENTRY, _BRAND_PREFERENCES, _BRAND_REGIONPREFERENCESENTRY, ],
   enum_types=[
   ],
   serialized_options=None,
@@ -487,8 +495,8 @@ _BRAND = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=223,
-  serialized_end=1478,
+  serialized_start=322,
+  serialized_end=1495,
 )
 
 
@@ -553,8 +561,8 @@ _TAG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1481,
-  serialized_end=1610,
+  serialized_start=1498,
+  serialized_end=1627,
 )
 
 
@@ -584,8 +592,8 @@ _GETBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1612,
-  serialized_end=1643,
+  serialized_start=1629,
+  serialized_end=1660,
 )
 
 
@@ -615,8 +623,70 @@ _GETBRANDFEATURESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1645,
-  serialized_end=1684,
+  serialized_start=1662,
+  serialized_end=1701,
+)
+
+
+_GETBRANDSMINDISTANCEREQUEST = _descriptor.Descriptor(
+  name='GetBrandsMinDistanceRequest',
+  full_name='topos.ontology.v1.GetBrandsMinDistanceRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='names', full_name='topos.ontology.v1.GetBrandsMinDistanceRequest.names', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1703,
+  serialized_end=1747,
+)
+
+
+_GETBRANDCONTACTSREQUEST = _descriptor.Descriptor(
+  name='GetBrandContactsRequest',
+  full_name='topos.ontology.v1.GetBrandContactsRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='topos.ontology.v1.GetBrandContactsRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1749,
+  serialized_end=1788,
 )
 
 
@@ -646,8 +716,8 @@ _GETBRANDSBULKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1686,
-  serialized_end=1723,
+  serialized_start=1790,
+  serialized_end=1827,
 )
 
 
@@ -712,8 +782,8 @@ _SEARCHBRANDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1726,
-  serialized_end=1889,
+  serialized_start=1830,
+  serialized_end=1993,
 )
 
 
@@ -750,8 +820,8 @@ _LISTBRANDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1891,
-  serialized_end=1949,
+  serialized_start=1995,
+  serialized_end=2053,
 )
 
 
@@ -788,8 +858,8 @@ _LISTBRANDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1951,
-  serialized_end=2038,
+  serialized_start=2055,
+  serialized_end=2142,
 )
 
 
@@ -819,8 +889,8 @@ _SETBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2040,
-  serialized_end=2098,
+  serialized_start=2144,
+  serialized_end=2202,
 )
 
 
@@ -850,8 +920,8 @@ _DELETEBRANDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2100,
-  serialized_end=2134,
+  serialized_start=2204,
+  serialized_end=2238,
 )
 
 
@@ -881,8 +951,8 @@ _GETTAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2136,
-  serialized_end=2165,
+  serialized_start=2240,
+  serialized_end=2269,
 )
 
 
@@ -912,8 +982,8 @@ _SETTAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2167,
-  serialized_end=2219,
+  serialized_start=2271,
+  serialized_end=2323,
 )
 
 
@@ -950,8 +1020,8 @@ _LISTTAGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2221,
-  serialized_end=2277,
+  serialized_start=2325,
+  serialized_end=2381,
 )
 
 
@@ -988,8 +1058,8 @@ _LISTTAGSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2279,
-  serialized_end=2360,
+  serialized_start=2383,
+  serialized_end=2464,
 )
 
 
@@ -1019,8 +1089,8 @@ _DELETETAGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2362,
-  serialized_end=2394,
+  serialized_start=2466,
+  serialized_end=2498,
 )
 
 
@@ -1057,8 +1127,8 @@ _GETBRANDFEATURESRESPONSE_FEATURESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2502,
-  serialized_end=2582,
+  serialized_start=2606,
+  serialized_end=2686,
 )
 
 _GETBRANDFEATURESRESPONSE = _descriptor.Descriptor(
@@ -1087,8 +1157,107 @@ _GETBRANDFEATURESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2397,
-  serialized_end=2582,
+  serialized_start=2501,
+  serialized_end=2686,
+)
+
+
+_GETBRANDCONTACTSRESPONSE = _descriptor.Descriptor(
+  name='GetBrandContactsResponse',
+  full_name='topos.ontology.v1.GetBrandContactsResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='contacts', full_name='topos.ontology.v1.GetBrandContactsResponse.contacts', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2688,
+  serialized_end=2760,
+)
+
+
+_GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY = _descriptor.Descriptor(
+  name='MinimumDistancesEntry',
+  full_name='topos.ontology.v1.GetBrandsMinDistanceResponse.MinimumDistancesEntry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='key', full_name='topos.ontology.v1.GetBrandsMinDistanceResponse.MinimumDistancesEntry.key', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='topos.ontology.v1.GetBrandsMinDistanceResponse.MinimumDistancesEntry.value', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=_b('8\001'),
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2893,
+  serialized_end=2948,
+)
+
+_GETBRANDSMINDISTANCERESPONSE = _descriptor.Descriptor(
+  name='GetBrandsMinDistanceResponse',
+  full_name='topos.ontology.v1.GetBrandsMinDistanceResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='minimum_distances', full_name='topos.ontology.v1.GetBrandsMinDistanceResponse.minimum_distances', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2763,
+  serialized_end=2948,
 )
 
 
@@ -1118,8 +1287,8 @@ _GETBRANDSBULKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2584,
-  serialized_end=2649,
+  serialized_start=2950,
+  serialized_end=3015,
 )
 
 
@@ -1149,17 +1318,16 @@ _SEARCHBRANDSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2651,
-  serialized_end=2715,
+  serialized_start=3017,
+  serialized_end=3081,
 )
 
-_BRAND_CONTACT.containing_type = _BRAND
 _BRAND_FEATURESETFEATURESTATSENTRY.fields_by_name['value'].message_type = _FEATURESTATS
 _BRAND_FEATURESETFEATURESTATSENTRY.containing_type = _BRAND
 _BRAND_PREFERENCES.containing_type = _BRAND
 _BRAND_REGIONPREFERENCESENTRY.fields_by_name['value'].message_type = _BRAND_PREFERENCES
 _BRAND_REGIONPREFERENCESENTRY.containing_type = _BRAND
-_BRAND.fields_by_name['contacts'].message_type = _BRAND_CONTACT
+_BRAND.fields_by_name['contacts'].message_type = _CONTACT
 _BRAND.fields_by_name['feature_set_feature_stats'].message_type = _BRAND_FEATURESETFEATURESTATSENTRY
 _BRAND.fields_by_name['region_preferences'].message_type = _BRAND_REGIONPREFERENCESENTRY
 _BRAND.fields_by_name['create_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -1171,13 +1339,19 @@ _LISTTAGSRESPONSE.fields_by_name['tags'].message_type = _TAG
 _GETBRANDFEATURESRESPONSE_FEATURESENTRY.fields_by_name['value'].message_type = _FEATURESTATS
 _GETBRANDFEATURESRESPONSE_FEATURESENTRY.containing_type = _GETBRANDFEATURESRESPONSE
 _GETBRANDFEATURESRESPONSE.fields_by_name['features'].message_type = _GETBRANDFEATURESRESPONSE_FEATURESENTRY
+_GETBRANDCONTACTSRESPONSE.fields_by_name['contacts'].message_type = _CONTACT
+_GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY.containing_type = _GETBRANDSMINDISTANCERESPONSE
+_GETBRANDSMINDISTANCERESPONSE.fields_by_name['minimum_distances'].message_type = _GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY
 _GETBRANDSBULKRESPONSE.fields_by_name['brands'].message_type = _BRAND
 _SEARCHBRANDSRESPONSE.fields_by_name['brands'].message_type = _BRAND
 DESCRIPTOR.message_types_by_name['FeatureStats'] = _FEATURESTATS
+DESCRIPTOR.message_types_by_name['Contact'] = _CONTACT
 DESCRIPTOR.message_types_by_name['Brand'] = _BRAND
 DESCRIPTOR.message_types_by_name['Tag'] = _TAG
 DESCRIPTOR.message_types_by_name['GetBrandRequest'] = _GETBRANDREQUEST
 DESCRIPTOR.message_types_by_name['GetBrandFeaturesRequest'] = _GETBRANDFEATURESREQUEST
+DESCRIPTOR.message_types_by_name['GetBrandsMinDistanceRequest'] = _GETBRANDSMINDISTANCEREQUEST
+DESCRIPTOR.message_types_by_name['GetBrandContactsRequest'] = _GETBRANDCONTACTSREQUEST
 DESCRIPTOR.message_types_by_name['GetBrandsBulkRequest'] = _GETBRANDSBULKREQUEST
 DESCRIPTOR.message_types_by_name['SearchBrandsRequest'] = _SEARCHBRANDSREQUEST
 DESCRIPTOR.message_types_by_name['ListBrandsRequest'] = _LISTBRANDSREQUEST
@@ -1190,6 +1364,8 @@ DESCRIPTOR.message_types_by_name['ListTagsRequest'] = _LISTTAGSREQUEST
 DESCRIPTOR.message_types_by_name['ListTagsResponse'] = _LISTTAGSRESPONSE
 DESCRIPTOR.message_types_by_name['DeleteTagRequest'] = _DELETETAGREQUEST
 DESCRIPTOR.message_types_by_name['GetBrandFeaturesResponse'] = _GETBRANDFEATURESRESPONSE
+DESCRIPTOR.message_types_by_name['GetBrandContactsResponse'] = _GETBRANDCONTACTSRESPONSE
+DESCRIPTOR.message_types_by_name['GetBrandsMinDistanceResponse'] = _GETBRANDSMINDISTANCERESPONSE
 DESCRIPTOR.message_types_by_name['GetBrandsBulkResponse'] = _GETBRANDSBULKRESPONSE
 DESCRIPTOR.message_types_by_name['SearchBrandsResponse'] = _SEARCHBRANDSRESPONSE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -1201,14 +1377,14 @@ FeatureStats = _reflection.GeneratedProtocolMessageType('FeatureStats', (_messag
   })
 _sym_db.RegisterMessage(FeatureStats)
 
-Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), {
+Contact = _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,), {
+  'DESCRIPTOR' : _CONTACT,
+  '__module__' : 'topos.ontology.v1.ontology_pb2'
+  # @@protoc_insertion_point(class_scope:topos.ontology.v1.Contact)
+  })
+_sym_db.RegisterMessage(Contact)
 
-  'Contact' : _reflection.GeneratedProtocolMessageType('Contact', (_message.Message,), {
-    'DESCRIPTOR' : _BRAND_CONTACT,
-    '__module__' : 'topos.ontology.v1.ontology_pb2'
-    # @@protoc_insertion_point(class_scope:topos.ontology.v1.Brand.Contact)
-    })
-  ,
+Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), {
 
   'FeatureSetFeatureStatsEntry' : _reflection.GeneratedProtocolMessageType('FeatureSetFeatureStatsEntry', (_message.Message,), {
     'DESCRIPTOR' : _BRAND_FEATURESETFEATURESTATSENTRY,
@@ -1235,7 +1411,6 @@ Brand = _reflection.GeneratedProtocolMessageType('Brand', (_message.Message,), {
   # @@protoc_insertion_point(class_scope:topos.ontology.v1.Brand)
   })
 _sym_db.RegisterMessage(Brand)
-_sym_db.RegisterMessage(Brand.Contact)
 _sym_db.RegisterMessage(Brand.FeatureSetFeatureStatsEntry)
 _sym_db.RegisterMessage(Brand.Preferences)
 _sym_db.RegisterMessage(Brand.RegionPreferencesEntry)
@@ -1260,6 +1435,20 @@ GetBrandFeaturesRequest = _reflection.GeneratedProtocolMessageType('GetBrandFeat
   # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandFeaturesRequest)
   })
 _sym_db.RegisterMessage(GetBrandFeaturesRequest)
+
+GetBrandsMinDistanceRequest = _reflection.GeneratedProtocolMessageType('GetBrandsMinDistanceRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETBRANDSMINDISTANCEREQUEST,
+  '__module__' : 'topos.ontology.v1.ontology_pb2'
+  # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandsMinDistanceRequest)
+  })
+_sym_db.RegisterMessage(GetBrandsMinDistanceRequest)
+
+GetBrandContactsRequest = _reflection.GeneratedProtocolMessageType('GetBrandContactsRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETBRANDCONTACTSREQUEST,
+  '__module__' : 'topos.ontology.v1.ontology_pb2'
+  # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandContactsRequest)
+  })
+_sym_db.RegisterMessage(GetBrandContactsRequest)
 
 GetBrandsBulkRequest = _reflection.GeneratedProtocolMessageType('GetBrandsBulkRequest', (_message.Message,), {
   'DESCRIPTOR' : _GETBRANDSBULKREQUEST,
@@ -1353,6 +1542,28 @@ GetBrandFeaturesResponse = _reflection.GeneratedProtocolMessageType('GetBrandFea
 _sym_db.RegisterMessage(GetBrandFeaturesResponse)
 _sym_db.RegisterMessage(GetBrandFeaturesResponse.FeaturesEntry)
 
+GetBrandContactsResponse = _reflection.GeneratedProtocolMessageType('GetBrandContactsResponse', (_message.Message,), {
+  'DESCRIPTOR' : _GETBRANDCONTACTSRESPONSE,
+  '__module__' : 'topos.ontology.v1.ontology_pb2'
+  # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandContactsResponse)
+  })
+_sym_db.RegisterMessage(GetBrandContactsResponse)
+
+GetBrandsMinDistanceResponse = _reflection.GeneratedProtocolMessageType('GetBrandsMinDistanceResponse', (_message.Message,), {
+
+  'MinimumDistancesEntry' : _reflection.GeneratedProtocolMessageType('MinimumDistancesEntry', (_message.Message,), {
+    'DESCRIPTOR' : _GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY,
+    '__module__' : 'topos.ontology.v1.ontology_pb2'
+    # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandsMinDistanceResponse.MinimumDistancesEntry)
+    })
+  ,
+  'DESCRIPTOR' : _GETBRANDSMINDISTANCERESPONSE,
+  '__module__' : 'topos.ontology.v1.ontology_pb2'
+  # @@protoc_insertion_point(class_scope:topos.ontology.v1.GetBrandsMinDistanceResponse)
+  })
+_sym_db.RegisterMessage(GetBrandsMinDistanceResponse)
+_sym_db.RegisterMessage(GetBrandsMinDistanceResponse.MinimumDistancesEntry)
+
 GetBrandsBulkResponse = _reflection.GeneratedProtocolMessageType('GetBrandsBulkResponse', (_message.Message,), {
   'DESCRIPTOR' : _GETBRANDSBULKRESPONSE,
   '__module__' : 'topos.ontology.v1.ontology_pb2'
@@ -1371,6 +1582,7 @@ _sym_db.RegisterMessage(SearchBrandsResponse)
 _BRAND_FEATURESETFEATURESTATSENTRY._options = None
 _BRAND_REGIONPREFERENCESENTRY._options = None
 _GETBRANDFEATURESRESPONSE_FEATURESENTRY._options = None
+_GETBRANDSMINDISTANCERESPONSE_MINIMUMDISTANCESENTRY._options = None
 
 _ONTOLOGY = _descriptor.ServiceDescriptor(
   name='Ontology',
@@ -1378,8 +1590,8 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=2718,
-  serialized_end=3979,
+  serialized_start=3084,
+  serialized_end=4655,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBrand',
@@ -1400,9 +1612,27 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\036\022\034/v1/features/{name=brands/*}'),
   ),
   _descriptor.MethodDescriptor(
+    name='GetBrandContacts',
+    full_name='topos.ontology.v1.Ontology.GetBrandContacts',
+    index=2,
+    containing_service=None,
+    input_type=_GETBRANDCONTACTSREQUEST,
+    output_type=_GETBRANDCONTACTSRESPONSE,
+    serialized_options=_b('\202\323\344\223\002\036\022\034/v1/contacts/{name=brands/*}'),
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBrandsMinDistance',
+    full_name='topos.ontology.v1.Ontology.GetBrandsMinDistance',
+    index=3,
+    containing_service=None,
+    input_type=_GETBRANDSMINDISTANCEREQUEST,
+    output_type=_GETBRANDSMINDISTANCERESPONSE,
+    serialized_options=_b('\202\323\344\223\002 \"\033/v1/brands/minimum-distance:\001*'),
+  ),
+  _descriptor.MethodDescriptor(
     name='GetBrandsBulk',
     full_name='topos.ontology.v1.Ontology.GetBrandsBulk',
-    index=2,
+    index=4,
     containing_service=None,
     input_type=_GETBRANDSBULKREQUEST,
     output_type=_GETBRANDSBULKRESPONSE,
@@ -1411,7 +1641,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ListBrands',
     full_name='topos.ontology.v1.Ontology.ListBrands',
-    index=3,
+    index=5,
     containing_service=None,
     input_type=_LISTBRANDSREQUEST,
     output_type=_LISTBRANDSRESPONSE,
@@ -1420,7 +1650,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SearchBrands',
     full_name='topos.ontology.v1.Ontology.SearchBrands',
-    index=4,
+    index=6,
     containing_service=None,
     input_type=_SEARCHBRANDSREQUEST,
     output_type=_SEARCHBRANDSRESPONSE,
@@ -1429,7 +1659,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetBrand',
     full_name='topos.ontology.v1.Ontology.SetBrand',
-    index=5,
+    index=7,
     containing_service=None,
     input_type=_SETBRANDREQUEST,
     output_type=_BRAND,
@@ -1438,7 +1668,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DeleteBrand',
     full_name='topos.ontology.v1.Ontology.DeleteBrand',
-    index=6,
+    index=8,
     containing_service=None,
     input_type=_DELETEBRANDREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -1447,7 +1677,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetTag',
     full_name='topos.ontology.v1.Ontology.GetTag',
-    index=7,
+    index=9,
     containing_service=None,
     input_type=_GETTAGREQUEST,
     output_type=_TAG,
@@ -1456,7 +1686,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='ListTags',
     full_name='topos.ontology.v1.Ontology.ListTags',
-    index=8,
+    index=10,
     containing_service=None,
     input_type=_LISTTAGSREQUEST,
     output_type=_LISTTAGSRESPONSE,
@@ -1465,7 +1695,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='SetTag',
     full_name='topos.ontology.v1.Ontology.SetTag',
-    index=9,
+    index=11,
     containing_service=None,
     input_type=_SETTAGREQUEST,
     output_type=_TAG,
@@ -1474,7 +1704,7 @@ _ONTOLOGY = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DeleteTag',
     full_name='topos.ontology.v1.Ontology.DeleteTag',
-    index=10,
+    index=12,
     containing_service=None,
     input_type=_DELETETAGREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,

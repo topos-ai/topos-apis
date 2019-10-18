@@ -2,10 +2,10 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from topos.features.v1 import features_pb2 as topos_dot_features_dot_v1_dot_features__pb2
+from topos.metrics.v1 import metrics_pb2 as topos_dot_metrics_dot_v1_dot_metrics__pb2
 
 
-class FeaturesStub(object):
+class MetricsStub(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -16,78 +16,78 @@ class FeaturesStub(object):
       channel: A grpc.Channel.
     """
     self.GetFeatureSet = channel.unary_unary(
-        '/topos.features.v1.Features/GetFeatureSet',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureSetRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSet.FromString,
+        '/topos.metrics.v1.Metrics/GetFeatureSet',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.GetFeatureSetRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSet.FromString,
         )
     self.SetFeatureSet = channel.unary_unary(
-        '/topos.features.v1.Features/SetFeatureSet',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureSetRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSet.FromString,
+        '/topos.metrics.v1.Metrics/SetFeatureSet',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureSetRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSet.FromString,
         )
     self.DeleteFeatureSet = channel.unary_unary(
-        '/topos.features.v1.Features/DeleteFeatureSet',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureSetRequest.SerializeToString,
+        '/topos.metrics.v1.Metrics/DeleteFeatureSet',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureSetRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
-    self.SetFeatureSetFeature = channel.unary_unary(
-        '/topos.features.v1.Features/SetFeatureSetFeature',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.FromString,
+    self.CreateFeatureRelation = channel.unary_unary(
+        '/topos.metrics.v1.Metrics/CreateFeatureRelation',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.CreateFeatureRelationRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.FromString,
         )
     self.DeleteFeatureSetFeature = channel.unary_unary(
-        '/topos.features.v1.Features/DeleteFeatureSetFeature',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.SerializeToString,
+        '/topos.metrics.v1.Metrics/DeleteFeatureSetFeature',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.ListFeatureSets = channel.unary_unary(
-        '/topos.features.v1.Features/ListFeatureSets',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeatureSetsRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeatureSetsResponse.FromString,
+        '/topos.metrics.v1.Metrics/ListFeatureSets',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeatureSetsRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeatureSetsResponse.FromString,
         )
     self.ListFeatures = channel.unary_unary(
-        '/topos.features.v1.Features/ListFeatures',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesResponse.FromString,
+        '/topos.metrics.v1.Metrics/ListFeatures',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeaturesRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeaturesResponse.FromString,
         )
     self.GetFeature = channel.unary_unary(
-        '/topos.features.v1.Features/GetFeature',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.FromString,
+        '/topos.metrics.v1.Metrics/GetFeature',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.GetFeatureRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.Feature.FromString,
         )
     self.SetFeature = channel.unary_unary(
-        '/topos.features.v1.Features/SetFeature',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.FromString,
+        '/topos.metrics.v1.Metrics/SetFeature',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.Feature.FromString,
         )
     self.DeleteFeature = channel.unary_unary(
-        '/topos.features.v1.Features/DeleteFeature',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureRequest.SerializeToString,
+        '/topos.metrics.v1.Metrics/DeleteFeature',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.SetFeatureValue = channel.unary_unary(
-        '/topos.features.v1.Features/SetFeatureValue',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureValueRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureValue.FromString,
+        '/topos.metrics.v1.Metrics/SetFeatureValue',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureValueRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureValue.FromString,
         )
     self.BatchSetFeatureValue = channel.unary_unary(
-        '/topos.features.v1.Features/BatchSetFeatureValue',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueRequest.SerializeToString,
+        '/topos.metrics.v1.Metrics/BatchSetFeatureValue',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.BatchSetFeatureValueRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.DeleteFeatureValue = channel.unary_unary(
-        '/topos.features.v1.Features/DeleteFeatureValue',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureValueRequest.SerializeToString,
+        '/topos.metrics.v1.Metrics/DeleteFeatureValue',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureValueRequest.SerializeToString,
         response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.SearchFeatureValues = channel.unary_unary(
-        '/topos.features.v1.Features/SearchFeatureValues',
-        request_serializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesRequest.SerializeToString,
-        response_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesResponse.FromString,
+        '/topos.metrics.v1.Metrics/SearchFeatureValues',
+        request_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SearchFeatureValuesRequest.SerializeToString,
+        response_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SearchFeatureValuesResponse.FromString,
         )
 
 
-class FeaturesServicer(object):
+class MetricsServicer(object):
   # missing associated documentation comment in .proto file
   pass
 
@@ -112,8 +112,8 @@ class FeaturesServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SetFeatureSetFeature(self, request, context):
-    """Sets a feature set and a feature relation.
+  def CreateFeatureRelation(self, request, context):
+    """Create a relationship between a feature set and feature
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -190,79 +190,79 @@ class FeaturesServicer(object):
     raise NotImplementedError('Method not implemented!')
 
 
-def add_FeaturesServicer_to_server(servicer, server):
+def add_MetricsServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'GetFeatureSet': grpc.unary_unary_rpc_method_handler(
           servicer.GetFeatureSet,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureSetRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSet.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.GetFeatureSetRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSet.SerializeToString,
       ),
       'SetFeatureSet': grpc.unary_unary_rpc_method_handler(
           servicer.SetFeatureSet,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureSetRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSet.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureSetRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSet.SerializeToString,
       ),
       'DeleteFeatureSet': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteFeatureSet,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureSetRequest.FromString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureSetRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
-      'SetFeatureSetFeature': grpc.unary_unary_rpc_method_handler(
-          servicer.SetFeatureSetFeature,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.SerializeToString,
+      'CreateFeatureRelation': grpc.unary_unary_rpc_method_handler(
+          servicer.CreateFeatureRelation,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.CreateFeatureRelationRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.SerializeToString,
       ),
       'DeleteFeatureSetFeature': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteFeatureSetFeature,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureSetFeature.FromString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureSetFeature.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'ListFeatureSets': grpc.unary_unary_rpc_method_handler(
           servicer.ListFeatureSets,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeatureSetsRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeatureSetsResponse.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeatureSetsRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeatureSetsResponse.SerializeToString,
       ),
       'ListFeatures': grpc.unary_unary_rpc_method_handler(
           servicer.ListFeatures,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.ListFeaturesResponse.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeaturesRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.ListFeaturesResponse.SerializeToString,
       ),
       'GetFeature': grpc.unary_unary_rpc_method_handler(
           servicer.GetFeature,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.GetFeatureRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.GetFeatureRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.Feature.SerializeToString,
       ),
       'SetFeature': grpc.unary_unary_rpc_method_handler(
           servicer.SetFeature,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.Feature.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.Feature.SerializeToString,
       ),
       'DeleteFeature': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteFeature,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureRequest.FromString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'SetFeatureValue': grpc.unary_unary_rpc_method_handler(
           servicer.SetFeatureValue,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SetFeatureValueRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.FeatureValue.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SetFeatureValueRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.FeatureValue.SerializeToString,
       ),
       'BatchSetFeatureValue': grpc.unary_unary_rpc_method_handler(
           servicer.BatchSetFeatureValue,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.BatchSetFeatureValueRequest.FromString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.BatchSetFeatureValueRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'DeleteFeatureValue': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteFeatureValue,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.DeleteFeatureValueRequest.FromString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.DeleteFeatureValueRequest.FromString,
           response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'SearchFeatureValues': grpc.unary_unary_rpc_method_handler(
           servicer.SearchFeatureValues,
-          request_deserializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesRequest.FromString,
-          response_serializer=topos_dot_features_dot_v1_dot_features__pb2.SearchFeatureValuesResponse.SerializeToString,
+          request_deserializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SearchFeatureValuesRequest.FromString,
+          response_serializer=topos_dot_metrics_dot_v1_dot_metrics__pb2.SearchFeatureValuesResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'topos.features.v1.Features', rpc_method_handlers)
+      'topos.metrics.v1.Metrics', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))
