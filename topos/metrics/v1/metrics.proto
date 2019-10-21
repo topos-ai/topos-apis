@@ -169,6 +169,8 @@ message Feature {
   string display_name = 2;
   string description = 3;
   string source = 4;
+  bool exclude = 5;
+  string unit = 6;
 }
 
 message GetFeatureRequest { string name = 1; }
