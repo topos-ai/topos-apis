@@ -34,8 +34,8 @@ service Locations {
   rpc SetRegionGeometry(stream SetRegionGeometryRequest)
       returns (SetRegionGeometryResponse) {
     option (google.api.http) = {
-      post : "/v1/{region.name=regionTypes/*/regions/*}/geometry"
-      body : "region"
+      post : "/v1/{name=regionTypes/*/regions/*}/geometry"
+      body : "*"
     };
   }
 
