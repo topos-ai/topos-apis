@@ -276,6 +276,8 @@ message SearchBrandsRequest {
   repeated string tenancy_prefs = 4;
   repeated string regions_of_expansion = 5;
   repeated string regions_of_operation = 6;
+  repeated string attributes = 7;
+  string income_iqr = 8;
 }
 
 message ListBrandsRequest {
