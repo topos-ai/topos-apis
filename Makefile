@@ -11,7 +11,7 @@ endpoints-dev: api-config-dev pkg-descriptors
 		&& find topos -name api_config_dev.yaml -execdir gcloud --project topos-ai-dev endpoints services deploy api_config_dev.yaml api_descriptor.pb \;
 
 api-config-dev:
-	find topos -name api_config.yaml -execdir sh -c "sed -E 's/\.([a-z]+)\.endpoints/-dev.\1.endpoints/' api_config.yaml > api_config_dev.yaml" \;
+	find topos -name api_config.yaml -execdir sh -c "sed -E 's/\.([a-z-]+)\.endpoints/-dev.\1.endpoints/' api_config.yaml > api_config_dev.yaml" \;
 
 pkg-go: includes/googleapis genproto/go
 	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.13.4-alpine sh -c \

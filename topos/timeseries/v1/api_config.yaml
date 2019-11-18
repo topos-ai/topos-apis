@@ -19,5 +19,5 @@ authentication:
 
 usage:
   rules:
-    - selector: "topos.time-series.v1.*"
+    - selector: "topos.timeseries.v1.*"
       allow_unregistered_calls: true

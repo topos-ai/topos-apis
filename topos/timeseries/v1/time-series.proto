@@ -9,7 +9,7 @@ service TimeSeries {
   // Gets value for a time series bin.
   rpc GetTimeSeriesBin(GetTimeSeriesBinRequest) returns (TimeSeriesBin) {
     option (google.api.http) = {
-      post : "/v1/time-series/"
+      post : "/v1/time-series-bin"
       body : "*"
     };
   }
