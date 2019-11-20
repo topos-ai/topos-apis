@@ -1,4 +1,5 @@
-**/api_config_dev.yaml
-**/api_descriptor.pb
-includes/
+.DS_Store
 .vscode
+api_config_dev.yaml
+api_descriptor.pb
+includes/
