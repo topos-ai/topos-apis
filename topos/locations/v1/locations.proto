@@ -93,6 +93,9 @@ message Region {
   // `^[a-z\d]+(-[a-z\d]+)*$`
   string name = 1;
 
+  // The region's display name.
+  string display_name = 2;
+
   // A property value.
   message Property {
     oneof value {
