@@ -254,11 +254,8 @@ message Tag {
   // The plural display name of the tag.
   string plural_display_name = 4;
 
-  // Is the tag a category.
-  bool is_category = 5;
-
-  // The name of a parent tag, if existing
-  string parent_name = 6;
+  // The names of a parent tags, if existing
+  repeated string parent_name = 5;
 }
 
 message GetBrandRequest { string name = 1; }
