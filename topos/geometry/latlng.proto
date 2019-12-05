@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package topos.geometry;
+
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/geometry";
+
+message LatLng {
+  double latitude = 1;
+  double longitude = 2;
+}

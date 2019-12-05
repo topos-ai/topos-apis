@@ -5,6 +5,8 @@ package topos.timeseries.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/timeseries/v1;timeseries";
+
 service TimeSeries {
   // Gets value for a time series bin.
   rpc GetTimeSeriesBin(GetTimeSeriesBinRequest) returns (TimeSeriesBin) {
@@ -16,7 +18,7 @@ service TimeSeries {
 
   // Gets a number of time series feature values.
   rpc GetTimeSeriesBinBulk(GetTimeSeriesBinBulkRequest)
-    returns (GetTimeSeriesBinBulkResponse) {
+      returns (GetTimeSeriesBinBulkResponse) {
     option (google.api.http) = {
       post : "/v1/time-series/bulk"
       body : "*"
@@ -25,7 +27,7 @@ service TimeSeries {
 
   // Lists features.
   rpc ListTimeSeriesFeatures(ListTimeSeriesFeaturesRequest)
-    returns (ListTimeSeriesFeaturesResponse) {
+      returns (ListTimeSeriesFeaturesResponse) {
     option (google.api.http) = {
       get : "/v1/time-series-features"
     };
@@ -41,7 +43,7 @@ service TimeSeries {
 
   // Sets a time series feature.
   rpc SetTimeSeriesFeature(SetTimeSeriesFeatureRequest)
-    returns (TimeSeriesFeature) {
+      returns (TimeSeriesFeature) {
     option (google.api.http) = {
       post : "/v1/{feature.name=bin/*}:set"
       body : "feature"
@@ -49,19 +51,20 @@ service TimeSeries {
   }
 
   // Deletes a time series bin.
-  rpc DeleteTimeSeriesBin(DeleteTimeSeriesBinRequest) returns (google.protobuf.Empty) {
+  rpc DeleteTimeSeriesBin(DeleteTimeSeriesBinRequest)
+      returns (google.protobuf.Empty) {
     option (google.api.http) = {
       post : "/v1/{bin.region_id=bin/*}:delete"
       body : "bin"
     };
   }
 
-  rpc DeleteTimeSeriesFeature(DeleteTimeSeriesFeatureRequest) returns (google.protobuf.Empty) {
+  rpc DeleteTimeSeriesFeature(DeleteTimeSeriesFeatureRequest)
+      returns (google.protobuf.Empty) {
     option (google.api.http) = {
       delete : "/v1/{name=feature/*}"
     };
   }
-
 }
 
 enum Day {
@@ -90,9 +93,7 @@ message TimeSeriesBin {
   int64 value = 6;
 }
 
-message TimeSeriesValues{
-  repeated int64 values = 1;
-}
+message TimeSeriesValues { repeated int64 values = 1; }
 
 message GetTimeSeriesBinRequest {
   string region_name = 1;
@@ -137,4 +138,3 @@ message ListTimeSeriesFeaturesResponse {
   // results in the list.
   string next_page_token = 2;
 }
-

@@ -20,11 +20,11 @@ pkg-go: includes/googleapis genproto/go
 		&& cd /genproto/go \
 		&& go mod init github.com/topos-ai/topos-apis/genproto/go \
 		&& go get github.com/golang/protobuf/protoc-gen-go \
-		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "protoc \
-			-I/includes/googleapis \
-			-I/protos \
-			--go_out=plugins=grpc:/genproto/go \
-			'{}'/*.proto" \; \
+		&& find /protos/topos -type d | xargs -I{.} find {.} -maxdepth 1 -name \*.proto -exec \
+			protoc -I/includes/googleapis \
+				-I/protos \
+				--go_out=paths=source_relative,plugins=grpc:/genproto/go \
+				{} + \
 		&& go mod tidy'
 
 pkg-python: includes/googleapis genproto/python
@@ -32,13 +32,14 @@ pkg-python: includes/googleapis genproto/python
 	'set -ex \
 		&& pip install --upgrade pip \
 		&& pip install grpcio-tools \
-		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "python \
-			-m grpc_tools.protoc \
-			-I/includes/googleapis \
-			-I/protos \
-			--python_out=/genproto/python \
-			--grpc_python_out=/genproto/python \
-			'{}'/*.proto" \;'
+		&& find /protos/topos -type d | xargs -I{.} find {.} -maxdepth 1 -name \*.proto -exec \
+			python \
+				-m grpc_tools.protoc \
+				-I/includes/googleapis \
+				-I/protos \
+				--python_out=/genproto/python \
+				--grpc_python_out=/genproto/python \
+				{} + '
 
 pkg-descriptors: includes/googleapis
 	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.10.3 sh -c \

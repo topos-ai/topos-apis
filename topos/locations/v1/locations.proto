@@ -3,8 +3,9 @@ syntax = "proto3";
 package topos.locations.v1;
 
 import "google/api/annotations.proto";
+import "topos/geometry/encoding.proto";
 
-option go_package = "topos/locations/v1;locations";
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/locations/v1;locations";
 
 service Locations {
   // Gets a region.
@@ -72,11 +73,6 @@ service Locations {
   }
 }
 
-enum GeometryEncoding {
-  S2 = 0;
-  GEOJSON = 1;
-}
-
 message RegionType {
   // The name of the region type. It must have the format
   // `"regionTypes/{region_type}"`. `{region_type}` must match the [regular
@@ -115,7 +111,7 @@ message GetRegionGeometryRequest {
   string name = 1;
 
   // The geometry data's encoding.
-  GeometryEncoding geometry_encoding = 2;
+  topos.geometry.Encoding geometry_encoding = 2;
 }
 
 message GetRegionGeometryResponse { bytes geometry_chunk = 1; }
@@ -127,7 +123,7 @@ message SetRegionGeometryRequest {
   string name = 1;
 
   // The geometry data's encoding.
-  GeometryEncoding geometry_encoding = 14;
+  topos.geometry.Encoding geometry_encoding = 14;
 
   // A chunk of bytes of the encoded geometry.
   bytes geometry_chunk = 15;
@@ -195,7 +191,7 @@ message IntersectRegionsRequest {
   string region_type = 1;
 
   // The geometry encoding.
-  GeometryEncoding geometry_encoding = 14;
+  topos.geometry.Encoding geometry_encoding = 14;
 
   // A chunk of the intersecting geometry.
   bytes geometry_chunk = 15;

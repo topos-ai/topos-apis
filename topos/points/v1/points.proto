@@ -5,8 +5,10 @@ package topos.points.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
+import "topos/geometry/encoding.proto";
+import "topos/geometry/latlng.proto";
 
-option go_package = "topos/points/v1;points";
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/points/v1;points";
 
 service Points {
   // Gets a brand.
@@ -141,18 +143,6 @@ service Points {
       body : "*"
     };
   }
-
-  rpc SearchRegions(SearchRegionsRequest) returns (SearchRegionsResponse) {
-    option (google.api.http) = {
-      post : "/v1/regions:search"
-      body : "*"
-    };
-  }
-}
-
-enum PolygonEncoding {
-  S2 = 0;
-  GEOJSON = 1;
 }
 
 message FeatureStats {
@@ -247,11 +237,6 @@ message Brand {
   string website = 19;
 }
 
-message LatLng {
-  double latitude = 1;
-  double longitude = 2;
-}
-
 message Point {
   // The name of the point. It must have the format `"points/{point}"`.
   string name = 1;
@@ -260,7 +245,7 @@ message Point {
   string display_name = 2;
 
   // The geocoded point address.
-  LatLng location = 4;
+  topos.geometry.LatLng location = 4;
 
   // The formatted, single-line address.
   string formatted_address = 5;
@@ -293,18 +278,6 @@ message Tag {
 
   // Is the tag a category.
   bool is_category = 5;
-}
-
-message Region {
-  // The name of the region. It must have the format
-  // `"regionTypes/{region_type}/regions/{region}"`.
-  // `{region}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
-  string name = 1;
-
-  // The WKB-encoded region geometry.
-  bytes geometry = 2;
 }
 
 message GetBrandRequest { string name = 1; }
@@ -374,10 +347,10 @@ message PolygonSearchPointsRequest {
   repeated string tags = 4;
 
   // The polygon data's encoding.
-  PolygonEncoding polygon_encoding = 5;
+  topos.geometry.Encoding geometry_encoding = 5;
 
   // A chunk of bytes of the encoded S2 polygon.
-  bytes polygon_chunk = 15;
+  bytes geometry_chunk = 15;
 }
 
 message PolygonSearchPointsResponse {
@@ -402,7 +375,7 @@ message RadiusSearchPointsRequest {
   repeated string tags = 4;
 
   // An S2 leaf cell ID to use as the center of the area inclosed by the radius.
-  LatLng center = 5;
+  topos.geometry.LatLng center = 5;
 
   // A radius in meters.
   double radius = 6;
@@ -459,10 +432,10 @@ message PolygonCountBrandPointsRequest {
   repeated string brands = 2;
 
   // The polygon data's encoding.
-  PolygonEncoding polygon_encoding = 3;
+  topos.geometry.Encoding geometry_encoding = 3;
 
   // A chunk of bytes of the encoded S2 polygon.
-  bytes polygon_chunk = 15;
+  bytes geometry_chunk = 15;
 }
 
 message PolygonCountBrandPointsResponse {
@@ -491,7 +464,7 @@ message PolygonCountTagPointsRequest {
   repeated string tags = 2;
 
   // The polygon data's encoding.
-  PolygonEncoding polygon_encoding = 3;
+  topos.geometry.Encoding geometry_encoding = 3;
 
   // A chunk of bytes of the encoded polygon.
   bytes polygon_chunk = 15;
@@ -500,26 +473,4 @@ message PolygonCountTagPointsRequest {
 message PolygonCountTagPointsResponse {
   // Map of tag IDs to point counts.
   map<string, int64> tag_points = 1;
-}
-
-message SearchRegionsRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous Search request, if any.
-  string page_token = 2;
-
-  // Return regions of the given type.
-  string region_type = 3;
-
-  // Return regions that intersect with locations of the given brand.
-  string brand = 4;
-}
-
-message SearchRegionsResponse {
-  repeated Region regions = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the search.
-  string next_page_token = 2;
 }

@@ -6,6 +6,8 @@ import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";
 
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/ontology/v1;ontology";
+
 service Ontology {
   // Gets a brand.
   rpc GetBrand(GetBrandRequest) returns (Brand) {

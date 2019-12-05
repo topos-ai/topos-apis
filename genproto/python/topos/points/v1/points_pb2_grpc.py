@@ -105,11 +105,6 @@ class PointsStub(object):
         request_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsRequest.SerializeToString,
         response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsResponse.FromString,
         )
-    self.SearchRegions = channel.unary_unary(
-        '/topos.points.v1.Points/SearchRegions',
-        request_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsRequest.SerializeToString,
-        response_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsResponse.FromString,
-        )
 
 
 class PointsServicer(object):
@@ -242,13 +237,6 @@ class PointsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SearchRegions(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
 
 def add_PointsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -341,11 +329,6 @@ def add_PointsServicer_to_server(servicer, server):
           servicer.PolygonCountTagPoints,
           request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsRequest.FromString,
           response_serializer=topos_dot_points_dot_v1_dot_points__pb2.PolygonCountTagPointsResponse.SerializeToString,
-      ),
-      'SearchRegions': grpc.unary_unary_rpc_method_handler(
-          servicer.SearchRegions,
-          request_deserializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsRequest.FromString,
-          response_serializer=topos_dot_points_dot_v1_dot_points__pb2.SearchRegionsResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

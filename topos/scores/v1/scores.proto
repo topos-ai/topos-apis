@@ -5,7 +5,7 @@ package topos.scores.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "topos/scores/v1;scores";
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/scores/v1;scores";
 
 service Scores {
   // Lists a graph's scores.

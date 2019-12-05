@@ -5,7 +5,7 @@ package topos.metrics.v1;
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";
 
-option go_package = "topos/metrics/v1;metrics";
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/metrics/v1;metrics";
 
 service Metrics {
   // Gets a feature set.
