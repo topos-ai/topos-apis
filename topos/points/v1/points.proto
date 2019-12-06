@@ -467,7 +467,7 @@ message PolygonCountTagPointsRequest {
   topos.geometry.Encoding geometry_encoding = 3;
 
   // A chunk of bytes of the encoded polygon.
-  bytes polygon_chunk = 15;
+  bytes geometry_chunk = 15;
 }
 
 message PolygonCountTagPointsResponse {
