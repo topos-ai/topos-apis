@@ -3,72 +3,12 @@ syntax = "proto3";
 package topos.points.v1;
 
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
-import "google/protobuf/timestamp.proto";
 import "topos/geometry/encoding.proto";
 import "topos/geometry/latlng.proto";
 
 option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/points/v1;points";
 
 service Points {
-  // Gets a brand.
-  rpc GetBrand(GetBrandRequest) returns (Brand) {
-    option (google.api.http) = {
-      get : "/v1/{name=brands/*}"
-    };
-  }
-
-  // Lists brands.
-  rpc ListBrands(ListBrandsRequest) returns (ListBrandsResponse) {
-    option (google.api.http) = {
-      get : "/v1/brands"
-    };
-  }
-
-  // Sets a brand.
-  rpc SetBrand(SetBrandRequest) returns (Brand) {
-    option (google.api.http) = {
-      post : "/v1/{brand.name=brands/*}:set"
-      body : "brand"
-    };
-  }
-
-  // Deletes a brand.
-  rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=brands/*}"
-    };
-  }
-
-  // Gets a tag.
-  rpc GetTag(GetTagRequest) returns (Tag) {
-    option (google.api.http) = {
-      get : "/v1/{name=tags/*}"
-    };
-  }
-
-  // Lists tags.
-  rpc ListTags(ListTagsRequest) returns (ListTagsResponse) {
-    option (google.api.http) = {
-      get : "/v1/tags"
-    };
-  }
-
-  // Sets a tag.
-  rpc SetTag(SetTagRequest) returns (Tag) {
-    option (google.api.http) = {
-      post : "/v1/{tag.name=tags/*}:set"
-      body : "tag"
-    };
-  }
-
-  // Deletes a tag.
-  rpc DeleteTag(DeleteTagRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=tags/*}"
-    };
-  }
-
   // Gets a point.
   rpc GetPoint(GetPointRequest) returns (Point) {
     option (google.api.http) = {
@@ -97,21 +37,6 @@ service Points {
       returns (RadiusSearchPointsResponse) {
     option (google.api.http) = {
       get : "/v1/points:radius_search"
-    };
-  }
-
-  // Sets a point.
-  rpc SetPoint(SetPointRequest) returns (Point) {
-    option (google.api.http) = {
-      put : "/v1/{point.name=points/*}"
-      body : "point"
-    };
-  }
-
-  // Deletes a point.
-  rpc DeletePoint(DeletePointRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=points/*}"
     };
   }
 
@@ -145,98 +70,6 @@ service Points {
   }
 }
 
-message FeatureStats {
-  double min = 1;
-  double max = 2;
-  double average = 3;
-  double median = 4;
-}
-
-message Brand {
-  // The name of the point brand. It must have the format `"brands/{brand}"`.
-  // `{brand}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
-  string name = 1;
-
-  // The display name of the brand.
-  string display_name = 2;
-
-  // The formatted, single-line address of the brand's headquarters.
-  string formatted_address = 3;
-
-  // The email of the brand.
-  string email = 4;
-
-  // The realestate email of the brand.
-  string realestate_email = 5;
-
-  // The phone number of the brand.
-  string phone_number = 6;
-
-  message Contact {
-
-    // The full name of the contact.
-    string full_name = 1;
-
-    // The title of the contact.
-    string title = 2;
-
-    // The phonenumber of the contact.
-    string email = 3;
-
-    // The phone number of the contact.
-    string phone_number = 4;
-  }
-
-  // The contacts for the brand.
-  repeated Contact contacts = 7;
-
-  // The [2017 NAICS
-  // code](https://www.census.gov/cgi-bin/sssd/naics/naicsrch?chart=2017) of the
-  // brand.
-  string naics = 8;
-
-  // The postal code of the brand's headquarters.
-  string postal_code = 9;
-
-  // The feature set statistics for this brand's locations.
-  map<string, FeatureStats> feature_set_feature_stats = 10;
-
-  message Preferences {
-
-    // The prefered square footage of the brand.
-    string preferred_gla = 1;
-
-    // The percentage of locations where this brand shares a building.
-    double inline = 2;
-
-    // The percentage of locations where this brand occupies a stand-alone
-    // building.
-    double stand_alone = 3;
-  }
-
-  // The brand's location preferences by region.
-  map<string, Preferences> region_preferences = 11;
-
-  // A list of brand tags.
-  repeated string tags = 12;
-
-  // Exclude the brand from results.
-  bool exclude = 13;
-
-  // The creation timestamp of the brand.
-  google.protobuf.Timestamp create_time = 14;
-
-  // The last update timestamp of an brand.
-  google.protobuf.Timestamp update_time = 15;
-
-  int64 total_locations = 16;
-  repeated string states_of_expansion = 17;
-  repeated string states_of_operation = 18;
-  string website = 19;
-}
-
 message Point {
   // The name of the point. It must have the format `"points/{point}"`.
   string name = 1;
@@ -260,53 +93,7 @@ message Point {
   int64 location_count = 9;
 }
 
-message Tag {
-  // The name of the tag. It must have the format `"tags/{tag}"`. `{tag}`
-  // must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
-  string name = 1;
-
-  // The display name of the tag.
-  string display_name = 2;
-
-  // Exclude tag from results.
-  bool exclude = 3;
-
-  // The plural display name of the tag.
-  string plural_display_name = 4;
-
-  // Is the tag a category.
-  bool is_category = 5;
-}
-
-message GetBrandRequest { string name = 1; }
-
-message ListBrandsRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous List request, if any.
-  string page_token = 2;
-}
-
-message ListBrandsResponse {
-  repeated Brand brands = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
-}
-
-message SetBrandRequest { Brand brand = 1; }
-
-message DeleteBrandRequest { string name = 1; }
-
 message GetPointRequest { string name = 1; }
-
-message SetPointRequest { Point point = 1; }
-
-message DeletePointRequest { string name = 1; }
 
 message SearchPointsRequest {
   // The maximum number of items to return.
@@ -321,7 +108,7 @@ message SearchPointsRequest {
   // Return points with the given tags.
   repeated string tags = 4;
 
-  // Return points within a region.
+  // Return points within the given region.
   string region = 5;
 }
 
@@ -346,10 +133,10 @@ message PolygonSearchPointsRequest {
   // Return points with the given tags.
   repeated string tags = 4;
 
-  // The polygon data's encoding.
+  // The geometry data's encoding.
   topos.geometry.Encoding geometry_encoding = 5;
 
-  // A chunk of bytes of the encoded S2 polygon.
+  // A chunk of bytes of the encoded geometry.
   bytes geometry_chunk = 15;
 }
 
@@ -374,7 +161,7 @@ message RadiusSearchPointsRequest {
   // Return points with the given tags.
   repeated string tags = 4;
 
-  // An S2 leaf cell ID to use as the center of the area inclosed by the radius.
+  // The center of the area inclosed by the radius.
   topos.geometry.LatLng center = 5;
 
   // A radius in meters.
@@ -388,28 +175,6 @@ message RadiusSearchPointsResponse {
   // results in the search.
   string next_page_token = 2;
 }
-
-message GetTagRequest { string name = 1; }
-
-message SetTagRequest { Tag tag = 1; }
-
-message ListTagsRequest {
-  // The maximum number of items to return.
-  int32 page_size = 1;
-
-  // The next_page_token value returned from a previous List request, if any.
-  string page_token = 2;
-}
-
-message ListTagsResponse {
-  repeated Tag tags = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
-}
-
-message DeleteTagRequest { string name = 1; }
 
 message CountBrandPointsRequest {
   // Count brand points within this region.
