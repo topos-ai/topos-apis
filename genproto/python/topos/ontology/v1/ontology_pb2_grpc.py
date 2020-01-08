@@ -70,6 +70,11 @@ class OntologyStub(object):
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListTagsRequest.SerializeToString,
         response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListTagsResponse.FromString,
         )
+    self.ListResolvedTags = channel.unary_unary(
+        '/topos.ontology.v1.Ontology/ListResolvedTags',
+        request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListResolvedTagsRequest.SerializeToString,
+        response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListResolvedTagsResponse.FromString,
+        )
     self.SetTag = channel.unary_unary(
         '/topos.ontology.v1.Ontology/SetTag',
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.SetTagRequest.SerializeToString,
@@ -163,6 +168,13 @@ class OntologyServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def ListResolvedTags(self, request, context):
+    """Lists resolved tags.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def SetTag(self, request, context):
     """Sets a tag.
     """
@@ -234,6 +246,11 @@ def add_OntologyServicer_to_server(servicer, server):
           servicer.ListTags,
           request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListTagsRequest.FromString,
           response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListTagsResponse.SerializeToString,
+      ),
+      'ListResolvedTags': grpc.unary_unary_rpc_method_handler(
+          servicer.ListResolvedTags,
+          request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListResolvedTagsRequest.FromString,
+          response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.ListResolvedTagsResponse.SerializeToString,
       ),
       'SetTag': grpc.unary_unary_rpc_method_handler(
           servicer.SetTag,
