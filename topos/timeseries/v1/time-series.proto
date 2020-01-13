@@ -25,6 +25,15 @@ service TimeSeries {
     };
   }
 
+  // Gets average feature values for a time period.
+  rpc GetTimeSeriesAveragesBulk(GetTimeSeriesAveragesBulkRequest)
+      returns (GetTimeSeriesBinBulkResponse) {
+    option (google.api.http) = {
+      post : "/v1/time-series/bulk/average"
+      body : "*"
+    };
+  }
+
   // Lists features.
   rpc ListTimeSeriesFeatures(ListTimeSeriesFeaturesRequest)
       returns (ListTimeSeriesFeaturesResponse) {
@@ -77,6 +86,11 @@ enum Day {
   SUN = 6;
 }
 
+enum TimePeriod {
+  WEEKDAY=0;
+  WEEKEND=1;
+}
+
 message TimeSeriesFeature {
   string name = 1;
   string display_name = 2;
@@ -109,6 +123,12 @@ message GetTimeSeriesBinBulkRequest {
   Day day = 3;
   string start_time = 4;
   string end_time = 5;
+}
+
+message GetTimeSeriesAveragesBulkRequest {
+  string feature_name = 1;
+  repeated string region_names = 2;
+  TimePeriod period = 3;
 }
 
 message GetTimeSeriesBinBulkResponse {

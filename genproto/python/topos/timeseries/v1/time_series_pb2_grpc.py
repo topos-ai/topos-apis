@@ -25,6 +25,11 @@ class TimeSeriesStub(object):
         request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkRequest.SerializeToString,
         response_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.FromString,
         )
+    self.GetTimeSeriesAveragesBulk = channel.unary_unary(
+        '/topos.timeseries.v1.TimeSeries/GetTimeSeriesAveragesBulk',
+        request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesAveragesBulkRequest.SerializeToString,
+        response_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.FromString,
+        )
     self.ListTimeSeriesFeatures = channel.unary_unary(
         '/topos.timeseries.v1.TimeSeries/ListTimeSeriesFeatures',
         request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.ListTimeSeriesFeaturesRequest.SerializeToString,
@@ -65,6 +70,13 @@ class TimeSeriesServicer(object):
 
   def GetTimeSeriesBinBulk(self, request, context):
     """Gets a number of time series feature values.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetTimeSeriesAveragesBulk(self, request, context):
+    """Gets average feature values for a time period.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -116,6 +128,11 @@ def add_TimeSeriesServicer_to_server(servicer, server):
       'GetTimeSeriesBinBulk': grpc.unary_unary_rpc_method_handler(
           servicer.GetTimeSeriesBinBulk,
           request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkRequest.FromString,
+          response_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.SerializeToString,
+      ),
+      'GetTimeSeriesAveragesBulk': grpc.unary_unary_rpc_method_handler(
+          servicer.GetTimeSeriesAveragesBulk,
+          request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesAveragesBulkRequest.FromString,
           response_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.SerializeToString,
       ),
       'ListTimeSeriesFeatures': grpc.unary_unary_rpc_method_handler(
