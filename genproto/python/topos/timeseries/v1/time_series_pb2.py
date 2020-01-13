@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.timeseries.v1',
   syntax='proto3',
   serialized_options=_b('ZIgithub.com/topos-ai/topos-apis/genproto/go/topos/timeseries/v1;timeseries'),
-  serialized_pb=_b('\n%topos/timeseries/v1/time-series.proto\x12\x13topos.timeseries.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"w\n\x11TimeSeriesFeature\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x19\n\x11sampling_interval\x18\x05 \x01(\x03\"\x82\x01\n\rTimeSeriesBin\x12\x11\n\tregion_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\r\n\x05value\x18\x06 \x01(\x03\"\"\n\x10TimeSeriesValues\x12\x0e\n\x06values\x18\x01 \x03(\x03\"\x91\x01\n\x17GetTimeSeriesBinRequest\x12\x13\n\x0bregion_name\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x05 \x01(\t\"\x96\x01\n\x1bGetTimeSeriesBinBulkRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x14\n\x0cregion_names\x18\x02 \x03(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x05 \x01(\t\"\x7f\n GetTimeSeriesAveragesBulkRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x14\n\x0cregion_names\x18\x02 \x03(\t\x12/\n\x06period\x18\x03 \x01(\x0e\x32\x1f.topos.timeseries.v1.TimePeriod\"\xd0\x01\n\x1cGetTimeSeriesBinBulkResponse\x12V\n\x0btime_series\x18\x01 \x03(\x0b\x32\x41.topos.timeseries.v1.GetTimeSeriesBinBulkResponse.TimeSeriesEntry\x1aX\n\x0fTimeSeriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.topos.timeseries.v1.TimeSeriesValues:\x02\x38\x01\"V\n\x1bSetTimeSeriesFeatureRequest\x12\x37\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0b\x32&.topos.timeseries.v1.TimeSeriesFeature\"J\n\x17SetTimeSeriesBinRequest\x12/\n\x03\x62in\x18\x01 \x01(\x0b\x32\".topos.timeseries.v1.TimeSeriesBin\"M\n\x1a\x44\x65leteTimeSeriesBinRequest\x12/\n\x03\x62in\x18\x01 \x01(\x0b\x32\".topos.timeseries.v1.TimeSeriesBin\".\n\x1e\x44\x65leteTimeSeriesFeatureRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"F\n\x1dListTimeSeriesFeaturesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"s\n\x1eListTimeSeriesFeaturesResponse\x12\x38\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32&.topos.timeseries.v1.TimeSeriesFeature\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*E\n\x03\x44\x61y\x12\x07\n\x03MON\x10\x00\x12\x08\n\x04TUES\x10\x01\x12\x07\n\x03WED\x10\x02\x12\x07\n\x03THU\x10\x03\x12\x07\n\x03\x46RI\x10\x04\x12\x07\n\x03SAT\x10\x05\x12\x07\n\x03SUN\x10\x06*&\n\nTimePeriod\x12\x0b\n\x07WEEKDAY\x10\x00\x12\x0b\n\x07WEEKEND\x10\x01\x32\xd5\t\n\nTimeSeries\x12\x84\x01\n\x10GetTimeSeriesBin\x12,.topos.timeseries.v1.GetTimeSeriesBinRequest\x1a\".topos.timeseries.v1.TimeSeriesBin\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/time-series-bin:\x01*\x12\x9c\x01\n\x14GetTimeSeriesBinBulk\x12\x30.topos.timeseries.v1.GetTimeSeriesBinBulkRequest\x1a\x31.topos.timeseries.v1.GetTimeSeriesBinBulkResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\"\x14/v1/time-series/bulk:\x01*\x12\xae\x01\n\x19GetTimeSeriesAveragesBulk\x12\x35.topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest\x1a\x31.topos.timeseries.v1.GetTimeSeriesBinBulkResponse\"\'\x82\xd3\xe4\x93\x02!\"\x1c/v1/time-series/bulk/average:\x01*\x12\xa3\x01\n\x16ListTimeSeriesFeatures\x12\x32.topos.timeseries.v1.ListTimeSeriesFeaturesRequest\x1a\x33.topos.timeseries.v1.ListTimeSeriesFeaturesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/time-series-features\x12\x90\x01\n\x10SetTimeSeriesBin\x12,.topos.timeseries.v1.SetTimeSeriesBinRequest\x1a\".topos.timeseries.v1.TimeSeriesBin\"*\x82\xd3\xe4\x93\x02$\"\x1d/v1/{bin.region_id=bin/*}:set:\x03\x62in\x12\x9f\x01\n\x14SetTimeSeriesFeature\x12\x30.topos.timeseries.v1.SetTimeSeriesFeatureRequest\x1a&.topos.timeseries.v1.TimeSeriesFeature\"-\x82\xd3\xe4\x93\x02\'\"\x1c/v1/{feature.name=bin/*}:set:\x07\x66\x65\x61ture\x12\x8d\x01\n\x13\x44\x65leteTimeSeriesBin\x12/.topos.timeseries.v1.DeleteTimeSeriesBinRequest\x1a\x16.google.protobuf.Empty\"-\x82\xd3\xe4\x93\x02\'\" /v1/{bin.region_id=bin/*}:delete:\x03\x62in\x12\x84\x01\n\x17\x44\x65leteTimeSeriesFeature\x12\x33.topos.timeseries.v1.DeleteTimeSeriesFeatureRequest\x1a\x16.google.protobuf.Empty\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/v1/{name=feature/*}BKZIgithub.com/topos-ai/topos-apis/genproto/go/topos/timeseries/v1;timeseriesb\x06proto3')
+  serialized_pb=_b('\n%topos/timeseries/v1/time-series.proto\x12\x13topos.timeseries.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1bgoogle/protobuf/empty.proto\"w\n\x11TimeSeriesFeature\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0c\x64isplay_name\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x0e\n\x06source\x18\x04 \x01(\t\x12\x19\n\x11sampling_interval\x18\x05 \x01(\x03\"\x82\x01\n\rTimeSeriesBin\x12\x11\n\tregion_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\r\n\x05value\x18\x06 \x01(\x03\"|\n\x11TimeSeriesAverage\x12\x11\n\tregion_id\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\x12/\n\x06period\x18\x03 \x01(\x0e\x32\x1f.topos.timeseries.v1.TimePeriod\x12\r\n\x05value\x18\x04 \x03(\x03\"\"\n\x10TimeSeriesValues\x12\x0e\n\x06values\x18\x01 \x03(\x03\"\x91\x01\n\x17GetTimeSeriesBinRequest\x12\x13\n\x0bregion_name\x18\x01 \x01(\t\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x02 \x01(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x05 \x01(\t\"\x96\x01\n\x1bGetTimeSeriesBinBulkRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x14\n\x0cregion_names\x18\x02 \x03(\t\x12%\n\x03\x64\x61y\x18\x03 \x01(\x0e\x32\x18.topos.timeseries.v1.Day\x12\x12\n\nstart_time\x18\x04 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x05 \x01(\t\"~\n\x1fGetTimeSeriesAverageBulkRequest\x12\x14\n\x0c\x66\x65\x61ture_name\x18\x01 \x01(\t\x12\x14\n\x0cregion_names\x18\x02 \x03(\t\x12/\n\x06period\x18\x03 \x01(\x0e\x32\x1f.topos.timeseries.v1.TimePeriod\"[\n\x1fSetTimeSeriesAverageBulkRequest\x12\x38\n\x08\x61verages\x18\x01 \x03(\x0b\x32&.topos.timeseries.v1.TimeSeriesAverage\"\xd0\x01\n\x1cGetTimeSeriesBinBulkResponse\x12V\n\x0btime_series\x18\x01 \x03(\x0b\x32\x41.topos.timeseries.v1.GetTimeSeriesBinBulkResponse.TimeSeriesEntry\x1aX\n\x0fTimeSeriesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x34\n\x05value\x18\x02 \x01(\x0b\x32%.topos.timeseries.v1.TimeSeriesValues:\x02\x38\x01\"V\n\x1bSetTimeSeriesFeatureRequest\x12\x37\n\x07\x66\x65\x61ture\x18\x01 \x01(\x0b\x32&.topos.timeseries.v1.TimeSeriesFeature\"J\n\x17SetTimeSeriesBinRequest\x12/\n\x03\x62in\x18\x01 \x01(\x0b\x32\".topos.timeseries.v1.TimeSeriesBin\"M\n\x1a\x44\x65leteTimeSeriesBinRequest\x12/\n\x03\x62in\x18\x01 \x01(\x0b\x32\".topos.timeseries.v1.TimeSeriesBin\".\n\x1e\x44\x65leteTimeSeriesFeatureRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"F\n\x1dListTimeSeriesFeaturesRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"s\n\x1eListTimeSeriesFeaturesResponse\x12\x38\n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32&.topos.timeseries.v1.TimeSeriesFeature\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t*E\n\x03\x44\x61y\x12\x07\n\x03MON\x10\x00\x12\x08\n\x04TUES\x10\x01\x12\x07\n\x03WED\x10\x02\x12\x07\n\x03THU\x10\x03\x12\x07\n\x03\x46RI\x10\x04\x12\x07\n\x03SAT\x10\x05\x12\x07\n\x03SUN\x10\x06*&\n\nTimePeriod\x12\x0b\n\x07WEEKDAY\x10\x00\x12\x0b\n\x07WEEKEND\x10\x01\x32\xe1\n\n\nTimeSeries\x12\x84\x01\n\x10GetTimeSeriesBin\x12,.topos.timeseries.v1.GetTimeSeriesBinRequest\x1a\".topos.timeseries.v1.TimeSeriesBin\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/time-series-bin:\x01*\x12\x9c\x01\n\x14GetTimeSeriesBinBulk\x12\x30.topos.timeseries.v1.GetTimeSeriesBinBulkRequest\x1a\x31.topos.timeseries.v1.GetTimeSeriesBinBulkResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\"\x14/v1/time-series/bulk:\x01*\x12\xac\x01\n\x18GetTimeSeriesAverageBulk\x12\x34.topos.timeseries.v1.GetTimeSeriesAverageBulkRequest\x1a\x31.topos.timeseries.v1.GetTimeSeriesBinBulkResponse\"\'\x82\xd3\xe4\x93\x02!\"\x1c/v1/time-series/bulk/average:\x01*\x12\xa3\x01\n\x16ListTimeSeriesFeatures\x12\x32.topos.timeseries.v1.ListTimeSeriesFeaturesRequest\x1a\x33.topos.timeseries.v1.ListTimeSeriesFeaturesResponse\" \x82\xd3\xe4\x93\x02\x1a\x12\x18/v1/time-series-features\x12\x90\x01\n\x10SetTimeSeriesBin\x12,.topos.timeseries.v1.SetTimeSeriesBinRequest\x1a\".topos.timeseries.v1.TimeSeriesBin\"*\x82\xd3\xe4\x93\x02$\"\x1d/v1/{bin.region_id=bin/*}:set:\x03\x62in\x12\x9f\x01\n\x14SetTimeSeriesFeature\x12\x30.topos.timeseries.v1.SetTimeSeriesFeatureRequest\x1a&.topos.timeseries.v1.TimeSeriesFeature\"-\x82\xd3\xe4\x93\x02\'\"\x1c/v1/{feature.name=bin/*}:set:\x07\x66\x65\x61ture\x12\x8b\x01\n\x18SetTimeSeriesAverageBulk\x12\x34.topos.timeseries.v1.SetTimeSeriesAverageBulkRequest\x1a\x16.google.protobuf.Empty\"!\x82\xd3\xe4\x93\x02\x1b\"\x14/v1/bulk/average:set:\x03\x62in\x12\x8d\x01\n\x13\x44\x65leteTimeSeriesBin\x12/.topos.timeseries.v1.DeleteTimeSeriesBinRequest\x1a\x16.google.protobuf.Empty\"-\x82\xd3\xe4\x93\x02\'\" /v1/{bin.region_id=bin/*}:delete:\x03\x62in\x12\x84\x01\n\x17\x44\x65leteTimeSeriesFeature\x12\x33.topos.timeseries.v1.DeleteTimeSeriesFeatureRequest\x1a\x16.google.protobuf.Empty\"\x1c\x82\xd3\xe4\x93\x02\x16*\x14/v1/{name=feature/*}BKZIgithub.com/topos-ai/topos-apis/genproto/go/topos/timeseries/v1;timeseriesb\x06proto3')
   ,
   dependencies=[google_dot_api_dot_annotations__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
@@ -64,8 +64,8 @@ _DAY = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1532,
-  serialized_end=1601,
+  serialized_start=1750,
+  serialized_end=1819,
 )
 _sym_db.RegisterEnumDescriptor(_DAY)
 
@@ -87,8 +87,8 @@ _TIMEPERIOD = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1603,
-  serialized_end=1641,
+  serialized_start=1821,
+  serialized_end=1859,
 )
 _sym_db.RegisterEnumDescriptor(_TIMEPERIOD)
 
@@ -223,6 +223,58 @@ _TIMESERIESBIN = _descriptor.Descriptor(
 )
 
 
+_TIMESERIESAVERAGE = _descriptor.Descriptor(
+  name='TimeSeriesAverage',
+  full_name='topos.timeseries.v1.TimeSeriesAverage',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='region_id', full_name='topos.timeseries.v1.TimeSeriesAverage.region_id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='feature_name', full_name='topos.timeseries.v1.TimeSeriesAverage.feature_name', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='period', full_name='topos.timeseries.v1.TimeSeriesAverage.period', index=2,
+      number=3, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='topos.timeseries.v1.TimeSeriesAverage.value', index=3,
+      number=4, type=3, cpp_type=2, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=375,
+  serialized_end=499,
+)
+
+
 _TIMESERIESVALUES = _descriptor.Descriptor(
   name='TimeSeriesValues',
   full_name='topos.timeseries.v1.TimeSeriesValues',
@@ -249,8 +301,8 @@ _TIMESERIESVALUES = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=375,
-  serialized_end=409,
+  serialized_start=501,
+  serialized_end=535,
 )
 
 
@@ -308,8 +360,8 @@ _GETTIMESERIESBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=412,
-  serialized_end=557,
+  serialized_start=538,
+  serialized_end=683,
 )
 
 
@@ -367,34 +419,34 @@ _GETTIMESERIESBINBULKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=560,
-  serialized_end=710,
+  serialized_start=686,
+  serialized_end=836,
 )
 
 
-_GETTIMESERIESAVERAGESBULKREQUEST = _descriptor.Descriptor(
-  name='GetTimeSeriesAveragesBulkRequest',
-  full_name='topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest',
+_GETTIMESERIESAVERAGEBULKREQUEST = _descriptor.Descriptor(
+  name='GetTimeSeriesAverageBulkRequest',
+  full_name='topos.timeseries.v1.GetTimeSeriesAverageBulkRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='feature_name', full_name='topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest.feature_name', index=0,
+      name='feature_name', full_name='topos.timeseries.v1.GetTimeSeriesAverageBulkRequest.feature_name', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='region_names', full_name='topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest.region_names', index=1,
+      name='region_names', full_name='topos.timeseries.v1.GetTimeSeriesAverageBulkRequest.region_names', index=1,
       number=2, type=9, cpp_type=9, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='period', full_name='topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest.period', index=2,
+      name='period', full_name='topos.timeseries.v1.GetTimeSeriesAverageBulkRequest.period', index=2,
       number=3, type=14, cpp_type=8, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
@@ -412,8 +464,39 @@ _GETTIMESERIESAVERAGESBULKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=712,
-  serialized_end=839,
+  serialized_start=838,
+  serialized_end=964,
+)
+
+
+_SETTIMESERIESAVERAGEBULKREQUEST = _descriptor.Descriptor(
+  name='SetTimeSeriesAverageBulkRequest',
+  full_name='topos.timeseries.v1.SetTimeSeriesAverageBulkRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='averages', full_name='topos.timeseries.v1.SetTimeSeriesAverageBulkRequest.averages', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=966,
+  serialized_end=1057,
 )
 
 
@@ -450,8 +533,8 @@ _GETTIMESERIESBINBULKRESPONSE_TIMESERIESENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=962,
-  serialized_end=1050,
+  serialized_start=1180,
+  serialized_end=1268,
 )
 
 _GETTIMESERIESBINBULKRESPONSE = _descriptor.Descriptor(
@@ -480,8 +563,8 @@ _GETTIMESERIESBINBULKRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=842,
-  serialized_end=1050,
+  serialized_start=1060,
+  serialized_end=1268,
 )
 
 
@@ -511,8 +594,8 @@ _SETTIMESERIESFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1052,
-  serialized_end=1138,
+  serialized_start=1270,
+  serialized_end=1356,
 )
 
 
@@ -542,8 +625,8 @@ _SETTIMESERIESBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1140,
-  serialized_end=1214,
+  serialized_start=1358,
+  serialized_end=1432,
 )
 
 
@@ -573,8 +656,8 @@ _DELETETIMESERIESBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1216,
-  serialized_end=1293,
+  serialized_start=1434,
+  serialized_end=1511,
 )
 
 
@@ -604,8 +687,8 @@ _DELETETIMESERIESFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1295,
-  serialized_end=1341,
+  serialized_start=1513,
+  serialized_end=1559,
 )
 
 
@@ -642,8 +725,8 @@ _LISTTIMESERIESFEATURESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1343,
-  serialized_end=1413,
+  serialized_start=1561,
+  serialized_end=1631,
 )
 
 
@@ -680,14 +763,16 @@ _LISTTIMESERIESFEATURESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1415,
-  serialized_end=1530,
+  serialized_start=1633,
+  serialized_end=1748,
 )
 
 _TIMESERIESBIN.fields_by_name['day'].enum_type = _DAY
+_TIMESERIESAVERAGE.fields_by_name['period'].enum_type = _TIMEPERIOD
 _GETTIMESERIESBINREQUEST.fields_by_name['day'].enum_type = _DAY
 _GETTIMESERIESBINBULKREQUEST.fields_by_name['day'].enum_type = _DAY
-_GETTIMESERIESAVERAGESBULKREQUEST.fields_by_name['period'].enum_type = _TIMEPERIOD
+_GETTIMESERIESAVERAGEBULKREQUEST.fields_by_name['period'].enum_type = _TIMEPERIOD
+_SETTIMESERIESAVERAGEBULKREQUEST.fields_by_name['averages'].message_type = _TIMESERIESAVERAGE
 _GETTIMESERIESBINBULKRESPONSE_TIMESERIESENTRY.fields_by_name['value'].message_type = _TIMESERIESVALUES
 _GETTIMESERIESBINBULKRESPONSE_TIMESERIESENTRY.containing_type = _GETTIMESERIESBINBULKRESPONSE
 _GETTIMESERIESBINBULKRESPONSE.fields_by_name['time_series'].message_type = _GETTIMESERIESBINBULKRESPONSE_TIMESERIESENTRY
@@ -697,10 +782,12 @@ _DELETETIMESERIESBINREQUEST.fields_by_name['bin'].message_type = _TIMESERIESBIN
 _LISTTIMESERIESFEATURESRESPONSE.fields_by_name['features'].message_type = _TIMESERIESFEATURE
 DESCRIPTOR.message_types_by_name['TimeSeriesFeature'] = _TIMESERIESFEATURE
 DESCRIPTOR.message_types_by_name['TimeSeriesBin'] = _TIMESERIESBIN
+DESCRIPTOR.message_types_by_name['TimeSeriesAverage'] = _TIMESERIESAVERAGE
 DESCRIPTOR.message_types_by_name['TimeSeriesValues'] = _TIMESERIESVALUES
 DESCRIPTOR.message_types_by_name['GetTimeSeriesBinRequest'] = _GETTIMESERIESBINREQUEST
 DESCRIPTOR.message_types_by_name['GetTimeSeriesBinBulkRequest'] = _GETTIMESERIESBINBULKREQUEST
-DESCRIPTOR.message_types_by_name['GetTimeSeriesAveragesBulkRequest'] = _GETTIMESERIESAVERAGESBULKREQUEST
+DESCRIPTOR.message_types_by_name['GetTimeSeriesAverageBulkRequest'] = _GETTIMESERIESAVERAGEBULKREQUEST
+DESCRIPTOR.message_types_by_name['SetTimeSeriesAverageBulkRequest'] = _SETTIMESERIESAVERAGEBULKREQUEST
 DESCRIPTOR.message_types_by_name['GetTimeSeriesBinBulkResponse'] = _GETTIMESERIESBINBULKRESPONSE
 DESCRIPTOR.message_types_by_name['SetTimeSeriesFeatureRequest'] = _SETTIMESERIESFEATUREREQUEST
 DESCRIPTOR.message_types_by_name['SetTimeSeriesBinRequest'] = _SETTIMESERIESBINREQUEST
@@ -726,6 +813,13 @@ TimeSeriesBin = _reflection.GeneratedProtocolMessageType('TimeSeriesBin', (_mess
   })
 _sym_db.RegisterMessage(TimeSeriesBin)
 
+TimeSeriesAverage = _reflection.GeneratedProtocolMessageType('TimeSeriesAverage', (_message.Message,), {
+  'DESCRIPTOR' : _TIMESERIESAVERAGE,
+  '__module__' : 'topos.timeseries.v1.time_series_pb2'
+  # @@protoc_insertion_point(class_scope:topos.timeseries.v1.TimeSeriesAverage)
+  })
+_sym_db.RegisterMessage(TimeSeriesAverage)
+
 TimeSeriesValues = _reflection.GeneratedProtocolMessageType('TimeSeriesValues', (_message.Message,), {
   'DESCRIPTOR' : _TIMESERIESVALUES,
   '__module__' : 'topos.timeseries.v1.time_series_pb2'
@@ -747,12 +841,19 @@ GetTimeSeriesBinBulkRequest = _reflection.GeneratedProtocolMessageType('GetTimeS
   })
 _sym_db.RegisterMessage(GetTimeSeriesBinBulkRequest)
 
-GetTimeSeriesAveragesBulkRequest = _reflection.GeneratedProtocolMessageType('GetTimeSeriesAveragesBulkRequest', (_message.Message,), {
-  'DESCRIPTOR' : _GETTIMESERIESAVERAGESBULKREQUEST,
+GetTimeSeriesAverageBulkRequest = _reflection.GeneratedProtocolMessageType('GetTimeSeriesAverageBulkRequest', (_message.Message,), {
+  'DESCRIPTOR' : _GETTIMESERIESAVERAGEBULKREQUEST,
   '__module__' : 'topos.timeseries.v1.time_series_pb2'
-  # @@protoc_insertion_point(class_scope:topos.timeseries.v1.GetTimeSeriesAveragesBulkRequest)
+  # @@protoc_insertion_point(class_scope:topos.timeseries.v1.GetTimeSeriesAverageBulkRequest)
   })
-_sym_db.RegisterMessage(GetTimeSeriesAveragesBulkRequest)
+_sym_db.RegisterMessage(GetTimeSeriesAverageBulkRequest)
+
+SetTimeSeriesAverageBulkRequest = _reflection.GeneratedProtocolMessageType('SetTimeSeriesAverageBulkRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SETTIMESERIESAVERAGEBULKREQUEST,
+  '__module__' : 'topos.timeseries.v1.time_series_pb2'
+  # @@protoc_insertion_point(class_scope:topos.timeseries.v1.SetTimeSeriesAverageBulkRequest)
+  })
+_sym_db.RegisterMessage(SetTimeSeriesAverageBulkRequest)
 
 GetTimeSeriesBinBulkResponse = _reflection.GeneratedProtocolMessageType('GetTimeSeriesBinBulkResponse', (_message.Message,), {
 
@@ -821,8 +922,8 @@ _TIMESERIES = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1644,
-  serialized_end=2881,
+  serialized_start=1862,
+  serialized_end=3239,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetTimeSeriesBin',
@@ -843,11 +944,11 @@ _TIMESERIES = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\031\"\024/v1/time-series/bulk:\001*'),
   ),
   _descriptor.MethodDescriptor(
-    name='GetTimeSeriesAveragesBulk',
-    full_name='topos.timeseries.v1.TimeSeries.GetTimeSeriesAveragesBulk',
+    name='GetTimeSeriesAverageBulk',
+    full_name='topos.timeseries.v1.TimeSeries.GetTimeSeriesAverageBulk',
     index=2,
     containing_service=None,
-    input_type=_GETTIMESERIESAVERAGESBULKREQUEST,
+    input_type=_GETTIMESERIESAVERAGEBULKREQUEST,
     output_type=_GETTIMESERIESBINBULKRESPONSE,
     serialized_options=_b('\202\323\344\223\002!\"\034/v1/time-series/bulk/average:\001*'),
   ),
@@ -879,9 +980,18 @@ _TIMESERIES = _descriptor.ServiceDescriptor(
     serialized_options=_b('\202\323\344\223\002\'\"\034/v1/{feature.name=bin/*}:set:\007feature'),
   ),
   _descriptor.MethodDescriptor(
+    name='SetTimeSeriesAverageBulk',
+    full_name='topos.timeseries.v1.TimeSeries.SetTimeSeriesAverageBulk',
+    index=6,
+    containing_service=None,
+    input_type=_SETTIMESERIESAVERAGEBULKREQUEST,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
+    serialized_options=_b('\202\323\344\223\002\033\"\024/v1/bulk/average:set:\003bin'),
+  ),
+  _descriptor.MethodDescriptor(
     name='DeleteTimeSeriesBin',
     full_name='topos.timeseries.v1.TimeSeries.DeleteTimeSeriesBin',
-    index=6,
+    index=7,
     containing_service=None,
     input_type=_DELETETIMESERIESBINREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
@@ -890,7 +1000,7 @@ _TIMESERIES = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='DeleteTimeSeriesFeature',
     full_name='topos.timeseries.v1.TimeSeries.DeleteTimeSeriesFeature',
-    index=7,
+    index=8,
     containing_service=None,
     input_type=_DELETETIMESERIESFEATUREREQUEST,
     output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
