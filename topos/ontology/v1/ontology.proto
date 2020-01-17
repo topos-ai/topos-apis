@@ -240,8 +240,14 @@ message Brand {
   // the income bracket a brand targets - high, low, etc
   string income_iqr = 30;
 
-  // the count of contacts for a brand
-  string contact_count = 31;
+  // The average of the median time a customer spends at a brand.
+  int64 avg_median_dwell = 31;
+
+  // Popularity by day
+  repeated int64 popularity_by_day  = 32;
+
+  // Popularity by hour
+  repeated int64 popularity_by_hour = 33;
 
 }
 
