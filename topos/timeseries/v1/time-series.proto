@@ -63,7 +63,7 @@ service TimeSeries {
   rpc SetTimeSeriesAverageBulk(SetTimeSeriesAverageBulkRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
       post : "/v1/bulk/average:set"
-      body : "bin"
+      body : "*"
     };
   }
 
