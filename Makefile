@@ -14,7 +14,7 @@ api-config-dev:
 	find topos -name api_config.yaml -execdir sh -c "sed -E 's/\.([a-z-]+)\.endpoints/-dev.\1.endpoints/' api_config.yaml > api_config_dev.yaml" \;
 
 pkg-go: includes/googleapis genproto/go
-	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.13.5-alpine sh -c \
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos:ro -v $(PWD)/genproto/go:/genproto/go golang:1.13.6-alpine sh -c \
 	'set -ex \
 		&& apk add git protobuf-dev \
 		&& cd /genproto/go \
@@ -42,7 +42,7 @@ pkg-python: includes/googleapis genproto/python
 				{} + '
 
 pkg-descriptors: includes/googleapis
-	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.11.2 sh -c \
+	docker run --rm -v $(PWD)/includes:/includes:ro -v $(PWD)/topos:/protos/topos alpine:3.11.3 sh -c \
 	'set -ex \
 		&& apk add protobuf-dev \
 		&& find /protos/topos -mindepth 2 -maxdepth 2 -type d -exec sh -c "protoc \
