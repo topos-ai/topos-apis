@@ -25,6 +25,11 @@ class TimeSeriesStub(object):
         request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkRequest.SerializeToString,
         response_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.FromString,
         )
+    self.GetTimeSeriesAverageBulk = channel.unary_unary(
+        '/topos.timeseries.v1.TimeSeries/GetTimeSeriesAverageBulk',
+        request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesAverageBulkRequest.SerializeToString,
+        response_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.FromString,
+        )
     self.ListTimeSeriesFeatures = channel.unary_unary(
         '/topos.timeseries.v1.TimeSeries/ListTimeSeriesFeatures',
         request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.ListTimeSeriesFeaturesRequest.SerializeToString,
@@ -39,6 +44,11 @@ class TimeSeriesStub(object):
         '/topos.timeseries.v1.TimeSeries/SetTimeSeriesFeature',
         request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.SetTimeSeriesFeatureRequest.SerializeToString,
         response_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.TimeSeriesFeature.FromString,
+        )
+    self.SetTimeSeriesAverageBulk = channel.unary_unary(
+        '/topos.timeseries.v1.TimeSeries/SetTimeSeriesAverageBulk',
+        request_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.SetTimeSeriesAverageBulkRequest.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
         )
     self.DeleteTimeSeriesBin = channel.unary_unary(
         '/topos.timeseries.v1.TimeSeries/DeleteTimeSeriesBin',
@@ -70,6 +80,13 @@ class TimeSeriesServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetTimeSeriesAverageBulk(self, request, context):
+    """Gets average feature values for a time period.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def ListTimeSeriesFeatures(self, request, context):
     """Lists features.
     """
@@ -86,6 +103,13 @@ class TimeSeriesServicer(object):
 
   def SetTimeSeriesFeature(self, request, context):
     """Sets a time series feature.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SetTimeSeriesAverageBulk(self, request, context):
+    """Sets multiple time series averages
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -118,6 +142,11 @@ def add_TimeSeriesServicer_to_server(servicer, server):
           request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkRequest.FromString,
           response_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.SerializeToString,
       ),
+      'GetTimeSeriesAverageBulk': grpc.unary_unary_rpc_method_handler(
+          servicer.GetTimeSeriesAverageBulk,
+          request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesAverageBulkRequest.FromString,
+          response_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.GetTimeSeriesBinBulkResponse.SerializeToString,
+      ),
       'ListTimeSeriesFeatures': grpc.unary_unary_rpc_method_handler(
           servicer.ListTimeSeriesFeatures,
           request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.ListTimeSeriesFeaturesRequest.FromString,
@@ -132,6 +161,11 @@ def add_TimeSeriesServicer_to_server(servicer, server):
           servicer.SetTimeSeriesFeature,
           request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.SetTimeSeriesFeatureRequest.FromString,
           response_serializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.TimeSeriesFeature.SerializeToString,
+      ),
+      'SetTimeSeriesAverageBulk': grpc.unary_unary_rpc_method_handler(
+          servicer.SetTimeSeriesAverageBulk,
+          request_deserializer=topos_dot_timeseries_dot_v1_dot_time__series__pb2.SetTimeSeriesAverageBulkRequest.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'DeleteTimeSeriesBin': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteTimeSeriesBin,

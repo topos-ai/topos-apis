@@ -90,6 +90,13 @@ service Ontology {
     };
   }
 
+  // Lists resolved tags.
+  rpc ListResolvedTags(ListResolvedTagsRequest) returns (ListResolvedTagsResponse) {
+    option (google.api.http) = {
+      get : "/v1/tags/resolved"
+    };
+  }
+
   // Sets a tag.
   rpc SetTag(SetTagRequest) returns (Tag) {
     option (google.api.http) = {
@@ -233,8 +240,14 @@ message Brand {
   // the income bracket a brand targets - high, low, etc
   string income_iqr = 30;
 
-  // the count of contacts for a brand
-  string contact_count = 31;
+  // The average of the median time a customer spends at a brand.
+  int64 avg_median_dwell = 31;
+
+  // Popularity by day
+  repeated int64 popularity_by_day  = 32;
+
+  // Popularity by hour
+  repeated int64 popularity_by_hour = 33;
 
 }
 
@@ -277,6 +290,7 @@ message SearchBrandsRequest {
   repeated string regions_of_operation = 6;
   repeated string attributes = 7;
   string income_iqr = 8;
+  bool filter_excluded_brands = 9;
 }
 
 message ListBrandsRequest {
@@ -312,6 +326,22 @@ message ListTagsRequest {
 }
 
 message ListTagsResponse {
+  repeated Tag tags = 1;
+
+  // Token to retrieve the next page of results, or empty if there are no more
+  // results in the list.
+  string next_page_token = 2;
+}
+
+message ListResolvedTagsRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous List request, if any.
+  string page_token = 2;
+}
+
+message ListResolvedTagsResponse {
   repeated Tag tags = 1;
 
   // Token to retrieve the next page of results, or empty if there are no more
