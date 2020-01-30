@@ -55,6 +55,11 @@ class OntologyStub(object):
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.SetBrandRequest.SerializeToString,
         response_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.Brand.FromString,
         )
+    self.SetBrandsBulk = channel.unary_unary(
+        '/topos.ontology.v1.Ontology/SetBrandsBulk',
+        request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.SetBrandsBulkRequest.SerializeToString,
+        response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
     self.DeleteBrand = channel.unary_unary(
         '/topos.ontology.v1.Ontology/DeleteBrand',
         request_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.DeleteBrandRequest.SerializeToString,
@@ -147,6 +152,13 @@ class OntologyServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def SetBrandsBulk(self, request, context):
+    """Sets a brand.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def DeleteBrand(self, request, context):
     """Deletes a brand.
     """
@@ -231,6 +243,11 @@ def add_OntologyServicer_to_server(servicer, server):
           servicer.SetBrand,
           request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.SetBrandRequest.FromString,
           response_serializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.Brand.SerializeToString,
+      ),
+      'SetBrandsBulk': grpc.unary_unary_rpc_method_handler(
+          servicer.SetBrandsBulk,
+          request_deserializer=topos_dot_ontology_dot_v1_dot_ontology__pb2.SetBrandsBulkRequest.FromString,
+          response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
       ),
       'DeleteBrand': grpc.unary_unary_rpc_method_handler(
           servicer.DeleteBrand,

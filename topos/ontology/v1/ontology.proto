@@ -69,6 +69,14 @@ service Ontology {
     };
   }
 
+  // Sets a brand.
+  rpc SetBrandsBulk(SetBrandsBulkRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      post : "/v1/brands:set"
+      body : "*"
+    };
+  }
+
   // Deletes a brand.
   rpc DeleteBrand(DeleteBrandRequest) returns (google.protobuf.Empty) {
     option (google.api.http) = {
@@ -310,6 +318,8 @@ message ListBrandsResponse {
 }
 
 message SetBrandRequest { Brand brand = 1; }
+
+message SetBrandsBulkRequest { repeated Brand brands = 1; }
 
 message DeleteBrandRequest { string name = 1; }
 
