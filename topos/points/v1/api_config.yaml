@@ -2,6 +2,10 @@ type: google.api.Service
 config_version: 3
 name: v1.points.endpoints.topos.com
 
+endpoints:
+  - name: v1.points.endpoints.topos.com
+    allow_cors: true
+
 title: Topos Points API
 apis:
  - name: topos.points.v1.Points

@@ -1230,11 +1230,11 @@ var fileDescriptor_e1ad2e357c4d3edd = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // MetricsClient is the client API for Metrics service.
 //
@@ -1271,10 +1271,10 @@ type MetricsClient interface {
 }
 
 type metricsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewMetricsClient(cc *grpc.ClientConn) MetricsClient {
+func NewMetricsClient(cc grpc.ClientConnInterface) MetricsClient {
 	return &metricsClient{cc}
 }
 

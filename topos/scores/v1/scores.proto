@@ -3,55 +3,14 @@ syntax = "proto3";
 package topos.scores.v1;
 
 import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
 
 option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/scores/v1;scores";
 
 service Scores {
-  // Lists a graph's scores.
-  rpc ListGraphScores(ListGraphScoresRequest)
-      returns (ListGraphScoresResponse) {
-    option (google.api.http) = {
-      get : "/v1/{name=graphs/*}/scores"
-    };
-  }
-
   // Gets a graph score.
   rpc GetGraphScore(GetGraphScoreRequest) returns (Score) {
     option (google.api.http) = {
       get : "/v1/{name=graphs/*}/scores"
-    };
-  }
-
-  // Sets a graph score.
-  rpc SetGraphScore(SetGraphScoreRequest) returns (Score) {
-    option (google.api.http) = {
-      post : "/v1/{name=graphs/*}/scores:set"
-      body : "score"
-    };
-  }
-
-  // Sets a batch of graph scores.
-  rpc BatchSetGraphScores(BatchSetGraphScoresRequest)
-      returns (BatchSetGraphScoresResponse) {
-    option (google.api.http) = {
-      post : "/v1/{name=graphs/*}/scores:batchSet"
-      body : "*"
-    };
-  }
-
-  // Deletes a graph.
-  rpc DeleteGraph(DeleteGraphRequest) returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=graphs/*}"
-    };
-  }
-
-  // Deletes a score.
-  rpc DeleteGraphScore(DeleteGraphScoreRequest)
-      returns (google.protobuf.Empty) {
-    option (google.api.http) = {
-      delete : "/v1/{name=graphs/*}/scores"
     };
   }
 
@@ -80,26 +39,6 @@ message Score {
   double score = 3;
 }
 
-message ListGraphScoresRequest {
-  // The name of the graph.
-  string name = 1;
-
-  // The maximum number of items to return.
-  int32 page_size = 2;
-
-  // The next_page_token value returned from a previous List request, if any.
-  string page_token = 3;
-}
-
-message ListGraphScoresResponse {
-  // The name of the score.
-  repeated Score scores = 1;
-
-  // Token to retrieve the next page of results, or empty if there are no more
-  // results in the list.
-  string next_page_token = 2;
-}
-
 message GetGraphScoreRequest {
   // The name of the graph.
   string name = 1;
@@ -111,48 +50,11 @@ message GetGraphScoreRequest {
   string vertex_b = 3;
 }
 
-message SetGraphScoreRequest {
-  // The name of the graph. It must have the format `"graphs/{graph}"`.
-  // `{graphs}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`.
-  string name = 1;
-
-  // The score to set
-  Score score = 2;
-}
-
-message BatchSetGraphScoresRequest {
-  // The name of the graph. It must have the format `"graphs/{graph}"`.
-  // `{graphs}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`.
-  string name = 1;
-
-  // The scores to set.
-  repeated Score scores = 2;
-}
-
-message BatchSetGraphScoresResponse {}
-
-message DeleteGraphRequest {
-  // The name of the graph.
-  string name = 1;
-}
-
-message DeleteGraphScoreRequest {
-  // The name of the graph.
-  string name = 1;
-
-  // The resource name of the origin vertex.
-  string vertex_a = 2;
-
-  // The resource name of the destination vertex.
-  string vertex_b = 3;
-}
-
 message TopGraphScoresRequest {
-  // The name of the graph.
+  // The name of the graph. It must have the format `"graphs/{graph}"`.
+  // `{graphs}` must match the [regular
+  // expression](https://github.com/google/re2/wiki/Syntax)
+  // `^[a-z\d]+([.-][a-z\d]+)*$`.
   string name = 1;
 
   // The maximum number of items to return.
@@ -172,36 +74,4 @@ message TopGraphScoresRequest {
   repeated string vertex_filters = 6;
 }
 
-message TopGraphScoresResponse {
-  // Scores in decending order by score value.
-  repeated Score scores = 1;
-}
-
-message BigQueryIngestRequest {
-  // The name of the graph.
-  string name = 1;
-
-  // The GCP project name.
-  string project = 2;
-
-  // The BigQuery dataset name.
-  string dataset = 3;
-
-  // The BigQuery table name.
-  string table = 4;
-
-  // Then name of the origin vertex column.
-  string vertex_a_column = 5;
-
-  // Then name of the destination vertex column.
-  string vertex_b_column = 6;
-
-  // Then name of the score column.
-  string score_column = 7;
-
-  // The origin vertex format.
-  string vertex_a_format = 8;
-
-  // The destination vertex format.
-  string vertex_b_format = 9;
-}
+message TopGraphScoresResponse { repeated Score scores = 1; }

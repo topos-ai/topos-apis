@@ -2,6 +2,10 @@ type: google.api.Service
 config_version: 3
 name: v1.scores.endpoints.topos.com
 
+endpoints:
+  - name: v1.scores.endpoints.topos.com
+    allow_cors: true
+
 title: Topos Scores API
 apis:
  - name: topos.scores.v1.Scores
@@ -21,3 +25,4 @@ usage:
   rules:
     - selector: "topos.scores.v1.*"
       allow_unregistered_calls: true
+

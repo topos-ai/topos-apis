@@ -1085,11 +1085,11 @@ var fileDescriptor_954338d7542bc8de = []byte{
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // LocationsClient is the client API for Locations service.
 //
@@ -1114,10 +1114,10 @@ type LocationsClient interface {
 }
 
 type locationsClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewLocationsClient(cc *grpc.ClientConn) LocationsClient {
+func NewLocationsClient(cc grpc.ClientConnInterface) LocationsClient {
 	return &locationsClient{cc}
 }
 
