@@ -1689,7 +1689,9 @@ func init() {
 	proto.RegisterType((*SearchBrandsResponse)(nil), "topos.ontology.v1.SearchBrandsResponse")
 }
 
-func init() { proto.RegisterFile("topos/ontology/v1/ontology.proto", fileDescriptor_3009b39f7ca3919e) }
+func init() {
+	proto.RegisterFile("topos/ontology/v1/ontology.proto", fileDescriptor_3009b39f7ca3919e)
+}
 
 var fileDescriptor_3009b39f7ca3919e = []byte{
 	// 2032 bytes of a gzipped FileDescriptorProto

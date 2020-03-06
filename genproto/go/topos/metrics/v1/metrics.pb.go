@@ -1138,7 +1138,9 @@ func init() {
 	proto.RegisterType((*SearchFeatureValuesResponse)(nil), "topos.metrics.v1.SearchFeatureValuesResponse")
 }
 
-func init() { proto.RegisterFile("topos/metrics/v1/metrics.proto", fileDescriptor_e1ad2e357c4d3edd) }
+func init() {
+	proto.RegisterFile("topos/metrics/v1/metrics.proto", fileDescriptor_e1ad2e357c4d3edd)
+}
 
 var fileDescriptor_e1ad2e357c4d3edd = []byte{
 	// 1343 bytes of a gzipped FileDescriptorProto

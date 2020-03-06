@@ -282,7 +282,9 @@ func init() {
 	proto.RegisterType((*TopGraphScoresResponse)(nil), "topos.scores.v1.TopGraphScoresResponse")
 }
 
-func init() { proto.RegisterFile("topos/scores/v1/scores.proto", fileDescriptor_05589be8939bdcb5) }
+func init() {
+	proto.RegisterFile("topos/scores/v1/scores.proto", fileDescriptor_05589be8939bdcb5)
+}
 
 var fileDescriptor_05589be8939bdcb5 = []byte{
 	// 431 bytes of a gzipped FileDescriptorProto

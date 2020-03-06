@@ -967,7 +967,9 @@ func init() {
 	proto.RegisterMapType((map[string]int64)(nil), "topos.points.v1.PolygonCountTagPointsResponse.TagPointsEntry")
 }
 
-func init() { proto.RegisterFile("topos/points/v1/points.proto", fileDescriptor_58bd33bd76af5b35) }
+func init() {
+	proto.RegisterFile("topos/points/v1/points.proto", fileDescriptor_58bd33bd76af5b35)
+}
 
 var fileDescriptor_58bd33bd76af5b35 = []byte{
 	// 1045 bytes of a gzipped FileDescriptorProto

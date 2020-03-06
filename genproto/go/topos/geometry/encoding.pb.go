@@ -49,7 +49,9 @@ func init() {
 	proto.RegisterEnum("topos.geometry.Encoding", Encoding_name, Encoding_value)
 }
 
-func init() { proto.RegisterFile("topos/geometry/encoding.proto", fileDescriptor_326db63c67ecb653) }
+func init() {
+	proto.RegisterFile("topos/geometry/encoding.proto", fileDescriptor_326db63c67ecb653)
+}
 
 var fileDescriptor_326db63c67ecb653 = []byte{
 	// 131 bytes of a gzipped FileDescriptorProto

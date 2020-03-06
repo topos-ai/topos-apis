@@ -71,7 +71,9 @@ func init() {
 	proto.RegisterType((*LatLng)(nil), "topos.geometry.LatLng")
 }
 
-func init() { proto.RegisterFile("topos/geometry/latlng.proto", fileDescriptor_bf4809da1fc4677a) }
+func init() {
+	proto.RegisterFile("topos/geometry/latlng.proto", fileDescriptor_bf4809da1fc4677a)
+}
 
 var fileDescriptor_bf4809da1fc4677a = []byte{
 	// 146 bytes of a gzipped FileDescriptorProto

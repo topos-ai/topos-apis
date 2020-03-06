@@ -11,7 +11,9 @@ authentication:
   - id: auth0_jwk
     issuer: https://auth.topos.com/
     jwks_uri: https://auth.topos.com/.well-known/jwks.json
-    audiences: endpoints.topos.com
+    audiences:
+    - endpoints.topos.com
+    - https://endpoints.topos.com
   rules:
   - selector: "*"
     requirements:
