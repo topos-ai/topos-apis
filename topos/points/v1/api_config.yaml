@@ -3,8 +3,8 @@ config_version: 3
 name: v1.points.endpoints.topos.com
 
 endpoints:
-  - name: v1.points.endpoints.topos.com
-    allow_cors: true
+- name: v1.points.endpoints.topos.com
+  allow_cors: true
 
 title: Topos Points API
 apis:
@@ -15,15 +15,13 @@ authentication:
   - id: auth0_jwk
     issuer: https://auth.topos.com/
     jwks_uri: https://auth.topos.com/.well-known/jwks.json
-    audiences:
-    - endpoints.topos.com
-    - https://endpoints.topos.com
+    audiences: endpoints.topos.com
   rules:
   - selector: "*"
     requirements:
-      - provider_id: auth0_jwk
+    - provider_id: auth0_jwk
 
 usage:
   rules:
-    - selector: "topos.points.v1.*"
-      allow_unregistered_calls: true
+  - selector: "topos.points.v1.*"
+    allow_unregistered_calls: true

@@ -4,22 +4,20 @@ name: v1.time-series.endpoints.topos.com
 
 title: Topos Time Series API
 apis:
- - name: topos.timeseries.v1.TimeSeries
+- name: topos.timeseries.v1.TimeSeries
 
 authentication:
   providers:
   - id: auth0_jwk
     issuer: https://auth.topos.com/
     jwks_uri: https://auth.topos.com/.well-known/jwks.json
-    audiences:
-    - endpoints.topos.com
-    - https://endpoints.topos.com
+    audiences: endpoints.topos.com
   rules:
   - selector: "*"
     requirements:
-      - provider_id: auth0_jwk
+    - provider_id: auth0_jwk
 
 usage:
   rules:
-    - selector: "topos.timeseries.v1.*"
-      allow_unregistered_calls: true
+  - selector: "topos.timeseries.v1.*"
+    allow_unregistered_calls: true

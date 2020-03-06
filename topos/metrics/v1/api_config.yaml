@@ -4,7 +4,7 @@ name: v1.metrics.endpoints.topos.com
 
 title: Topos Metrics API
 apis:
- - name: topos.metrics.v1.Metrics
+- name: topos.metrics.v1.Metrics
 
 authentication:
   providers:
@@ -15,9 +15,9 @@ authentication:
   rules:
   - selector: "*"
     requirements:
-      - provider_id: auth0_jwk
+    - provider_id: auth0_jwk
 
 usage:
   rules:
-    - selector: "topos.metrics.v1.*"
-      allow_unregistered_calls: true
+  - selector: "topos.metrics.v1.*"
+    allow_unregistered_calls: true

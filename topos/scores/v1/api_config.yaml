@@ -3,28 +3,26 @@ config_version: 3
 name: v1.scores.endpoints.topos.com
 
 endpoints:
-  - name: v1.scores.endpoints.topos.com
-    allow_cors: true
+- name: v1.scores.endpoints.topos.com
+  allow_cors: true
 
 title: Topos Scores API
 apis:
- - name: topos.scores.v1.Scores
+- name: topos.scores.v1.Scores
 
 authentication:
   providers:
   - id: auth0_jwk
     issuer: https://auth.topos.com/
     jwks_uri: https://auth.topos.com/.well-known/jwks.json
-    audiences:
-    - endpoints.topos.com
-    - https://endpoints.topos.com
+    audiences: endpoints.topos.com
   rules:
   - selector: "*"
     requirements:
-      - provider_id: auth0_jwk
+    - provider_id: auth0_jwk
 
 usage:
   rules:
-    - selector: "topos.scores.v1.*"
-      allow_unregistered_calls: true
+  - selector: "topos.scores.v1.*"
+    allow_unregistered_calls: true
 
