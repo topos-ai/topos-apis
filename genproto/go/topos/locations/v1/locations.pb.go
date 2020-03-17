@@ -27,10 +27,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type RegionType struct {
-	// The name of the region type. It must have the format
-	// `"regionTypes/{region_type}"`. `{region_type}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`
+	// The name of the region type.
 	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -70,15 +67,11 @@ func (m *RegionType) GetName() string {
 }
 
 type Region struct {
-	// The name of the region. It must have the format
-	// `"regionTypes/{region_type}/regions/{region}"`.
-	// `{region}` must match the [regular
-	// expression](https://github.com/google/re2/wiki/Syntax)
-	// `^[a-z\d]+(-[a-z\d]+)*$`
+	// The name of the region.
 	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	// The region's display name.
 	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
-	// The region properties.
+	// The region's properties.
 	Properties           map[string]*Region_Property `protobuf:"bytes,3,rep,name=properties,proto3" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
 	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
 	XXX_unrecognized     []byte                      `json:"-"`
@@ -339,138 +332,10 @@ func (m *GetRegionGeometryResponse) GetGeometryChunk() []byte {
 	return nil
 }
 
-type SetRegionRequest struct {
-	Region               *Region  `protobuf:"bytes,1,opt,name=region,proto3" json:"region,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SetRegionRequest) Reset()         { *m = SetRegionRequest{} }
-func (m *SetRegionRequest) String() string { return proto.CompactTextString(m) }
-func (*SetRegionRequest) ProtoMessage()    {}
-func (*SetRegionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{5}
-}
-
-func (m *SetRegionRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetRegionRequest.Unmarshal(m, b)
-}
-func (m *SetRegionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetRegionRequest.Marshal(b, m, deterministic)
-}
-func (m *SetRegionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetRegionRequest.Merge(m, src)
-}
-func (m *SetRegionRequest) XXX_Size() int {
-	return xxx_messageInfo_SetRegionRequest.Size(m)
-}
-func (m *SetRegionRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetRegionRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetRegionRequest proto.InternalMessageInfo
-
-func (m *SetRegionRequest) GetRegion() *Region {
-	if m != nil {
-		return m.Region
-	}
-	return nil
-}
-
-type SetRegionGeometryRequest struct {
-	// The region name.
-	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	// The geometry data's encoding.
-	GeometryEncoding geometry.Encoding `protobuf:"varint,14,opt,name=geometry_encoding,json=geometryEncoding,proto3,enum=topos.geometry.Encoding" json:"geometry_encoding,omitempty"`
-	// A chunk of bytes of the encoded geometry.
-	GeometryChunk        []byte   `protobuf:"bytes,15,opt,name=geometry_chunk,json=geometryChunk,proto3" json:"geometry_chunk,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SetRegionGeometryRequest) Reset()         { *m = SetRegionGeometryRequest{} }
-func (m *SetRegionGeometryRequest) String() string { return proto.CompactTextString(m) }
-func (*SetRegionGeometryRequest) ProtoMessage()    {}
-func (*SetRegionGeometryRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{6}
-}
-
-func (m *SetRegionGeometryRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetRegionGeometryRequest.Unmarshal(m, b)
-}
-func (m *SetRegionGeometryRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetRegionGeometryRequest.Marshal(b, m, deterministic)
-}
-func (m *SetRegionGeometryRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetRegionGeometryRequest.Merge(m, src)
-}
-func (m *SetRegionGeometryRequest) XXX_Size() int {
-	return xxx_messageInfo_SetRegionGeometryRequest.Size(m)
-}
-func (m *SetRegionGeometryRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetRegionGeometryRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetRegionGeometryRequest proto.InternalMessageInfo
-
-func (m *SetRegionGeometryRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *SetRegionGeometryRequest) GetGeometryEncoding() geometry.Encoding {
-	if m != nil {
-		return m.GeometryEncoding
-	}
-	return geometry.Encoding_WKB
-}
-
-func (m *SetRegionGeometryRequest) GetGeometryChunk() []byte {
-	if m != nil {
-		return m.GeometryChunk
-	}
-	return nil
-}
-
-type SetRegionGeometryResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SetRegionGeometryResponse) Reset()         { *m = SetRegionGeometryResponse{} }
-func (m *SetRegionGeometryResponse) String() string { return proto.CompactTextString(m) }
-func (*SetRegionGeometryResponse) ProtoMessage()    {}
-func (*SetRegionGeometryResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{7}
-}
-
-func (m *SetRegionGeometryResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SetRegionGeometryResponse.Unmarshal(m, b)
-}
-func (m *SetRegionGeometryResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SetRegionGeometryResponse.Marshal(b, m, deterministic)
-}
-func (m *SetRegionGeometryResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetRegionGeometryResponse.Merge(m, src)
-}
-func (m *SetRegionGeometryResponse) XXX_Size() int {
-	return xxx_messageInfo_SetRegionGeometryResponse.Size(m)
-}
-func (m *SetRegionGeometryResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetRegionGeometryResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetRegionGeometryResponse proto.InternalMessageInfo
-
 type SearchRegionsRequest struct {
 	// The maximum number of items to return.
 	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
-	// The next_page_token value returned from a previous Search request, if any.
+	// The next_page_token value returned from a previous request, if any.
 	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	// Return regions of the given type.
 	RegionType string `protobuf:"bytes,3,opt,name=region_type,json=regionType,proto3" json:"region_type,omitempty"`
@@ -487,7 +352,7 @@ func (m *SearchRegionsRequest) Reset()         { *m = SearchRegionsRequest{} }
 func (m *SearchRegionsRequest) String() string { return proto.CompactTextString(m) }
 func (*SearchRegionsRequest) ProtoMessage()    {}
 func (*SearchRegionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{8}
+	return fileDescriptor_954338d7542bc8de, []int{5}
 }
 
 func (m *SearchRegionsRequest) XXX_Unmarshal(b []byte) error {
@@ -557,7 +422,7 @@ func (m *SearchRegionsResponse) Reset()         { *m = SearchRegionsResponse{} }
 func (m *SearchRegionsResponse) String() string { return proto.CompactTextString(m) }
 func (*SearchRegionsResponse) ProtoMessage()    {}
 func (*SearchRegionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{9}
+	return fileDescriptor_954338d7542bc8de, []int{6}
 }
 
 func (m *SearchRegionsResponse) XXX_Unmarshal(b []byte) error {
@@ -604,7 +469,7 @@ func (m *GetRegionFeatureSetValuesRequest) Reset()         { *m = GetRegionFeatu
 func (m *GetRegionFeatureSetValuesRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRegionFeatureSetValuesRequest) ProtoMessage()    {}
 func (*GetRegionFeatureSetValuesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{10}
+	return fileDescriptor_954338d7542bc8de, []int{7}
 }
 
 func (m *GetRegionFeatureSetValuesRequest) XXX_Unmarshal(b []byte) error {
@@ -650,7 +515,7 @@ func (m *GetRegionFeatureSetValuesResponse) Reset()         { *m = GetRegionFeat
 func (m *GetRegionFeatureSetValuesResponse) String() string { return proto.CompactTextString(m) }
 func (*GetRegionFeatureSetValuesResponse) ProtoMessage()    {}
 func (*GetRegionFeatureSetValuesResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{11}
+	return fileDescriptor_954338d7542bc8de, []int{8}
 }
 
 func (m *GetRegionFeatureSetValuesResponse) XXX_Unmarshal(b []byte) error {
@@ -690,7 +555,7 @@ func (m *LatLng) Reset()         { *m = LatLng{} }
 func (m *LatLng) String() string { return proto.CompactTextString(m) }
 func (*LatLng) ProtoMessage()    {}
 func (*LatLng) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{12}
+	return fileDescriptor_954338d7542bc8de, []int{9}
 }
 
 func (m *LatLng) XXX_Unmarshal(b []byte) error {
@@ -739,7 +604,7 @@ func (m *LocateRegionsRequest) Reset()         { *m = LocateRegionsRequest{} }
 func (m *LocateRegionsRequest) String() string { return proto.CompactTextString(m) }
 func (*LocateRegionsRequest) ProtoMessage()    {}
 func (*LocateRegionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{13}
+	return fileDescriptor_954338d7542bc8de, []int{10}
 }
 
 func (m *LocateRegionsRequest) XXX_Unmarshal(b []byte) error {
@@ -786,7 +651,7 @@ func (m *LocateRegionsResponse) Reset()         { *m = LocateRegionsResponse{} }
 func (m *LocateRegionsResponse) String() string { return proto.CompactTextString(m) }
 func (*LocateRegionsResponse) ProtoMessage()    {}
 func (*LocateRegionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{14}
+	return fileDescriptor_954338d7542bc8de, []int{11}
 }
 
 func (m *LocateRegionsResponse) XXX_Unmarshal(b []byte) error {
@@ -830,7 +695,7 @@ func (m *IntersectRegionsRequest) Reset()         { *m = IntersectRegionsRequest
 func (m *IntersectRegionsRequest) String() string { return proto.CompactTextString(m) }
 func (*IntersectRegionsRequest) ProtoMessage()    {}
 func (*IntersectRegionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{15}
+	return fileDescriptor_954338d7542bc8de, []int{12}
 }
 
 func (m *IntersectRegionsRequest) XXX_Unmarshal(b []byte) error {
@@ -883,7 +748,7 @@ func (m *IntersectRegionsResponse) Reset()         { *m = IntersectRegionsRespon
 func (m *IntersectRegionsResponse) String() string { return proto.CompactTextString(m) }
 func (*IntersectRegionsResponse) ProtoMessage()    {}
 func (*IntersectRegionsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{16}
+	return fileDescriptor_954338d7542bc8de, []int{13}
 }
 
 func (m *IntersectRegionsResponse) XXX_Unmarshal(b []byte) error {
@@ -931,7 +796,7 @@ func (m *IntersectRegionsResponse_IntersectingRegions) String() string {
 }
 func (*IntersectRegionsResponse_IntersectingRegions) ProtoMessage() {}
 func (*IntersectRegionsResponse_IntersectingRegions) Descriptor() ([]byte, []int) {
-	return fileDescriptor_954338d7542bc8de, []int{16, 0}
+	return fileDescriptor_954338d7542bc8de, []int{13, 0}
 }
 
 func (m *IntersectRegionsResponse_IntersectingRegions) XXX_Unmarshal(b []byte) error {
@@ -973,6 +838,466 @@ func (m *IntersectRegionsResponse_IntersectingRegions) GetIntersectionArea() flo
 	return 0
 }
 
+type Metric struct {
+	// The name of the metric.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The metric's display name.
+	DisplayName string `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	// The metric's description.
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// The metric's units.
+	Units                string   `protobuf:"bytes,4,opt,name=units,proto3" json:"units,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *Metric) Reset()         { *m = Metric{} }
+func (m *Metric) String() string { return proto.CompactTextString(m) }
+func (*Metric) ProtoMessage()    {}
+func (*Metric) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{14}
+}
+
+func (m *Metric) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Metric.Unmarshal(m, b)
+}
+func (m *Metric) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Metric.Marshal(b, m, deterministic)
+}
+func (m *Metric) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Metric.Merge(m, src)
+}
+func (m *Metric) XXX_Size() int {
+	return xxx_messageInfo_Metric.Size(m)
+}
+func (m *Metric) XXX_DiscardUnknown() {
+	xxx_messageInfo_Metric.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Metric proto.InternalMessageInfo
+
+func (m *Metric) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *Metric) GetDisplayName() string {
+	if m != nil {
+		return m.DisplayName
+	}
+	return ""
+}
+
+func (m *Metric) GetDescription() string {
+	if m != nil {
+		return m.Description
+	}
+	return ""
+}
+
+func (m *Metric) GetUnits() string {
+	if m != nil {
+		return m.Units
+	}
+	return ""
+}
+
+type RegionQuery struct {
+	// Required. Match regions of the given type.
+	RegionType string `protobuf:"bytes,1,opt,name=region_type,json=regionType,proto3" json:"region_type,omitempty"`
+	// The match regions that intersect the given area.
+	//
+	// Types that are valid to be assigned to Area:
+	//	*RegionQuery_Region
+	//	*RegionQuery_Circle
+	//	*RegionQuery_EncodedGeometry
+	Area                 isRegionQuery_Area `protobuf_oneof:"area"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *RegionQuery) Reset()         { *m = RegionQuery{} }
+func (m *RegionQuery) String() string { return proto.CompactTextString(m) }
+func (*RegionQuery) ProtoMessage()    {}
+func (*RegionQuery) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{15}
+}
+
+func (m *RegionQuery) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RegionQuery.Unmarshal(m, b)
+}
+func (m *RegionQuery) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RegionQuery.Marshal(b, m, deterministic)
+}
+func (m *RegionQuery) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RegionQuery.Merge(m, src)
+}
+func (m *RegionQuery) XXX_Size() int {
+	return xxx_messageInfo_RegionQuery.Size(m)
+}
+func (m *RegionQuery) XXX_DiscardUnknown() {
+	xxx_messageInfo_RegionQuery.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RegionQuery proto.InternalMessageInfo
+
+func (m *RegionQuery) GetRegionType() string {
+	if m != nil {
+		return m.RegionType
+	}
+	return ""
+}
+
+type isRegionQuery_Area interface {
+	isRegionQuery_Area()
+}
+
+type RegionQuery_Region struct {
+	Region string `protobuf:"bytes,2,opt,name=region,proto3,oneof"`
+}
+
+type RegionQuery_Circle struct {
+	Circle *geometry.Circle `protobuf:"bytes,3,opt,name=circle,proto3,oneof"`
+}
+
+type RegionQuery_EncodedGeometry struct {
+	EncodedGeometry *geometry.EncodedGeometry `protobuf:"bytes,4,opt,name=encoded_geometry,json=encodedGeometry,proto3,oneof"`
+}
+
+func (*RegionQuery_Region) isRegionQuery_Area() {}
+
+func (*RegionQuery_Circle) isRegionQuery_Area() {}
+
+func (*RegionQuery_EncodedGeometry) isRegionQuery_Area() {}
+
+func (m *RegionQuery) GetArea() isRegionQuery_Area {
+	if m != nil {
+		return m.Area
+	}
+	return nil
+}
+
+func (m *RegionQuery) GetRegion() string {
+	if x, ok := m.GetArea().(*RegionQuery_Region); ok {
+		return x.Region
+	}
+	return ""
+}
+
+func (m *RegionQuery) GetCircle() *geometry.Circle {
+	if x, ok := m.GetArea().(*RegionQuery_Circle); ok {
+		return x.Circle
+	}
+	return nil
+}
+
+func (m *RegionQuery) GetEncodedGeometry() *geometry.EncodedGeometry {
+	if x, ok := m.GetArea().(*RegionQuery_EncodedGeometry); ok {
+		return x.EncodedGeometry
+	}
+	return nil
+}
+
+// XXX_OneofWrappers is for the internal use of the proto package.
+func (*RegionQuery) XXX_OneofWrappers() []interface{} {
+	return []interface{}{
+		(*RegionQuery_Region)(nil),
+		(*RegionQuery_Circle)(nil),
+		(*RegionQuery_EncodedGeometry)(nil),
+	}
+}
+
+type GetMetricRequest struct {
+	// The name of the metric to get.
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *GetMetricRequest) Reset()         { *m = GetMetricRequest{} }
+func (m *GetMetricRequest) String() string { return proto.CompactTextString(m) }
+func (*GetMetricRequest) ProtoMessage()    {}
+func (*GetMetricRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{16}
+}
+
+func (m *GetMetricRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetMetricRequest.Unmarshal(m, b)
+}
+func (m *GetMetricRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetMetricRequest.Marshal(b, m, deterministic)
+}
+func (m *GetMetricRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetMetricRequest.Merge(m, src)
+}
+func (m *GetMetricRequest) XXX_Size() int {
+	return xxx_messageInfo_GetMetricRequest.Size(m)
+}
+func (m *GetMetricRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetMetricRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_GetMetricRequest proto.InternalMessageInfo
+
+func (m *GetMetricRequest) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+type BatchGetMetricsRequest struct {
+	// The name of the metrics to get.
+	MetricNames          []string `protobuf:"bytes,1,rep,name=metric_names,json=metricNames,proto3" json:"metric_names,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BatchGetMetricsRequest) Reset()         { *m = BatchGetMetricsRequest{} }
+func (m *BatchGetMetricsRequest) String() string { return proto.CompactTextString(m) }
+func (*BatchGetMetricsRequest) ProtoMessage()    {}
+func (*BatchGetMetricsRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{17}
+}
+
+func (m *BatchGetMetricsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchGetMetricsRequest.Unmarshal(m, b)
+}
+func (m *BatchGetMetricsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchGetMetricsRequest.Marshal(b, m, deterministic)
+}
+func (m *BatchGetMetricsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchGetMetricsRequest.Merge(m, src)
+}
+func (m *BatchGetMetricsRequest) XXX_Size() int {
+	return xxx_messageInfo_BatchGetMetricsRequest.Size(m)
+}
+func (m *BatchGetMetricsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchGetMetricsRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchGetMetricsRequest proto.InternalMessageInfo
+
+func (m *BatchGetMetricsRequest) GetMetricNames() []string {
+	if m != nil {
+		return m.MetricNames
+	}
+	return nil
+}
+
+type BatchGetMetricsResponse struct {
+	Metrics              []*Metric `protobuf:"bytes,1,rep,name=metrics,proto3" json:"metrics,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *BatchGetMetricsResponse) Reset()         { *m = BatchGetMetricsResponse{} }
+func (m *BatchGetMetricsResponse) String() string { return proto.CompactTextString(m) }
+func (*BatchGetMetricsResponse) ProtoMessage()    {}
+func (*BatchGetMetricsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{18}
+}
+
+func (m *BatchGetMetricsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchGetMetricsResponse.Unmarshal(m, b)
+}
+func (m *BatchGetMetricsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchGetMetricsResponse.Marshal(b, m, deterministic)
+}
+func (m *BatchGetMetricsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchGetMetricsResponse.Merge(m, src)
+}
+func (m *BatchGetMetricsResponse) XXX_Size() int {
+	return xxx_messageInfo_BatchGetMetricsResponse.Size(m)
+}
+func (m *BatchGetMetricsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchGetMetricsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchGetMetricsResponse proto.InternalMessageInfo
+
+func (m *BatchGetMetricsResponse) GetMetrics() []*Metric {
+	if m != nil {
+		return m.Metrics
+	}
+	return nil
+}
+
+type SearchRegionMetricValuesRequest struct {
+	// The maximum number of items to return.
+	PageSize int32 `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	// The next_page_token value returned from a previous request, if any.
+	PageToken string `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
+	// Required. The region query.
+	RegionQuery *RegionQuery `protobuf:"bytes,3,opt,name=region_query,json=regionQuery,proto3" json:"region_query,omitempty"`
+	// The names of the metrics to return values for.
+	MetricNames          []string `protobuf:"bytes,4,rep,name=metric_names,json=metricNames,proto3" json:"metric_names,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SearchRegionMetricValuesRequest) Reset()         { *m = SearchRegionMetricValuesRequest{} }
+func (m *SearchRegionMetricValuesRequest) String() string { return proto.CompactTextString(m) }
+func (*SearchRegionMetricValuesRequest) ProtoMessage()    {}
+func (*SearchRegionMetricValuesRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{19}
+}
+
+func (m *SearchRegionMetricValuesRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SearchRegionMetricValuesRequest.Unmarshal(m, b)
+}
+func (m *SearchRegionMetricValuesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SearchRegionMetricValuesRequest.Marshal(b, m, deterministic)
+}
+func (m *SearchRegionMetricValuesRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchRegionMetricValuesRequest.Merge(m, src)
+}
+func (m *SearchRegionMetricValuesRequest) XXX_Size() int {
+	return xxx_messageInfo_SearchRegionMetricValuesRequest.Size(m)
+}
+func (m *SearchRegionMetricValuesRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchRegionMetricValuesRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchRegionMetricValuesRequest proto.InternalMessageInfo
+
+func (m *SearchRegionMetricValuesRequest) GetPageSize() int32 {
+	if m != nil {
+		return m.PageSize
+	}
+	return 0
+}
+
+func (m *SearchRegionMetricValuesRequest) GetPageToken() string {
+	if m != nil {
+		return m.PageToken
+	}
+	return ""
+}
+
+func (m *SearchRegionMetricValuesRequest) GetRegionQuery() *RegionQuery {
+	if m != nil {
+		return m.RegionQuery
+	}
+	return nil
+}
+
+func (m *SearchRegionMetricValuesRequest) GetMetricNames() []string {
+	if m != nil {
+		return m.MetricNames
+	}
+	return nil
+}
+
+type SearchRegionMetricValuesResponse struct {
+	RegionMetricValues []*SearchRegionMetricValuesResponse_RegionMetricValues `protobuf:"bytes,1,rep,name=region_metric_values,json=regionMetricValues,proto3" json:"region_metric_values,omitempty"`
+	// Token to retrieve the next page of results if there are any.
+	NextPageToken        string   `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SearchRegionMetricValuesResponse) Reset()         { *m = SearchRegionMetricValuesResponse{} }
+func (m *SearchRegionMetricValuesResponse) String() string { return proto.CompactTextString(m) }
+func (*SearchRegionMetricValuesResponse) ProtoMessage()    {}
+func (*SearchRegionMetricValuesResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{20}
+}
+
+func (m *SearchRegionMetricValuesResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse.Unmarshal(m, b)
+}
+func (m *SearchRegionMetricValuesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse.Marshal(b, m, deterministic)
+}
+func (m *SearchRegionMetricValuesResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchRegionMetricValuesResponse.Merge(m, src)
+}
+func (m *SearchRegionMetricValuesResponse) XXX_Size() int {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse.Size(m)
+}
+func (m *SearchRegionMetricValuesResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchRegionMetricValuesResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchRegionMetricValuesResponse proto.InternalMessageInfo
+
+func (m *SearchRegionMetricValuesResponse) GetRegionMetricValues() []*SearchRegionMetricValuesResponse_RegionMetricValues {
+	if m != nil {
+		return m.RegionMetricValues
+	}
+	return nil
+}
+
+func (m *SearchRegionMetricValuesResponse) GetNextPageToken() string {
+	if m != nil {
+		return m.NextPageToken
+	}
+	return ""
+}
+
+type SearchRegionMetricValuesResponse_RegionMetricValues struct {
+	// The name of the region.
+	Name string `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	// The region's metric values.
+	MetricValues         []float64 `protobuf:"fixed64,2,rep,packed,name=metric_values,json=metricValues,proto3" json:"metric_values,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) Reset() {
+	*m = SearchRegionMetricValuesResponse_RegionMetricValues{}
+}
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) String() string {
+	return proto.CompactTextString(m)
+}
+func (*SearchRegionMetricValuesResponse_RegionMetricValues) ProtoMessage() {}
+func (*SearchRegionMetricValuesResponse_RegionMetricValues) Descriptor() ([]byte, []int) {
+	return fileDescriptor_954338d7542bc8de, []int{20, 0}
+}
+
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues.Unmarshal(m, b)
+}
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues.Marshal(b, m, deterministic)
+}
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues.Merge(m, src)
+}
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) XXX_Size() int {
+	return xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues.Size(m)
+}
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) XXX_DiscardUnknown() {
+	xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SearchRegionMetricValuesResponse_RegionMetricValues proto.InternalMessageInfo
+
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *SearchRegionMetricValuesResponse_RegionMetricValues) GetMetricValues() []float64 {
+	if m != nil {
+		return m.MetricValues
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*RegionType)(nil), "topos.locations.v1.RegionType")
 	proto.RegisterType((*Region)(nil), "topos.locations.v1.Region")
@@ -981,9 +1306,6 @@ func init() {
 	proto.RegisterType((*GetRegionRequest)(nil), "topos.locations.v1.GetRegionRequest")
 	proto.RegisterType((*GetRegionGeometryRequest)(nil), "topos.locations.v1.GetRegionGeometryRequest")
 	proto.RegisterType((*GetRegionGeometryResponse)(nil), "topos.locations.v1.GetRegionGeometryResponse")
-	proto.RegisterType((*SetRegionRequest)(nil), "topos.locations.v1.SetRegionRequest")
-	proto.RegisterType((*SetRegionGeometryRequest)(nil), "topos.locations.v1.SetRegionGeometryRequest")
-	proto.RegisterType((*SetRegionGeometryResponse)(nil), "topos.locations.v1.SetRegionGeometryResponse")
 	proto.RegisterType((*SearchRegionsRequest)(nil), "topos.locations.v1.SearchRegionsRequest")
 	proto.RegisterType((*SearchRegionsResponse)(nil), "topos.locations.v1.SearchRegionsResponse")
 	proto.RegisterType((*GetRegionFeatureSetValuesRequest)(nil), "topos.locations.v1.GetRegionFeatureSetValuesRequest")
@@ -995,6 +1317,14 @@ func init() {
 	proto.RegisterType((*IntersectRegionsRequest)(nil), "topos.locations.v1.IntersectRegionsRequest")
 	proto.RegisterType((*IntersectRegionsResponse)(nil), "topos.locations.v1.IntersectRegionsResponse")
 	proto.RegisterType((*IntersectRegionsResponse_IntersectingRegions)(nil), "topos.locations.v1.IntersectRegionsResponse.IntersectingRegions")
+	proto.RegisterType((*Metric)(nil), "topos.locations.v1.Metric")
+	proto.RegisterType((*RegionQuery)(nil), "topos.locations.v1.RegionQuery")
+	proto.RegisterType((*GetMetricRequest)(nil), "topos.locations.v1.GetMetricRequest")
+	proto.RegisterType((*BatchGetMetricsRequest)(nil), "topos.locations.v1.BatchGetMetricsRequest")
+	proto.RegisterType((*BatchGetMetricsResponse)(nil), "topos.locations.v1.BatchGetMetricsResponse")
+	proto.RegisterType((*SearchRegionMetricValuesRequest)(nil), "topos.locations.v1.SearchRegionMetricValuesRequest")
+	proto.RegisterType((*SearchRegionMetricValuesResponse)(nil), "topos.locations.v1.SearchRegionMetricValuesResponse")
+	proto.RegisterType((*SearchRegionMetricValuesResponse_RegionMetricValues)(nil), "topos.locations.v1.SearchRegionMetricValuesResponse.RegionMetricValues")
 }
 
 func init() {
@@ -1002,77 +1332,95 @@ func init() {
 }
 
 var fileDescriptor_954338d7542bc8de = []byte{
-	// 1117 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x57, 0xcf, 0x6f, 0xdc, 0x44,
-	0x14, 0x66, 0x92, 0x76, 0x9b, 0x7d, 0x69, 0x92, 0xcd, 0x34, 0x01, 0xd7, 0x6d, 0x45, 0x3a, 0x94,
-	0x2a, 0xcd, 0x8f, 0x75, 0xb3, 0x29, 0x11, 0x0d, 0x54, 0x2a, 0x41, 0x69, 0x1a, 0x14, 0x95, 0xca,
-	0xae, 0x38, 0xc0, 0x61, 0xe5, 0x6c, 0x26, 0x8e, 0x95, 0x8d, 0xc7, 0xd8, 0xe3, 0x80, 0x5b, 0xf5,
-	0xc2, 0xa9, 0x77, 0xae, 0xbd, 0x83, 0x90, 0xb8, 0x70, 0xe2, 0xff, 0x40, 0x42, 0xe2, 0xce, 0x1f,
-	0x82, 0x3c, 0x3f, 0xbc, 0x5e, 0xaf, 0xb3, 0xc9, 0x82, 0xc4, 0xcd, 0x7e, 0xef, 0x9b, 0x37, 0xdf,
-	0xfb, 0xe6, 0xcd, 0x7b, 0x36, 0x10, 0xce, 0x42, 0x16, 0x5b, 0x5d, 0xd6, 0x71, 0xb9, 0xcf, 0x82,
-	0xd8, 0x3a, 0x5d, 0xeb, 0xbd, 0x34, 0xc3, 0x88, 0x71, 0x86, 0xb1, 0xc0, 0x34, 0x7b, 0xe6, 0xd3,
-	0x35, 0xf3, 0xa6, 0xc7, 0x98, 0xd7, 0xa5, 0x96, 0x1b, 0xfa, 0x96, 0x1b, 0x04, 0x8c, 0x17, 0x57,
-	0x98, 0xb7, 0x64, 0x54, 0x8f, 0xb2, 0x13, 0xca, 0xa3, 0xd4, 0xa2, 0x41, 0x87, 0x1d, 0xf8, 0x81,
-	0x27, 0xdd, 0x64, 0x01, 0xc0, 0xa6, 0x9e, 0xcf, 0x82, 0x17, 0x69, 0x48, 0x31, 0x86, 0x4b, 0x81,
-	0x7b, 0x42, 0x0d, 0xb4, 0x80, 0x16, 0xeb, 0xb6, 0x78, 0x26, 0xbf, 0x8f, 0x41, 0x4d, 0x42, 0xaa,
-	0xdc, 0xf8, 0x36, 0x5c, 0x3d, 0xf0, 0xe3, 0xb0, 0xeb, 0xa6, 0x6d, 0xe1, 0x1b, 0x13, 0xbe, 0x49,
-	0x65, 0x7b, 0x96, 0x41, 0xbe, 0x00, 0x08, 0x23, 0x16, 0xd2, 0x88, 0xfb, 0x34, 0x36, 0xc6, 0x17,
-	0xc6, 0x17, 0x27, 0x5b, 0x4b, 0xcd, 0xc1, 0x4c, 0x9a, 0x72, 0x9b, 0xe6, 0xf3, 0x1c, 0xbc, 0x1d,
-	0xf0, 0x28, 0xb5, 0x0b, 0xab, 0xcd, 0x1d, 0x98, 0x50, 0xee, 0x14, 0x1b, 0x50, 0x73, 0x78, 0xe4,
-	0x07, 0x9e, 0x24, 0xf4, 0xf4, 0x1d, 0x5b, 0xbd, 0x67, 0x9e, 0x67, 0xc9, 0xc9, 0x3e, 0x8d, 0x04,
-	0x1d, 0x94, 0x79, 0xe4, 0xfb, 0xd6, 0x15, 0xb8, 0x7c, 0xea, 0x76, 0x13, 0x6a, 0xee, 0xc3, 0x4c,
-	0x69, 0x1f, 0xdc, 0x80, 0xf1, 0x63, 0x9a, 0xaa, 0xec, 0xb2, 0x47, 0xfc, 0x50, 0xa1, 0x45, 0x98,
-	0xc9, 0xd6, 0x07, 0xe7, 0x93, 0x4e, 0x6d, 0xb9, 0x62, 0x73, 0xec, 0x63, 0x44, 0xee, 0x42, 0x63,
-	0x87, 0x72, 0x09, 0xb0, 0xe9, 0xb7, 0x09, 0x8d, 0x79, 0xa5, 0xc4, 0x09, 0x18, 0x39, 0x6e, 0x47,
-	0x1d, 0xd4, 0x10, 0x3c, 0xde, 0x86, 0x59, 0x7d, 0x9e, 0x6d, 0x7d, 0x9e, 0x82, 0xe2, 0x74, 0xcb,
-	0x50, 0x14, 0xb5, 0xbf, 0xb9, 0xad, 0xfc, 0x76, 0x43, 0x9b, 0xb4, 0x85, 0x6c, 0xc1, 0xf5, 0x8a,
-	0x6d, 0xe3, 0x90, 0x05, 0x31, 0xc5, 0x1f, 0xc2, 0x74, 0xbe, 0x47, 0xe7, 0x28, 0x09, 0x8e, 0x05,
-	0x83, 0xab, 0xf6, 0x94, 0xb6, 0x7e, 0x9e, 0x19, 0xc9, 0x13, 0x68, 0x38, 0xe5, 0x14, 0x5b, 0x50,
-	0x8b, 0x84, 0x41, 0x2c, 0x99, 0x6c, 0x99, 0x67, 0xcb, 0x66, 0x2b, 0x24, 0x79, 0x8b, 0xc0, 0x70,
-	0xfe, 0xb3, 0x06, 0xd3, 0xa3, 0x6a, 0x50, 0x91, 0xe6, 0x4c, 0x55, 0x9a, 0x37, 0xe0, 0xba, 0x73,
-	0x96, 0x54, 0xe4, 0x4f, 0x04, 0x73, 0x0e, 0x75, 0xa3, 0xce, 0x91, 0x04, 0xc4, 0x9a, 0xf7, 0x0d,
-	0xa8, 0x87, 0xae, 0x47, 0xdb, 0xb1, 0xff, 0x52, 0x92, 0xbf, 0x6c, 0x4f, 0x64, 0x06, 0xc7, 0x7f,
-	0x49, 0xf1, 0x2d, 0x00, 0xe1, 0xe4, 0xec, 0x98, 0x06, 0xea, 0xda, 0x08, 0xf8, 0x8b, 0xcc, 0x80,
-	0xdf, 0x87, 0x49, 0x29, 0x4d, 0x9b, 0xa7, 0x21, 0x35, 0xc6, 0x85, 0x1f, 0xa2, 0xde, 0x5d, 0x5d,
-	0x87, 0x79, 0x3f, 0xe0, 0x34, 0x8a, 0x69, 0x87, 0xfb, 0x81, 0xd7, 0xd6, 0x84, 0x8d, 0x4b, 0x22,
-	0x81, 0xb9, 0xa2, 0x53, 0x53, 0xc6, 0x2b, 0x80, 0xfd, 0xa0, 0xd3, 0x4d, 0x0e, 0xe8, 0x41, 0x7b,
-	0x3f, 0x6d, 0xab, 0x63, 0xaa, 0x89, 0xe0, 0x0d, 0xed, 0xd9, 0x4a, 0x65, 0x1e, 0x24, 0x81, 0xf9,
-	0x52, 0x5e, 0xaa, 0x38, 0x1e, 0xc0, 0x15, 0xb9, 0x34, 0x36, 0x90, 0xb8, 0xce, 0xc3, 0x8e, 0x58,
-	0x43, 0xf1, 0x5d, 0x98, 0x09, 0xe8, 0xf7, 0xbc, 0x3d, 0x90, 0xf6, 0x54, 0x66, 0x7e, 0xae, 0x53,
-	0x27, 0xdf, 0xc0, 0x42, 0x5e, 0x97, 0x4f, 0xa8, 0xcb, 0x93, 0x88, 0x3a, 0x94, 0x7f, 0x95, 0x5d,
-	0xab, 0x5c, 0xda, 0x77, 0xfb, 0x6a, 0xac, 0xae, 0xeb, 0x28, 0x93, 0xed, 0x50, 0x2e, 0x69, 0xc7,
-	0x94, 0xab, 0xf8, 0x70, 0x98, 0x47, 0xc9, 0x0e, 0xeb, 0xf6, 0x90, 0xe8, 0x2a, 0x41, 0x06, 0xd3,
-	0x3a, 0x8c, 0xb8, 0xce, 0x3a, 0xcf, 0xa7, 0x55, 0x79, 0x9e, 0x1b, 0xae, 0xa9, 0x1c, 0xd2, 0x2a,
-	0x9b, 0xda, 0xd4, 0x61, 0xd1, 0x66, 0x3e, 0x06, 0x3c, 0x08, 0xaa, 0xe8, 0x48, 0x73, 0xc5, 0x8e,
-	0x84, 0x8a, 0xcd, 0x66, 0x0b, 0x6a, 0x7b, 0x2e, 0xdf, 0x0b, 0x3c, 0x6c, 0xc2, 0x44, 0xd7, 0xe5,
-	0x3e, 0x4f, 0x0e, 0x64, 0xd5, 0x21, 0x3b, 0x7f, 0xc7, 0x37, 0xa1, 0xde, 0x65, 0x81, 0x27, 0x9d,
-	0x32, 0x46, 0xcf, 0x40, 0x18, 0xcc, 0xed, 0x65, 0x99, 0xd1, 0x52, 0x21, 0x97, 0x8a, 0x11, 0x0d,
-	0x14, 0xe3, 0x06, 0x4c, 0x68, 0x49, 0x54, 0xaf, 0xac, 0xac, 0x08, 0x49, 0xd0, 0xce, 0xb1, 0x64,
-	0x0d, 0xe6, 0x4b, 0x1b, 0xaa, 0x03, 0x30, 0xfa, 0x2b, 0xac, 0x9e, 0x57, 0x11, 0xf9, 0x19, 0xc1,
-	0x7b, 0xbb, 0xba, 0xb6, 0x47, 0xe5, 0xf9, 0xff, 0x76, 0x8d, 0x37, 0x63, 0x60, 0x0c, 0x52, 0x55,
-	0x19, 0xc6, 0xd0, 0x77, 0x45, 0xdb, 0xfd, 0x17, 0xea, 0x71, 0x95, 0x7c, 0x67, 0xc5, 0xea, 0x39,
-	0x32, 0xba, 0xca, 0x77, 0xcd, 0x1f, 0x34, 0x9a, 0xdf, 0xc1, 0xb5, 0x0a, 0x6c, 0x65, 0x83, 0xed,
-	0x69, 0xe9, 0x46, 0xd4, 0x55, 0xb5, 0xa2, 0xb4, 0xfc, 0x2c, 0xa2, 0x2e, 0x5e, 0x86, 0xd9, 0xde,
-	0x16, 0x1a, 0x36, 0x2e, 0x60, 0x8d, 0xa2, 0x23, 0x03, 0xb7, 0x7e, 0x03, 0xa8, 0xef, 0xe9, 0x5c,
-	0x70, 0x0a, 0xf5, 0xfc, 0xd2, 0xe0, 0x3b, 0x43, 0xef, 0x94, 0x3a, 0x5a, 0x73, 0x48, 0x87, 0x21,
-	0x4b, 0x3f, 0xfc, 0xf1, 0xf7, 0x8f, 0x63, 0x77, 0x30, 0xc9, 0x3e, 0x99, 0x5e, 0x65, 0xec, 0x1f,
-	0xf5, 0xce, 0x3c, 0xb6, 0x96, 0x2c, 0xa5, 0xad, 0xb5, 0xf4, 0x1a, 0xff, 0x84, 0x60, 0x76, 0x60,
-	0xea, 0xe1, 0x95, 0xa1, 0x1c, 0x4a, 0xf3, 0xc8, 0x5c, 0xbd, 0x20, 0x5a, 0xcd, 0x87, 0x75, 0x41,
-	0x6f, 0x15, 0x2f, 0x9f, 0x4f, 0x2f, 0xff, 0x4e, 0xbb, 0x8f, 0xf0, 0x1b, 0x04, 0x75, 0x67, 0xb8,
-	0x4a, 0xce, 0x28, 0x2a, 0x3d, 0x14, 0x34, 0xd6, 0xc9, 0x3d, 0x41, 0x43, 0xee, 0xd9, 0x1c, 0xca,
-	0x66, 0x53, 0x77, 0xd5, 0x5f, 0x10, 0xcc, 0x3a, 0x17, 0x13, 0xcd, 0x19, 0x49, 0xb4, 0xb3, 0x87,
-	0xea, 0x86, 0x60, 0x7b, 0x9f, 0x8c, 0x22, 0xda, 0x26, 0x5a, 0x5a, 0x44, 0xf8, 0x2f, 0x54, 0xf8,
-	0xae, 0x29, 0xb7, 0x64, 0xfc, 0x60, 0xc4, 0x0e, 0x2e, 0xc9, 0x7f, 0xf4, 0xaf, 0xfa, 0x3e, 0xf9,
-	0x52, 0x24, 0xb1, 0x8b, 0x77, 0x0a, 0x92, 0x9f, 0x9d, 0xc6, 0xab, 0xc2, 0xe4, 0x7a, 0xd4, 0x1b,
-	0x59, 0xc2, 0x27, 0xa7, 0x10, 0x7e, 0x8b, 0x60, 0xaa, 0x6f, 0x24, 0xe3, 0xc5, 0x6a, 0x59, 0x07,
-	0xbf, 0x46, 0xcc, 0x7b, 0x17, 0x40, 0x96, 0xc4, 0x6f, 0x16, 0x78, 0x8b, 0x96, 0xda, 0x4f, 0xfe,
-	0xb5, 0x66, 0xbf, 0x19, 0x8b, 0x30, 0x82, 0x5e, 0x5f, 0x3f, 0xaf, 0xa6, 0x57, 0x35, 0x63, 0xaa,
-	0xe9, 0x55, 0x0e, 0x87, 0xd1, 0xe9, 0x89, 0x98, 0x14, 0xff, 0x8a, 0xa0, 0x51, 0xee, 0xa1, 0x78,
-	0xf9, 0x62, 0x9d, 0x56, 0x92, 0x5c, 0x19, 0xa5, 0x2d, 0x93, 0x4f, 0x05, 0xcf, 0x0d, 0xb2, 0x76,
-	0x51, 0x9e, 0x79, 0xdb, 0x14, 0x95, 0xbc, 0xb5, 0xfb, 0xf5, 0x8e, 0xe7, 0xf3, 0xa3, 0x64, 0xbf,
-	0xd9, 0x61, 0x27, 0x96, 0xd8, 0x79, 0xd5, 0xf5, 0xf5, 0x43, 0xe8, 0x67, 0xbf, 0x75, 0x81, 0xf8,
-	0x8f, 0xb3, 0x3c, 0x66, 0x0d, 0xfe, 0x3e, 0x7e, 0x92, 0xbf, 0xec, 0xd7, 0x04, 0x6c, 0xfd, 0x9f,
-	0x00, 0x00, 0x00, 0xff, 0xff, 0x35, 0x6c, 0xd1, 0xe4, 0x65, 0x0e, 0x00, 0x00,
+	// 1393 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x58, 0x4b, 0x6f, 0x13, 0xd7,
+	0x17, 0x67, 0xec, 0x60, 0xe2, 0xe3, 0x3c, 0xcc, 0x25, 0x84, 0xf9, 0x0f, 0xa0, 0x98, 0x0b, 0x7f,
+	0x94, 0x26, 0x60, 0xe7, 0x41, 0x51, 0x1b, 0x8a, 0x44, 0x8d, 0x52, 0x43, 0x15, 0x1e, 0x9d, 0xa0,
+	0x2e, 0xda, 0x85, 0x35, 0xb1, 0x2f, 0x93, 0x51, 0x9c, 0x99, 0x61, 0xe6, 0x0e, 0x74, 0x40, 0x6c,
+	0xba, 0x62, 0xdf, 0x2e, 0xbb, 0x6f, 0x37, 0xdd, 0xf7, 0x03, 0x74, 0xd7, 0x4d, 0xa5, 0x4a, 0x48,
+	0xdd, 0xf7, 0x83, 0x54, 0x73, 0x1f, 0xf3, 0xb6, 0x93, 0xd0, 0x9d, 0xef, 0x39, 0xe7, 0x9e, 0xfb,
+	0x3b, 0xef, 0x33, 0x06, 0x4c, 0x1d, 0xd7, 0xf1, 0x3b, 0x23, 0x67, 0x60, 0x50, 0xcb, 0xb1, 0xfd,
+	0xce, 0xcb, 0xf5, 0xe4, 0xd0, 0x76, 0x3d, 0x87, 0x3a, 0x08, 0x31, 0x99, 0x76, 0x42, 0x7e, 0xb9,
+	0xae, 0x5d, 0x32, 0x1d, 0xc7, 0x1c, 0x91, 0x8e, 0xe1, 0x5a, 0x1d, 0xc3, 0xb6, 0x1d, 0x9a, 0xbe,
+	0xa1, 0x5d, 0xe4, 0x5a, 0x4d, 0xe2, 0x1c, 0x12, 0xea, 0x85, 0x9d, 0x81, 0xe5, 0x0d, 0x46, 0x44,
+	0x30, 0x2f, 0xe7, 0x98, 0xc4, 0x1e, 0x38, 0x43, 0xcb, 0x36, 0x39, 0x1b, 0xb7, 0x00, 0x74, 0x62,
+	0x5a, 0x8e, 0xfd, 0x2c, 0x74, 0x09, 0x42, 0x30, 0x65, 0x1b, 0x87, 0x44, 0x55, 0x5a, 0xca, 0x72,
+	0x5d, 0x67, 0xbf, 0xf1, 0x6f, 0x15, 0xa8, 0x71, 0x91, 0x32, 0x36, 0xba, 0x02, 0x33, 0x43, 0xcb,
+	0x77, 0x47, 0x46, 0xd8, 0x67, 0xbc, 0x0a, 0xe3, 0x35, 0x04, 0xed, 0x71, 0x24, 0xf2, 0x25, 0x80,
+	0xeb, 0x39, 0x2e, 0xf1, 0xa8, 0x45, 0x7c, 0xb5, 0xda, 0xaa, 0x2e, 0x37, 0x36, 0x56, 0xda, 0x45,
+	0x33, 0xdb, 0xfc, 0x99, 0xf6, 0xd3, 0x58, 0x78, 0xdb, 0xa6, 0x5e, 0xa8, 0xa7, 0x6e, 0x6b, 0x3d,
+	0x98, 0x16, 0xec, 0x10, 0xa9, 0x50, 0xdb, 0xa5, 0x9e, 0x65, 0x9b, 0x1c, 0xd0, 0x83, 0x53, 0xba,
+	0x38, 0x47, 0x9c, 0xc7, 0xc1, 0xe1, 0x1e, 0xf1, 0x18, 0x1c, 0x25, 0xe2, 0xf0, 0x73, 0xf7, 0x0c,
+	0x9c, 0x7e, 0x69, 0x8c, 0x02, 0xa2, 0xed, 0xc1, 0x7c, 0xee, 0x1d, 0xd4, 0x84, 0xea, 0x01, 0x09,
+	0x85, 0x75, 0xd1, 0x4f, 0xf4, 0xa9, 0x90, 0x66, 0x6a, 0x1a, 0x1b, 0x57, 0x8f, 0x06, 0x1d, 0xea,
+	0xfc, 0xc6, 0x56, 0xe5, 0x13, 0x05, 0x5f, 0x87, 0x66, 0x8f, 0x50, 0x2e, 0xa0, 0x93, 0x17, 0x01,
+	0xf1, 0x69, 0xa9, 0x8b, 0x03, 0x50, 0x63, 0xb9, 0x9e, 0x08, 0xd4, 0x04, 0x79, 0xb4, 0x0d, 0x67,
+	0x65, 0x3c, 0xfb, 0x32, 0x9e, 0x0c, 0xe2, 0xdc, 0x86, 0x2a, 0x20, 0x4a, 0x7e, 0x7b, 0x5b, 0xf0,
+	0xf5, 0xa6, 0x24, 0x49, 0x0a, 0xee, 0xc2, 0xff, 0x4a, 0x9e, 0xf5, 0x5d, 0xc7, 0xf6, 0x09, 0xfa,
+	0x3f, 0xcc, 0xc5, 0x6f, 0x0c, 0xf6, 0x03, 0xfb, 0x80, 0x21, 0x98, 0xd1, 0x67, 0x25, 0xf5, 0x7e,
+	0x44, 0xc4, 0xef, 0x15, 0x58, 0xd8, 0x25, 0x86, 0x37, 0xd8, 0xe7, 0x7a, 0x7c, 0x89, 0xfb, 0x22,
+	0xd4, 0x5d, 0xc3, 0x24, 0x7d, 0xdf, 0x7a, 0xcd, 0xc1, 0x9f, 0xd6, 0xa7, 0x23, 0xc2, 0xae, 0xf5,
+	0x9a, 0xa0, 0xcb, 0x00, 0x8c, 0x49, 0x9d, 0x03, 0x62, 0x8b, 0x94, 0x61, 0xe2, 0xcf, 0x22, 0x02,
+	0x5a, 0x82, 0x86, 0xc7, 0xb4, 0xf5, 0x69, 0xe8, 0x12, 0xb5, 0xca, 0xf8, 0xe0, 0x25, 0x79, 0xba,
+	0x09, 0xe7, 0x2d, 0x9b, 0x12, 0xcf, 0x27, 0x03, 0x6a, 0xd9, 0x66, 0x5f, 0x62, 0x52, 0xa7, 0x18,
+	0xc6, 0x85, 0x34, 0x53, 0x5a, 0x86, 0x6e, 0x00, 0xb2, 0xec, 0xc1, 0x28, 0x18, 0x92, 0x61, 0x7f,
+	0x2f, 0xec, 0x73, 0x75, 0x6a, 0x8d, 0x29, 0x6f, 0x4a, 0x4e, 0x37, 0xe4, 0x76, 0xe0, 0x00, 0xce,
+	0xe7, 0xec, 0x12, 0x8e, 0xb9, 0x05, 0x67, 0xf8, 0x55, 0x5f, 0x55, 0x58, 0x2a, 0x6b, 0xe3, 0xb3,
+	0x42, 0x97, 0xa2, 0xe8, 0x3a, 0xcc, 0xdb, 0xe4, 0x3b, 0xda, 0x2f, 0x98, 0x3d, 0x1b, 0x91, 0x9f,
+	0x4a, 0xd3, 0xf1, 0xb7, 0xd0, 0x8a, 0x63, 0xf2, 0x05, 0x31, 0x68, 0xe0, 0x91, 0x5d, 0x42, 0xbf,
+	0x8e, 0x52, 0x2a, 0x76, 0xed, 0x22, 0xd4, 0x04, 0x78, 0x9e, 0x14, 0xe2, 0x14, 0xb9, 0xed, 0x39,
+	0xbf, 0xd2, 0xf7, 0x09, 0x15, 0xfa, 0xe1, 0x79, 0xac, 0x25, 0x0a, 0xd6, 0x95, 0x09, 0xda, 0x85,
+	0x81, 0x0e, 0xcc, 0x49, 0x35, 0x2c, 0x95, 0xa5, 0x9d, 0x0f, 0xca, 0xec, 0x3c, 0x52, 0x5d, 0x5b,
+	0x30, 0x38, 0x95, 0x17, 0xf4, 0xec, 0xf3, 0x34, 0x4d, 0xbb, 0x07, 0xa8, 0x28, 0x54, 0x52, 0x8d,
+	0x0b, 0xe9, 0x6a, 0x54, 0xd2, 0x85, 0xd6, 0x85, 0xda, 0x8e, 0x41, 0x77, 0x6c, 0x13, 0x69, 0x30,
+	0x3d, 0x32, 0xa8, 0x45, 0x83, 0x21, 0xcf, 0x3a, 0x45, 0x8f, 0xcf, 0xe8, 0x12, 0xd4, 0x47, 0x8e,
+	0x6d, 0x72, 0x26, 0xd7, 0x91, 0x10, 0xb0, 0x03, 0x0b, 0x3b, 0x91, 0x65, 0x24, 0x97, 0xc8, 0xb9,
+	0x64, 0x54, 0x0a, 0xc9, 0x78, 0x1b, 0xa6, 0xa5, 0x4b, 0x44, 0x9f, 0x28, 0xcd, 0x08, 0x0e, 0x50,
+	0x8f, 0x65, 0xf1, 0x3a, 0x9c, 0xcf, 0x3d, 0x28, 0x02, 0xa0, 0x66, 0x33, 0xac, 0x1e, 0x67, 0x11,
+	0xfe, 0x45, 0x81, 0x0b, 0x0f, 0x65, 0x6e, 0x9f, 0x14, 0x67, 0x69, 0xd7, 0x98, 0x3b, 0x69, 0xd7,
+	0x28, 0x69, 0x0c, 0xf3, 0x65, 0x8d, 0xe1, 0x5d, 0x05, 0xd4, 0x22, 0x54, 0x61, 0xa1, 0x0f, 0x99,
+	0x12, 0xed, 0x67, 0x0b, 0xea, 0x5e, 0x99, 0xfb, 0xc6, 0xe9, 0x4a, 0x18, 0x11, 0x5c, 0xc1, 0x3b,
+	0x67, 0x15, 0x89, 0xda, 0x2b, 0x38, 0x57, 0x22, 0x5b, 0xda, 0x60, 0x13, 0x5f, 0x1a, 0x1e, 0x31,
+	0x44, 0xae, 0x08, 0x5f, 0x7e, 0xee, 0x11, 0x03, 0xad, 0xc2, 0xd9, 0xe4, 0x09, 0x29, 0x56, 0x65,
+	0x62, 0xcd, 0x34, 0x23, 0x12, 0xc6, 0xaf, 0xa0, 0xf6, 0x88, 0x50, 0xcf, 0x1a, 0x7c, 0xe8, 0x00,
+	0x6d, 0x41, 0x63, 0x48, 0xfc, 0x81, 0x67, 0xb9, 0x2c, 0xc9, 0xaa, 0x42, 0x22, 0x21, 0x45, 0xa5,
+	0x11, 0xd8, 0x16, 0xf5, 0x59, 0x03, 0xac, 0xeb, 0xfc, 0x80, 0xff, 0x54, 0xa0, 0xc1, 0xcd, 0xfc,
+	0x2a, 0x20, 0x5e, 0x78, 0x74, 0x8a, 0xa8, 0x71, 0x67, 0xa9, 0xc8, 0x89, 0x2a, 0x7a, 0xcb, 0x1a,
+	0xd4, 0xf8, 0x5a, 0xc1, 0x5e, 0x6f, 0x6c, 0x2c, 0xe6, 0x33, 0xe6, 0x3e, 0xe3, 0x46, 0x37, 0xb8,
+	0x1c, 0xda, 0x81, 0x26, 0xcb, 0x32, 0x32, 0xcc, 0xb6, 0xe7, 0xc6, 0xc6, 0x52, 0x69, 0xb6, 0x91,
+	0xa1, 0xec, 0xd4, 0x0f, 0x4e, 0xe9, 0xf3, 0x24, 0x4b, 0xea, 0xd6, 0x60, 0x2a, 0xf2, 0xb1, 0x18,
+	0xa9, 0xdc, 0x9d, 0x93, 0x46, 0xea, 0x1d, 0x58, 0xec, 0x1a, 0x74, 0xb0, 0x1f, 0x0b, 0xc7, 0x75,
+	0x72, 0x05, 0x66, 0x0e, 0x19, 0x85, 0xb9, 0x5b, 0x96, 0x58, 0x83, 0xd3, 0x22, 0x77, 0xfb, 0xf8,
+	0x09, 0x5c, 0x28, 0x5c, 0x4e, 0xba, 0x3f, 0x97, 0x9c, 0xd8, 0xfd, 0x05, 0x3e, 0x29, 0x8a, 0x7f,
+	0x57, 0x60, 0x29, 0x3d, 0x4d, 0x38, 0x3f, 0xdb, 0xd5, 0xff, 0xcb, 0xc0, 0xec, 0xc2, 0x8c, 0x08,
+	0xec, 0x8b, 0x28, 0xd0, 0x22, 0x46, 0x4b, 0xe3, 0x07, 0x13, 0xcb, 0x07, 0x5d, 0x64, 0x03, 0x4f,
+	0x8e, 0xbc, 0x5f, 0xa6, 0x8a, 0x7e, 0xf9, 0xb1, 0x02, 0xad, 0xf1, 0x66, 0x08, 0x0f, 0x85, 0xb0,
+	0x20, 0xb0, 0x08, 0x75, 0x99, 0x21, 0xd2, 0x2b, 0xc3, 0x74, 0x94, 0xce, 0x76, 0x09, 0x0b, 0x79,
+	0x05, 0xda, 0x71, 0x87, 0xac, 0xf6, 0x08, 0x50, 0x51, 0x63, 0x69, 0x71, 0x5e, 0x85, 0xd9, 0xac,
+	0x15, 0x95, 0x56, 0x75, 0x59, 0xd1, 0x85, 0xa7, 0xf8, 0xc5, 0x8d, 0x3f, 0x1a, 0x50, 0xdf, 0x91,
+	0xf6, 0xa0, 0x10, 0xea, 0xf1, 0x50, 0x44, 0xd7, 0x26, 0xce, 0x4c, 0x11, 0x7a, 0x6d, 0xc2, 0x06,
+	0x81, 0x57, 0xbe, 0xff, 0xeb, 0x9f, 0x1f, 0x2a, 0xd7, 0x10, 0x8e, 0xbe, 0x15, 0xde, 0x44, 0xa0,
+	0xee, 0x26, 0x05, 0xeb, 0x77, 0x56, 0x3a, 0xa2, 0x77, 0x76, 0x56, 0xde, 0xa2, 0x9f, 0x15, 0x38,
+	0x5b, 0xd8, 0xe8, 0xd0, 0x8d, 0x89, 0x18, 0x72, 0xfb, 0xa6, 0x76, 0xf3, 0x98, 0xd2, 0x3c, 0x32,
+	0x78, 0x93, 0xc1, 0xbb, 0x89, 0x56, 0x8f, 0x86, 0x17, 0x7f, 0x83, 0xac, 0x29, 0xe8, 0x6f, 0x25,
+	0xb5, 0x7b, 0xe6, 0x57, 0x07, 0x74, 0xeb, 0x84, 0x9b, 0x06, 0x47, 0xfe, 0xf1, 0x07, 0xed, 0x27,
+	0xf8, 0x09, 0xb3, 0xe0, 0x21, 0xea, 0x31, 0x0b, 0x38, 0xdc, 0xf1, 0x36, 0xbc, 0x49, 0x6d, 0x58,
+	0x77, 0x93, 0xd5, 0x8a, 0xf1, 0x78, 0x8a, 0xa0, 0x9f, 0x14, 0x98, 0xcd, 0xac, 0x8e, 0x68, 0xf9,
+	0xa8, 0xa4, 0x8f, 0x6d, 0xf8, 0xe8, 0x18, 0x92, 0x02, 0xf7, 0x6d, 0x86, 0x7b, 0x0d, 0xb7, 0x53,
+	0xb8, 0x59, 0x5f, 0xcf, 0x82, 0x7f, 0x2b, 0xd1, 0x6f, 0xf9, 0x4c, 0x0d, 0x83, 0x97, 0xd9, 0x3b,
+	0xca, 0xe1, 0x95, 0xed, 0x42, 0xe5, 0xf0, 0x4a, 0x97, 0x98, 0x93, 0xc3, 0x63, 0x3a, 0x09, 0xfa,
+	0x55, 0x81, 0x66, 0x7e, 0xd6, 0xa3, 0xd5, 0xe3, 0x6d, 0x04, 0x1c, 0xe4, 0x8d, 0x93, 0xac, 0x0f,
+	0xf8, 0x33, 0x86, 0xf3, 0x36, 0x5e, 0x3f, 0x2e, 0xce, 0x78, 0xbc, 0x6f, 0x29, 0x2b, 0xcb, 0x0a,
+	0x3a, 0x60, 0xe5, 0x2e, 0xe6, 0xfb, 0xb8, 0x72, 0xcf, 0xcc, 0x2b, 0x6d, 0xc2, 0xc8, 0xc0, 0x97,
+	0x18, 0x9c, 0x45, 0xb4, 0x90, 0xd4, 0x93, 0x18, 0x22, 0x51, 0x81, 0xbf, 0x53, 0x60, 0x3e, 0x37,
+	0x99, 0x50, 0xe9, 0x97, 0x74, 0xf9, 0xec, 0xd3, 0x56, 0x8f, 0x25, 0x2b, 0x3c, 0x93, 0x81, 0x22,
+	0x40, 0x6c, 0xed, 0x09, 0x61, 0xf4, 0x5e, 0x01, 0x75, 0x5c, 0xdf, 0x46, 0x9b, 0x27, 0xeb, 0xf2,
+	0x1c, 0xdc, 0xad, 0x0f, 0x19, 0x0d, 0xf8, 0x11, 0x43, 0xd9, 0x43, 0xdb, 0xe9, 0xf8, 0xb1, 0x29,
+	0xd8, 0x1e, 0x1f, 0x4c, 0x51, 0x0b, 0x45, 0xb5, 0x6b, 0x4a, 0xf7, 0xe1, 0x37, 0x3d, 0xd3, 0xa2,
+	0xfb, 0xc1, 0x5e, 0x7b, 0xe0, 0x1c, 0x76, 0x18, 0xa4, 0x9b, 0x86, 0x25, 0x7f, 0xb8, 0x96, 0xdf,
+	0x31, 0x89, 0xcd, 0xfe, 0x3c, 0xe9, 0x98, 0x4e, 0xa7, 0xf8, 0x87, 0xce, 0x9d, 0xf8, 0xb0, 0x57,
+	0x63, 0x62, 0x9b, 0xff, 0x06, 0x00, 0x00, 0xff, 0xff, 0x59, 0x77, 0x21, 0x79, 0xf7, 0x11, 0x00,
+	0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1091,10 +1439,6 @@ type LocationsClient interface {
 	GetRegion(ctx context.Context, in *GetRegionRequest, opts ...grpc.CallOption) (*Region, error)
 	// Gets a region geometry.
 	GetRegionGeometry(ctx context.Context, in *GetRegionGeometryRequest, opts ...grpc.CallOption) (Locations_GetRegionGeometryClient, error)
-	// Sets a region.
-	SetRegion(ctx context.Context, in *SetRegionRequest, opts ...grpc.CallOption) (*Region, error)
-	// Sets a region.
-	SetRegionGeometry(ctx context.Context, opts ...grpc.CallOption) (Locations_SetRegionGeometryClient, error)
 	// Region feature values by feature.
 	GetRegionFeatureSetValues(ctx context.Context, in *GetRegionFeatureSetValuesRequest, opts ...grpc.CallOption) (*GetRegionFeatureSetValuesResponse, error)
 	// Search regions.
@@ -1103,6 +1447,12 @@ type LocationsClient interface {
 	LocateRegions(ctx context.Context, in *LocateRegionsRequest, opts ...grpc.CallOption) (*LocateRegionsResponse, error)
 	// Intersect regions.
 	IntersectRegions(ctx context.Context, opts ...grpc.CallOption) (Locations_IntersectRegionsClient, error)
+	// Gets a metric.
+	GetMetric(ctx context.Context, in *GetMetricRequest, opts ...grpc.CallOption) (*Metric, error)
+	// Gets a batch of metrics.
+	BatchGetMetrics(ctx context.Context, in *BatchGetMetricsRequest, opts ...grpc.CallOption) (*BatchGetMetricsResponse, error)
+	// Returns values for a list of metrics and regions matching a given query.
+	SearchRegionMetricValues(ctx context.Context, in *SearchRegionMetricValuesRequest, opts ...grpc.CallOption) (Locations_SearchRegionMetricValuesClient, error)
 }
 
 type locationsClient struct {
@@ -1154,49 +1504,6 @@ func (x *locationsGetRegionGeometryClient) Recv() (*GetRegionGeometryResponse, e
 	return m, nil
 }
 
-func (c *locationsClient) SetRegion(ctx context.Context, in *SetRegionRequest, opts ...grpc.CallOption) (*Region, error) {
-	out := new(Region)
-	err := c.cc.Invoke(ctx, "/topos.locations.v1.Locations/SetRegion", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *locationsClient) SetRegionGeometry(ctx context.Context, opts ...grpc.CallOption) (Locations_SetRegionGeometryClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Locations_serviceDesc.Streams[1], "/topos.locations.v1.Locations/SetRegionGeometry", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &locationsSetRegionGeometryClient{stream}
-	return x, nil
-}
-
-type Locations_SetRegionGeometryClient interface {
-	Send(*SetRegionGeometryRequest) error
-	CloseAndRecv() (*SetRegionGeometryResponse, error)
-	grpc.ClientStream
-}
-
-type locationsSetRegionGeometryClient struct {
-	grpc.ClientStream
-}
-
-func (x *locationsSetRegionGeometryClient) Send(m *SetRegionGeometryRequest) error {
-	return x.ClientStream.SendMsg(m)
-}
-
-func (x *locationsSetRegionGeometryClient) CloseAndRecv() (*SetRegionGeometryResponse, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(SetRegionGeometryResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 func (c *locationsClient) GetRegionFeatureSetValues(ctx context.Context, in *GetRegionFeatureSetValuesRequest, opts ...grpc.CallOption) (*GetRegionFeatureSetValuesResponse, error) {
 	out := new(GetRegionFeatureSetValuesResponse)
 	err := c.cc.Invoke(ctx, "/topos.locations.v1.Locations/GetRegionFeatureSetValues", in, out, opts...)
@@ -1225,7 +1532,7 @@ func (c *locationsClient) LocateRegions(ctx context.Context, in *LocateRegionsRe
 }
 
 func (c *locationsClient) IntersectRegions(ctx context.Context, opts ...grpc.CallOption) (Locations_IntersectRegionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_Locations_serviceDesc.Streams[2], "/topos.locations.v1.Locations/IntersectRegions", opts...)
+	stream, err := c.cc.NewStream(ctx, &_Locations_serviceDesc.Streams[1], "/topos.locations.v1.Locations/IntersectRegions", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1258,16 +1565,62 @@ func (x *locationsIntersectRegionsClient) CloseAndRecv() (*IntersectRegionsRespo
 	return m, nil
 }
 
+func (c *locationsClient) GetMetric(ctx context.Context, in *GetMetricRequest, opts ...grpc.CallOption) (*Metric, error) {
+	out := new(Metric)
+	err := c.cc.Invoke(ctx, "/topos.locations.v1.Locations/GetMetric", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *locationsClient) BatchGetMetrics(ctx context.Context, in *BatchGetMetricsRequest, opts ...grpc.CallOption) (*BatchGetMetricsResponse, error) {
+	out := new(BatchGetMetricsResponse)
+	err := c.cc.Invoke(ctx, "/topos.locations.v1.Locations/BatchGetMetrics", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *locationsClient) SearchRegionMetricValues(ctx context.Context, in *SearchRegionMetricValuesRequest, opts ...grpc.CallOption) (Locations_SearchRegionMetricValuesClient, error) {
+	stream, err := c.cc.NewStream(ctx, &_Locations_serviceDesc.Streams[2], "/topos.locations.v1.Locations/SearchRegionMetricValues", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &locationsSearchRegionMetricValuesClient{stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type Locations_SearchRegionMetricValuesClient interface {
+	Recv() (*SearchRegionMetricValuesResponse, error)
+	grpc.ClientStream
+}
+
+type locationsSearchRegionMetricValuesClient struct {
+	grpc.ClientStream
+}
+
+func (x *locationsSearchRegionMetricValuesClient) Recv() (*SearchRegionMetricValuesResponse, error) {
+	m := new(SearchRegionMetricValuesResponse)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
 // LocationsServer is the server API for Locations service.
 type LocationsServer interface {
 	// Gets a region.
 	GetRegion(context.Context, *GetRegionRequest) (*Region, error)
 	// Gets a region geometry.
 	GetRegionGeometry(*GetRegionGeometryRequest, Locations_GetRegionGeometryServer) error
-	// Sets a region.
-	SetRegion(context.Context, *SetRegionRequest) (*Region, error)
-	// Sets a region.
-	SetRegionGeometry(Locations_SetRegionGeometryServer) error
 	// Region feature values by feature.
 	GetRegionFeatureSetValues(context.Context, *GetRegionFeatureSetValuesRequest) (*GetRegionFeatureSetValuesResponse, error)
 	// Search regions.
@@ -1276,6 +1629,12 @@ type LocationsServer interface {
 	LocateRegions(context.Context, *LocateRegionsRequest) (*LocateRegionsResponse, error)
 	// Intersect regions.
 	IntersectRegions(Locations_IntersectRegionsServer) error
+	// Gets a metric.
+	GetMetric(context.Context, *GetMetricRequest) (*Metric, error)
+	// Gets a batch of metrics.
+	BatchGetMetrics(context.Context, *BatchGetMetricsRequest) (*BatchGetMetricsResponse, error)
+	// Returns values for a list of metrics and regions matching a given query.
+	SearchRegionMetricValues(*SearchRegionMetricValuesRequest, Locations_SearchRegionMetricValuesServer) error
 }
 
 // UnimplementedLocationsServer can be embedded to have forward compatible implementations.
@@ -1288,12 +1647,6 @@ func (*UnimplementedLocationsServer) GetRegion(ctx context.Context, req *GetRegi
 func (*UnimplementedLocationsServer) GetRegionGeometry(req *GetRegionGeometryRequest, srv Locations_GetRegionGeometryServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetRegionGeometry not implemented")
 }
-func (*UnimplementedLocationsServer) SetRegion(ctx context.Context, req *SetRegionRequest) (*Region, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SetRegion not implemented")
-}
-func (*UnimplementedLocationsServer) SetRegionGeometry(srv Locations_SetRegionGeometryServer) error {
-	return status.Errorf(codes.Unimplemented, "method SetRegionGeometry not implemented")
-}
 func (*UnimplementedLocationsServer) GetRegionFeatureSetValues(ctx context.Context, req *GetRegionFeatureSetValuesRequest) (*GetRegionFeatureSetValuesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetRegionFeatureSetValues not implemented")
 }
@@ -1305,6 +1658,15 @@ func (*UnimplementedLocationsServer) LocateRegions(ctx context.Context, req *Loc
 }
 func (*UnimplementedLocationsServer) IntersectRegions(srv Locations_IntersectRegionsServer) error {
 	return status.Errorf(codes.Unimplemented, "method IntersectRegions not implemented")
+}
+func (*UnimplementedLocationsServer) GetMetric(ctx context.Context, req *GetMetricRequest) (*Metric, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetMetric not implemented")
+}
+func (*UnimplementedLocationsServer) BatchGetMetrics(ctx context.Context, req *BatchGetMetricsRequest) (*BatchGetMetricsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchGetMetrics not implemented")
+}
+func (*UnimplementedLocationsServer) SearchRegionMetricValues(req *SearchRegionMetricValuesRequest, srv Locations_SearchRegionMetricValuesServer) error {
+	return status.Errorf(codes.Unimplemented, "method SearchRegionMetricValues not implemented")
 }
 
 func RegisterLocationsServer(s *grpc.Server, srv LocationsServer) {
@@ -1348,50 +1710,6 @@ type locationsGetRegionGeometryServer struct {
 
 func (x *locationsGetRegionGeometryServer) Send(m *GetRegionGeometryResponse) error {
 	return x.ServerStream.SendMsg(m)
-}
-
-func _Locations_SetRegion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SetRegionRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(LocationsServer).SetRegion(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/topos.locations.v1.Locations/SetRegion",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(LocationsServer).SetRegion(ctx, req.(*SetRegionRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Locations_SetRegionGeometry_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(LocationsServer).SetRegionGeometry(&locationsSetRegionGeometryServer{stream})
-}
-
-type Locations_SetRegionGeometryServer interface {
-	SendAndClose(*SetRegionGeometryResponse) error
-	Recv() (*SetRegionGeometryRequest, error)
-	grpc.ServerStream
-}
-
-type locationsSetRegionGeometryServer struct {
-	grpc.ServerStream
-}
-
-func (x *locationsSetRegionGeometryServer) SendAndClose(m *SetRegionGeometryResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *locationsSetRegionGeometryServer) Recv() (*SetRegionGeometryRequest, error) {
-	m := new(SetRegionGeometryRequest)
-	if err := x.ServerStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
 }
 
 func _Locations_GetRegionFeatureSetValues_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -1474,6 +1792,63 @@ func (x *locationsIntersectRegionsServer) Recv() (*IntersectRegionsRequest, erro
 	return m, nil
 }
 
+func _Locations_GetMetric_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetMetricRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocationsServer).GetMetric(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.locations.v1.Locations/GetMetric",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocationsServer).GetMetric(ctx, req.(*GetMetricRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Locations_BatchGetMetrics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchGetMetricsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(LocationsServer).BatchGetMetrics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/topos.locations.v1.Locations/BatchGetMetrics",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(LocationsServer).BatchGetMetrics(ctx, req.(*BatchGetMetricsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Locations_SearchRegionMetricValues_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SearchRegionMetricValuesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(LocationsServer).SearchRegionMetricValues(m, &locationsSearchRegionMetricValuesServer{stream})
+}
+
+type Locations_SearchRegionMetricValuesServer interface {
+	Send(*SearchRegionMetricValuesResponse) error
+	grpc.ServerStream
+}
+
+type locationsSearchRegionMetricValuesServer struct {
+	grpc.ServerStream
+}
+
+func (x *locationsSearchRegionMetricValuesServer) Send(m *SearchRegionMetricValuesResponse) error {
+	return x.ServerStream.SendMsg(m)
+}
+
 var _Locations_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "topos.locations.v1.Locations",
 	HandlerType: (*LocationsServer)(nil),
@@ -1481,10 +1856,6 @@ var _Locations_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetRegion",
 			Handler:    _Locations_GetRegion_Handler,
-		},
-		{
-			MethodName: "SetRegion",
-			Handler:    _Locations_SetRegion_Handler,
 		},
 		{
 			MethodName: "GetRegionFeatureSetValues",
@@ -1498,6 +1869,14 @@ var _Locations_serviceDesc = grpc.ServiceDesc{
 			MethodName: "LocateRegions",
 			Handler:    _Locations_LocateRegions_Handler,
 		},
+		{
+			MethodName: "GetMetric",
+			Handler:    _Locations_GetMetric_Handler,
+		},
+		{
+			MethodName: "BatchGetMetrics",
+			Handler:    _Locations_BatchGetMetrics_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
@@ -1506,14 +1885,14 @@ var _Locations_serviceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "SetRegionGeometry",
-			Handler:       _Locations_SetRegionGeometry_Handler,
-			ClientStreams: true,
-		},
-		{
 			StreamName:    "IntersectRegions",
 			Handler:       _Locations_IntersectRegions_Handler,
 			ClientStreams: true,
+		},
+		{
+			StreamName:    "SearchRegionMetricValues",
+			Handler:       _Locations_SearchRegionMetricValues_Handler,
+			ServerStreams: true,
 		},
 	},
 	Metadata: "topos/locations/v1/locations.proto",

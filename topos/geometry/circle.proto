@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+import "topos/geometry/latlng.proto";
+
+package topos.geometry;
+
+option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/geometry";
+
+message Circle {
+  LatLng center = 1;
+  double radius = 2;
+}

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='topos.geometry',
   syntax='proto3',
   serialized_options=b'Z9github.com/topos-ai/topos-apis/genproto/go/topos/geometry',
-  serialized_pb=b'\n\x1dtopos/geometry/encoding.proto\x12\x0etopos.geometry* \n\x08\x45ncoding\x12\x07\n\x03WKB\x10\x00\x12\x0b\n\x07GEOJSON\x10\x01\x42;Z9github.com/topos-ai/topos-apis/genproto/go/topos/geometryb\x06proto3'
+  serialized_pb=b'\n\x1dtopos/geometry/encoding.proto\x12\x0etopos.geometry\"O\n\x0f\x45ncodedGeometry\x12\x10\n\x08geometry\x18\x01 \x01(\x0c\x12*\n\x08\x65ncoding\x18\x02 \x01(\x0e\x32\x18.topos.geometry.Encoding* \n\x08\x45ncoding\x12\x07\n\x03WKB\x10\x00\x12\x0b\n\x07GEOJSON\x10\x01\x42;Z9github.com/topos-ai/topos-apis/genproto/go/topos/geometryb\x06proto3'
 )
 
 _ENCODING = _descriptor.EnumDescriptor(
@@ -39,8 +39,8 @@ _ENCODING = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=49,
-  serialized_end=81,
+  serialized_start=130,
+  serialized_end=162,
 )
 _sym_db.RegisterEnumDescriptor(_ENCODING)
 
@@ -49,8 +49,55 @@ WKB = 0
 GEOJSON = 1
 
 
+
+_ENCODEDGEOMETRY = _descriptor.Descriptor(
+  name='EncodedGeometry',
+  full_name='topos.geometry.EncodedGeometry',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='geometry', full_name='topos.geometry.EncodedGeometry.geometry', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"",
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='encoding', full_name='topos.geometry.EncodedGeometry.encoding', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=49,
+  serialized_end=128,
+)
+
+_ENCODEDGEOMETRY.fields_by_name['encoding'].enum_type = _ENCODING
+DESCRIPTOR.message_types_by_name['EncodedGeometry'] = _ENCODEDGEOMETRY
 DESCRIPTOR.enum_types_by_name['Encoding'] = _ENCODING
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+EncodedGeometry = _reflection.GeneratedProtocolMessageType('EncodedGeometry', (_message.Message,), {
+  'DESCRIPTOR' : _ENCODEDGEOMETRY,
+  '__module__' : 'topos.geometry.encoding_pb2'
+  # @@protoc_insertion_point(class_scope:topos.geometry.EncodedGeometry)
+  })
+_sym_db.RegisterMessage(EncodedGeometry)
 
 
 DESCRIPTOR._options = None

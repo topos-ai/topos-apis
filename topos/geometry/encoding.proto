@@ -8,3 +8,11 @@ enum Encoding {
   WKB = 0;
   GEOJSON = 1;
 }
+
+message EncodedGeometry {
+  // The encoded geometry data.
+  bytes geometry = 1;
+
+  // The geometry data's encoding.
+  Encoding encoding = 2;
+}

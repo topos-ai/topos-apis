@@ -24,16 +24,6 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryResponse.FromString,
         )
-    self.SetRegion = channel.unary_unary(
-        '/topos.locations.v1.Locations/SetRegion',
-        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionRequest.SerializeToString,
-        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.FromString,
-        )
-    self.SetRegionGeometry = channel.stream_unary(
-        '/topos.locations.v1.Locations/SetRegionGeometry',
-        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionGeometryRequest.SerializeToString,
-        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionGeometryResponse.FromString,
-        )
     self.GetRegionFeatureSetValues = channel.unary_unary(
         '/topos.locations.v1.Locations/GetRegionFeatureSetValues',
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionFeatureSetValuesRequest.SerializeToString,
@@ -54,6 +44,21 @@ class LocationsStub(object):
         request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsRequest.SerializeToString,
         response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsResponse.FromString,
         )
+    self.GetMetric = channel.unary_unary(
+        '/topos.locations.v1.Locations/GetMetric',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetMetricRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.Metric.FromString,
+        )
+    self.BatchGetMetrics = channel.unary_unary(
+        '/topos.locations.v1.Locations/BatchGetMetrics',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.BatchGetMetricsRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.BatchGetMetricsResponse.FromString,
+        )
+    self.SearchRegionMetricValues = channel.unary_stream(
+        '/topos.locations.v1.Locations/SearchRegionMetricValues',
+        request_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionMetricValuesRequest.SerializeToString,
+        response_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionMetricValuesResponse.FromString,
+        )
 
 
 class LocationsServicer(object):
@@ -69,20 +74,6 @@ class LocationsServicer(object):
 
   def GetRegionGeometry(self, request, context):
     """Gets a region geometry.
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SetRegion(self, request, context):
-    """Sets a region.
-    """
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
-  def SetRegionGeometry(self, request_iterator, context):
-    """Sets a region.
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -116,6 +107,27 @@ class LocationsServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetMetric(self, request, context):
+    """Gets a metric.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def BatchGetMetrics(self, request, context):
+    """Gets a batch of metrics.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SearchRegionMetricValues(self, request, context):
+    """Returns values for a list of metrics and regions matching a given query.
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_LocationsServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -128,16 +140,6 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.GetRegionGeometry,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetRegionGeometryResponse.SerializeToString,
-      ),
-      'SetRegion': grpc.unary_unary_rpc_method_handler(
-          servicer.SetRegion,
-          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionRequest.FromString,
-          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.Region.SerializeToString,
-      ),
-      'SetRegionGeometry': grpc.stream_unary_rpc_method_handler(
-          servicer.SetRegionGeometry,
-          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionGeometryRequest.FromString,
-          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SetRegionGeometryResponse.SerializeToString,
       ),
       'GetRegionFeatureSetValues': grpc.unary_unary_rpc_method_handler(
           servicer.GetRegionFeatureSetValues,
@@ -158,6 +160,21 @@ def add_LocationsServicer_to_server(servicer, server):
           servicer.IntersectRegions,
           request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsRequest.FromString,
           response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.IntersectRegionsResponse.SerializeToString,
+      ),
+      'GetMetric': grpc.unary_unary_rpc_method_handler(
+          servicer.GetMetric,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.GetMetricRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.Metric.SerializeToString,
+      ),
+      'BatchGetMetrics': grpc.unary_unary_rpc_method_handler(
+          servicer.BatchGetMetrics,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.BatchGetMetricsRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.BatchGetMetricsResponse.SerializeToString,
+      ),
+      'SearchRegionMetricValues': grpc.unary_stream_rpc_method_handler(
+          servicer.SearchRegionMetricValues,
+          request_deserializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionMetricValuesRequest.FromString,
+          response_serializer=topos_dot_locations_dot_v1_dot_locations__pb2.SearchRegionMetricValuesResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

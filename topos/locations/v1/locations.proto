@@ -3,6 +3,7 @@ syntax = "proto3";
 package topos.locations.v1;
 
 import "google/api/annotations.proto";
+import "topos/geometry/circle.proto";
 import "topos/geometry/encoding.proto";
 
 option go_package = "github.com/topos-ai/topos-apis/genproto/go/topos/locations/v1;locations";
@@ -20,23 +21,6 @@ service Locations {
       returns (stream GetRegionGeometryResponse) {
     option (google.api.http) = {
       get : "/v1/{name=regionTypes/*/regions/*}/geometry"
-    };
-  }
-
-  // Sets a region.
-  rpc SetRegion(SetRegionRequest) returns (Region) {
-    option (google.api.http) = {
-      post : "/v1/{region.name=regionTypes/*/regions/*}"
-      body : "region"
-    };
-  }
-
-  // Sets a region.
-  rpc SetRegionGeometry(stream SetRegionGeometryRequest)
-      returns (SetRegionGeometryResponse) {
-    option (google.api.http) = {
-      post : "/v1/{name=regionTypes/*/regions/*}/geometry"
-      body : "*"
     };
   }
 
@@ -71,22 +55,39 @@ service Locations {
       body : "*"
     };
   }
+
+  // Gets a metric.
+  rpc GetMetric(GetMetricRequest) returns (Metric) {
+    option (google.api.http) = {
+      get : "/v1/{name=metrics/*}"
+    };
+  }
+
+  // Gets a batch of metrics.
+  rpc BatchGetMetrics(BatchGetMetricsRequest)
+      returns (BatchGetMetricsResponse) {
+    option (google.api.http) = {
+      get : "/v1/metrics:batchGet"
+    };
+  }
+
+  // Returns values for a list of metrics and regions matching a given query.
+  rpc SearchRegionMetricValues(SearchRegionMetricValuesRequest)
+      returns (stream SearchRegionMetricValuesResponse) {
+    option (google.api.http) = {
+      get : "/v1/{region_query.region_type=regionTypes/"
+            "*}:searchRegionMetricValues"
+    };
+  }
 }
 
 message RegionType {
-  // The name of the region type. It must have the format
-  // `"regionTypes/{region_type}"`. `{region_type}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
+  // The name of the region type.
   string name = 1;
 }
 
 message Region {
-  // The name of the region. It must have the format
-  // `"regionTypes/{region_type}/regions/{region}"`.
-  // `{region}` must match the [regular
-  // expression](https://github.com/google/re2/wiki/Syntax)
-  // `^[a-z\d]+(-[a-z\d]+)*$`
+  // The name of the region.
   string name = 1;
 
   // The region's display name.
@@ -100,7 +101,7 @@ message Region {
     }
   }
 
-  // The region properties.
+  // The region's properties.
   map<string, Property> properties = 3;
 }
 
@@ -116,26 +117,11 @@ message GetRegionGeometryRequest {
 
 message GetRegionGeometryResponse { bytes geometry_chunk = 1; }
 
-message SetRegionRequest { Region region = 1; }
-
-message SetRegionGeometryRequest {
-  // The region name.
-  string name = 1;
-
-  // The geometry data's encoding.
-  topos.geometry.Encoding geometry_encoding = 14;
-
-  // A chunk of bytes of the encoded geometry.
-  bytes geometry_chunk = 15;
-}
-
-message SetRegionGeometryResponse {}
-
 message SearchRegionsRequest {
   // The maximum number of items to return.
   int32 page_size = 1;
 
-  // The next_page_token value returned from a previous Search request, if any.
+  // The next_page_token value returned from a previous request, if any.
   string page_token = 2;
 
   // Return regions of the given type.
@@ -207,4 +193,72 @@ message IntersectRegionsResponse {
   }
 
   repeated IntersectingRegions intersecting_regions = 1;
+}
+
+message Metric {
+  // The name of the metric.
+  string name = 1;
+
+  // The metric's display name.
+  string display_name = 2;
+
+  // The metric's description.
+  string description = 3;
+
+  // The metric's units.
+  string units = 4;
+}
+
+message RegionQuery {
+  // Required. Match regions of the given type.
+  string region_type = 1;
+
+  // The match regions that intersect the given area.
+  oneof area {
+    // The name of an existing region.
+    string region = 2;
+    topos.geometry.Circle circle = 3;
+    topos.geometry.EncodedGeometry encoded_geometry = 4;
+  };
+}
+
+message GetMetricRequest {
+  // The name of the metric to get.
+  string name = 1;
+}
+
+message BatchGetMetricsRequest {
+  // The name of the metrics to get.
+  repeated string metric_names = 1;
+}
+
+message BatchGetMetricsResponse { repeated Metric metrics = 1; }
+
+message SearchRegionMetricValuesRequest {
+  // The maximum number of items to return.
+  int32 page_size = 1;
+
+  // The next_page_token value returned from a previous request, if any.
+  string page_token = 2;
+
+  // Required. The region query.
+  RegionQuery region_query = 3;
+
+  // The names of the metrics to return values for.
+  repeated string metric_names = 4;
+}
+
+message SearchRegionMetricValuesResponse {
+  message RegionMetricValues {
+    // The name of the region.
+    string name = 1;
+
+    // The region's metric values.
+    repeated double metric_values = 2;
+  }
+
+  repeated RegionMetricValues region_metric_values = 1;
+
+  // Token to retrieve the next page of results if there are any.
+  string next_page_token = 2;
 }
